@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Edson\\source\\repos\\SistemaWebPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj": {}
+    "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Edson\\source\\repos\\SistemaWebPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj": {
+    "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Edson\\source\\repos\\SistemaWebPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
+        "projectUniqueName": "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
         "projectName": "SistemaWebPizzaria",
-        "projectPath": "C:\\Users\\Edson\\source\\repos\\SistemaWebPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
+        "projectPath": "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
         "packagesPath": "C:\\Users\\Edson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Edson\\source\\repos\\SistemaWebPizzaria\\SistemaWebPizzaria\\obj\\",
+        "outputPath": "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Edson\\AppData\\Roaming\\NuGet\\NuGet.Config",

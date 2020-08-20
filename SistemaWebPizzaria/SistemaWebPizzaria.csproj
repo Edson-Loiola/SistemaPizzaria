@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Shared\_Lay2cshtml.cshtml" />
+    <Content Remove="Views\_Teste.cshtml" />
     <Content Remove="wwwroot\images\banner1.svg" />
     <Content Remove="wwwroot\images\banner2.svg" />
     <Content Remove="wwwroot\images\banner3.svg" />

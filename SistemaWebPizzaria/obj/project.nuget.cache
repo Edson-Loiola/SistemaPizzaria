@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Zr4MyeksuwcrO9htoYpZR9LxUi8GKrWwmdZswSHtvrx8B9KoqCntkphzugqgR3hqED0Jz65C8BC9VlCLU17eXA==",
+  "dgSpecHash": "yHfbhnTLJ8oSuJnbkpgvLbZDC86lO5A6/vwyMqtlO4qUapKmAqQGGpNjn2KvFtD4kNsqqrjPVmqu3mrQ1Y47+A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Edson\\source\\repos\\SistemaWebPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
+  "projectFilePath": "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",

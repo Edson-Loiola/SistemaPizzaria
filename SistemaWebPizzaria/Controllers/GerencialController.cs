@@ -10,6 +10,8 @@ namespace SistemaWebPizzaria.Controllers
     {
         public IActionResult Inicial()
         {
+            ViewData["Message"] = "inicial.";
+
             return View();
         }
     }
