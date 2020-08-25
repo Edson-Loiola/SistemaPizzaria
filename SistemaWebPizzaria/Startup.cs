@@ -7,8 +7,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SistemaWebPizzaria.Data;
+
 
 namespace SistemaWebPizzaria
 {
@@ -17,6 +20,7 @@ namespace SistemaWebPizzaria
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
         }
 
         public IConfiguration Configuration { get; }
@@ -26,16 +30,32 @@ namespace SistemaWebPizzaria
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            //confiuração do banco de dados MySql
+            services.AddDbContext<SistemaWebPizzariaContext>(options =>
+                    options.UseMySql(Configuration.GetConnectionString("SistemaWebPizzariaContext"), builder =>
+                    builder.MigrationsAssembly("SistemaWebPizzaria"))); //responsável por criar as Migrations e criar o banco de dados a apartir dos nossos objetos
+
+            //Para baixar o provider do MySql:
+            //botão direito na solution (nome do projeto :SistemaWebPizzaria)
+            //Manage Packge Nuget
+            //Procurar: Pomelo.EntityFrameworkCore.MySql  e   instalar a versão  2.1.1
+
+            //cinfigurando sessions
+            services.AddSession();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+           
+
+
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -51,6 +71,8 @@ namespace SistemaWebPizzaria
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
+    
 
             app.UseMvc(routes =>
             {

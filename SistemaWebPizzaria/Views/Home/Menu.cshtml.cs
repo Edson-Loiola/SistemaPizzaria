@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace SistemaWebPizzaria.Views.Gerencial
+namespace SistemaWebPizzaria.Views.Home
 {
-    public class IndexModel : PageModel
+    public class MenuModel : PageModel
     {
         public void OnGet()
         {

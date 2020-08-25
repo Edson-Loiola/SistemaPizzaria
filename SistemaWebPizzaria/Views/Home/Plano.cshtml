@@ -1,7 +1,48 @@
-﻿@{
-    ViewData["Title"] = "Planos e Preços";
-}
-<h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+﻿
 
-<p>Use this area to provide additional information.</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1> Planos e Preços</h1>
+            <hr>
+        </div>
+    </div>
+</div><br /><br />
+
+
+
+<!-- Cards-->
+
+<div class="container col-lg-offset-3">
+
+    <div class="row text-center">
+        <div class="col-sm-3">
+            <div class="card-body img-rounded table-bordered" style="background-color:white; box-shadow: 0px 3px 10px">
+                <div class="card-body">
+                    <br />
+                    <img src="~/images/img003.png" alt="Visual Studio" class="img-circle" />
+                    <h2 class="card-title text-info">R$ 2,00</h2>
+
+                    <h4 class="card-subtitle alert-danger">Plano de 6 meses!</h4><br />
+                    <hr class="alert-link" />
+                    <button class="btn btn-danger" type="submit">Assinar</button>
+                </div><br />
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-sm-3">
+                <div class="card-body img-rounded table-bordered" style="background-color:white; box-shadow: 0px 3px 10px">
+                    <div class="card-body">
+                        <br />
+                        <img src="~/images/img003.png" alt="Visual Studio" class="img-circle" />
+                        <h2 class="card-title text-info">R$ 3,00</h2>                        
+                        <h4 class="card-subtitle alert-danger">Plano de 1 ano!</h4><br />                      
+                        <hr class="alert-link"/>
+                        <button class="btn btn-danger" type="submit">Assinar</button>
+                    </div><br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

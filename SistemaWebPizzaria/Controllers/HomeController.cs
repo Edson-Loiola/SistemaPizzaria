@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SistemaWebPizzaria.Models;
+using SistemaWebPizzaria.Models.ViewModels;
+using System.Diagnostics;
 
 namespace SistemaWebPizzaria.Controllers
 {
@@ -30,26 +28,12 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
-        public IActionResult Login()
-        {
-            ViewData["Message"] = "Login aplication.";
-
-            return View();
-        }
-
         public IActionResult Plano()
         {
             ViewData["Message"] = "Veja aqui os planos.";
 
             return View();
         }
-
-  
-
-
-
-
-
 
 
         public IActionResult Privacy()
@@ -62,5 +46,49 @@ namespace SistemaWebPizzaria.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+
+
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult Login(string email, string senha)
+        {
+
+            if (email.Equals("teste@gmail.com") && senha.Equals("sistema"))
+            {
+
+                HttpContext.Session.SetString("Usuario", email);
+               return RedirectToAction("MenuSistema","Home");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+           
+
+        }
+
+
+        public IActionResult MenuSistema()
+        {
+            ViewData["Message"] = "Veja aqui os planos.";
+
+            return View();
+        }
+
+
+        public IActionResult Assinatura()
+        {
+            return View();
+        }
+
     }
+
 }

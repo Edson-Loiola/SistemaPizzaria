@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\LoginController.cs" />
+    <Compile Remove="Models\Login.cs" />
+    <Compile Remove="Services\LoginService.cs" />
+    <Compile Remove="Views\Home\Menu.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Home\Menu.cshtml" />
     <Content Remove="Views\Shared\_Lay2cshtml.cshtml" />
     <Content Remove="Views\_Teste.cshtml" />
     <Content Remove="wwwroot\images\banner1.svg" />
@@ -15,6 +23,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
