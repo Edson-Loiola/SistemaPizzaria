@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ho9dT+1D1HbGxu3A+v//OCAAGwTNi1W/7PLLt3EaYdkZDXIh8L2gAMIkfC8DL0Pd/JrVIltN1f3tTfZmThxy1g==",
+  "dgSpecHash": "+T4ALOYh6z4WS/CMOC8Klo7V2ZDzHb3m9vew9HlISLbC5rqeTTIBxcaS+lU50EE1fU/DEjAVXvwZgfnzClKcIA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
   "expectedPackageFiles": [
@@ -179,6 +179,7 @@
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.utils\\2.1.10\\microsoft.visualstudio.web.codegeneration.utils.2.1.10.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.visualstudio.web.codegenerators.mvc\\2.1.10\\microsoft.visualstudio.web.codegenerators.mvc.2.1.10.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
+    "C:\\Users\\Edson\\.nuget\\packages\\mysql.data.entity\\6.10.9\\mysql.data.entity.6.10.9.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\mysqlconnector\\0.42.1\\mysqlconnector.0.42.1.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
@@ -303,5 +304,16 @@
     "C:\\Users\\Edson\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\system.xml.xpath.xdocument\\4.3.0\\system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'MySql.Data.Entity 6.10.9' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v2.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "MySql.Data.Entity",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.1"
+      ]
+    }
+  ]
 }

@@ -16,8 +16,8 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
-<body onload="UserLogado()">
-     @*chama a função para mostrar o nome do usuario logado*@
+<body class="container-fluid" UserLogado()">
+    @*chama a função para mostrar o nome do usuario logado*@
 
     <nav class="navbar navbar-fixed-top bg-warning">
         <div class="container">
@@ -28,17 +28,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-              
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>                   
-                    <li><a asp-area="" asp-controller="Home" asp-action="Plano">Planos e Preços</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Login">Área do Cliente</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Suporte</a></li>        
+                    <li><a asp-area="" asp-controller="Home" asp-action="Login">Área do Cliente</a></li>                   
                 </ul>
 
-             
+
                 @using Microsoft.AspNetCore.Http
                 @inject IHttpContextAccessor HttpContextAcessor
                 <div id="Usuario"></div>
@@ -49,11 +47,14 @@
 
     <partial name="_CookieConsentPartial" />
 
-    <div class="container body-content">
+    <div class="container body-content"> 
         @RenderBody()
-        <hr />
+       <hr />
         <footer class="text-center">
             <p>&copy; 2020 MyPizza Company</p>
+            <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <a asp-area="" asp-controller="Home" asp-action="Privacy">Termos</a>
+
         </footer>
     </div>
 
@@ -82,22 +83,22 @@
 
 
     @*funcção que imprime o nome do usuario logado*@
-    
-@*<script>
-    function UserLogado() {
-        
-        var nome = '@HttpContextAccessor.HttpContext.Session.GetString("gdd")'
-   
-        if (nome != "") 
-        {
-            var divNome = document.getElementById("Usuario");
-            divNome.innerHTML = "Olá " + nome;
-         
 
-        } 
+    @*<script>
+            function UserLogado() {
 
-    }
-</script>*@
+                var nome = '@HttpContextAccessor.HttpContext.Session.GetString("gdd")'
+
+                if (nome != "")
+                {
+                    var divNome = document.getElementById("Usuario");
+                    divNome.innerHTML = "Olá " + nome;
+
+
+                }
+
+            }
+        </script>*@
 
 
 </body>

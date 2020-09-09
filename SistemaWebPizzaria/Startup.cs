@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SistemaWebPizzaria.Data;
-
+using SistemaWebPizzaria.Services;
 
 namespace SistemaWebPizzaria
 {
@@ -40,12 +40,19 @@ namespace SistemaWebPizzaria
             //confiuração do banco de dados MySql
             services.AddDbContext<SistemaWebPizzariaContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("SistemaWebPizzariaContext"), builder =>
-                    builder.MigrationsAssembly("SistemaWebPizzaria"))); //responsável por criar as Migrations e criar o banco de dados a apartir dos nossos objetos
+                    builder.MigrationsAssembly("bdgerenciamentopizzaria"))); //responsável por criar as Migrations e criar o banco de dados a apartir dos nossos objetos
 
             //Para baixar o provider do MySql:
             //botão direito na solution (nome do projeto :SistemaWebPizzaria)
             //Manage Packge Nuget
             //Procurar: Pomelo.EntityFrameworkCore.MySql  e   instalar a versão  2.1.1
+
+
+
+            
+            services.AddScoped<DespesaService>();
+
+
 
             //cinfigurando sessions
             services.AddSession();

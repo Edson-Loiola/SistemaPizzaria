@@ -74,7 +74,6 @@ C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcore
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.genruntimeconfig.cache
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csproj.CopyComplete
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csprojAssemblyReference.cache
-C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csproj.CoreCompileInputs.cache
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Home\MenuSistema.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Cliente\Index.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Cliente\StatusPed.cshtml.g.cs
@@ -82,3 +81,5 @@ C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcore
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Cliente\Produto.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Cliente\Relatorio.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Home\Assinatura.cshtml.g.cs
+C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csproj.CoreCompileInputs.cache
+C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Cliente\Despesa.cshtml.g.cs

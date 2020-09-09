@@ -34,7 +34,7 @@ namespace SistemaWebPizzaria.Models.ViewModels
 
         public LoginModel(int id, string email, string senha, SistemaWebPizzariaContext context)
         {
-           
+
             Id = id;
             Email = email;
             Senha = senha;
@@ -43,21 +43,21 @@ namespace SistemaWebPizzaria.Models.ViewModels
 
 
 
-        public bool ValidarLogin()
-        {
-            string sql = $"Select Id from login where email ='{Email}' and senha ='{Senha}'";
-            DataTable dt = _context.RetDataTable(sql);
+        //public bool ValidarLogin()
+        //{
+        //    string sql = $"Select Id from login where email ='{Email}' and senha ='{Senha}'";
+        //    DataTable dt = _context.RetDataTable(sql);
 
-            if (dt.Rows.Count == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+        //    if (dt.Rows.Count == 1)
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
 
-        }
+        //}
 
     }
 }

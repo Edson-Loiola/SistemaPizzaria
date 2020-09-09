@@ -28,6 +28,7 @@
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.10",
+          "MySql.Data.Entity": "6.10.9",
           "Pomelo.EntityFrameworkCore.MySql": "2.1.1"
         },
         "runtime": {
@@ -191,6 +192,17 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
+        }
+      },
+      "MySql.Data.Entity/6.10.9": {
+        "runtime": {
+          "lib/net452/MySql.Data.Entity.EF6.dll": {
+            "assemblyVersion": "6.10.9.0",
+            "fileVersion": "6.10.9.0"
+          }
+        },
+        "compile": {
+          "lib/net452/MySql.Data.Entity.EF6.dll": {}
         }
       },
       "MySqlConnector/0.42.1": {
@@ -3593,6 +3605,13 @@
       "sha512": "sha512-PKKvTxC/isyZjRtFSSfbzFlFNvLUL1JjEGex3YJQXhwGhGplIAQkDvm1PQDl9AgvrLtKv0OnUG80uq5p2I+4CA==",
       "path": "microsoft.visualstudio.web.codegenerators.mvc/2.1.10",
       "hashPath": "microsoft.visualstudio.web.codegenerators.mvc.2.1.10.nupkg.sha512"
+    },
+    "MySql.Data.Entity/6.10.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-csewGW5NKXVHKdnzKXc9vB8pWQNyt9y9u9Qjk3NoIJNVPYK+DOGmaIgwQfkoOr0WWe536NZh+ZXLgw8XRv2eWw==",
+      "path": "mysql.data.entity/6.10.9",
+      "hashPath": "mysql.data.entity.6.10.9.nupkg.sha512"
     },
     "MySqlConnector/0.42.1": {
       "type": "package",
