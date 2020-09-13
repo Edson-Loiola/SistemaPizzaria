@@ -3,17 +3,15 @@ using System.Collections.Generic;
 
 namespace SistemaWebPizzaria
 {
-    public partial class Login
+    public partial class Perfil
     {
-        public Login()
+        public Perfil()
         {
             Funcionario = new HashSet<Funcionario>();
         }
 
-        public int IdLogin { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
-        public DateTime DataCriacao { get; set; }
+        public int IdPerfil { get; set; }
+        public string TipoPerfil { get; set; }
 
         public ICollection<Funcionario> Funcionario { get; set; }
     }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+T4ALOYh6z4WS/CMOC8Klo7V2ZDzHb3m9vew9HlISLbC5rqeTTIBxcaS+lU50EE1fU/DEjAVXvwZgfnzClKcIA==",
+  "dgSpecHash": "Z5Ef7baKcSnyCQvqlLksvDlNDOIkyGc3JAYoqYcnWf8gUOFXfW3T301i6UlqBPlvPCtIBuCoshNQe2rUwbK7yw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
   "expectedPackageFiles": [
@@ -112,6 +112,7 @@
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.entityframeworkcore.design\\2.1.1\\microsoft.entityframeworkcore.design.2.1.1.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\2.1.1\\microsoft.entityframeworkcore.inmemory.2.1.1.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\2.1.1\\microsoft.entityframeworkcore.relational.2.1.1.nupkg.sha512",
+    "C:\\Users\\Edson\\.nuget\\packages\\microsoft.entityframeworkcore.relational.design\\1.1.0\\microsoft.entityframeworkcore.relational.design.1.1.0.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\2.1.1\\microsoft.entityframeworkcore.sqlserver.2.1.1.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\2.1.1\\microsoft.entityframeworkcore.tools.2.1.1.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\2.1.1\\microsoft.extensions.caching.abstractions.2.1.1.nupkg.sha512",
@@ -186,6 +187,7 @@
     "C:\\Users\\Edson\\.nuget\\packages\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\2.1.1\\pomelo.entityframeworkcore.mysql.2.1.1.nupkg.sha512",
+    "C:\\Users\\Edson\\.nuget\\packages\\pomelo.entityframeworkcore.mysql.design\\1.1.0\\pomelo.entityframeworkcore.mysql.design.1.1.0.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\pomelo.jsonobject\\1.1.1\\pomelo.jsonobject.1.1.1.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\remotion.linq\\2.2.0\\remotion.linq.2.2.0.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

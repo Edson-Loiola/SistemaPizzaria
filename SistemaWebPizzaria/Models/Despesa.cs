@@ -1,32 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaWebPizzaria.Models
 {
-    public class Despesa
+    public partial class Despesa
     {
+        public int IdDespesa { get; set; }
 
-        public int Id { get; set; }
-        public string Nome { get; set; }
+
+        [Required(ErrorMessage = "Informar um nome!")] // para campo obrigatório. posso definir uma msg de errou não.
+        public string NomeDespesa { get; set; }
+
+
         public string Descricao { get; set; }
-        public double Valor { get; set; }
 
-        public Despesa()
-        {
-                
-        }
-
-        public Despesa(int id, string nome, string descricao, double valor)
-        {
-            Id = id;
-            Nome = nome;
-            Descricao = descricao;
-            Valor = valor;
-        }
+        [DisplayFormat(DataFormatString = "{0:F2}")] //formatação para que o salario na tela apareça apareça com duas casas decimais
+        [Required(ErrorMessage ="Informar um valor!")]
+        public decimal Valor { get; set; }
 
 
-        
+        [DataType(DataType.Date)] // Annotations: retira a parte de hora/minuto do campo onde tem o form de criar nova despesa.
+        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}")]
+        public DateTime? DataDespesa { get; set; }
+
+      
     }
 }
