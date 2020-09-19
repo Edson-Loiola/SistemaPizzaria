@@ -29,7 +29,6 @@ namespace SistemaWebPizzaria
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
@@ -46,18 +45,13 @@ namespace SistemaWebPizzaria
             //Manage Packge Nuget
             //Procurar: Pomelo.EntityFrameworkCore.MySql  e instalar a versão  2.1.1
 
-
-            
             services.AddScoped<DespesaService>();
+            services.AddScoped<ProdutoService>();
          
-
-
             //cinfigurando sessions
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
            
-
-
         }
 
 
@@ -78,7 +72,6 @@ namespace SistemaWebPizzaria
             app.UseCookiePolicy();
             app.UseSession();
     
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

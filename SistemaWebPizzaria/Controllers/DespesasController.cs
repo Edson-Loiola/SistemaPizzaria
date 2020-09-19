@@ -13,16 +13,10 @@ namespace SistemaWebPizzaria.Controllers
     public class DespesasController : Controller
     {
         public readonly DespesaService _despesaService;
-
-
-
         public DespesasController(DespesaService despesaService)
         {
             _despesaService = despesaService;
         }
-
-
-
 
         //com essas ações o meu controlador chama as minha telas  CreatDespesa, Index e Edit dentro da minha view Despesas
         public IActionResult CreateDespesa()
@@ -32,8 +26,7 @@ namespace SistemaWebPizzaria.Controllers
         public async Task<IActionResult> Index()
         {
             var list = await _despesaService.FindAllAsync();
-
-            return View(list);            
+            return View(list);
         }
        
 
