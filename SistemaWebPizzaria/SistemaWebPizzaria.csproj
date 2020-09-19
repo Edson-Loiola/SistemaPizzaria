@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\LoginController.cs" />
+    <Compile Remove="Controllers\HomeController - Cópia.cs" />
     <Compile Remove="Models\ViewModels\DespesaViewModel.cs" />
     <Compile Remove="Services\LoginService.cs" />
     <Compile Remove="Views\Home\Menu.cshtml.cs" />
@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Home\Login.cshtml" />
     <Content Remove="Views\Home\Menu.cshtml" />
     <Content Remove="Views\Home\Plano.cshtml" />
     <Content Remove="Views\Shared\_Lay2cshtml.cshtml" />
@@ -36,7 +37,6 @@
     <Folder Include="Views\Cardapios\" />
     <Folder Include="Views\Funcionarios\" />
     <Folder Include="Views\Relatorios\" />
-    <Folder Include="Views\Produtos\" />
     <Folder Include="Views\StatusPedido\" />
     <Folder Include="Views\Pedidos\" />
   </ItemGroup>
