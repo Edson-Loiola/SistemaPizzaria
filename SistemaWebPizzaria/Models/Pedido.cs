@@ -18,6 +18,7 @@ namespace SistemaWebPizzaria
         public int IdFuncioario { get; set; }
         public int IdCliente { get; set; }
         public decimal? TotalPedido { get; set; }
+        public string Status { get; set; }
 
         public Cliente IdClienteNavigation { get; set; }
         public Funcionario IdFuncioarioNavigation { get; set; }

@@ -1,0 +1,52 @@
+﻿
+@model IEnumerable<SistemaWebPizzaria.Cliente>
+
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<p>
+    <a asp-action="Index" class="btn btn-primary btn-lg">Novo Cliente</a>
+</p>
+
+<div class="table-bordered">
+    <table class="table table-striped table-hover" border="1" style="border-color:#9a9a9a">
+        <thead>
+            <tr class="bg-primary">
+                <th>
+                    <label class="control-label text-center">Nome do cliente</label>
+                </th>
+                <th>
+                    <label class="control-label">Telefone</label>
+                </th>
+                <th>
+                    <label class="control-label">Açoes</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefone)
+                    </td>
+                    <td>
+                  
+                 
+                        <a asp-action="EditCliente" class="btn btn-default btn-sm" asp-route-id="@item.IdCliente">Editar</a>
+                        <a asp-action="DeleteCliente" class="btn btn-default btn-sm" asp-route-id="@item.IdCliente">Deletar</a> @*quando for clicado, vai acionar o metodo delete no controlador*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

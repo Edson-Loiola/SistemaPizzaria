@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace SistemaWebPizzaria
 {
-    public partial class Cardapio
+    public partial class Cardapiopizza
     {
-        public Cardapio()
+        public Cardapiopizza()
         {
             Itemcardapio = new HashSet<Itemcardapio>();
         }

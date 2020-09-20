@@ -7,67 +7,69 @@
     ViewData["Title"] = "Cadastar Despesas";
 }
 
-<h2>@ViewData["Title"]</h2>
+    <div class="container">
+
+        <h2>@ViewData["Title"]</h2>
 
 
-<hr />
+        <hr />
 
-<div class="container">
-    <br />
-    <div class="img-rounded row col-md-10" style="box-shadow: #f5de62 0px 1px 5px">
-        @*  esse div row ocupa a largura da rela  *@
-        <div class="col-md-12 ">
-            <br /><br />
-            @* md-4 ocupa um 1/4 da tela *@
 
-        <form asp-action="Create">            
+        <br />
+        <div class="img-rounded row col-md-10" style="box-shadow: #f5de62 0px 1px 5px">
+            @*  esse div row ocupa a largura da rela  *@
+            <div class="col-md-12 ">
+                <br /><br />
+                @* md-4 ocupa um 1/4 da tela *@
 
-       
-            <div class="form-group col-md-5">
-                @*  o compilador consegue entender que o "Name" é um atributo do objeto Seller *@
-                <label class="control-label">Nome da Despesa</label>
-                <input asp-for="NomeDespesa" class="form-control" />
+                <form asp-action="Create">
 
-                @*mostra a mensagem de erro caso o campo fique em branco *@
-                <span asp-validation-for="NomeDespesa" class="text-danger"></span>
+
+                    <div class="form-group col-md-5">
+                        @*  o compilador consegue entender que o "Name" é um atributo do objeto Seller *@
+                        <label class="control-label">Nome da Despesa</label>
+                        <input asp-for="NomeDespesa" class="form-control" />
+
+                        @*mostra a mensagem de erro caso o campo fique em branco *@
+                        <span asp-validation-for="NomeDespesa" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        @*  o compilador consegue entender que o "Email" é um atributo do objeto Seller *@
+                        <label class="control-label">Valor</label>
+                        <input asp-for="Valor" class="form-control" />
+
+
+                        @*mostra a mensagem de erro caso o campo fique em branco *@
+                        <span asp-validation-for="Valor" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Data</label>
+                        <input asp-for="DataDespesa" type="date" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-10">
+                        <label class="control-label">Descrição</label>
+                        <input asp-for="Descricao" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-1">
+                        <label class="control-label"> </label>
+                        <input type="submit" value="Inserir" class="btn btn-default alert-info" />
+                        <br /><br /><br /><br />
+                    </div>
+
+                </form>
+
             </div>
-
-            <div class="form-group col-md-3">
-                @*  o compilador consegue entender que o "Email" é um atributo do objeto Seller *@
-                <label class="control-label">Valor</label>
-                <input asp-for="Valor" class="form-control" />
-
-
-                @*mostra a mensagem de erro caso o campo fique em branco *@
-                <span asp-validation-for="Valor" class="text-danger"></span>
-            </div>
-
-            <div class="form-group col-md-3">
-                <label class="control-label">Data</label>
-                <input asp-for="DataDespesa" type="date" class="form-control" />
-            </div>
-
-            <div class="form-group col-md-10">
-                <label class="control-label">Descrição</label>
-                <input asp-for="Descricao" class="form-control" />
-            </div>
-
             <div class="form-group col-md-1">
-                <label class="control-label"> </label>
-                <input type="submit" value="Inserir" class="btn btn-default alert-info" />
-                <br /><br /><br /><br />
+                <br />
+                <a asp-action="Index" class="btn btn-info btn-lg">Lista de Despesas</a>
+
             </div>
-
-        </form>
-
-        </div>
-        <div class="form-group col-md-1">
-            <br />
-            <a asp-action="Index" class="btn btn-info btn-lg">Lista de Despesas</a>
-          
         </div>
     </div>
-</div>
 
 
 

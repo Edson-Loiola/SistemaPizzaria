@@ -55,7 +55,7 @@ namespace SistemaWebPizzaria.Services
         {
             return await _context.Despesa.FirstOrDefaultAsync(obj => obj.IdDespesa == id);
 
-            //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal (no caso o departamento)
+            //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal
         }
 
 

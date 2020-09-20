@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaWebPizzaria
 {
@@ -7,15 +8,21 @@ namespace SistemaWebPizzaria
     {
         public Cliente()
         {
+            Endereco = new HashSet<Endereco>();
             Pedido = new HashSet<Pedido>();
         }
 
         public int IdCliente { get; set; }
-        public string Nome { get; set; }
-        public string Telefone { get; set; }
-        public int TbEnderecoIdEndereco { get; set; }
 
-        public Endereco TbEnderecoIdEnderecoNavigation { get; set; }
+        [Required(ErrorMessage = "Informar um nome!")]
+        public string Nome { get; set; }
+
+        [Required(ErrorMessage = "Informar um telefone!")]
+        public string Telefone { get; set; }
+
+        public ICollection<Endereco> Endereco { get; set; }
         public ICollection<Pedido> Pedido { get; set; }
+
+
     }
 }

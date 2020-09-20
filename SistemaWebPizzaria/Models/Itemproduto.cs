@@ -13,6 +13,6 @@ namespace SistemaWebPizzaria
         public decimal? Total { get; set; }
 
         public Pedido IdPedidoNavigation { get; set; }
-        public Produto IdProdutoNavigation { get; set; }
+        public Produtoestoque IdProdutoNavigation { get; set; }
     }
 }
