@@ -1,7 +1,9 @@
 ﻿
 @model IEnumerable<SistemaWebPizzaria.Models.Despesa>
 
-@{ViewData["Title"] = "Despesas Cadastradas";}
+@{
+    ViewData["Title"] = "Despesas Cadastradas";
+}
 
 <h2>@ViewData["Title"]</h2>
 <hr />
@@ -25,7 +27,7 @@
                 </th>
                 <th>
                     <label class="control-label">Data</label>
-                </th>
+                </th>         
                 <th>
                     <label class="control-label">Ações</label>
                 </th>
@@ -48,7 +50,7 @@
                         @Html.DisplayFor(modelItem => item.DataDespesa)
                     </td>
                     <td>
-                        <a asp-action="Edit" class="btn btn-default btn-sm" asp-route-id="@item.IdDespesa">Editar</a>
+                        <a asp-action="Edit" class="btn btn-default btn-sm" asp-route-id="@item.IdDespesa">Editar</a>                     
                         <a asp-action="DeleteDespesa" class="btn btn-default btn-sm" asp-route-id="@item.IdDespesa">Deletar</a> @*quando for clicado, vai acionar o metodo delete no controlador*@
                     </td>
                 </tr>

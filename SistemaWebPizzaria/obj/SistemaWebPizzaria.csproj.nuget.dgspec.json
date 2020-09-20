@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wellison\\Documents\\GitHub\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj": {}
+    "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wellison\\Documents\\GitHub\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj": {
+    "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wellison\\Documents\\GitHub\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
+        "projectUniqueName": "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
         "projectName": "SistemaWebPizzaria",
-        "projectPath": "C:\\Users\\wellison\\Documents\\GitHub\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
-        "packagesPath": "C:\\Users\\wellison\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wellison\\Documents\\GitHub\\SistemaPizzaria\\SistemaWebPizzaria\\obj\\",
+        "projectPath": "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
+        "packagesPath": "C:\\Users\\Edson\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\wellison\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Edson\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,7 +82,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

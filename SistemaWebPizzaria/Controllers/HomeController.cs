@@ -18,6 +18,8 @@ namespace SistemaWebPizzaria.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+
+
             return View();
         }
 
@@ -31,14 +33,19 @@ namespace SistemaWebPizzaria.Controllers
 
             if (email.Equals("teste@gmail.com") && senha.Equals("sistema"))
             {
+
                 HttpContext.Session.SetString("Usuario", email);
-                return RedirectToAction("MenuSistema","Home");
+               return RedirectToAction("MenuSistema","Home");
             }
             else
             {
                 return RedirectToAction("Index", "Home");
+
             }
+           
+
         }
+
 
         public IActionResult MenuSistema()
         {

@@ -3,12 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SistemaWebPizzaria</title>
+    <title>@ViewData["Title"] -SistemaWebPizzaria</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -17,15 +16,43 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
+<body class="container-fluid" UserLogado()">
+    @*chama a função para mostrar o nome do usuario logado*@
 
-<body class="container-fluid" >
+    <nav class="navbar navbar-fixed-top bg-warning">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>                   
+                    <li><a asp-area="" asp-controller="Home" asp-action="Login">Login</a></li>                   
+                </ul>
+
+
+                @using Microsoft.AspNetCore.Http
+                @inject IHttpContextAccessor HttpContextAcessor
+                <div id="Usuario"></div>
+
+            </div>
+        </div>
+    </nav>
+
     <partial name="_CookieConsentPartial" />
 
-    <div class="container body-content">
+    <div class="container body-content"> 
         @RenderBody()
-        <hr />
+       <hr />
         <footer class="text-center">
-            <p>&copy; 2020 MyPizza Company</p>
+            <p>&copy; 2020 MyPizza Company</p>          
+
         </footer>
     </div>
 
@@ -51,6 +78,26 @@
     </environment>
 
     @RenderSection("Scripts", required: false)
+
+
+    @*funcção que imprime o nome do usuario logado*@
+
+    @*<script>
+            function UserLogado() {
+
+                var nome = '@HttpContextAccessor.HttpContext.Session.GetString("gdd")'
+
+                if (nome != "")
+                {
+                    var divNome = document.getElementById("Usuario");
+                    divNome.innerHTML = "Olá " + nome;
+
+
+                }
+
+            }
+        </script>*@
+
 
 </body>
 </html>
