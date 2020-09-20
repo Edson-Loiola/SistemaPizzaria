@@ -12,7 +12,7 @@ namespace SistemaWebPizzaria
         public decimal? PrecoUnidade { get; set; }
         public decimal? Total { get; set; }
 
-        public Cardapio IdCardapioNavigation { get; set; }
+        public Cardapiopizza IdCardapioNavigation { get; set; }
         public Pedido IdPedidoNavigation { get; set; }
     }
 }
