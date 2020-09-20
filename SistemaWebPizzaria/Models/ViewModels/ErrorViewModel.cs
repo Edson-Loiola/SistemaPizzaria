@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SistemaWebPizzaria.Models
+﻿namespace SistemaWebPizzaria.Models
 {
     public class ErrorViewModel
     {

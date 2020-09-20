@@ -3,12 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SistemaWebPizzaria</title>
+    <title>@ViewData["Title"] -SistemaWebPizzaria</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -17,15 +16,33 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
+<body>
+    <nav class="navbar navbar-fixed-top bg-warning">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-<body class="container-fluid" >
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">               
+                    <li><a asp-area="" asp-controller="Gerencial" asp-action="Inicial">Inicial2</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer class="text-center">
-            <p>&copy; 2020 MyPizza Company</p>
+        <footer>
+            <p>&copy; 2020 - SistemaWebPizzaria</p>
         </footer>
     </div>
 
@@ -51,6 +68,5 @@
     </environment>
 
     @RenderSection("Scripts", required: false)
-
 </body>
 </html>

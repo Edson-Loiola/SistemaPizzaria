@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SistemaWebPizzaria.Models;
-using SistemaWebPizzaria.Models.ViewModels;
-using System.Diagnostics;
 
 namespace SistemaWebPizzaria.Controllers
 {
@@ -35,14 +32,14 @@ namespace SistemaWebPizzaria.Controllers
             {
 
                 HttpContext.Session.SetString("Usuario", email);
-               return RedirectToAction("MenuSistema","Home");
+                return RedirectToAction("MenuSistema", "Home");
             }
             else
             {
                 return RedirectToAction("Index", "Home");
 
             }
-           
+
 
         }
 
@@ -55,7 +52,7 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
-        
+
     }
 
 }

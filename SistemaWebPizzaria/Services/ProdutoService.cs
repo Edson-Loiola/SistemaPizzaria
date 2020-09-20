@@ -1,6 +1,5 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
-using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services.Exception;
 using System;
 using System.Collections.Generic;
@@ -8,38 +7,38 @@ using System.Threading.Tasks;
 
 namespace SistemaWebPizzaria.Services
 {
-    public class DespesaService
+    public class ProdutoService
     {
         private readonly BancoPizzariaContext _context;
 
-        public DespesaService(BancoPizzariaContext context)
+        public ProdutoService(BancoPizzariaContext context)
         {
             _context = context;
         }
 
 
         //função de inserir no banco
-        public async Task InsertAsync(Despesa obj)
+        public async Task InsertAsync(Produto obj)
         {
             _context.Add(obj); //função para pegar os dados do formulario e salvar no banco
             await _context.SaveChangesAsync(); //função para confirmar a gravação dos dados no banco, (aqui deve ter a versão async)
         }
 
 
-        //função de fazer listagem das despesas
-        public async Task<List<Despesa>> FindAllAsync()
+        //função de fazer listagem das Produto
+        public async Task<List<Produto>> FindAllAsync()
         {
-            return await _context.Despesa.ToListAsync();
+            return await _context.Produto.ToListAsync();
         }
 
 
-        //função remover despesa do banco pelo id
+        //função remover Produtos do banco pelo id
         public async Task RemoveAsync(int id)
         {
             try
             {
-                var obj = await _context.Despesa.FindAsync(id);
-                _context.Despesa.Remove(obj);
+                var obj = await _context.Produto.FindAsync(id);
+                _context.Produto.Remove(obj);
                 await _context.SaveChangesAsync(); //esse metodo confirma a operação no
 
             }
@@ -50,9 +49,9 @@ namespace SistemaWebPizzaria.Services
         }
 
 
-        public async Task<Despesa> FindByIdAsync(int id)
+        public async Task<Produto> FindByIdAsync(int id)
         {
-            return await _context.Despesa.FirstOrDefaultAsync(obj => obj.IdDespesa == id);
+            return await _context.Produto.FirstOrDefaultAsync(obj => obj.IdProduto == id);
 
             //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal (no caso o departamento)
         }
@@ -61,15 +60,15 @@ namespace SistemaWebPizzaria.Services
 
 
 
-        //função de atualizar uma despesa
-        public async Task UpdateAsync(Despesa obj)
+        //função de atualizar uma Produto
+        public async Task UpdateAsync(Produto obj)
         {
             //pra atualizar um objeto o id desse objeto já precisa existir no banco
-            bool hasAny = await _context.Despesa.AnyAsync(x => x.IdDespesa == obj.IdDespesa);
+            bool hasAny = await _context.Produto.AnyAsync(x => x.IdProduto == obj.IdProduto);
 
             if (!hasAny)  // verifica se expressão passada não existe no banco
             {
-                throw new NotFiniteNumberException("Despesa não existe!");
+                throw new NotFiniteNumberException("Produto não existe!");
             }
 
             try

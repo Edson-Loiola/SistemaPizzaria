@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SistemaWebPizzaria.Models;
-using SistemaWebPizzaria.Models.ViewModels;
 using SistemaWebPizzaria.Services;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SistemaWebPizzaria.Controllers
 {
@@ -33,9 +30,9 @@ namespace SistemaWebPizzaria.Controllers
         {
             var list = await _despesaService.FindAllAsync();
 
-            return View(list);            
+            return View(list);
         }
-       
+
 
 
 
@@ -78,7 +75,7 @@ namespace SistemaWebPizzaria.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            Despesa viewModel = new Despesa {IdDespesa = obj.IdDespesa, NomeDespesa = obj.NomeDespesa, Valor = obj.Valor, Descricao = obj.Descricao, DataDespesa = obj.DataDespesa  };
+            Despesa viewModel = new Despesa { IdDespesa = obj.IdDespesa, NomeDespesa = obj.NomeDespesa, Valor = obj.Valor, Descricao = obj.Descricao, DataDespesa = obj.DataDespesa };
 
             return View(viewModel);
         }
@@ -96,10 +93,11 @@ namespace SistemaWebPizzaria.Controllers
             {
                 var departments = await _despesaService.FindAllAsync(); //carrega os departamentos
 
-                var viewModel = new Despesa { 
-                    IdDespesa = obj.IdDespesa, 
-                    NomeDespesa = obj.NomeDespesa, 
-                    Valor = obj.Valor,  
+                var viewModel = new Despesa
+                {
+                    IdDespesa = obj.IdDespesa,
+                    NomeDespesa = obj.NomeDespesa,
+                    Valor = obj.Valor,
                     Descricao = obj.Descricao,
                     DataDespesa = obj.DataDespesa
                 };
@@ -132,7 +130,7 @@ namespace SistemaWebPizzaria.Controllers
 
     }
 
-   
+
 
 
 }

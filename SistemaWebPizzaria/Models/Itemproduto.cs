@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SistemaWebPizzaria
+﻿namespace SistemaWebPizzaria
 {
     public partial class Itemproduto
     {
