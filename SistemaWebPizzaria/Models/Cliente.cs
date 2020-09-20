@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
-namespace SistemaWebPizzaria
+namespace SistemaWebPizzaria.Models
 {
     public partial class Cliente
     {
@@ -13,16 +12,10 @@ namespace SistemaWebPizzaria
         }
 
         public int IdCliente { get; set; }
-
-        [Required(ErrorMessage = "Informar um nome!")]
         public string Nome { get; set; }
-
-        [Required(ErrorMessage = "Informar um telefone!")]
         public string Telefone { get; set; }
 
         public ICollection<Endereco> Endereco { get; set; }
         public ICollection<Pedido> Pedido { get; set; }
-
-
     }
 }

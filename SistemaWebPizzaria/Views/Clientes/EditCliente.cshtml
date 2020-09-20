@@ -1,7 +1,7 @@
 ﻿
 
 
-@model SistemaWebPizzaria.Cliente
+@model SistemaWebPizzaria.Models.Cliente
 @*  com essa declaração minha viewm tem um objeto Seller a disposição  *@
 
 @{
@@ -15,7 +15,7 @@
     @*  esse div row ocupa a largura da rela  *@
     <div class="col-md-4">
         @* md-4 ocupa um 1/4 da tela *@
-        <form asp-action="EditCliente">
+        <form asp-action="Edit">
             @*chama ação Edit metodo post*@
 
             <input type="hidden" asp-for="IdCliente" /> @*campo oculto passando o id do vendedor*@

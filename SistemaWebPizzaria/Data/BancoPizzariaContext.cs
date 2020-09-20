@@ -1,9 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using SistemaWebPizzaria.Models;
 
-namespace SistemaWebPizzaria
+namespace SistemaWebPizzaria.Models
 {
     public partial class BancoPizzariaContext : DbContext
     {
@@ -67,10 +66,6 @@ namespace SistemaWebPizzaria
 
                 entity.ToTable("cliente");
 
-                entity.HasIndex(e => e.IdCliente)
-                    .HasName("IdCliente_UNIQUE")
-                    .IsUnique();
-
                 entity.Property(e => e.Nome).HasColumnType("varchar(45)");
 
                 entity.Property(e => e.Telefone).HasColumnType("varchar(45)");
@@ -105,7 +100,6 @@ namespace SistemaWebPizzaria
                 entity.Property(e => e.Bairro).HasColumnType("varchar(45)");
 
                 entity.Property(e => e.Cep)
-                    .IsRequired()
                     .HasColumnName("CEP")
                     .HasColumnType("varchar(9)");
 
@@ -117,14 +111,11 @@ namespace SistemaWebPizzaria
 
                 entity.Property(e => e.Numero).HasColumnType("varchar(10)");
 
-                entity.Property(e => e.Rua)
-                    .IsRequired()
-                    .HasColumnType("varchar(45)");
+                entity.Property(e => e.Rua).HasColumnType("varchar(45)");
 
                 entity.HasOne(d => d.ClienteIdClienteNavigation)
                     .WithMany(p => p.Endereco)
                     .HasForeignKey(d => d.ClienteIdCliente)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Endereco_Cliente1");
             });
 

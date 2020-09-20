@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services.Exception;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,6 @@ namespace SistemaWebPizzaria.Services
             _context.Add(cliente);
             await _context.SaveChangesAsync();
         }
-
         //função de inserir endereço
         public async Task InsertEnderecoAsync(Endereco endereco)
         {
@@ -37,13 +37,14 @@ namespace SistemaWebPizzaria.Services
 
 
 
-
         //função remove cliente do banco pelo id
         public async Task RemoveAsync(int id)
         {
             try
             {
-                var obj = await _context.Cliente.FindAsync(id);
+                var obj = await FindByIdAsync(id);
+
+                //  var obj = await _context.Cliente.FindAsync(id);
                 _context.Cliente.Remove(obj);
                 await _context.SaveChangesAsync(); //esse metodo confirma a operação no
 
@@ -64,6 +65,39 @@ namespace SistemaWebPizzaria.Services
 
 
 
+
+        //usado no edit do cliente (controler)
+        public async Task<Cliente> FindByIdAsync(int id)
+        {
+            return await _context.Cliente.FirstOrDefaultAsync(obj => obj.IdCliente == id);
+
+
+            //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal
+        }
+
+
+        //função de atualizar cliente
+        public async Task UpdateAsync(Cliente obj)
+        {
+            //pra atualizar um objeto o id desse objeto já precisa existir no banco
+            bool hasAny = await _context.Cliente.AnyAsync(x => x.IdCliente == obj.IdCliente);
+
+            if (!hasAny)  // verifica se expressão passada não existe no banco
+            {
+                throw new NotFiniteNumberException("Cliente não existe!");
+            }
+
+            try
+            {
+                _context.Update(obj); //atualiza o objeto
+                await _context.SaveChangesAsync(); //confirmar alteração
+            }
+            catch (DllNotFoundException e)
+            {
+                throw new NotFoundException(e.Message);
+            }
+
+        }
     }
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 
 namespace SistemaWebPizzaria.Controllers
@@ -32,40 +33,41 @@ namespace SistemaWebPizzaria.Controllers
             return View(list);
         }
 
-        public IActionResult EditCliente()
-        {
-            return View();
-        }
+      
 
-
-        //inserir dados no banco (essa função é passada no form da minha view CreatDespesa
+        //inserir dados no banco (essa função é passada no form da minha view Creatcliente
         [HttpPost] //esse método é um post pois está criando/enviando um novo objeto
         [ValidateAntiForgeryToken] //essa notação evita que a aplicação receba ataques CSRF (envio de dados malicioso na autenticação)
         public async Task<IActionResult> CreateCliente(Cliente cliente, Endereco endereco)
-            
+
         {
             await _clienteService.InsertClienteAsync(cliente);
 
-            if (endereco.Cep != null)
+            if (endereco.Cep != null && endereco.Rua != null)
             {
                 endereco.ClienteIdCliente = cliente.IdCliente;
+                await _clienteService.InsertEnderecoAsync(endereco);
+
             }
 
-            await _clienteService.InsertEnderecoAsync(endereco);
+           
 
 
 
-            return RedirectToAction(nameof(Index)); //ao clicar em criar um nova Despesa, direciona para a propria tela
+            return RedirectToAction(nameof(Index));
         }
 
 
 
-
-        public async Task<IActionResult> DeleteCliente(int id)
+        //deletar cliente. ainda não deleta o endereço
+        public async Task<IActionResult> DeleteCliente(int? id)
         {
             try
             {
-                await _clienteService.RemoveAsync(id); //chamando o metodo remove 
+
+                var obj = await _clienteService.FindByIdAsync(id.Value);
+
+                await _clienteService.RemoveAsync(obj.IdCliente); //chamando o metodo remove 
                 return RedirectToAction(nameof(Lista));
 
             }
@@ -78,5 +80,68 @@ namespace SistemaWebPizzaria.Controllers
 
 
 
+
+        //ao clicar em edit ira abrir a tela com os campos carregados com os dados de cliente
+        public async Task<IActionResult> EditCliente(int? id)
+        {
+            if (id == null) //validação se o id é nulo
+            {
+                return RedirectToAction(nameof(Lista));
+            }
+
+            var obj = await _clienteService.FindByIdAsync(id.Value);
+
+            if (obj == null) // valida se o obj no banco é nulo
+            {
+                return RedirectToAction(nameof(Lista));
+            }
+
+            Cliente viewModel = new Cliente { IdCliente = obj.IdCliente, Nome = obj.Nome, Telefone = obj.Telefone };
+
+            return View(viewModel);
+        }
+
+
+
+        //ação edit -metodo post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Cliente obj)
+        {
+
+            //essa validação ocorrerá se o JavaScript do usuário estiver desabilitado, pois não fará as validações feitas no html e nas propriedades
+            if (!ModelState.IsValid)
+            {
+                var clientes = await _clienteService.FindAllAsync(); //carrega os clientes
+
+                var viewModel = new Cliente
+                {
+                    IdCliente = obj.IdCliente,
+                    Nome = obj.Nome,
+                    Telefone = obj.Telefone
+
+                };
+
+                return View(viewModel);
+            }
+
+            if (id != obj.IdCliente) //verifica se o Id é diferente
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            try
+            {
+                await _clienteService.UpdateAsync(obj);
+                return RedirectToAction(nameof(Lista));
+            }
+            catch (KeyNotFoundException)
+            {
+                return RedirectToAction(nameof(Lista));
+            }
+
+          
+        }
     }
+    
 }
