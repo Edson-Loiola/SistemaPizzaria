@@ -33,14 +33,12 @@ namespace SistemaWebPizzaria.Services
 
 
         //função remover Produtos do banco pelo id
-        public async Task RemoveAsync(int id)
+        public async Task RemoveAsync(Produto produto)
         {
             try
             {
-                var obj = await _context.Produto.FindAsync(id);
-                _context.Produto.Remove(obj);
-                await _context.SaveChangesAsync(); //esse metodo confirma a operação no
-
+                _context.Produto.Remove(produto);
+                await _context.SaveChangesAsync();
             }
             catch (NotFoundException e)
             {
@@ -56,9 +54,10 @@ namespace SistemaWebPizzaria.Services
             //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal (no caso o departamento)
         }
 
-
-
-
+        public async Task<Produto> FindByName(string nome)
+        {
+            return await _context.Produto.FirstOrDefaultAsync(obj => obj.Nome.Contains(nome));
+        }
 
         //função de atualizar uma Produto
         public async Task UpdateAsync(Produto obj)

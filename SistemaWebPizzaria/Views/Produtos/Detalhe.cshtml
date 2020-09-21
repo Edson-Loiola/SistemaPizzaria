@@ -1,15 +1,19 @@
 ﻿@model SistemaWebPizzaria.Produto
 
-@{ViewData["Title"] = "Cadatrar produto";}
+@{ViewData["Title"] = "Detalhes do Produto";}
 
 <h2>@ViewData["Title"]</h2>
 
 <div class="row">
     <hr />
     <div class="col-md-12">
-        <form method="post" asp-action="Create">
+        <form method="post" asp-action="Update">
             <div class="row" style="margin-bottom:15px;">
-                <div class="col-md-12">
+                <div class="col-md-1">
+                    <label for="firstName">ID</label>
+                    <input asp-for="IdProduto" class="form-control" placeholder="" readonly>
+                </div>
+                <div class="col-md-11">
                     <label for="firstName">Nome do Produto</label>
                     <input asp-for="Nome" class="form-control" placeholder="">
                 </div>
@@ -58,13 +62,13 @@
                     <input asp-for="NotaFiscal" class="form-control">
                 </div>
                 @*51080701212344000127550010000000981364117781*@
-                
-                @*<div class="col-md-2">
-                    <label for="">Tributos</label>
-                    <input asp-for="ValorTributos" class="form-control" id="" placeholder="R$">
-                </div>*@
 
-                 <div class="col-md-3">
+                @*<div class="col-md-2">
+                <label for="">Tributos</label>
+                <input asp-for="ValorTributos" class="form-control" id="" placeholder="R$">
+            </div>*@
+
+                <div class="col-md-3">
                     <label for="">Marca</label>
                     <input asp-for="Marca" type="text" class="form-control">
                 </div>
@@ -83,8 +87,8 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-right">
-                    <input class="btn btn-success btn-lg" type="submit" value="Cadastrar novo produto" />
-                    <a href="../Produtos/Index" class="btn btn-danger btn-lg">Voltar</a>
+                    <input class="btn btn-success btn-lg" type="submit" value="Atualizar produto" />
+                    <a asp-action="Index" class="btn btn-danger btn-lg">Voltar</a>
                 </div>
             </div>
         </form>
