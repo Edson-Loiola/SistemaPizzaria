@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace SistemaWebPizzaria
+namespace SistemaWebPizzaria.Models
 {
     public partial class Funcionario
     {
         public Funcionario()
         {
+            Login = new HashSet<Login>();
             Pedido = new HashSet<Pedido>();
         }
 
@@ -15,11 +16,9 @@ namespace SistemaWebPizzaria
         public string Celular { get; set; }
         public string Email { get; set; }
         public string Ativo { get; set; }
-        public int IdLogin { get; set; }
-        public int IdPerfil { get; set; }
+        public decimal Salario { get; set; }
 
-        public Login IdLoginNavigation { get; set; }
-        public Perfil IdPerfilNavigation { get; set; }
+        public ICollection<Login> Login { get; set; }
         public ICollection<Pedido> Pedido { get; set; }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SistemaWebPizzaria
+namespace SistemaWebPizzaria.Models
 {
-    public partial class Produto
+    public partial class Produtoestoque
     {
-        public Produto()
+        public Produtoestoque()
         {
             Itemproduto = new HashSet<Itemproduto>();
         }
@@ -15,7 +15,6 @@ namespace SistemaWebPizzaria
         public decimal PrecoCompra { get; set; }
         public decimal? PrecoVenda { get; set; }
         public int Quantidade { get; set; }
-        public string UnidadeMedida { get; set; }
         public DateTime? DataCompra { get; set; }
         public DateTime? Validade { get; set; }
         public string Marca { get; set; }
@@ -24,6 +23,7 @@ namespace SistemaWebPizzaria
         public string NotaFiscal { get; set; }
         public decimal? ValorTributos { get; set; }
         public string Categoria { get; set; }
+        public string Vende { get; set; }
 
         public ICollection<Itemproduto> Itemproduto { get; set; }
     }

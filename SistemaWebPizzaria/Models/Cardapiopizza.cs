@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace SistemaWebPizzaria
+namespace SistemaWebPizzaria.Models
 {
-    public partial class Cardapio
+    public partial class Cardapiopizza
     {
-        public Cardapio()
+        public Cardapiopizza()
         {
             Itemcardapio = new HashSet<Itemcardapio>();
         }

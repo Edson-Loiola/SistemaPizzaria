@@ -348,3 +348,23 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+.vs/SistemaWebPizzaria/v16/.suo
+SistemaWebPizzaria/bin/Debug/netcoreapp2.1/SistemaWebPizzaria.dll
+SistemaWebPizzaria/bin/Debug/netcoreapp2.1/SistemaWebPizzaria.pdb
+SistemaWebPizzaria/bin/Debug/netcoreapp2.1/SistemaWebPizzaria.runtimeconfig.dev.json
+SistemaWebPizzaria/bin/Debug/netcoreapp2.1/SistemaWebPizzaria.Views.dll
+SistemaWebPizzaria/bin/Debug/netcoreapp2.1/SistemaWebPizzaria.Views.pdb
+SistemaWebPizzaria/obj/Debug/netcoreapp2.1/SistemaWebPizzaria.assets.cache
+SistemaWebPizzaria/obj/Debug/netcoreapp2.1/SistemaWebPizzaria.csproj.CoreCompileInputs.cache
+SistemaWebPizzaria/obj/Debug/netcoreapp2.1/SistemaWebPizzaria.csproj.FileListAbsolute.txt
+SistemaWebPizzaria/obj/Debug/netcoreapp2.1/SistemaWebPizzaria.csprojAssemblyReference.cache
+SistemaWebPizzaria/obj/Debug/netcoreapp2.1/SistemaWebPizzaria.dll
+SistemaWebPizzaria/obj/Debug/netcoreapp2.1/SistemaWebPizzaria.pdb
+SistemaWebPizzaria/obj/Debug/netcoreapp2.1/SistemaWebPizzaria.Views.dll
+SistemaWebPizzaria/obj/Debug/netcoreapp2.1/SistemaWebPizzaria.Views.pdb
+SistemaWebPizzaria/obj/project.nuget.cache
+SistemaWebPizzaria/obj/SistemaWebPizzaria.csproj.nuget.g.props
+*.v2
+.vs/SistemaWebPizzaria/v16/.suo
+*.cache
+SistemaWebPizzaria/appsettings.json

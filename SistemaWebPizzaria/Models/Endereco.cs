@@ -1,14 +1,9 @@
 ﻿using System.Collections.Generic;
 
-namespace SistemaWebPizzaria
+namespace SistemaWebPizzaria.Models
 {
     public partial class Endereco
     {
-        public Endereco()
-        {
-            Cliente = new HashSet<Cliente>();
-        }
-
         public int IdEndereco { get; set; }
         public string Cep { get; set; }
         public string Rua { get; set; }
@@ -16,7 +11,8 @@ namespace SistemaWebPizzaria
         public string Complemento { get; set; }
         public string Bairro { get; set; }
         public string Cidade { get; set; }
+        public int? ClienteIdCliente { get; set; }
 
-        public ICollection<Cliente> Cliente { get; set; }
+        public Cliente ClienteIdClienteNavigation { get; set; }
     }
 }

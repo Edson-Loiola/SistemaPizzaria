@@ -37,21 +37,5 @@ namespace SistemaWebPizzaria.Models.ViewModels
 
 
 
-        //public bool ValidarLogin()
-        //{
-        //    string sql = $"Select Id from login where email ='{Email}' and senha ='{Senha}'";
-        //    DataTable dt = _context.RetDataTable(sql);
-
-        //    if (dt.Rows.Count == 1)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-
-        //}
-
     }
 }

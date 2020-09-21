@@ -1,4 +1,7 @@
-﻿namespace SistemaWebPizzaria
+﻿using System;
+using System.Collections.Generic;
+
+namespace SistemaWebPizzaria.Models
 {
     public partial class Itemcardapio
     {
@@ -9,7 +12,7 @@
         public decimal? PrecoUnidade { get; set; }
         public decimal? Total { get; set; }
 
-        public Cardapio IdCardapioNavigation { get; set; }
+        public Cardapiopizza IdCardapioNavigation { get; set; }
         public Pedido IdPedidoNavigation { get; set; }
     }
 }

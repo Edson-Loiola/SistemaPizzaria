@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SistemaWebPizzaria
+namespace SistemaWebPizzaria.Models
 {
     public partial class Pedido
     {
@@ -18,6 +18,7 @@ namespace SistemaWebPizzaria
         public int IdFuncioario { get; set; }
         public int IdCliente { get; set; }
         public decimal? TotalPedido { get; set; }
+        public string Status { get; set; }
 
         public Cliente IdClienteNavigation { get; set; }
         public Funcionario IdFuncioarioNavigation { get; set; }
