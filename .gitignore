@@ -364,3 +364,7 @@ SistemaWebPizzaria/obj/Debug/netcoreapp2.1/SistemaWebPizzaria.Views.dll
 SistemaWebPizzaria/obj/Debug/netcoreapp2.1/SistemaWebPizzaria.Views.pdb
 SistemaWebPizzaria/obj/project.nuget.cache
 SistemaWebPizzaria/obj/SistemaWebPizzaria.csproj.nuget.g.props
+*.v2
+.vs/SistemaWebPizzaria/v16/.suo
+*.cache
+SistemaWebPizzaria/appsettings.json
