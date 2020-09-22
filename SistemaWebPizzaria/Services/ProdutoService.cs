@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services.Exception;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace SistemaWebPizzaria.Services
         //função de fazer listagem das Produto
         public async Task<List<Produtoestoque>> FindAllAsync()
         {
-            return await _context.Produto.ToListAsync();
+            return await _context.Produtoestoque.ToListAsync();
         }
 
 
@@ -37,7 +38,7 @@ namespace SistemaWebPizzaria.Services
         {
             try
             {
-                _context.Produto.Remove(produto);
+                _context.Produtoestoque.Remove(produto);
                 await _context.SaveChangesAsync();
             }
             catch (NotFoundException e)
@@ -49,21 +50,21 @@ namespace SistemaWebPizzaria.Services
 
         public async Task<Produtoestoque> FindByIdAsync(int id)
         {
-            return await _context.Produto.FirstOrDefaultAsync(obj => obj.IdProduto == id);
+            return await _context.Produtoestoque.FirstOrDefaultAsync(obj => obj.IdProduto == id);
 
             //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal (no caso o departamento)
         }
 
         public async Task<Produtoestoque> FindByName(string nome)
         {
-            return await _context.Produto.FirstOrDefaultAsync(obj => obj.Nome.Contains(nome));
+            return await _context.Produtoestoque.FirstOrDefaultAsync(obj => obj.Nome.Contains(nome));
         }
 
         //função de atualizar uma Produto
         public async Task UpdateAsync(Produtoestoque obj)
         {
             //pra atualizar um objeto o id desse objeto já precisa existir no banco
-            bool hasAny = await _context.Produto.AnyAsync(x => x.IdProduto == obj.IdProduto);
+            bool hasAny = await _context.Produtoestoque.AnyAsync(x => x.IdProduto == obj.IdProduto);
 
             if (!hasAny)  // verifica se expressão passada não existe no banco
             {

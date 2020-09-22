@@ -1,4 +1,4 @@
-﻿@model SistemaWebPizzaria.Produto
+﻿@model SistemaWebPizzaria.Models.Produtoestoque
 
 @{ViewData["Title"] = "Cadatrar produto";}
 
@@ -32,13 +32,13 @@
 
                 <div class="col-md-2">
                     <label for="">Tipo</label><br />
-                    <select asp-for="UnidadeMedida" class="custom-select">
+                    @*<select asp-for="UnidadeMedida" class="custom-select">
                         <option value="UN">Unidade</option>
                         <option value="KL">Kilograma</option>
                         <option value="GM">grama</option>
                         <option value="LT">Litro</option>
                         <option value="ML">Mililitro</option>
-                    </select>
+                    </select>*@
                 </div>
 
                 <div class="col-md-2">

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SistemaWebPizzaria.Models
 {
@@ -11,7 +12,7 @@ namespace SistemaWebPizzaria.Models
         public string Complemento { get; set; }
         public string Bairro { get; set; }
         public string Cidade { get; set; }
-        public int? ClienteIdCliente { get; set; }
+        public int ClienteIdCliente { get; set; }
 
         public Cliente ClienteIdClienteNavigation { get; set; }
     }

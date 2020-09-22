@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace SistemaWebPizzaria.Controllers
         //inserir dados no banco (essa função é passada no form da minha view CreatProduto
         [HttpPost] //esse método é um post pois está criando/enviando um novo objeto
         [ValidateAntiForgeryToken] //essa notação evita que a aplicação receba ataques CSRF (envio de dados malicioso na autenticação)
-        public async Task<IActionResult> Create(Produto produto)
+        public async Task<IActionResult> Create(Produtoestoque produto)
         {
             await _produtoService.InsertAsync(produto);
             return RedirectToAction(nameof(Index)); //ao clicar em criar um nova Produto, direciona para a propria tela
@@ -62,7 +63,7 @@ namespace SistemaWebPizzaria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(Produto produto)
+        public async Task<IActionResult> Update(Produtoestoque produto)
         {
             try
             {

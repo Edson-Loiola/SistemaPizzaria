@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 
 namespace SistemaWebPizzaria
@@ -32,7 +33,7 @@ namespace SistemaWebPizzaria
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             //confiuração do banco de dados MySql
             services.AddDbContext<BancoPizzariaContext>(options =>
-                    options.UseMySql(Configuration.GetConnectionString("bancopizzariaContext"), builder =>
+                    options.UseMySql(Configuration.GetConnectionString("BancoPizzariaContext"), builder =>
                     builder.MigrationsAssembly("SistemaWebPizzaria"))); //responsável por criar as Migrations e criar o banco de dados a apartir dos nossos objetos
 
             //Para baixar o provider do MySql:

@@ -1,4 +1,7 @@
-﻿namespace SistemaWebPizzaria
+﻿using System;
+using System.Collections.Generic;
+
+namespace SistemaWebPizzaria.Models
 {
     public partial class Itemproduto
     {
@@ -10,6 +13,6 @@
         public decimal? Total { get; set; }
 
         public Pedido IdPedidoNavigation { get; set; }
-        public Produto IdProdutoNavigation { get; set; }
+        public Produtoestoque IdProdutoNavigation { get; set; }
     }
 }

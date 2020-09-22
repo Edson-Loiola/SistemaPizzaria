@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<SistemaWebPizzaria.Produto>
+@model IEnumerable<SistemaWebPizzaria.Models.Produtoestoque>
 
 @{ViewData["Title"] = "Produtos";}
 
@@ -59,7 +59,7 @@
                             @Html.DisplayFor(modelItem => item.PrecoVenda)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Quantidade) @Html.DisplayFor(modelItem => item.UnidadeMedida)
+                            @Html.DisplayFor(modelItem => item.Quantidade) @*@Html.DisplayFor(modelItem => item.UnidadeMedida)*@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Marca)
