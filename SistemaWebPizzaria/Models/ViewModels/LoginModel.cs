@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using SistemaWebPizzaria.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaWebPizzaria.Models.ViewModels
 {
@@ -15,8 +16,6 @@ namespace SistemaWebPizzaria.Models.ViewModels
 
         [StringLength(60, MinimumLength = 6, ErrorMessage = "Senha required")]
         public string Senha { get; set; }
-
-
 
 
         private readonly BancoPizzariaContext _context;
