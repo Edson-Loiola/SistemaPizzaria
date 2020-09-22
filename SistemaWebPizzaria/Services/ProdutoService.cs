@@ -18,7 +18,7 @@ namespace SistemaWebPizzaria.Services
 
 
         //função de inserir no banco
-        public async Task InsertAsync(Produto obj)
+        public async Task InsertAsync(Produtoestoque obj)
         {
             _context.Add(obj); //função para pegar os dados do formulario e salvar no banco
             await _context.SaveChangesAsync(); //função para confirmar a gravação dos dados no banco, (aqui deve ter a versão async)
@@ -26,14 +26,14 @@ namespace SistemaWebPizzaria.Services
 
 
         //função de fazer listagem das Produto
-        public async Task<List<Produto>> FindAllAsync()
+        public async Task<List<Produtoestoque>> FindAllAsync()
         {
             return await _context.Produto.ToListAsync();
         }
 
 
         //função remover Produtos do banco pelo id
-        public async Task RemoveAsync(Produto produto)
+        public async Task RemoveAsync(Produtoestoque produto)
         {
             try
             {
@@ -47,20 +47,20 @@ namespace SistemaWebPizzaria.Services
         }
 
 
-        public async Task<Produto> FindByIdAsync(int id)
+        public async Task<Produtoestoque> FindByIdAsync(int id)
         {
             return await _context.Produto.FirstOrDefaultAsync(obj => obj.IdProduto == id);
 
             //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal (no caso o departamento)
         }
 
-        public async Task<Produto> FindByName(string nome)
+        public async Task<Produtoestoque> FindByName(string nome)
         {
             return await _context.Produto.FirstOrDefaultAsync(obj => obj.Nome.Contains(nome));
         }
 
         //função de atualizar uma Produto
-        public async Task UpdateAsync(Produto obj)
+        public async Task UpdateAsync(Produtoestoque obj)
         {
             //pra atualizar um objeto o id desse objeto já precisa existir no banco
             bool hasAny = await _context.Produto.AnyAsync(x => x.IdProduto == obj.IdProduto);
