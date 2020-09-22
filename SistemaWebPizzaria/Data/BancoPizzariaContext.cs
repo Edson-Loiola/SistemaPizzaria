@@ -116,7 +116,8 @@ namespace SistemaWebPizzaria.Models
                 entity.HasOne(d => d.ClienteIdClienteNavigation)
                     .WithMany(p => p.Endereco)
                     .HasForeignKey(d => d.ClienteIdCliente)
-                    .HasConstraintName("fk_Endereco_Cliente1");
+                    .HasConstraintName("fk_Endereco_Cliente1")
+                    .HasConstraintName("ON DELETE CASCADE");
             });
 
             modelBuilder.Entity<Funcionario>(entity =>
