@@ -75,12 +75,6 @@ namespace SistemaWebPizzaria.Data
                 entity.Property(e => e.Nome).HasColumnType("varchar(45)");
 
                 entity.Property(e => e.Telefone).HasColumnType("varchar(45)");
-
-                //entity.HasOne(d => d.TbEnderecoIdEnderecoNavigation)
-                //    .WithMany(p => p.Cliente)
-                //    .HasForeignKey(d => d.TbEnderecoIdEndereco)
-                //    .OnDelete(DeleteBehavior.ClientSetNull)
-                //    .HasConstraintName("fk_tbCliente_tbEndereco1");
             });
 
             modelBuilder.Entity<Despesa>(entity =>
