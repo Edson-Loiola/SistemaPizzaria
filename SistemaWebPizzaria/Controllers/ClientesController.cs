@@ -102,8 +102,6 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
-
-        //ação edit -metodo post
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Cliente obj)
@@ -112,18 +110,20 @@ namespace SistemaWebPizzaria.Controllers
             //essa validação ocorrerá se o JavaScript do usuário estiver desabilitado, pois não fará as validações feitas no html e nas propriedades
             if (!ModelState.IsValid)
             {
-                var clientes = await _clienteService.FindAllAsync(); //carrega os clientes
+                var client = await _clienteService.FindAllAsync(); //carrega os departamentos
 
                 var viewModel = new Cliente
                 {
                     IdCliente = obj.IdCliente,
                     Nome = obj.Nome,
-                    Telefone = obj.Telefone
-
+                    Telefone = obj.Telefone                   
+                   
                 };
+
 
                 return View(viewModel);
             }
+
 
             if (id != obj.IdCliente) //verifica se o Id é diferente
             {
@@ -133,15 +133,19 @@ namespace SistemaWebPizzaria.Controllers
             try
             {
                 await _clienteService.UpdateAsync(obj);
-                return RedirectToAction(nameof(Lista));
+                return RedirectToAction(nameof(Index));
             }
             catch (KeyNotFoundException)
             {
-                return RedirectToAction(nameof(Lista));
+                return RedirectToAction(nameof(Index));
             }
 
-          
+            //alterado esses dois cath por apenas 1 passando a super classe ApplicationException
+
         }
+
+
+
     }
     
 }
