@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using SistemaWebPizzaria.Models;
 
-namespace SistemaWebPizzaria.Models
+namespace SistemaWebPizzaria.Data
 {
     public partial class BancoPizzariaContext : DbContext
     {
@@ -14,7 +15,6 @@ namespace SistemaWebPizzaria.Models
             : base(options)
         {
         }
-
         public virtual DbSet<Cardapiopizza> Cardapiopizza { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Despesa> Despesa { get; set; }
@@ -42,6 +42,8 @@ namespace SistemaWebPizzaria.Models
                 entity.HasKey(e => e.IdCardapio);
 
                 entity.ToTable("cardapiopizza");
+
+                entity.Property(e => e.IdCardapio).HasColumnType("int(11)");
 
                 entity.Property(e => e.Descricao)
                     .IsRequired()
@@ -73,6 +75,12 @@ namespace SistemaWebPizzaria.Models
                 entity.Property(e => e.Nome).HasColumnType("varchar(45)");
 
                 entity.Property(e => e.Telefone).HasColumnType("varchar(45)");
+
+                entity.HasOne(d => d.TbEnderecoIdEnderecoNavigation)
+                    .WithMany(p => p.Cliente)
+                    .HasForeignKey(d => d.TbEnderecoIdEndereco)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_tbCliente_tbEndereco1");
             });
 
             modelBuilder.Entity<Despesa>(entity =>
@@ -80,6 +88,8 @@ namespace SistemaWebPizzaria.Models
                 entity.HasKey(e => e.IdDespesa);
 
                 entity.ToTable("despesa");
+
+                entity.Property(e => e.IdDespesa).HasColumnType("int(11)");
 
                 entity.Property(e => e.DataDespesa).HasColumnType("date");
 
@@ -98,10 +108,11 @@ namespace SistemaWebPizzaria.Models
 
                 entity.ToTable("endereco");
 
-                entity.HasIndex(e => e.ClienteIdCliente)
-                    .HasName("fk_Endereco_Cliente1_idx");
+                entity.Property(e => e.IdEndereco).HasColumnType("int(11)");
 
-                entity.Property(e => e.Bairro).HasColumnType("varchar(45)");
+                entity.Property(e => e.Bairro)
+                    .IsRequired()
+                    .HasColumnType("varchar(45)");
 
                 entity.Property(e => e.Cep)
                     .IsRequired()
@@ -109,8 +120,6 @@ namespace SistemaWebPizzaria.Models
                     .HasColumnType("varchar(9)");
 
                 entity.Property(e => e.Cidade).HasColumnType("varchar(45)");
-
-                entity.Property(e => e.ClienteIdCliente).HasColumnName("Cliente_IdCliente");
 
                 entity.Property(e => e.Complemento).HasColumnType("varchar(45)");
 
@@ -133,26 +142,20 @@ namespace SistemaWebPizzaria.Models
 
                 entity.ToTable("funcionario");
 
-                entity.HasIndex(e => e.Cpf)
-                    .HasName("CPF_Func_UNIQUE")
-                    .IsUnique();
+                entity.Property(e => e.IdFuncionario).HasColumnType("int(11)");
 
                 entity.Property(e => e.Ativo).HasColumnType("varchar(1)");
 
                 entity.Property(e => e.Celular).HasColumnType("varchar(11)");
 
-                entity.Property(e => e.Cpf)
-                    .IsRequired()
-                    .HasColumnType("varchar(14)");
+                entity.Property(e => e.Cpf).HasColumnType("varchar(14)");
 
                 entity.Property(e => e.Email).HasColumnType("varchar(60)");
 
-                entity.Property(e => e.Nome)
-                    .IsRequired()
-                    .HasColumnType("varchar(45)");
+                entity.Property(e => e.Nome).HasColumnType("varchar(45)");
 
                 entity.Property(e => e.Salario)
-                    .IsRequired()
+                    .HasColumnName("salario")
                     .HasColumnType("varchar(20)");
             });
 
@@ -161,12 +164,20 @@ namespace SistemaWebPizzaria.Models
                 entity.ToTable("itemcardapio");
 
                 entity.HasIndex(e => e.IdCardapio)
-                    .HasName("fk_tbCardapio_has_tbPedido_tbCardapio1_idx");
+                    .HasName("fk_tbCardapio_has_tbPedido_tbCardapio1");
 
                 entity.HasIndex(e => e.IdPedido)
-                    .HasName("fk_tbCardapio_has_tbPedido_tbPedido1_idx");
+                    .HasName("fk_tbCardapio_has_tbPedido_tbPedido1");
+
+                entity.Property(e => e.Id).HasColumnType("int(11)");
+
+                entity.Property(e => e.IdCardapio).HasColumnType("int(11)");
+
+                entity.Property(e => e.IdPedido).HasColumnType("int(11)");
 
                 entity.Property(e => e.PrecoUnidade).HasColumnType("decimal(10,2)");
+
+                entity.Property(e => e.Quantidade).HasColumnType("int(11)");
 
                 entity.Property(e => e.Total).HasColumnType("decimal(10,2)");
 
@@ -188,12 +199,20 @@ namespace SistemaWebPizzaria.Models
                 entity.ToTable("itemproduto");
 
                 entity.HasIndex(e => e.IdPedido)
-                    .HasName("fk_tbPedido_has_tbProduto_tbPedido1_idx");
+                    .HasName("fk_tbPedido_has_tbProduto_tbPedido1");
 
                 entity.HasIndex(e => e.IdProduto)
-                    .HasName("fk_tbPedido_has_tbProduto_tbProduto1_idx");
+                    .HasName("fk_tbPedido_has_tbProduto_tbProduto1");
+
+                entity.Property(e => e.Id).HasColumnType("int(11)");
+
+                entity.Property(e => e.IdPedido).HasColumnType("int(11)");
+
+                entity.Property(e => e.IdProduto).HasColumnType("int(11)");
 
                 entity.Property(e => e.PrecoUnidade).HasColumnType("decimal(10,2)");
+
+                entity.Property(e => e.QtdeProduto).HasColumnType("int(11)");
 
                 entity.Property(e => e.Total).HasColumnType("decimal(10,2)");
 
@@ -217,26 +236,23 @@ namespace SistemaWebPizzaria.Models
                 entity.ToTable("login");
 
                 entity.HasIndex(e => e.IdFuncionario)
-                    .HasName("fk_Login_Funcionario1_idx");
+                    .HasName("fk_Login_Funcionario1");
+
+                entity.Property(e => e.IdLogin).HasColumnType("int(11)");
 
                 entity.Property(e => e.DataCriacao).HasColumnType("date");
 
-                entity.Property(e => e.Email)
-                    .IsRequired()
-                    .HasColumnType("varchar(60)");
+                entity.Property(e => e.Email).HasColumnType("varchar(60)");
 
-                entity.Property(e => e.Perfil)
-                    .IsRequired()
-                    .HasColumnType("varchar(20)");
+                entity.Property(e => e.IdFuncionario).HasColumnType("int(11)");
 
-                entity.Property(e => e.Senha)
-                    .IsRequired()
-                    .HasColumnType("varchar(45)");
+                entity.Property(e => e.Perfil).HasColumnType("varchar(20)");
+
+                entity.Property(e => e.Senha).HasColumnType("varchar(45)");
 
                 entity.HasOne(d => d.IdFuncionarioNavigation)
                     .WithMany(p => p.Login)
                     .HasForeignKey(d => d.IdFuncionario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_Login_Funcionario1");
             });
 
@@ -247,20 +263,22 @@ namespace SistemaWebPizzaria.Models
                 entity.ToTable("pedido");
 
                 entity.HasIndex(e => e.IdCliente)
-                    .HasName("fk_tbPedido_tbCliente1_idx");
+                    .HasName("fk_tbPedido_tbCliente1");
 
                 entity.HasIndex(e => e.IdFuncioario)
-                    .HasName("fk_tbPedido_tbFuncionario1_idx");
+                    .HasName("fk_tbPedido_tbFuncionario1");
 
-                entity.HasIndex(e => e.IdPedido)
-                    .HasName("IdPedido_UNIQUE")
-                    .IsUnique();
+                entity.Property(e => e.IdPedido).HasColumnType("int(11)");
 
                 entity.Property(e => e.DataHora).HasColumnType("datetime");
 
                 entity.Property(e => e.FormaPagamento)
                     .IsRequired()
                     .HasColumnType("varchar(15)");
+
+                entity.Property(e => e.IdCliente).HasColumnType("int(11)");
+
+                entity.Property(e => e.IdFuncioario).HasColumnType("int(11)");
 
                 entity.Property(e => e.Status)
                     .IsRequired()
@@ -291,6 +309,8 @@ namespace SistemaWebPizzaria.Models
 
                 entity.ToTable("produtoestoque");
 
+                entity.Property(e => e.IdProduto).HasColumnType("int(11)");
+
                 entity.Property(e => e.Categoria).HasColumnType("varchar(15)");
 
                 entity.Property(e => e.DataCompra).HasColumnType("date");
@@ -310,6 +330,8 @@ namespace SistemaWebPizzaria.Models
                 entity.Property(e => e.PrecoCompra).HasColumnType("decimal(10,2)");
 
                 entity.Property(e => e.PrecoVenda).HasColumnType("decimal(10,2)");
+
+                entity.Property(e => e.Quantidade).HasColumnType("int(11)");
 
                 entity.Property(e => e.Validade).HasColumnType("date");
 

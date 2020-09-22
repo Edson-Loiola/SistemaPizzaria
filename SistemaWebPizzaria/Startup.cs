@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SistemaWebPizzaria.Data;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 
@@ -43,6 +44,11 @@ namespace SistemaWebPizzaria
 
             services.AddScoped<DespesaService>();
             services.AddScoped<ProdutoService>();
+            services.AddScoped<ClienteService>();
+            services.AddScoped<FuncionarioService>();
+
+
+
 
             //cinfigurando sessions
             services.AddSession();
