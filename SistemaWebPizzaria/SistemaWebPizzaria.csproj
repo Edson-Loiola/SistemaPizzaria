@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>bfbd7841-5b37-42bf-93c1-3e88470a8dcf</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,5 +41,7 @@
     <Folder Include="Views\StatusPedido\" />
     <Folder Include="Views\Pedidos\" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

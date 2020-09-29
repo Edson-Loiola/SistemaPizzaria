@@ -30,8 +30,7 @@ namespace SistemaWebPizzaria.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=localhost;user=jose;password=458236;database=bancopizzaria");
+                optionsBuilder.UseMySql("server=den1.mysql6.gear.host;userid=bancopizzaria;password=Ub3P-GxN~41s;database=bancopizzaria");
             }
         }
 
