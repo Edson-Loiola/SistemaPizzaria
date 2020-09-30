@@ -8,7 +8,6 @@
   <ItemGroup>
     <Compile Remove="Controllers\LoginController.cs" />
     <Compile Remove="Models\ViewModels\DespesaViewModel.cs" />
-    <Compile Remove="Services\LoginService.cs" />
     <Compile Remove="Views\Home\Menu.cshtml.cs" />
     <Compile Remove="Views\Home\Plano.cshtml.cs" />
     <Compile Remove="Views\Produtos\detalhes_produto.cshtml.cs" />
@@ -40,6 +39,12 @@
     <Folder Include="Views\Relatorios\" />
     <Folder Include="Views\StatusPedido\" />
     <Folder Include="Views\Pedidos\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Logins\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

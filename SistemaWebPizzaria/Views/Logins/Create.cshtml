@@ -1,0 +1,76 @@
+﻿
+
+@model SistemaWebPizzaria.Models.Login
+@*  com essa declaração minha viewm tem um objeto Seller a disposição  *@
+
+@{
+    ViewData["Title"] = "Criar Usuário";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr />
+<div class="row">
+    @*  esse div row ocupa a largura da rela  *@
+    <div class="col-md-4">
+        @* md-4 ocupa um 1/4 da tela *@
+        <form asp-action="Create">
+            @*chama ação Edit metodo post*@
+
+            <!--<input type="hidden" asp-for="IdLogin" /> @*campo oculto passando o id do vendedor*@-->
+
+
+            <div class="form-group">
+
+                @*  o compilador consegue entender que o "Name" é um atributo do objeto Seller *@
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+
+                @*mostra a validacção pendente agora abaixo do campo, (Posso usar assim ou em forma de lista como inlcuido no começo do form *@
+                <!--<span asp-validation-for="NomeDespesa" class="text-danger"></span>-->
+
+            </div>
+
+            <div class="form-group">
+                @*  o compilador consegue entender que o "Email" é um atributo do objeto Seller *@
+                <label asp-for="Perfil" class="control-label"></label>
+                <input asp-for="Perfil" class="form-control" />
+                <!--  <span asp-validation-for="Cpf" class="text-danger"></span>-->
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Senha" class="control-label"></label>
+                <input asp-for="Senha" class="form-control" />
+                <!--<span asp-validation-for="Email" class="text-danger"></span>-->
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DataCriacao" class="control-label"></label>
+                <input asp-for="DataCriacao" type="datetime" class="form-control" />
+                <!-- <span asp-validation-for="Celular" class="text-danger"></span>-->
+            </div>
+            <div class="form-group">
+                <label asp-for="IdFuncionario" class="control-label"></label>
+                <input asp-for="IdFuncionario" class="form-control" />
+                <!-- <span asp-validation-for="Salario" class="text-danger"></span>-->
+            </div>
+            <!-- <div class="form-group">
+    <label asp-for="Ativo" class="control-label"></label>-->
+            <!--<span asp-validation-for="Ativo" class="text-danger"></span>
+    </div>-->
+
+
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+@*para halidtar validação por meio do JavaScript*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

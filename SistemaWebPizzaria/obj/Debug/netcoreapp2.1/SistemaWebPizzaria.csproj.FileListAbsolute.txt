@@ -142,6 +142,12 @@ C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcore
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Produtos\Detalhe.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Produtos\Index.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Produtos\Produto.cshtml.g.cs
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csproj.CoreCompileInputs.cache
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.RazorAssemblyInfo.cache
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.RazorAssemblyInfo.cs
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.AssemblyInfoInputs.cache
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.AssemblyInfo.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.deps.json
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.runtimeconfig.json
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.runtimeconfig.dev.json
@@ -150,12 +156,6 @@ C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\bin\Debug\n
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.Views.dll
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.Views.pdb
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csprojAssemblyReference.cache
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csproj.CoreCompileInputs.cache
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.RazorAssemblyInfo.cache
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.RazorAssemblyInfo.cs
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.AssemblyInfoInputs.cache
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.AssemblyInfo.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.TagHelpers.input.cache
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.TagHelpers.output.cache
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.RazorCoreGenerate.cache
@@ -171,6 +171,7 @@ C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\n
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Home\Login.g.cshtml.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Home\MenuSistema.g.cshtml.cs
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Logins\Create.g.cshtml.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Produtos\Detalhe.g.cshtml.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Produtos\Index.g.cshtml.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Produtos\Produto.g.cshtml.cs
