@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SistemaWebPizzaria.Data;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 
@@ -30,7 +26,6 @@ namespace SistemaWebPizzaria
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
@@ -47,10 +42,10 @@ namespace SistemaWebPizzaria
             //Manage Packge Nuget
             //Procurar: Pomelo.EntityFrameworkCore.MySql  e instalar a versão  2.1.1
 
-
-
             services.AddScoped<DespesaService>();
+            services.AddScoped<ProdutoService>();
             services.AddScoped<ClienteService>();
+            services.AddScoped<FuncionarioService>();
 
 
 
@@ -58,8 +53,6 @@ namespace SistemaWebPizzaria
             //cinfigurando sessions
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-
 
         }
 
@@ -80,7 +73,6 @@ namespace SistemaWebPizzaria
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();
-
 
             app.UseMvc(routes =>
             {

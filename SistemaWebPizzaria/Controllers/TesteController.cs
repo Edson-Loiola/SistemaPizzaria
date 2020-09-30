@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
+using System.Threading.Tasks;
 
 namespace SistemaWebPizzaria.Controllers
 {
@@ -25,7 +22,7 @@ namespace SistemaWebPizzaria.Controllers
         {
             return View();
         }
-            
+
 
         public IActionResult Funcionario()
         {

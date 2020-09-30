@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SistemaWebPizzaria.Data;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services.Exception;
 using System;
@@ -42,10 +43,26 @@ namespace SistemaWebPizzaria.Services
         {
             try
             {
-                var obj = await FindByIdAsync(id);
 
-                //  var obj = await _context.Cliente.FindAsync(id);
-                _context.Cliente.Remove(obj);
+                var obj = await _context.Cliente.FindAsync(id);
+                var ende = await _context.Endereco.FirstOrDefaultAsync(x => x.ClienteIdCliente == id);
+                
+
+                //  _context.Endereco.Remove(ende);
+
+                if (ende == null)
+                {
+                  //  _context.Endereco.Remove(ende);
+                    _context.Cliente.Remove(obj);
+                }
+                else if(ende.ClienteIdCliente == id)
+                {
+                    _context.Endereco.Remove(ende);
+                    _context.Cliente.Remove(obj);
+                }
+              
+
+
                 await _context.SaveChangesAsync(); //esse metodo confirma a operação no
 
             }

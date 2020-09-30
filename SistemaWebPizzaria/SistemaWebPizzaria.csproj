@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>bfbd7841-5b37-42bf-93c1-3e88470a8dcf</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +11,7 @@
     <Compile Remove="Services\LoginService.cs" />
     <Compile Remove="Views\Home\Menu.cshtml.cs" />
     <Compile Remove="Views\Home\Plano.cshtml.cs" />
+    <Compile Remove="Views\Produtos\detalhes_produto.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,9 +38,10 @@
     <Folder Include="Views\Cardapios\" />
     <Folder Include="Views\Funcionarios\" />
     <Folder Include="Views\Relatorios\" />
-    <Folder Include="Views\Produtos\" />
     <Folder Include="Views\StatusPedido\" />
     <Folder Include="Views\Pedidos\" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
