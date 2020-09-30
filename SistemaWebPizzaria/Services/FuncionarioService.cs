@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SistemaWebPizzaria.Data;
 using SistemaWebPizzaria.Services.Exception;
 using Microsoft.EntityFrameworkCore;
 
