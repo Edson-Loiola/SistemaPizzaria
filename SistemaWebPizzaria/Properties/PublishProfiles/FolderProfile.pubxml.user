@@ -5,15 +5,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\wellison\Desktop\jose\myPizza</_PublishTargetUrl>
   </PropertyGroup>
-  <ItemGroup>
-    <DestinationConnectionStrings Include="BancoPizzariaContext">
-      <Value>server=den1.mysql6.gear.host%3buserid=bancopizzaria%3bpassword=Ub3P-GxN~41s%3bdatabase=bancopizzaria</Value>
-    </DestinationConnectionStrings>
-  </ItemGroup>
-  <ItemGroup>
-    <EFMigrations Include="SistemaWebPizzaria.Data.BancoPizzariaContext">
-      <Value>server=den1.mysql6.gear.host%3buserid=bancopizzaria%3bpassword=Ub3P-GxN~41s%3bdatabase=bancopizzaria</Value>
-    </EFMigrations>
-  </ItemGroup>
 </Project>

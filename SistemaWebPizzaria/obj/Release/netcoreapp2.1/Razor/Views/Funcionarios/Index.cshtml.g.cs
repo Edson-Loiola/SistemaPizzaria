@@ -79,7 +79,7 @@ Write(ViewData["Title"]);
             WriteLiteral("</h2>\r\n<hr />\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(165, 74, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1623faadbc7a499386dfe42ca401c957", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4e2f78aa6d6943cdacf282034b409525", async() => {
                 BeginContext(219, 16, true);
                 WriteLiteral("Novo Funcionário");
                 EndContext();
@@ -199,7 +199,7 @@ Write(ViewData["Title"]);
             WriteLiteral("\r\n                </td>\r\n                <td>\r\n                    ");
             EndContext();
             BeginContext(1934, 97, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ad15479ee52a4303b1747f3f75c965dd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "23cec8f39d794b148f227a4905f5a4a2", async() => {
                 BeginContext(2021, 6, true);
                 WriteLiteral("Editar");
                 EndContext();
@@ -243,7 +243,7 @@ Write(ViewData["Title"]);
             WriteLiteral("                        ");
             EndContext();
             BeginContext(2102, 102, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "027f6fd4e72c443a8c60514ba4368f27", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ba75c607550d4b39a9711809dc0fd44d", async() => {
                 BeginContext(2192, 8, true);
                 WriteLiteral("Inativar");
                 EndContext();

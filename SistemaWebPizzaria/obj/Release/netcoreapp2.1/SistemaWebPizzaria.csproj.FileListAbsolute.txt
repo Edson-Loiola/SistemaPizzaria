@@ -50,3 +50,4 @@ C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Releas
 C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Release\netcoreapp2.1\SistemaWebPizzaria.pdb
 C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Release\netcoreapp2.1\SistemaWebPizzaria.genruntimeconfig.cache
 C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Release\netcoreapp2.1\SistemaWebPizzaria.csproj.CopyComplete
+C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Release\netcoreapp2.1\UserSecretsAssemblyInfo.cs

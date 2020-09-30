@@ -80,7 +80,7 @@ Write(ViewData["Title"]);
             WriteLiteral("</h2>\r\n<hr />\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(165, 77, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b0b1c574dae4b09bb94457eb1ce1891", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "083b120ebf8b4fbfb3c629d203dcd51d", async() => {
                 BeginContext(226, 12, true);
                 WriteLiteral("Nova Despesa");
                 EndContext();
@@ -177,7 +177,7 @@ Write(ViewData["Title"]);
             WriteLiteral("\r\n                    </td>\r\n                    <td>\r\n                        ");
             EndContext();
             BeginContext(1692, 93, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "76887ece48d24cf28ffb87621df94224", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "590ecf23c7594461a722b2966cc18f7f", async() => {
                 BeginContext(1775, 6, true);
                 WriteLiteral("Editar");
                 EndContext();
@@ -213,7 +213,7 @@ Write(ViewData["Title"]);
             WriteLiteral("                     \r\n                        ");
             EndContext();
             BeginContext(1832, 103, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a1bf55e848f419e86b9e70255cb72d4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0bf43acc64774390ac9de348327aff7f", async() => {
                 BeginContext(1924, 7, true);
                 WriteLiteral("Deletar");
                 EndContext();
