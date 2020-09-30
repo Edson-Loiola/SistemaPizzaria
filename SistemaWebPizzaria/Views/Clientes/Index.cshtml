@@ -22,63 +22,70 @@
 
             <form asp-action="CreateCliente">
 
+                <div class="row">
+                    <div class="form-group col-md-8">
 
-                <div class="form-group col-md-5">
+                        <label class="control-label">Nome Cliente</label>
+                        <input asp-for="Cliente.Nome" class="form-control" />
+                        <span asp-validation-for="Cliente.Nome" class="text-danger"></span>
+                    </div>
 
-                    <label class="control-label">Nome Cliente</label>
-                    <input asp-for="Cliente.Nome" class="form-control" />
-                    <span asp-validation-for="Cliente.Nome" class="text-danger"></span>
-                </div>
+                    <div class="form-group col-md-3">
 
-                <div class="form-group col-md-3">
-
-                    <label class="control-label">Telefone</label>
-                    <input asp-for="Cliente.Telefone" class="form-control" />
-                    <span asp-validation-for="Cliente.Telefone" class="text-danger"></span>
-                </div>
-
-
-                <div class="form-group col-md-5">
-                    <label class="control-label">Cep</label>
-                    <input asp-for="Endereco.Cep" class="form-control" id="cep" onblur="pesquisacep(this.value);" />
-                    <span asp-validation-for="Endereco.Cep" class="text-danger"></span>
+                        <label class="control-label">Telefone</label>
+                        <input asp-for="Cliente.Telefone" class="form-control" />
+                        <span asp-validation-for="Cliente.Telefone" class="text-danger"></span>
+                    </div>
                 </div>
 
 
-                <div class="form-group col-md-5">
-                    <label class="control-label">Rua</label>
-                    <input asp-for="Endereco.Rua" class="form-control"  id="rua" />
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        <label class="control-label">Cep</label>
+                        <input asp-for="Endereco.Cep" class="form-control" id="cep" onblur="pesquisacep(this.value)" />
+                        <span asp-validation-for="Endereco.Cep" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Rua</label>
+                        <input asp-for="Endereco.Rua" class="form-control" id="rua" />
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label class="control-label">Número</label>
+                        <input asp-for="Endereco.Numero" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Compemento</label>
+                        <input asp-for="Endereco.Complemento" class="form-control" />
+                    </div>
                 </div>
 
-                <div class="form-group col-md-5">
-                    <label class="control-label">Número</label>
-                    <input asp-for="Endereco.Numero" class="form-control" />
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Bairro</label>
+                        <input asp-for="Endereco.Bairro" class="form-control" id="bairro" />
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Cidade</label>
+                        <input asp-for="Endereco.Cidade" class="form-control" id="cidade" />
+                    </div>
+
+
+                    <div class="form-group col-md-1">
+                        <label class="control-label">.</label>
+                        <input type="submit" value="Inserir" class="btn btn-primary" />
+                        <br /><br /><br /><br />
+                    </div>
                 </div>
 
-                <div class="form-group col-md-5">
-                    <label class="control-label">Compemento</label>
-                    <input asp-for="Endereco.Complemento" class="form-control" />
-                </div>
-
-                <div class="form-group col-md-5">
-                    <label class="control-label">Bairro</label>
-                    <input asp-for="Endereco.Bairro" class="form-control"  id="bairro" />
-                </div>
 
 
-                <div class="form-group col-md-5">
-                    <label class="control-label">Cidade</label>
-                    <input asp-for="Endereco.Cidade" class="form-control"  id="cidade" />
-                </div>
-
-
-
-
-                <div class="form-group col-md-1">
-                    <label class="control-label">.</label>
-                    <input type="submit" value="Inserir" class="btn btn-primary" />
-                    <br /><br /><br /><br />
-                </div>
+                
 
             </form>
 

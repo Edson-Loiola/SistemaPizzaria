@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SistemaWebPizzaria.Data;
 using SistemaWebPizzaria.Models;
+using SistemaWebPizzaria.Models.ViewModels;
 using SistemaWebPizzaria.Services.Exception;
 using System;
 using System.Collections.Generic;
@@ -46,21 +46,21 @@ namespace SistemaWebPizzaria.Services
 
                 var obj = await _context.Cliente.FindAsync(id);
                 var ende = await _context.Endereco.FirstOrDefaultAsync(x => x.ClienteIdCliente == id);
-                
+
 
                 //  _context.Endereco.Remove(ende);
 
                 if (ende == null)
                 {
-                  //  _context.Endereco.Remove(ende);
+                    //  _context.Endereco.Remove(ende);
                     _context.Cliente.Remove(obj);
                 }
-                else if(ende.ClienteIdCliente == id)
+                else if (ende.ClienteIdCliente == id)
                 {
                     _context.Endereco.Remove(ende);
                     _context.Cliente.Remove(obj);
                 }
-              
+
 
 
                 await _context.SaveChangesAsync(); //esse metodo confirma a operação no
@@ -81,23 +81,36 @@ namespace SistemaWebPizzaria.Services
         }
 
 
+        public async Task<List<Endereco>> FindAllEndeAsync()
+        {
+            return await _context.Endereco.Include(c => c.ClienteIdClienteNavigation).ToListAsync();
+        }
+
+
+
+        //listar endereço
+        public async Task<Endereco> FindByEndIdAsync(int id)
+        {
+            return await _context.Endereco.FirstOrDefaultAsync(obj => obj.ClienteIdClienteNavigation.IdCliente == id);
+            //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal
+        }
+
 
 
         //usado no edit do cliente (controler)
         public async Task<Cliente> FindByIdAsync(int id)
         {
             return await _context.Cliente.FirstOrDefaultAsync(obj => obj.IdCliente == id);
-
-
             //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal
         }
 
 
+
         //função de atualizar cliente
-        public async Task UpdateAsync(Cliente obj)
+        public async Task UpdateAsync(Endereco obj)
         {
             //pra atualizar um objeto o id desse objeto já precisa existir no banco
-            bool hasAny = await _context.Cliente.AnyAsync(x => x.IdCliente == obj.IdCliente);
+            bool hasAny = await _context.Endereco.AnyAsync(x => x.ClienteIdCliente == obj.ClienteIdCliente);
 
             if (!hasAny)  // verifica se expressão passada não existe no banco
             {

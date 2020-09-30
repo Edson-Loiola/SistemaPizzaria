@@ -91,7 +91,7 @@ namespace SistemaWebPizzaria.Controllers
             //essa validação ocorrerá se o JavaScript do usuário estiver desabilitado, pois não fará as validações feitas no html e nas propriedades
             if (!ModelState.IsValid)
             {
-                var departments = await _despesaService.FindAllAsync(); //carrega os departamentos
+                var departments = await _despesaService.FindAllAsync(); //carrega 
 
                 var viewModel = new Despesa
                 {

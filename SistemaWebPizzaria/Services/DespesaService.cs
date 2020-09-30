@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
-using SistemaWebPizzaria.Data;
+
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services.Exception;
 using System;

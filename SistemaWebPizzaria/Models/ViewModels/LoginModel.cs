@@ -1,4 +1,4 @@
-﻿using SistemaWebPizzaria.Data;
+﻿
 using System.ComponentModel.DataAnnotations;
 
 namespace SistemaWebPizzaria.Models.ViewModels
@@ -18,20 +18,19 @@ namespace SistemaWebPizzaria.Models.ViewModels
         public string Senha { get; set; }
 
 
-        private readonly BancoPizzariaContext _context;
-
+       
         public LoginModel()
         {
 
         }
 
-        public LoginModel(int id, string email, string senha, BancoPizzariaContext context)
+        public LoginModel(int id, string email, string senha)
         {
 
             Id = id;
             Email = email;
             Senha = senha;
-            _context = context;
+      
         }
 
 

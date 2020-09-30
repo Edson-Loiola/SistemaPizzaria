@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SistemaWebPizzaria.Data;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 
