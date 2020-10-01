@@ -74,13 +74,10 @@ namespace SistemaWebPizzaria.Controllers
         {
             try
             {
-
-                var obj = await _clienteService.FindByIdAsync(id.Value);
-                
+                var obj = await _clienteService.FindByIdAsync(id.Value);                
 
                 await _clienteService.RemoveAsync(obj.IdCliente); //chamando o metodo remove 
                 return RedirectToAction(nameof(Lista));
-
             }
             catch (Exception)
             {
@@ -101,7 +98,7 @@ namespace SistemaWebPizzaria.Controllers
             }
 
             var obj = await _clienteService.FindByIdAsync(id.Value);
-            var objend = await _clienteService.FindByEndIdAsync(id.Value);
+            var objEnd = await _clienteService.FindByEndIdAsync(id.Value);
 
 
             if (obj == null) // valida se o obj no banco é nulo
@@ -109,7 +106,18 @@ namespace SistemaWebPizzaria.Controllers
                 return RedirectToAction(nameof(Lista));
             }
 
-            Endereco viewModel = new Endereco {  Cep = objend.Cep, ClienteIdClienteNavigation = objend.ClienteIdClienteNavigation };
+            Endereco viewModel = new Endereco {
+
+                ClienteIdCliente = objEnd.ClienteIdCliente,
+                Cep = objEnd.Cep, 
+                Rua = objEnd.Rua, 
+                Numero = objEnd.Numero, 
+                Bairro = objEnd.Bairro,
+                Cidade = objEnd.Cidade,
+                Complemento = objEnd.Complemento,
+                ClienteIdClienteNavigation = objEnd.ClienteIdClienteNavigation 
+            
+            };
 
             return View(viewModel);
         }
@@ -118,20 +126,27 @@ namespace SistemaWebPizzaria.Controllers
         //ação de salvar a edição do cliente (update)
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Endereco obj)
+        public async Task<IActionResult> EditCliente(int id, Endereco objEnd)
         {
 
             //essa validação ocorrerá se o JavaScript do usuário estiver desabilitado, pois não fará as validações feitas no html e nas propriedades
             if (!ModelState.IsValid)
             {
-                var client = await _clienteService.FindAllEndeAsync(); //carrega lista
+                var endreco = await _clienteService.FindAllEndeAsync(); //carrega lista
+               
 
                 var viewModel = new Endereco
                 {
-                    ClienteIdCliente = obj.ClienteIdClienteNavigation.IdCliente,
-                    Cep = obj.Cep,
-                    ClienteIdClienteNavigation = obj.ClienteIdClienteNavigation                
-                   
+                    
+                    Cep = objEnd.Cep,
+                    Rua = objEnd.Rua,
+                    Numero = objEnd.Numero,
+                    Bairro = objEnd.Bairro,
+                    Cidade = objEnd.Cidade,
+                    Complemento = objEnd.Complemento,
+                    ClienteIdCliente = objEnd.ClienteIdCliente,
+                    ClienteIdClienteNavigation = objEnd.ClienteIdClienteNavigation
+
                 };
 
 
@@ -139,14 +154,14 @@ namespace SistemaWebPizzaria.Controllers
             }
 
 
-            //if (obj.ClienteIdClienteNavigation.IdCliente != obj.ClienteIdCliente) //verifica se o Id é diferente
-            //{
-            //    return RedirectToAction(nameof(Index));
-            //}
+            if (id != objEnd.ClienteIdCliente) //verifica se o Id é diferente
+            {
+                return RedirectToAction(nameof(Index));
+            }
 
             try
             {
-                await _clienteService.UpdateAsync(obj);
+                await _clienteService.UpdateAsync(objEnd);            
                 return RedirectToAction(nameof(Index));
             }
             catch (KeyNotFoundException)

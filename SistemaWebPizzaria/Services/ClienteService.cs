@@ -114,12 +114,13 @@ namespace SistemaWebPizzaria.Services
 
             if (!hasAny)  // verifica se expressão passada não existe no banco
             {
-                throw new NotFiniteNumberException("Cliente não existe!");
+                throw new NotFiniteNumberException("Endereço não existe!");
             }
 
             try
             {
-                _context.Update(obj); //atualiza o objeto
+                _context.Update(obj);
+              
                 await _context.SaveChangesAsync(); //confirmar alteração
             }
             catch (DllNotFoundException e)

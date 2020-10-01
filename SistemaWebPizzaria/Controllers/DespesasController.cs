@@ -75,7 +75,13 @@ namespace SistemaWebPizzaria.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            Despesa viewModel = new Despesa { IdDespesa = obj.IdDespesa, NomeDespesa = obj.NomeDespesa, Valor = obj.Valor, Descricao = obj.Descricao, DataDespesa = obj.DataDespesa };
+            Despesa viewModel = new Despesa { 
+                IdDespesa = obj.IdDespesa, 
+                NomeDespesa = obj.NomeDespesa, 
+                Valor = obj.Valor, 
+                Descricao = obj.Descricao, 
+                DataDespesa = obj.DataDespesa 
+            };
 
             return View(viewModel);
         }
