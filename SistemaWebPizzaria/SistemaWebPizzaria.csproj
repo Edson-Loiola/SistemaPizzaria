@@ -34,7 +34,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Views\Cardapios\" />
     <Folder Include="Views\Funcionarios\" />
     <Folder Include="Views\Relatorios\" />
     <Folder Include="Views\StatusPedido\" />
@@ -42,6 +41,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\Cardapios\Detalhe.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Cardapios\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Cardapios\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Logins\Create.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

@@ -192,3 +192,6 @@ C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\n
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.dll
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.pdb
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csproj.CopyComplete
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Cardapios\Create.g.cshtml.cs
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Cardapios\Detalhe.g.cshtml.cs
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria1\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Cardapios\Index.g.cshtml.cs

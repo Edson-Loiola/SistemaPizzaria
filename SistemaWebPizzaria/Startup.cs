@@ -46,6 +46,7 @@ namespace SistemaWebPizzaria
             services.AddScoped<ClienteService>();
             services.AddScoped<FuncionarioService>();
             services.AddScoped<LoginService>();
+            services.AddScoped<CardapioService>();
 
 
 
