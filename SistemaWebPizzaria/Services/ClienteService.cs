@@ -107,11 +107,11 @@ namespace SistemaWebPizzaria.Services
 
 
         //função de atualizar cliente
-        public async Task UpdateAsync(Endereco obj)
+        public async Task UpdateAsync(Endereco obj, Cliente cl)
         {
             //pra atualizar um objeto o id desse objeto já precisa existir no banco
-            bool hasAny = await _context.Endereco.AnyAsync(x => x.ClienteIdCliente == obj.ClienteIdCliente);
-
+            bool hasAny = await _context.Endereco.AnyAsync(x => x.IdEndereco == obj.IdEndereco);
+           
             if (!hasAny)  // verifica se expressão passada não existe no banco
             {
                 throw new NotFiniteNumberException("Endereço não existe!");
@@ -120,7 +120,7 @@ namespace SistemaWebPizzaria.Services
             try
             {
                 _context.Update(obj);
-              
+                _context.Update(cl);
                 await _context.SaveChangesAsync(); //confirmar alteração
             }
             catch (DllNotFoundException e)

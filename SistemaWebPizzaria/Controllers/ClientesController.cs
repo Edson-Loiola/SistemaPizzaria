@@ -107,7 +107,7 @@ namespace SistemaWebPizzaria.Controllers
             }
 
             Endereco viewModel = new Endereco {
-
+                IdEndereco = objEnd.IdEndereco,
                 ClienteIdCliente = objEnd.ClienteIdCliente,
                 Cep = objEnd.Cep, 
                 Rua = objEnd.Rua, 
@@ -115,7 +115,7 @@ namespace SistemaWebPizzaria.Controllers
                 Bairro = objEnd.Bairro,
                 Cidade = objEnd.Cidade,
                 Complemento = objEnd.Complemento,
-                ClienteIdClienteNavigation = objEnd.ClienteIdClienteNavigation 
+                ClienteIdClienteNavigation = objEnd.ClienteIdClienteNavigation // sem essa referencia não carrega os dados do cliente na tela de edit vindo do banco
             
             };
 
@@ -129,15 +129,17 @@ namespace SistemaWebPizzaria.Controllers
         public async Task<IActionResult> EditCliente(int id, Endereco objEnd)
         {
 
+
+        //----------------------------------------------------------------
             //essa validação ocorrerá se o JavaScript do usuário estiver desabilitado, pois não fará as validações feitas no html e nas propriedades
             if (!ModelState.IsValid)
             {
                 var endreco = await _clienteService.FindAllEndeAsync(); //carrega lista
-               
+
 
                 var viewModel = new Endereco
                 {
-                    
+                    IdEndereco = objEnd.IdEndereco,
                     Cep = objEnd.Cep,
                     Rua = objEnd.Rua,
                     Numero = objEnd.Numero,
@@ -146,12 +148,12 @@ namespace SistemaWebPizzaria.Controllers
                     Complemento = objEnd.Complemento,
                     ClienteIdCliente = objEnd.ClienteIdCliente,
                     ClienteIdClienteNavigation = objEnd.ClienteIdClienteNavigation
-
                 };
-
 
                 return View(viewModel);
             }
+        //----------------------------------------------------------------
+
 
 
             if (id != objEnd.ClienteIdCliente) //verifica se o Id é diferente
@@ -161,8 +163,8 @@ namespace SistemaWebPizzaria.Controllers
 
             try
             {
-                await _clienteService.UpdateAsync(objEnd);            
-                return RedirectToAction(nameof(Index));
+                await _clienteService.UpdateAsync(objEnd, objEnd.ClienteIdClienteNavigation);
+                return RedirectToAction(nameof(Lista));
             }
             catch (KeyNotFoundException)
             {
@@ -171,8 +173,8 @@ namespace SistemaWebPizzaria.Controllers
 
             //alterado esses dois cath por apenas 1 passando a super classe ApplicationException
 
-        }
 
+        }
 
 
     }
