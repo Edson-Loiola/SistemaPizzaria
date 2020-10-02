@@ -7,18 +7,21 @@
 <div class="row">
     <hr />
     <div class="col-md-12">
-        <form method="post" asp-action="Edit">
+        <form asp-action="Edit" method="post">
             <div class="row" style="margin-bottom:15px;">
                 <div class="col-md-1">
                     <label for="firstName">ID</label>
                     <input asp-for="IdCardapio" class="form-control" placeholder="" readonly>
                 </div>
-                <div class="col-md-11">
+                <div class="col-md-2">
+                    <label for="">Tipo</label>
+                    <input asp-for="Tipo" class="form-control">
+                </div>
+                <div class="col-md-5">
                     <label for="firstName">Sabor</label>
                     <input asp-for="Sabor" class="form-control" placeholder="">
                 </div>
-            </div>
-            <div class="row" style="margin-bottom:15px;">
+
                 <div class="col-md-2">
                     <label for="">Valor</label>
                     <input asp-for="ValorUnitario" class="form-control" placeholder="R$">
@@ -28,24 +31,21 @@
                     <label for="">Tamanho</label>
                     <input asp-for="Tamanho" class="form-control" placeholder="R$">
                 </div>
+            </div>
 
-                <div class="col-md-2">
-                    <label for="">Tipo</label>
-                    <input asp-for="Tipo" class="form-control">
-                </div>
 
-                <!-- <div class="col-md-2">
-         <label for="">Tipo</label><br />
-         @*<select asp-for="UnidadeMedida" class="custom-select">
-             <option value="UN">Unidade</option>
-             <option value="KL">Kilograma</option>
-             <option value="GM">grama</option>
-             <option value="LT">Litro</option>
-             <option value="ML">Mililitro</option>
-         </select>*@
-     </div>
-        -->
-    
+            <!-- <div class="col-md-2">
+                <label for="">Tipo</label><br />
+                @*<select asp-for="UnidadeMedida" class="custom-select">
+                    <option value="UN">Unidade</option>
+                    <option value="KL">Kilograma</option>
+                    <option value="GM">grama</option>
+                    <option value="LT">Litro</option>
+                    <option value="ML">Mililitro</option>
+                </select>*@
+            </div>
+               -->
+
 
             <div class="row" style="margin-bottom:15px;">
                 <div class="col-md-12">
@@ -62,3 +62,8 @@
         </form>
     </div>
 </div>
+
+@*para halidtar validação por meio do JavaScript*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

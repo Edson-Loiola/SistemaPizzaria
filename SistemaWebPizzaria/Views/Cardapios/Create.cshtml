@@ -9,15 +9,19 @@
     <div class="col-md-12">
         <form method="post" asp-action="Create">
             <div class="row" style="margin-bottom:15px;">
-                <div class="col-md-12">
+                <div class="col-md-2">
+                    <label for="Tipo">Tipo</label>
+                    <input asp-for="Tipo" class="form-control">
+                </div>
+                <div class="col-md-6">
                     <label for="Sabor">Sabor</label>
                     <input asp-for="Sabor" class="form-control" placeholder="">
                 </div>
-            </div>
-            <div class="row" style="margin-bottom:15px;">
+         
+          
                 <div class="col-md-2">
                     <label for="Tamanho">Tamanho</label>
-                    <input asp-for="Tamanho" class="form-control" placeholder="R$">
+                    <input asp-for="Tamanho" class="form-control" >
                 </div>
 
                 <div class="col-md-2">
@@ -25,10 +29,7 @@
                     <input asp-for="ValorUnitario" class="form-control" placeholder="R$">
                 </div>
 
-                <div class="col-md-2">
-                    <label for="Tipo">Tipo</label>
-                    <input asp-for="Tipo" type="number" class="form-control">
-                </div>
+             
                 <!--
     <div class="col-md-2">
         <label for="">Tipo</label><br />
@@ -51,8 +52,8 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-right">
-                    <input class="btn btn-success btn-lg" type="submit" value="Cadastrar novo produto" />
-                    <a href="../Produtos/Index" class="btn btn-danger btn-lg">Voltar</a>
+                    <input class="btn btn-success btn-lg" type="submit" value="Cadastrar" />
+                    <a href="../Cardapios/Index" class="btn btn-danger btn-lg">Voltar</a>
                 </div>
             </div>
         </form>

@@ -21,6 +21,7 @@ namespace SistemaWebPizzaria.Models
         public string NomeFornecedor { get; set; }
         public string Descricao { get; set; }
         public string NotaFiscal { get; set; }
+        public decimal? ValorTributos { get; set; }
         public string Categoria { get; set; }
         public string Vende { get; set; }
 

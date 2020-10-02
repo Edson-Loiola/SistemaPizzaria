@@ -47,7 +47,7 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
-        public async Task<IActionResult> DeleteCardapio(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace SistemaWebPizzaria.Controllers
         }
 
         //ao clicar em edit ira abrir a tela com os campos carregados com os dados da despesa
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Detalhe(int? id)
         {
             if (id == null) //validação se o id é nulo
             {
@@ -94,33 +94,8 @@ namespace SistemaWebPizzaria.Controllers
         //ação edit -metodo post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Cardapiopizza obj)
+        public async Task<IActionResult> Edit( Cardapiopizza obj)
         {
-
-            //essa validação ocorrerá se o JavaScript do usuário estiver desabilitado, pois não fará as validações feitas no html e nas propriedades
-            if (!ModelState.IsValid)
-            {
-                var departments = await _cardapioService.FindAllAsync(); //carrega 
-
-                var viewModel = new Cardapiopizza
-                {
-                    IdCardapio = obj.IdCardapio,
-                    Sabor = obj.Sabor,
-                    ValorUnitario = obj.ValorUnitario,
-                    Descricao = obj.Descricao,
-                    Tamanho = obj.Tamanho,
-                    Tipo = obj.Tipo
-                };
-
-
-                return View(viewModel);
-            }
-
-
-            if (id != obj.IdCardapio) //verifica se o Id é diferente
-            {
-                return RedirectToAction(nameof(Index));
-            }
 
             try
             {
