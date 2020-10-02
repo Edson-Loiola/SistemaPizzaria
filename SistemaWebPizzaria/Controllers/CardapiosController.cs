@@ -94,7 +94,7 @@ namespace SistemaWebPizzaria.Controllers
         //ação edit -metodo post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit( Cardapiopizza obj)
+        public async Task<IActionResult> Edit(Cardapiopizza obj)
         {
 
             try

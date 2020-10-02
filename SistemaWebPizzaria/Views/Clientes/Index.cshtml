@@ -1,70 +1,182 @@
 ﻿
-@model IEnumerable<SistemaWebPizzaria.Models.Funcionario>
 
-@{ViewData["Title"] = "Funcionarios Cadastradas";}
+@model SistemaWebPizzaria.Models.ViewModels.ObjetosViewModel
+@{
+    ViewData["Title"] = "Cadastro de Cliente";
+}
 
-<h2>@ViewData["Title"]</h2>
-<hr />
+<div class="container">
 
-<p>
-    <a asp-action="Create" class="btn btn-primary btn-lg">Novo Funcionário</a>
-</p>
+    <h2>@ViewData["Title"]</h2>
 
-<div class="table-bordered">
-    <table class="table table-striped table-hover" border="1" style="border-color:#9a9a9a">
-        <thead>
-            <tr class="bg-warning">
-                <th>
-                    <label class="control-label text-center">Nome do Funcionário</label>
-                </th>
-                <th>
-                    <label class="control-label">CPF:</label>
-                </th>
-                <th>
-                    <label class="control-label">Email:</label>
-                </th>
-                <th>
-                    <label class="control-label">Celular:</label>
-                </th>
-                <th>
-                    <label class="control-label">Salario:</label>
-                </th>
-                <th>
-                    <label class="control-label">Status:</label>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cpf)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Celular)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Salario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Ativo)
-                </td>
-                <td>
-                    <a asp-action="Edit" class="btn btn-default btn-sm" asp-route-id="@item.IdFuncionario">Editar</a>
-                    @if(item.Ativo == "S"){
-                        <a asp-action="Inativa" class="btn btn-default btn-sm" asp-route-id="@item.IdFuncionario">Inativar</a> @*quando for clicado, vai acionar o metodo delete no controlador*@
-                     }
 
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
+    <hr />
+
+
+    <br />
+    <div class="img-rounded row col-md-10" style="box-shadow: #f5de62 0px 1px 5px">
+        @*  esse div row ocupa a largura da rela  *@
+        <div class="col-md-12 ">
+            <br /><br />
+            @* md-4 ocupa um 1/4 da tela *@
+
+            <form asp-action="CreateCliente">
+
+                <div class="row">
+                    <div class="form-group col-md-8">
+
+                        <label class="control-label">Nome Cliente</label>
+                        <input asp-for="Cliente.Nome" class="form-control" />
+                        <span asp-validation-for="Cliente.Nome" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-3">
+
+                        <label class="control-label">Telefone</label>
+                        <input asp-for="Cliente.Telefone" class="form-control" />
+                        <span asp-validation-for="Cliente.Telefone" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        <label class="control-label">Cep</label>
+                        <input asp-for="Endereco.Cep" class="form-control" id="cep" onblur="pesquisacep(this.value)" />
+                        <span asp-validation-for="Endereco.Cep" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Rua</label>
+                        <input asp-for="Endereco.Rua" class="form-control" id="rua" />
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <label class="control-label">Número</label>
+                        <input asp-for="Endereco.Numero" class="form-control" />
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Compemento</label>
+                        <input asp-for="Endereco.Complemento" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label class="control-label">Bairro</label>
+                        <input asp-for="Endereco.Bairro" class="form-control" id="bairro" />
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Cidade</label>
+                        <input asp-for="Endereco.Cidade" class="form-control" id="cidade" />
+                    </div>
+
+
+                    <div class="form-group col-md-1">
+                        <label class="control-label">.</label>
+                        <input type="submit" value="Inserir" class="btn btn-primary" />
+                        <br /><br /><br /><br />
+                    </div>
+                </div>
+
+
+
+                
+
+            </form>
+
+        </div>
+        <div class="form-group col-md-1">
+            <br />
+            <a asp-action="Lista" class="btn btn-primary btn-lg">Lista de Cientes</a>
+
+
+        </div>
+    </div>
 </div>
+
+
+@*para halidtar validação por meio do JavaScript*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+<script type="text/javascript">
+
+    function limpa_formulário_cep() {
+      //Limpa valores do formulário de cep.
+      document.getElementById('rua').value = ("");
+      document.getElementById('bairro').value = ("");
+      document.getElementById('cidade').value = ("");
+    
+      // document.getElementById('ibge').value=("");
+    }
+
+    function meu_callback(conteudo) {
+      if (!("erro" in conteudo)) {
+        //Atualiza os campos com os valores.
+        document.getElementById('rua').value = (conteudo.logradouro);
+        document.getElementById('bairro').value = (conteudo.bairro);
+        document.getElementById('cidade').value = (conteudo.localidade);
+       
+        // document.getElementById('ibge').value=(conteudo.ibge);
+      } //end if.
+      else {
+        //CEP não Encontrado.
+        limpa_formulário_cep();
+        alert("CEP não encontrado.");
+      }
+    }
+
+    function pesquisacep(valor) {
+
+      //Nova variável "cep" somente com dígitos.
+      var cep = valor.replace(/\D/g, '');
+
+      //Verifica se campo cep possui valor informado.
+      if (cep != "") {
+
+        //Expressão regular para validar o CEP.
+        var validacep = /^[0-9]{8}$/;
+
+        //Valida o formato do CEP.
+        if (validacep.test(cep)) {
+
+          //Preenche os campos com "..." enquanto consulta webservice.
+          document.getElementById('rua').value = "buscando...";
+            document.getElementById('bairro').value = "buscando...";
+            document.getElementById('cidade').value = "buscando...";
+        
+          // document.getElementById('ibge').value="...";
+
+          //Cria um elemento javascript.
+          var script = document.createElement('script');
+
+          //Sincroniza com o callback.
+          script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+
+          //Insere script no documento e carrega o conteúdo.
+          document.body.appendChild(script);
+
+        } //end if.
+        else {
+          //cep é inválido.
+          limpa_formulário_cep();
+          alert("Formato de CEP inválido.");
+        }
+      } //end if.
+      else {
+        //cep sem valor, limpa formulário.
+        limpa_formulário_cep();
+      }
+    };
+
+</script>
+
+
+
+}
