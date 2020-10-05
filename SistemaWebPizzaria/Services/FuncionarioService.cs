@@ -26,13 +26,21 @@ namespace SistemaWebPizzaria.Services
             await _context.SaveChangesAsync(); //função para confirmar a gravação dos dados no banco, (aqui deve ter a versão async)
         }
 
+        //funcao retorna ultimo id inserido
+        public async Task<Funcionario> LastAsync()
+        {
+            return  await _context.Funcionario.LastAsync();
+         
+        }
+
 
 
         //função de fazer listagem das despesas
         public async Task<List<Funcionario>> FindAllAsync()
         {
-            return await _context.Funcionario.ToListAsync();
+            return await _context.Funcionario.Include(c => c.IdLoginNavigation).ToListAsync();
         }
+        
 
 
         //função remover despesa do banco pelo id
@@ -54,12 +62,12 @@ namespace SistemaWebPizzaria.Services
 
         public async Task<Funcionario> FindByIdAsync(int id)
         {
+      
             return await _context.Funcionario.FirstOrDefaultAsync(obj => obj.IdFuncionario == id);
 
             //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal (no caso o departamento)
         }
-
-
+      
 
 
 

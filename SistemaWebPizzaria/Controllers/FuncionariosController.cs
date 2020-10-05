@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SistemaWebPizzaria.Models;
+using SistemaWebPizzaria.Models.ViewModels;
 using SistemaWebPizzaria.Services;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,13 @@ namespace SistemaWebPizzaria.Controllers
     public class FuncionariosController : Controller
     {
         public readonly FuncionarioService _funcionarioService;
-        public FuncionariosController(FuncionarioService funcionarioService)
+        public readonly LoginService _loginService;
+        
+
+        public FuncionariosController(FuncionarioService funcionarioService,LoginService loginService)
         {
             _funcionarioService = funcionarioService;
+            _loginService = loginService;
         }
 
         //com essas ações o meu controlador chama as minha telas  CreatDespesa, Index e Edit dentro da minha view Despesas
@@ -35,6 +40,38 @@ namespace SistemaWebPizzaria.Controllers
         [ValidateAntiForgeryToken] //essa notação evita que a aplicação receba ataques CSRF (envio de dados malicioso na autenticação)
         public async Task<IActionResult> Create(Funcionario funcionario)
         {
+
+
+           
+
+            if (funcionario.Tipo == "Gerente" || funcionario.Tipo == "Atendente")
+            {
+                Login login = new Login();
+                var rand = new Random();
+
+                 login.Email = funcionario.Email;
+                 login.DataCriacao = DateTime.Now;
+
+                 if (funcionario.Tipo == "Gerente")
+                 {
+                     login.Perfil = "A";
+                 }
+                 else
+                 {
+                     login.Perfil = "U";
+                 }
+
+                 string senha = "";
+                 for (int ctr = 0; ctr <= 5; ctr++)
+                 {
+                     senha += rand.Next(0, 9).ToString();
+                 }
+                 login.Senha = senha;
+                login.SenhaPadrao = "S";
+                 await _loginService.InsertAsync(login);
+                funcionario.IdLogin = login.IdLogin;
+            }
+          
             await _funcionarioService.InsertAsync(funcionario);
             return RedirectToAction(nameof(Index)); //ao clicar em criar um nova Despesa, direciona para a propria tela
         }
@@ -57,12 +94,10 @@ namespace SistemaWebPizzaria.Controllers
         //ao clicar em edit ira abrir a tela com os campos carregados com os dados da despesa
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null) //validação se o id é nulo
-            {
-                return RedirectToAction(nameof(Index));
-            }
+      
 
             var obj = await _funcionarioService.FindByIdAsync(id.Value);
+            var objLog = await _loginService.FindByIdAsync(Convert.ToInt32(obj.IdLogin));
 
             if (obj == null) // valida se o obj no banco é nulo
             {
@@ -77,7 +112,10 @@ namespace SistemaWebPizzaria.Controllers
                 Email = obj.Email,
                 Celular = obj.Celular,
                 Ativo = obj.Ativo,
-                Salario = obj.Salario
+                Salario = obj.Salario,
+                Tipo = obj.Tipo,
+                IdLogin = obj.IdLogin,
+                IdLoginNavigation = objLog
             };
 
             return View(viewModel);
@@ -106,27 +144,7 @@ namespace SistemaWebPizzaria.Controllers
         public async Task<IActionResult> Edit(int id, Funcionario obj)
         {
 
-            //essa validação ocorrerá se o JavaScript do usuário estiver desabilitado, pois não fará as validações feitas no html e nas propriedades
-            if (!ModelState.IsValid)
-            {
-                var departments = await _funcionarioService.FindAllAsync(); //carrega os departamentos
-
-                var viewModel = new Funcionario
-                {
-                    IdFuncionario = obj.IdFuncionario,
-                    Nome = obj.Nome,
-                    Cpf = obj.Cpf,
-                    Email = obj.Email,
-                    Celular = obj.Celular,
-                    Ativo = obj.Ativo,
-                    Salario = obj.Salario
-                };
-
-
-                return View(viewModel);
-            }
-
-
+   
             if (id != obj.IdFuncionario) //verifica se o Id é diferente
             {
                 return RedirectToAction(nameof(Index));
@@ -134,6 +152,49 @@ namespace SistemaWebPizzaria.Controllers
 
             try
             {
+                if(obj.Tipo == "Gerente" || obj.Tipo == "Atendente")
+                {
+                    Login login = new Login();
+                    login.Email = obj.Email;
+                    login.DataCriacao = DateTime.Now;
+
+                    if (obj.Tipo == "Gerente")
+                    {
+                        login.Perfil = "A";
+                    }
+                    else
+                    {
+                        login.Perfil = "U";
+                    }
+
+                    if (obj.IdLogin == null)
+                    {
+                        var rand = new Random();
+                        string senha = "";
+                        for (int ctr = 0; ctr <= 5; ctr++)
+                        {
+                            senha += rand.Next(0, 9).ToString();
+                        }
+                        login.Senha = senha;
+                        login.SenhaPadrao = "S";
+                        await _loginService.InsertAsync(login);
+                        obj.IdLogin = login.IdLogin;
+                    }
+                    else
+                    {
+                        login.IdLogin = Convert.ToInt32(obj.IdLogin);
+                        login.Senha = obj.IdLoginNavigation.Senha;
+                        login.SenhaPadrao = obj.IdLoginNavigation.SenhaPadrao;
+                        await _loginService.UpdateAsync(login);
+                    }
+                   
+                  
+                }
+                else
+                {
+                    obj.IdLoginNavigation = null;
+                }
+
                 await _funcionarioService.UpdateAsync(obj);
                 return RedirectToAction(nameof(Index));
             }

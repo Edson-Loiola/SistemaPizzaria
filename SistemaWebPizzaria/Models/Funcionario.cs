@@ -7,7 +7,6 @@ namespace SistemaWebPizzaria.Models
     {
         public Funcionario()
         {
-            Login = new HashSet<Login>();
             Pedido = new HashSet<Pedido>();
         }
 
@@ -18,8 +17,10 @@ namespace SistemaWebPizzaria.Models
         public string Email { get; set; }
         public string Ativo { get; set; }
         public string Salario { get; set; }
+        public string Tipo { get; set; }
+        public int? IdLogin { get; set; }
 
-        public ICollection<Login> Login { get; set; }
+        public Login IdLoginNavigation { get; set; }
         public ICollection<Pedido> Pedido { get; set; }
     }
 }

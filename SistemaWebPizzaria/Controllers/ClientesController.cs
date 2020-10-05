@@ -28,13 +28,13 @@ namespace SistemaWebPizzaria.Controllers
 
         public async Task<IActionResult> Lista()
         {
-            
+
             var list = await _clienteService.FindAllEndeAsync();
 
             return View(list);
         }
 
-      
+
 
         //inserir dados no banco (essa função é passada no form da minha view Creatcliente
         [HttpPost] //esse método é um post pois está criando/enviando um novo objeto
@@ -63,7 +63,7 @@ namespace SistemaWebPizzaria.Controllers
                 endereco.ClienteIdCliente = cliente.IdCliente;
                 await _clienteService.InsertEnderecoAsync(endereco);
 
-            }  
+            }
             return RedirectToAction(nameof(Lista));
         }
 
@@ -76,7 +76,7 @@ namespace SistemaWebPizzaria.Controllers
             {
 
                 var obj = await _clienteService.FindByIdAsync(id.Value);
-                
+
 
                 await _clienteService.RemoveAsync(obj.IdCliente); //chamando o metodo remove 
                 return RedirectToAction(nameof(Lista));
@@ -109,7 +109,7 @@ namespace SistemaWebPizzaria.Controllers
                 return RedirectToAction(nameof(Lista));
             }
 
-            Endereco viewModel = new Endereco {  Cep = objend.Cep, ClienteIdClienteNavigation = objend.ClienteIdClienteNavigation };
+            Endereco viewModel = new Endereco { Cep = objend.Cep, ClienteIdClienteNavigation = objend.ClienteIdClienteNavigation };
 
             return View(viewModel);
         }
@@ -130,8 +130,8 @@ namespace SistemaWebPizzaria.Controllers
                 {
                     ClienteIdCliente = obj.ClienteIdClienteNavigation.IdCliente,
                     Cep = obj.Cep,
-                    ClienteIdClienteNavigation = obj.ClienteIdClienteNavigation                
-                   
+                    ClienteIdClienteNavigation = obj.ClienteIdClienteNavigation
+
                 };
 
 
@@ -161,5 +161,5 @@ namespace SistemaWebPizzaria.Controllers
 
 
     }
-    
+
 }
