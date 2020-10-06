@@ -143,3 +143,4 @@ C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcore
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Produtos\Index.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Produtos\Produto.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Relatorios\Saida.cshtml.g.cs

@@ -69,7 +69,7 @@ namespace SistemaWebPizzaria.Controllers
 
 
 
-        //deletar cliente. ainda não deleta o endereço
+        //deletar cliente.
         public async Task<IActionResult> DeleteCliente(int? id)
         {
             try
@@ -86,6 +86,25 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
+        //metodo de pesquisar cliente pelo telefone
+        [HttpPost]
+        public async Task<IActionResult> BuscarCliente(int? id, string tel, Endereco endereco)
+        {
+            var list = await _clienteService.FindByIdAsync(id.Value);
+
+            if (id == endereco.ClienteIdCliente && tel == endereco.ClienteIdClienteNavigation.Telefone)
+            {
+                return View(list);
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }        
+                      
+
+        }
+
+
 
 
 
@@ -97,25 +116,25 @@ namespace SistemaWebPizzaria.Controllers
                 return RedirectToAction(nameof(Lista));
             }
 
-            var obj = await _clienteService.FindByIdAsync(id.Value);
-            var objEnd = await _clienteService.FindByEndIdAsync(id.Value);
+            var objCliente = await _clienteService.FindByIdAsync(id.Value);
+            var objEndereco = await _clienteService.FindByEndIdAsync(id.Value);
 
 
-            if (obj == null) // valida se o obj no banco é nulo
+            if (objCliente == null) // valida se o obj no banco é nulo
             {
                 return RedirectToAction(nameof(Lista));
             }
 
             Endereco viewModel = new Endereco {
-                IdEndereco = objEnd.IdEndereco,
-                ClienteIdCliente = objEnd.ClienteIdCliente,
-                Cep = objEnd.Cep, 
-                Rua = objEnd.Rua, 
-                Numero = objEnd.Numero, 
-                Bairro = objEnd.Bairro,
-                Cidade = objEnd.Cidade,
-                Complemento = objEnd.Complemento,
-                ClienteIdClienteNavigation = objEnd.ClienteIdClienteNavigation // sem essa referencia não carrega os dados do cliente na tela de edit vindo do banco
+                IdEndereco = objEndereco.IdEndereco,
+                ClienteIdCliente = objEndereco.ClienteIdCliente,
+                Cep = objEndereco.Cep, 
+                Rua = objEndereco.Rua, 
+                Numero = objEndereco.Numero, 
+                Bairro = objEndereco.Bairro,
+                Cidade = objEndereco.Cidade,
+                Complemento = objEndereco.Complemento,
+                ClienteIdClienteNavigation = objEndereco.ClienteIdClienteNavigation // sem essa referencia não carrega os dados do cliente na tela de edit vindo do banco
             
             };
 
@@ -126,7 +145,7 @@ namespace SistemaWebPizzaria.Controllers
         //ação de salvar a edição do cliente (update)
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditCliente(int id, Endereco objEnd)
+        public async Task<IActionResult> EditCliente(int id, Endereco objEndereco)
         {
 
 
@@ -139,15 +158,15 @@ namespace SistemaWebPizzaria.Controllers
 
                 var viewModel = new Endereco
                 {
-                    IdEndereco = objEnd.IdEndereco,
-                    Cep = objEnd.Cep,
-                    Rua = objEnd.Rua,
-                    Numero = objEnd.Numero,
-                    Bairro = objEnd.Bairro,
-                    Cidade = objEnd.Cidade,
-                    Complemento = objEnd.Complemento,
-                    ClienteIdCliente = objEnd.ClienteIdCliente,
-                    ClienteIdClienteNavigation = objEnd.ClienteIdClienteNavigation
+                    IdEndereco = objEndereco.IdEndereco,
+                    Cep = objEndereco.Cep,
+                    Rua = objEndereco.Rua,
+                    Numero = objEndereco.Numero,
+                    Bairro = objEndereco.Bairro,
+                    Cidade = objEndereco.Cidade,
+                    Complemento = objEndereco.Complemento,
+                    ClienteIdCliente = objEndereco.ClienteIdCliente,
+                    ClienteIdClienteNavigation = objEndereco.ClienteIdClienteNavigation
                 };
 
                 return View(viewModel);
@@ -156,14 +175,14 @@ namespace SistemaWebPizzaria.Controllers
 
 
 
-            if (id != objEnd.ClienteIdCliente) //verifica se o Id é diferente
+            if (id != objEndereco.ClienteIdCliente) //verifica se o Id é diferente
             {
                 return RedirectToAction(nameof(Index));
             }
 
             try
             {
-                await _clienteService.UpdateAsync(objEnd, objEnd.ClienteIdClienteNavigation);
+                await _clienteService.UpdateAsync(objEndereco, objEndereco.ClienteIdClienteNavigation);
                 return RedirectToAction(nameof(Lista));
             }
             catch (KeyNotFoundException)
