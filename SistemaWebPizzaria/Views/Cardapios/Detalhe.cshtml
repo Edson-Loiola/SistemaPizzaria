@@ -1,0 +1,69 @@
+﻿@model SistemaWebPizzaria.Models.Cardapiopizza
+
+@{ViewData["Title"] = "Detalhes";}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <hr />
+    <div class="col-md-12">
+        <form asp-action="Edit" method="post">
+            <div class="row" style="margin-bottom:15px;">
+                <div class="col-md-1">
+                    <label for="firstName">ID</label>
+                    <input asp-for="IdCardapio" class="form-control" placeholder="" readonly>
+                </div>
+                <div class="col-md-2">
+                    <label for="">Tipo</label>
+                    <input asp-for="Tipo" class="form-control">
+                </div>
+                <div class="col-md-5">
+                    <label for="firstName">Sabor</label>
+                    <input asp-for="Sabor" class="form-control" placeholder="">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="">Valor</label>
+                    <input asp-for="ValorUnitario" class="form-control" placeholder="R$">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="">Tamanho</label>
+                    <input asp-for="Tamanho" class="form-control" placeholder="R$">
+                </div>
+            </div>
+
+
+            <!-- <div class="col-md-2">
+                <label for="">Tipo</label><br />
+                @*<select asp-for="UnidadeMedida" class="custom-select">
+                    <option value="UN">Unidade</option>
+                    <option value="KL">Kilograma</option>
+                    <option value="GM">grama</option>
+                    <option value="LT">Litro</option>
+                    <option value="ML">Mililitro</option>
+                </select>*@
+            </div>
+               -->
+
+
+            <div class="row" style="margin-bottom:15px;">
+                <div class="col-md-12">
+                    <label for="firstName">Campo para descrição</label>
+                    <textarea asp-for="Descricao" class="form-control " placeholder="Máximo 500 caracteres" aria-label="With textarea"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <input class="btn btn-success btn-lg" type="submit" value="Editar" />
+                    <a asp-action="Index" class="btn btn-danger btn-lg">Voltar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*para halidtar validação por meio do JavaScript*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

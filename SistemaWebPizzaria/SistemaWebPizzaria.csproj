@@ -8,7 +8,6 @@
   <ItemGroup>
     <Compile Remove="Controllers\LoginController.cs" />
     <Compile Remove="Models\ViewModels\DespesaViewModel.cs" />
-    <Compile Remove="Services\LoginService.cs" />
     <Compile Remove="Views\Home\Menu.cshtml.cs" />
     <Compile Remove="Views\Home\Plano.cshtml.cs" />
     <Compile Remove="Views\Produtos\detalhes_produto.cshtml.cs" />
@@ -36,10 +35,21 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Views\Cardapios\" />
     <Folder Include="Views\Funcionarios\" />
     <Folder Include="Views\StatusPedido\" />
     <Folder Include="Views\Pedidos\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Cardapios\Detalhe.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Cardapios\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Cardapios\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

@@ -1,46 +1,36 @@
-﻿using SistemaWebPizzaria.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SistemaWebPizzaria.Models;
+using SistemaWebPizzaria.Services.Exception;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SistemaWebPizzaria.Services.Exception;
-using Microsoft.EntityFrameworkCore;
 
 namespace SistemaWebPizzaria.Services
 {
-    public class FuncionarioService
+    public class CardapioService
     {
-
         private readonly BancoPizzariaContext _context;
 
-        public FuncionarioService(BancoPizzariaContext context)
+        public CardapioService(BancoPizzariaContext context)
         {
             _context = context;
         }
 
 
         //função de inserir no banco
-        public async Task InsertAsync(Funcionario obj)
+        public async Task InsertAsync(Cardapiopizza obj)
         {
             _context.Add(obj); //função para pegar os dados do formulario e salvar no banco
             await _context.SaveChangesAsync(); //função para confirmar a gravação dos dados no banco, (aqui deve ter a versão async)
         }
 
-        //funcao retorna ultimo id inserido
-        public async Task<Funcionario> LastAsync()
-        {
-            return  await _context.Funcionario.LastAsync();
-         
-        }
-
-
 
         //função de fazer listagem das despesas
-        public async Task<List<Funcionario>> FindAllAsync()
+        public async Task<List<Cardapiopizza>> FindAllAsync()
         {
-            return await _context.Funcionario.Include(c => c.IdLoginNavigation).ToListAsync();
+            return await _context.Cardapiopizza.ToListAsync();
         }
-        
 
 
         //função remover despesa do banco pelo id
@@ -48,8 +38,8 @@ namespace SistemaWebPizzaria.Services
         {
             try
             {
-                var obj = await _context.Despesa.FindAsync(id);
-                _context.Despesa.Remove(obj);
+                var obj = await _context.Cardapiopizza.FindAsync(id);
+                _context.Cardapiopizza.Remove(obj);
                 await _context.SaveChangesAsync(); //esse metodo confirma a operação no
 
             }
@@ -60,26 +50,26 @@ namespace SistemaWebPizzaria.Services
         }
 
 
-        public async Task<Funcionario> FindByIdAsync(int id)
+        public async Task<Cardapiopizza> FindByIdAsync(int id)
         {
-      
-            return await _context.Funcionario.FirstOrDefaultAsync(obj => obj.IdFuncionario == id);
+            return await _context.Cardapiopizza.FirstOrDefaultAsync(obj => obj.IdCardapio == id);
 
-            //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal (no caso o departamento)
+            //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal
         }
-      
+
+
 
 
 
         //função de atualizar uma despesa
-        public async Task UpdateAsync(Funcionario obj)
+        public async Task UpdateAsync(Cardapiopizza obj)
         {
             //pra atualizar um objeto o id desse objeto já precisa existir no banco
-            bool hasAny = await _context.Funcionario.AnyAsync(x => x.IdFuncionario == obj.IdFuncionario);
+            bool hasAny = await _context.Cardapiopizza.AnyAsync(x => x.IdCardapio == obj.IdCardapio);
 
             if (!hasAny)  // verifica se expressão passada não existe no banco
             {
-                throw new NotFiniteNumberException("Funcionário não existe!");
+                throw new NotFiniteNumberException("Pizza não existe!");
             }
 
             try
@@ -98,3 +88,4 @@ namespace SistemaWebPizzaria.Services
 
     }
 }
+

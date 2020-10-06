@@ -1,0 +1,48 @@
+﻿@model SistemaWebPizzaria.Models.Cardapiopizza
+
+@{ViewData["Title"] = "Cadastrar";}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <hr />
+    <div class="col-md-12">
+        <form method="post" asp-action="Create">
+            <div class="row" style="margin-bottom:15px;">
+                <div class="col-md-2">
+                    <label for="Tipo">Tipo</label>
+                    <input asp-for="Tipo" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="Sabor">Sabor</label>
+                    <input asp-for="Sabor" class="form-control" placeholder="">
+                </div>
+
+
+                <div class="col-md-2">
+                    <label for="Tamanho">Tamanho</label>
+                    <input asp-for="Tamanho" class="form-control">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="Valor">Valor </label>
+                    <input asp-for="ValorUnitario" class="form-control" placeholder="R$">
+                </div>
+
+
+            </div>
+            <div class="row" style="margin-bottom:15px;">
+                <div class="col-md-12">
+                    <label for="Descricao">Campo para descrição</label>
+                    <textarea asp-for="Descricao" class="form-control " placeholder="Máximo 500 caracteres" aria-label="With textarea"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <input class="btn btn-success btn-lg" type="submit" value="Cadastrar" />
+                    <a href="../Cardapios/Index" class="btn btn-danger btn-lg">Voltar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

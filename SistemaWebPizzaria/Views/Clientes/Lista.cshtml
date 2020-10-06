@@ -82,7 +82,7 @@
                     @Html.DisplayFor(modelItem => item.Bairro)
                 </td>
 
-                <td>
+                    <td>
 
                     <a asp-action="EditCliente" class="btn btn-default btn-sm" asp-route-id="@item.ClienteIdCliente">Editar</a> @*chama tela de ditar com os campos preenchidos*@
                     <a asp-action="DeleteCliente" class="btn btn-default btn-sm" asp-route-id="@item.ClienteIdCliente">Deletar</a> @*quando for clicado, vai acionar o metodo delete no controlador*@
