@@ -1,0 +1,84 @@
+﻿@model SistemaWebPizzaria.Models.Pedido
+
+@{ViewData["Title"] = "Cadatrar Pedido";}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <hr />
+    <div class="col-md-12">
+        <form method="post" asp-action="Create">
+            <div class="row" style="margin-bottom:15px;">
+
+                <div class="col-md-2">
+                    <label for="">Entrega</label>
+                    <input asp-for="TipoEntrega" class="form-control">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="">Forma de pagamento</label>
+                    <input asp-for="FormaPagamento" class="form-control">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="">Funcionário</label>
+                    <input asp-for="IdFuncioarioNavigation.Nome" class="form-control">
+                </div>
+
+                <div class="col-md-2">
+                    <label for="">Cliente</label>
+                    <input asp-for="IdClienteNavigation.Nome" class="form-control">
+                </div>
+                
+                <div class="col-md-2">
+                    <label for="">Total</label>
+                    <input asp-for="TotalPedido" class="form-control">
+                </div>
+                
+                <div class="col-md-2">
+                    <label for="">Estado</label>
+                    <input asp-for="Status" class="form-control">
+                </div>
+            </div>
+            @*<div class="row" style="margin-bottom:15px;">
+                <div class="col-md-3">
+                    <label for="">Nº NotaFiscal</label>
+                    <input asp-for="NotaFiscal" class="form-control">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="">Marca</label>
+                    <input asp-for="Marca" type="text" class="form-control">
+                </div>
+
+                <div class="col-md-4">
+                    <label for="firstName">Nome do Fornecedor</label>
+                    <input asp-for="NomeFornecedor" class="form-control">
+                </div>
+
+                <div class="col-md-4">
+                    <label for="firstName">Nome do Fornecedor</label>
+                    <input asp-for="Categoria" class="form-control">
+                </div>
+
+                <div class="col-md-4">
+                    <label for="firstName">Nome do Fornecedor</label>
+                    <input asp-for="Vende" class="form-control">
+                </div>
+
+            </div>*@
+            @*<div class="row" style="margin-bottom:15px;">
+                <div class="col-md-12">
+                    <label for="firstName">Campo para descrição</label>
+                    <textarea asp-for="Descricao" class="form-control " placeholder="Máximo 500 caracteres" aria-label="With textarea"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <input class="btn btn-success btn-lg" type="submit" value="Cadastrar novo produto" />
+                    <a href="../Pedido/Index" class="btn btn-danger btn-lg">Voltar</a>
+                </div>
+            </div>*@
+        </form>
+    </div>
+</div>

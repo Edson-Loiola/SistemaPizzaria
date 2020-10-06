@@ -12,6 +12,7 @@
     <Compile Remove="Views\Home\Menu.cshtml.cs" />
     <Compile Remove="Views\Home\Plano.cshtml.cs" />
     <Compile Remove="Views\Produtos\detalhes_produto.cshtml.cs" />
+    <Compile Remove="Views\Produtos\detalhes_pedido.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
