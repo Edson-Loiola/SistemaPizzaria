@@ -200,3 +200,4 @@ C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\n
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.dll
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.pdb
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csproj.CopyComplete
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Home\AlterarSenha.g.cshtml.cs

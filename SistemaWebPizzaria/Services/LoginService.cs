@@ -33,7 +33,7 @@ namespace SistemaWebPizzaria.Services
         }
 
 
-        //função remover despesa do banco pelo id
+    //função remover despesa do banco pelo id
         public async Task RemoveAsync(int id)
         {
             try
@@ -57,6 +57,11 @@ namespace SistemaWebPizzaria.Services
             //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal
         }
 
+
+        public async Task<Login> LoginAsync(string email, string senha)
+        {
+            return await _context.Login.FirstOrDefaultAsync(obj => obj.Email == email && obj.Senha == senha);
+        }
 
 
 
