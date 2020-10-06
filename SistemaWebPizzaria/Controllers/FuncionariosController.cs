@@ -67,9 +67,9 @@ namespace SistemaWebPizzaria.Controllers
                      senha += rand.Next(0, 9).ToString();
                  }
                  login.Senha = senha;
-                login.SenhaPadrao = "S";
+                 login.SenhaPadrao = "S";
                  await _loginService.InsertAsync(login);
-                funcionario.IdLogin = login.IdLogin;
+                 funcionario.IdLogin = login.IdLogin;
             }
           
             await _funcionarioService.InsertAsync(funcionario);
