@@ -4,6 +4,7 @@ using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
 
 namespace SistemaWebPizzaria.Controllers
 {
@@ -80,10 +81,16 @@ namespace SistemaWebPizzaria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Login obj)
+        public async Task<IActionResult> TrocaSenha(string padrao, string senha)
         {
-                await _loginService.UpdateAsync(obj);
-                return RedirectToAction(nameof(Index));
+                var id = HttpContext.Session.GetString("IdUsu");
+                var obj = await _loginService.FindByIdAsync(Convert.ToInt32(id));
+
+                obj.Senha = senha;
+                obj.SenhaPadrao = "N";
+
+                await _loginService.TrocaSenhaAsync(obj);
+                return RedirectToAction(nameof(MenuSistema));
             
         }
 
