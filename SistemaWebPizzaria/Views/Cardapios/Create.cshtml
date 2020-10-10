@@ -21,7 +21,11 @@
 
                 <div class="col-md-2">
                     <label for="Tamanho">Tamanho</label>
-                    <input asp-for="Tamanho" class="form-control">
+                    <select class="form-control" asp-for="Tamanho" name="Tipo">
+                        <option value="Grande">Grande</option>
+                        <option value="Pequena">Pequena</option>
+                        <option value="Media">Média</option>
+                    </select>
                 </div>
 
                 <div class="col-md-2">

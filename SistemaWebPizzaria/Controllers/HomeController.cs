@@ -22,7 +22,7 @@ namespace SistemaWebPizzaria.Controllers
         {
             return View();
         }
-        public IActionResult AlterarSenha()
+        public IActionResult AlterarSenha(string e)
         {
             return View();
         }
@@ -51,6 +51,7 @@ namespace SistemaWebPizzaria.Controllers
                 {
 
                     HttpContext.Session.SetString("Usuario", email);
+                    HttpContext.Session.SetString("Perfil", "A");
                     return RedirectToAction("MenuSistema", "Home");
                 }
                 else
@@ -62,6 +63,7 @@ namespace SistemaWebPizzaria.Controllers
             {
                 HttpContext.Session.SetString("Usuario", email);
                 HttpContext.Session.SetString("IdUsu", obj.IdLogin.ToString());
+                HttpContext.Session.SetString("Perfil", obj.Perfil.ToString());
 
                 if (obj.SenhaPadrao == "S")
                 {
