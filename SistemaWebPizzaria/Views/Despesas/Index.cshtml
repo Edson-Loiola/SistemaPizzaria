@@ -20,7 +20,7 @@
                     <label class="control-label text-center">Nome da Despesa</label>
                 </th>
                 <th>
-                    <label class="control-label">Valor (R$)</label>
+                    <label class="control-label">Valor (R$)@Model.Sum(obj => obj.Valor).ToString()</label>
                 </th>
                 <th>
                     <label class="control-label">Descrição</label>
