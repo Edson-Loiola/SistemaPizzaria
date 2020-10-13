@@ -14,6 +14,7 @@ namespace SistemaWebPizzaria.Models
             : base(options)
         {
         }
+
         public virtual DbSet<Cardapiopizza> Cardapiopizza { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Despesa> Despesa { get; set; }
@@ -25,7 +26,7 @@ namespace SistemaWebPizzaria.Models
         public virtual DbSet<Pedido> Pedido { get; set; }
         public virtual DbSet<Produtoestoque> Produtoestoque { get; set; }
 
-   
+      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -148,9 +149,7 @@ namespace SistemaWebPizzaria.Models
                     .IsRequired()
                     .HasColumnType("varchar(45)");
 
-                entity.Property(e => e.Salario)
-                    .IsRequired()
-                    .HasColumnType("varchar(12)");
+                entity.Property(e => e.Salario).HasColumnType("decimal(10,2)");
 
                 entity.Property(e => e.Tipo).HasColumnType("varchar(45)");
 
