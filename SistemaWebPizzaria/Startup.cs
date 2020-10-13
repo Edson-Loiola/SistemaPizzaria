@@ -1,12 +1,15 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
+using System.Collections.Generic;
+using System.Globalization;
 
 namespace SistemaWebPizzaria
 {
@@ -48,7 +51,7 @@ namespace SistemaWebPizzaria
             services.AddScoped<PedidoService>();
             services.AddScoped<LoginService>();
             services.AddScoped<CardapioService>();
-
+            services.AddScoped<RelatorioService>();
 
 
 
@@ -63,6 +66,37 @@ namespace SistemaWebPizzaria
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
+            //var enBR = new CultureInfo("pt-BR");
+            //var localizationOptions = new RequestLocalizationOptions
+            //{
+            //    DefaultRequestCulture = new RequestCulture(enBR),
+            //    SupportedCultures = new List<CultureInfo> { enBR },
+            //    SupportedUICultures = new List<CultureInfo> { enBR }
+            //};
+
+            //app.UseRequestLocalization(localizationOptions);
+
+            //var supportedCultures = new[] { new CultureInfo("pt-BR") };
+            //app.UseRequestLocalization(new RequestLocalizationOptions
+            //{
+            //    DefaultRequestCulture = new RequestCulture(culture: "pt-BR", uiCulture: "pt-BR"),
+            //    SupportedCultures = supportedCultures,
+            //    SupportedUICultures = supportedCultures
+            //});
+
+            var enUS = new CultureInfo("en-US");
+            var localizationOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(enUS),
+                SupportedCultures = new List<CultureInfo> { enUS },
+                SupportedUICultures = new List<CultureInfo> { enUS }
+            };
+
+            app.UseRequestLocalization(localizationOptions);
+
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

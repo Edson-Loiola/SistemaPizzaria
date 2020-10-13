@@ -1,43 +1,30 @@
 ﻿
-
-
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
+            <div class="col-sm-2 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#">Entradas <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Saídas</a></li>
-                    <li><a href="#">Ganhos</a></li>                  
+                    <li class="active"><a asp-action="../Relatorios/Entrada">Entradas <span class="sr-only">(current)</span></a></li>
+                    <li><a asp-action="../Relatorios/Saida">Saídas</a></li>
+                    <li><a asp-action="../Relatorios/Ganho">Ganhos</a></li>
+                    <li><a asp-action="../Home/MenuSistema">Home</a></li>
                 </ul>
-              
-            </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h1 class="page-header">Dashboard</h1>
 
-                <div class="row placeholders">
-                    <div class="col-xs-6 col-sm-3 placeholder">
-                        <svg class="img-circle" width="150" height="150" focusable="false" role="img"><rect width="100%" height="100%" fill="#00BFFF" /></svg>
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    </div>
-                    <div class="col-xs-6 col-sm-3 placeholder">
-                        <svg class="img-circle" width="150" height="150" focusable="false" role="img"><rect width="100%" height="100%" fill="#90EE90" /></svg>
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    </div>
-                    <div class="col-xs-6 col-sm-3 placeholder">
-                        <svg class="img-circle" width="150" height="150" focusable="false" role="img"><rect width="100%" height="100%" fill="#FFDB58" /></svg>
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
-                    </div>
-                    <div class="col-xs-6 col-sm-3 placeholder">
-                        <svg class="img-circle" width="150" height="150" focusable="false" role="img"><rect width="100%" height="100%" fill="#5555" /></svg>
-                        <h4>Label</h4>
-                        <span class="text-muted">Something else</span>
+            </div>
+            <div class="col-sm-6 col-sm-offset-3 col-md-7 col-md-offset-2 main">
+                <h1 class="">Total de Entradas</h1>
+                <div class="row text-center">
+                    <div class="img-rounded row col-md-12" style="box-shadow: #808080 0px 1px 5px; background-color: #ffe65e">
+                        <br />
+                        @*<h1 class="" style="color:#424242; font-family:Impact">R$ 0,00  </h1><br /><br />*@
+                        <h1 class="" style="color:#424242; font-family:Impact">R$   @Model.ToString()</h1><br /><br />
+
                     </div>
                 </div>
+            </div>
+        
+    
 
-                <h2 class="sub-header">Section title</h2>
+            @*<h2 class="sub-header">Section title</h2>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
@@ -132,29 +119,7 @@
                                 <td>eget</td>
                                 <td>nulla</td>
                                 <td>Class</td>
-                                <td>aptent</td>
-                            </tr>
-                            <tr>
-                                <td>1,012</td>
-                                <td>taciti</td>
-                                <td>sociosqu</td>
-                                <td>ad</td>
-                                <td>litora</td>
-                            </tr>
-                            <tr>
-                                <td>1,013</td>
-                                <td>torquent</td>
-                                <td>per</td>
-                                <td>conubia</td>
-                                <td>nostra</td>
-                            </tr>
-                            <tr>
-                                <td>1,014</td>
-                                <td>per</td>
-                                <td>inceptos</td>
-                                <td>himenaeos</td>
-                                <td>Curabitur</td>
-                            </tr>
+                                <td>aptent</td>                      
                             <tr>
                                 <td>1,015</td>
                                 <td>sodales</td>
@@ -164,7 +129,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-            </div>
+                </div>*@
         </div>
     </div>
+</div>

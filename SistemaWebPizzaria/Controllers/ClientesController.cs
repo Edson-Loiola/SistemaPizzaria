@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SistemaWebPizzaria.Controllers
 {
@@ -12,8 +11,6 @@ namespace SistemaWebPizzaria.Controllers
     {
 
         public readonly ClienteService _clienteService;
-
-
 
         public ClientesController(ClienteService clienteService)
         {
@@ -44,15 +41,17 @@ namespace SistemaWebPizzaria.Controllers
         {
             await _clienteService.InsertClienteAsync(cliente);
 
-            if (endereco.Cep != null && endereco.Rua != null)
+            if (endereco.Cep != null && endereco.Rua != null && endereco.Numero != null && endereco.Bairro != null)
             {
-                endereco.ClienteIdCliente = cliente.IdCliente;
+
+                endereco.ClienteIdCliente = cliente.IdCliente;             
                 await _clienteService.InsertEnderecoAsync(endereco);
 
-            }
+            }         
             else
             {
                 //campos em branco salva o mesmo id na tabela de endereço do cliente
+                
                 endereco.Cep = "-";
                 endereco.Bairro = "-";
                 endereco.Cidade = "-";
@@ -101,8 +100,8 @@ namespace SistemaWebPizzaria.Controllers
             else
             {
                 return RedirectToAction(nameof(Index));
-            }        
-                      
+            }
+
 
         }
 
@@ -127,17 +126,18 @@ namespace SistemaWebPizzaria.Controllers
                 return RedirectToAction(nameof(Lista));
             }
 
-            Endereco viewModel = new Endereco {
+            Endereco viewModel = new Endereco
+            {
                 IdEndereco = objEndereco.IdEndereco,
                 ClienteIdCliente = objEndereco.ClienteIdCliente,
-                Cep = objEndereco.Cep, 
-                Rua = objEndereco.Rua, 
-                Numero = objEndereco.Numero, 
+                Cep = objEndereco.Cep,
+                Rua = objEndereco.Rua,
+                Numero = objEndereco.Numero,
                 Bairro = objEndereco.Bairro,
                 Cidade = objEndereco.Cidade,
                 Complemento = objEndereco.Complemento,
                 ClienteIdClienteNavigation = objEndereco.ClienteIdClienteNavigation // sem essa referencia não carrega os dados do cliente na tela de edit vindo do banco
-            
+
             };
 
             return View(viewModel);
@@ -151,7 +151,7 @@ namespace SistemaWebPizzaria.Controllers
         {
 
 
-        //----------------------------------------------------------------
+            //----------------------------------------------------------------
             //essa validação ocorrerá se o JavaScript do usuário estiver desabilitado, pois não fará as validações feitas no html e nas propriedades
             if (!ModelState.IsValid)
             {
@@ -173,7 +173,7 @@ namespace SistemaWebPizzaria.Controllers
 
                 return View(viewModel);
             }
-        //----------------------------------------------------------------
+            //----------------------------------------------------------------
 
 
 

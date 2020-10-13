@@ -8,8 +8,9 @@ namespace SistemaWebPizzaria.Models.ViewModels
     public class RelatoriosViewModel
     {
         public Despesa Despesas { get; set; }
-     //   public Funcionario Funcionarios { get; set; }
+        public Funcionario Funcionarios { get; set; }        
         public Produtoestoque Produtoestoque { get; set; }
 
+   
     }
 }

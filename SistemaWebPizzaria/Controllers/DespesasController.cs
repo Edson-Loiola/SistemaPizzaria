@@ -20,7 +20,6 @@ namespace SistemaWebPizzaria.Controllers
 
 
 
-
         //com essas ações o meu controlador chama as minha telas  CreatDespesa, Index e Edit dentro da minha view Despesas
         public IActionResult CreateDespesa()
         {
@@ -41,6 +40,7 @@ namespace SistemaWebPizzaria.Controllers
         [ValidateAntiForgeryToken] //essa notação evita que a aplicação receba ataques CSRF (envio de dados malicioso na autenticação)
         public async Task<IActionResult> Create(Despesa despesa)
         {
+            
             await _despesaService.InsertAsync(despesa);
             return RedirectToAction(nameof(Index)); //ao clicar em criar um nova Despesa, direciona para a propria tela
         }

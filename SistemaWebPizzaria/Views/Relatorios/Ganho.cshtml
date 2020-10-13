@@ -1,0 +1,32 @@
+﻿
+
+@model Double
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a asp-action="../Relatorios/Entrada">Entradas <span class="sr-only">(current)</span></a></li>
+                <li><a asp-action="../Relatorios/Saida">Saídas</a></li>
+                <li><a asp-action="../Relatorios/Ganho">Ganhos</a></li>
+                <li> <a asp-action="../Home/MenuSistema">Home</a></li>
+            </ul>
+
+        </div>
+        <div class="col-sm-6 col-sm-offset-3 col-md-7 col-md-offset-2 main">
+            <h1 class="">Meu Lucro</h1>
+            <div class="row text-center">
+                <div class="img-rounded row col-md-12" style="box-shadow: #808080 0px 1px 5px; background-color: #90EE90">
+                    <br />
+                    @*<h1 class="" style="color:#424242; font-family:Impact">R$  0,00</h1><br /><br />*@
+                    <h1 class="" style="color:#424242; font-family:Impact">R$   @Model.ToString()</h1><br /><br />
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
