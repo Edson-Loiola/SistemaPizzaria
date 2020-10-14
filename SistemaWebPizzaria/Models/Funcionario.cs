@@ -19,6 +19,8 @@ namespace SistemaWebPizzaria.Models
         public decimal? Salario { get; set; }
         public string Tipo { get; set; }
         public int? IdLogin { get; set; }
+        public DateTime? DataCadastro { get; set; }
+        public DateTime? DataInativacao { get; set; }
 
         public Login IdLoginNavigation { get; set; }
         public ICollection<Pedido> Pedido { get; set; }

@@ -26,7 +26,7 @@ namespace SistemaWebPizzaria.Models
         public virtual DbSet<Pedido> Pedido { get; set; }
         public virtual DbSet<Produtoestoque> Produtoestoque { get; set; }
 
-      
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -140,6 +140,10 @@ namespace SistemaWebPizzaria.Models
                 entity.Property(e => e.Cpf)
                     .IsRequired()
                     .HasColumnType("varchar(14)");
+
+                entity.Property(e => e.DataCadastro).HasColumnType("date");
+
+                entity.Property(e => e.DataInativacao).HasColumnType("date");
 
                 entity.Property(e => e.Email).HasColumnType("varchar(60)");
 
