@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services.Exception;
@@ -6,10 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SistemaWebPizzaria.Services
+namespace SistemaWebPizzaria.Services { 
+
+    public class PedidoService : ControllerBase
 {
-    public class PedidoService
-    {
         private readonly BancoPizzariaContext _context;
 
         public PedidoService(BancoPizzariaContext context)
@@ -21,15 +22,29 @@ namespace SistemaWebPizzaria.Services
         //função de inserir no banco
         public async Task InsertAsync(Pedido obj)
         {
-            _context.Add(obj); //função para pegar os dados do formulario e salvar no banco
-            await _context.SaveChangesAsync(); //função para confirmar a gravação dos dados no banco, (aqui deve ter a versão async)
+            obj.IdFuncioarioNavigation = _context.Funcionario.Find(obj.IdFuncioarioNavigation.IdFuncionario);
+            obj.IdClienteNavigation = _context.Cliente.Find(obj.IdClienteNavigation.IdCliente);
+            _context.Add(obj);
+            await _context.SaveChangesAsync();
         }
 
 
-        //função de fazer listagem das 
+        //função de fazer listagem dos pedidos
         public async Task<List<Pedido>> FindAllAsync()
         {
-            return await _context.Pedido.ToListAsync();
+            return await _context.Pedido.Include(f => f.IdFuncioarioNavigation).Include(c => c.IdClienteNavigation).ToListAsync();
+        }
+
+        //função de fazer listagem dos funcionarios
+        public async Task<List<Funcionario>> ListaFuncionarios()
+        {
+            return await _context.Funcionario.ToListAsync();
+        }
+
+        //função de fazer listagem dos Clientes
+        public async Task<List<Cliente>> ListaClientes()
+        {
+            return await _context.Cliente.ToListAsync();
         }
 
 
@@ -77,7 +92,6 @@ namespace SistemaWebPizzaria.Services
             }
 
         }
-
 
 
     }

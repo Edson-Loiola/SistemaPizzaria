@@ -36,13 +36,13 @@
 
                 <div class="col-md-2">
                     <label for="">Tipo</label><br />
-                    @*<select asp-for="UnidadeMedida" class="custom-select">
+                    <select asp-for="UnidadeMedida" class="custom-select">
                         <option value="UN">Unidade</option>
                         <option value="KL">Kilograma</option>
                         <option value="GM">grama</option>
                         <option value="LT">Litro</option>
                         <option value="ML">Mililitro</option>
-                    </select>*@
+                    </select>
                 </div>
 
                 <div class="col-md-2">
@@ -57,16 +57,6 @@
 
             </div>
             <div class="row" style="margin-bottom:15px;">
-                <div class="col-md-3">
-                    <label for="">Nº NotaFiscal</label>
-                    <input asp-for="NotaFiscal" class="form-control">
-                </div>
-                @*51080701212344000127550010000000981364117781*@
-
-                @*<div class="col-md-2">
-            <label for="">Tributos</label>
-            <input asp-for="ValorTributos" class="form-control" id="" placeholder="R$">
-        </div>*@
 
                 <div class="col-md-3">
                     <label for="">Marca</label>
@@ -83,9 +73,13 @@
                     <input asp-for="Categoria" class="form-control">
                 </div>
 
-                <div class="col-md-4">
-                    <label for="firstName">Nome do Fornecedor</label>
-                    <input asp-for="Vende" class="form-control">
+                <div class="col-md-3">
+                    @*<input id="produtoVenda" asp-for="Vende" type="checkbox" value="" style="margin-top:30px; margin-right:5px;">*@
+                    <label>Produto para venda?</label>
+                    <select asp-for="Vende" class="custom-select">
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
                 </div>
 
             </div>

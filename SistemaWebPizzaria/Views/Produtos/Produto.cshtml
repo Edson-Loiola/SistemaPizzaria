@@ -32,13 +32,13 @@
 
                 <div class="col-md-2">
                     <label for="">Tipo</label><br />
-                    @*<select asp-for="UnidadeMedida" class="custom-select">
+                    <select asp-for="UnidadeMedida" class="custom-select">
                         <option value="UN">Unidade</option>
                         <option value="KL">Kilograma</option>
                         <option value="GM">grama</option>
                         <option value="LT">Litro</option>
                         <option value="ML">Mililitro</option>
-                    </select>*@
+                    </select>
                 </div>
 
                 <div class="col-md-2">
@@ -47,47 +47,45 @@
                 </div>
 
                 <div class="col-md-2">
-                    <label for="">Data de Validade</label>
+                    <label>Data de Validade</label>
                     <input asp-for="Validade" type="date" class="form-control">
                 </div>
 
             </div>
             <div class="row" style="margin-bottom:15px;">
-                <div class="col-md-3">
-                    <label for="">Nº NotaFiscal</label>
-                    <input asp-for="NotaFiscal" class="form-control">
-                </div>
-                @*51080701212344000127550010000000981364117781*@
-
-                @*<div class="col-md-2">
-            <label for="">Tributos</label>
-            <input asp-for="ValorTributos" class="form-control" id="" placeholder="R$">
-        </div>*@
 
                 <div class="col-md-3">
-                    <label for="">Marca</label>
+                    <label>Marca</label>
                     <input asp-for="Marca" type="text" class="form-control">
                 </div>
 
                 <div class="col-md-4">
-                    <label for="firstName">Nome do Fornecedor</label>
+                    <label >Nome do Fornecedor</label>
                     <input asp-for="NomeFornecedor" class="form-control">
                 </div>
 
-                <div class="col-md-4">
-                    <label for="firstName">Nome do Fornecedor</label>
-                    <input asp-for="Categoria" class="form-control">
+                <div class="col-md-2">
+                    <label >Categoria</label>
+                    <select asp-for="Categoria" class="custom-select">
+                        <option value="bebida">Bebida</option>
+                        <option value="limpeza">Limpeza</option>
+                        <option value="Produto Pizza">Produto Pizza</option>
+                    </select>
                 </div>
 
-                <div class="col-md-4">
-                    <label for="firstName">Nome do Fornecedor</label>
-                    <input asp-for="Vende" class="form-control">
+                <div class="col-md-3">
+                    @*<input id="produtoVenda" asp-for="Vende" type="checkbox" value="true" style="margin-top:30px; margin-right:5px;">*@
+                    <label>Produto para venda?</label>
+                    <select asp-for="Vende" class="custom-select">
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
                 </div>
 
             </div>
             <div class="row" style="margin-bottom:15px;">
                 <div class="col-md-12">
-                    <label for="firstName">Campo para descrição</label>
+                    <label >Campo para descrição</label>
                     <textarea asp-for="Descricao" class="form-control " placeholder="Máximo 500 caracteres" aria-label="With textarea"></textarea>
                 </div>
             </div>

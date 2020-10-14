@@ -51,14 +51,12 @@ namespace SistemaWebPizzaria
 
 
 
-
-
-
             //cinfigurando sessions
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
         }
+
 
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

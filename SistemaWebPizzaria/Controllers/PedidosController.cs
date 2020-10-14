@@ -21,15 +21,29 @@ namespace SistemaWebPizzaria.Controllers
             var list = await _pedidoService.FindAllAsync();
             return View(list);
         }
-        public IActionResult Pedido()
+
+        public async Task<IActionResult> Pedido()
         {
             return View();
         }
+
+        public async Task<List<Funcionario>> ListaFuncionarios()
+        {
+            return await _pedidoService.ListaFuncionarios();
+        }
+
+        //ListaClientes
+        public async Task<List<Cliente>> ListaClientes()
+        {
+            return await _pedidoService.ListaClientes();
+        }
+
         public async Task<IActionResult> Detalhe(int id)
         {
             var result = await _pedidoService.FindByIdAsync(id);
             return View(result);
         }
+
 
         //inserir dados no banco (essa função é passada no form da minha view CreatProduto
         [HttpPost] //esse método é um post pois está criando/enviando um novo objeto

@@ -5,7 +5,9 @@ using SistemaWebPizzaria.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace SistemaWebPizzaria.Controllers
 {
@@ -32,8 +34,12 @@ namespace SistemaWebPizzaria.Controllers
             return View(list);
         }
 
-
-
+        public async Task<List<Funcionario>> listaFuncionarios()
+        {
+            var list = await _funcionarioService.FindAllAsync();
+            return list;
+        }
+        
 
         //inserir dados no banco (essa função é passada no form da minha view CreatDespesa
         [HttpPost] //esse método é um post pois está criando/enviando um novo objeto

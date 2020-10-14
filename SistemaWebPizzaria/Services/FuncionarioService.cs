@@ -18,6 +18,8 @@ namespace SistemaWebPizzaria.Services
             _context = context;
         }
 
+        public FuncionarioService(){
+        }
 
         //função de inserir no banco
         public async Task InsertAsync(Funcionario obj)
@@ -33,14 +35,16 @@ namespace SistemaWebPizzaria.Services
          
         }
 
-
-
-        //função de fazer listagem das despesas
+        //função de fazer listagem das funcionarios
         public async Task<List<Funcionario>> FindAllAsync()
         {
             return await _context.Funcionario.Include(c => c.IdLoginNavigation).ToListAsync();
         }
-        
+
+        public async Task<List<Funcionario>> listaFuncionarios()
+        {
+            return await _context.Funcionario.ToListAsync();
+        }
 
 
         //função remover despesa do banco pelo id
@@ -62,9 +66,7 @@ namespace SistemaWebPizzaria.Services
 
         public async Task<Funcionario> FindByIdAsync(int id)
         {
-      
             return await _context.Funcionario.FirstOrDefaultAsync(obj => obj.IdFuncionario == id);
-
             //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal (no caso o departamento)
         }
       

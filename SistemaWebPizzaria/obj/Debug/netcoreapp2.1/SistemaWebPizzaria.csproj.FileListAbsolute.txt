@@ -125,7 +125,6 @@ C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\
 C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.pdb
 C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.genruntimeconfig.cache
 C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csproj.CopyComplete
-C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csprojAssemblyReference.cache
 C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Produtos\Detalhe.cshtml.g.cs
 C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Clientes\EditCliente.cshtml.g.cs
 C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Clientes\Index.cshtml.g.cs
@@ -144,3 +143,12 @@ C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcore
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Produtos\Produto.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Relatorios\Saida.cshtml.g.cs
+C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Cardapios\Create.cshtml.g.cs
+C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Cardapios\Detalhe.cshtml.g.cs
+C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Cardapios\Index.cshtml.g.cs
+C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Pedidos\Detalhe.cshtml.g.cs
+C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Pedidos\Index.cshtml.g.cs
+C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Pedidos\Pedido.cshtml.g.cs
+C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Relatorios\Saida.cshtml.g.cs
+C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csprojAssemblyReference.cache
