@@ -1,9 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SistemaWebPizzaria.Models;
-using SistemaWebPizzaria.Models.ViewModels;
+﻿using SistemaWebPizzaria.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,7 +20,7 @@ namespace SistemaWebPizzaria.Services
 
             var listdesp = from obj in _context.Despesa select obj;
             var listprod = from obj in _context.Produtoestoque select obj;
-         //   var listfunc = from obj in _context.Funcionario select obj;
+            //   var listfunc = from obj in _context.Funcionario select obj;
 
 
             //var listdesp = await _context.Despesa.ToListAsync();
@@ -34,24 +30,24 @@ namespace SistemaWebPizzaria.Services
             if (minDate.HasValue)
             {
                 listdesp = listdesp.Where(d => d.DataDespesa >= minDate.Value);
-                listprod = listprod.Where(p => p.DataCompra >= minDate.Value );
-             //   listfunc = listfunc.Where(f => f.Ativo == "S");
+                listprod = listprod.Where(p => p.DataCompra >= minDate.Value);
+                //   listfunc = listfunc.Where(f => f.Ativo == "S");
 
             }
             if (maxDate.HasValue)
             {
                 listdesp = listdesp.Where(d => d.DataDespesa <= maxDate.Value);
                 listprod = listprod.Where(p => p.DataCompra <= maxDate.Value);
-             //   listfunc = listfunc.Where(f => f.Ativo == "S");
+                //   listfunc = listfunc.Where(f => f.Ativo == "S");
 
             }
 
 
             var somadesp = listdesp.Sum(x => x.Valor);
-           // var somafunc = listfunc.Sum(x => x.Salario);
+            // var somafunc = listfunc.Sum(x => x.Salario);
             var somaprod = listprod.Sum(x => x.PrecoCompra);
 
-            var  somatotal = (somadesp + /*somafunc*/  somaprod);
+            var somatotal = (somadesp + /*somafunc*/  somaprod);
 
             return somatotal;
         }

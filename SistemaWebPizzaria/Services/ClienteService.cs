@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SistemaWebPizzaria.Models;
-using SistemaWebPizzaria.Models.ViewModels;
 using SistemaWebPizzaria.Services.Exception;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SistemaWebPizzaria.Services
@@ -87,7 +85,7 @@ namespace SistemaWebPizzaria.Services
         }
 
 
-        
+
         //listar endereço
         public async Task<Endereco> FindByEndIdAsync(int id)
         {
@@ -111,7 +109,7 @@ namespace SistemaWebPizzaria.Services
         {
             //pra atualizar um objeto o id desse objeto já precisa existir no banco
             bool hasAny = await _context.Endereco.AnyAsync(x => x.IdEndereco == obj.IdEndereco);
-           
+
             if (!hasAny)  // verifica se expressão passada não existe no banco
             {
                 throw new NotFiniteNumberException("Endereço não existe!");

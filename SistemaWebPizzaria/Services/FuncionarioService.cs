@@ -1,10 +1,9 @@
-﻿using SistemaWebPizzaria.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SistemaWebPizzaria.Models;
+using SistemaWebPizzaria.Services.Exception;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using SistemaWebPizzaria.Services.Exception;
-using Microsoft.EntityFrameworkCore;
 
 namespace SistemaWebPizzaria.Services
 {
@@ -29,8 +28,8 @@ namespace SistemaWebPizzaria.Services
         //funcao retorna ultimo id inserido
         public async Task<Funcionario> LastAsync()
         {
-            return  await _context.Funcionario.LastAsync();
-         
+            return await _context.Funcionario.LastAsync();
+
         }
 
 
@@ -40,7 +39,7 @@ namespace SistemaWebPizzaria.Services
         {
             return await _context.Funcionario.Include(c => c.IdLoginNavigation).ToListAsync();
         }
-        
+
 
 
         //função remover despesa do banco pelo id
@@ -62,12 +61,12 @@ namespace SistemaWebPizzaria.Services
 
         public async Task<Funcionario> FindByIdAsync(int id)
         {
-      
+
             return await _context.Funcionario.FirstOrDefaultAsync(obj => obj.IdFuncionario == id);
 
             //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal (no caso o departamento)
         }
-      
+
 
 
 
