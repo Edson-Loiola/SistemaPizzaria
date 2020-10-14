@@ -77,7 +77,9 @@ namespace SistemaWebPizzaria.Controllers
                  await _loginService.InsertAsync(login);
                  funcionario.IdLogin = login.IdLogin;
             }
-          
+            
+            funcionario.DataCadastro = DateTime.Now;
+
             await _funcionarioService.InsertAsync(funcionario);
             return RedirectToAction(nameof(Index)); //ao clicar em criar um nova Despesa, direciona para a propria tela
         }
@@ -119,6 +121,8 @@ namespace SistemaWebPizzaria.Controllers
                 Celular = obj.Celular,
                 Ativo = obj.Ativo,
                 Salario = obj.Salario,
+                DataCadastro = obj.DataCadastro,
+                DataInativacao = obj.DataInativacao,
                 Tipo = obj.Tipo,
                 IdLogin = obj.IdLogin,
                 IdLoginNavigation = objLog
@@ -134,7 +138,8 @@ namespace SistemaWebPizzaria.Controllers
             {
                
                 obj.Ativo = "N";
-              
+                obj.DataInativacao = DateTime.Now;
+
                 await _funcionarioService.UpdateAsync(obj);
                 return RedirectToAction(nameof(Index));
             }

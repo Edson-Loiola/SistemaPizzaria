@@ -68,6 +68,8 @@
             <input asp-for="Ativo" type="hidden" class="form-control" />
             <input asp-for="IdLogin" type="hidden" class="form-control" />
             <input asp-for="IdLoginNavigation.Senha" type="hidden" class="form-control" />
+            <input asp-for="DataCadastro" type="hidden" class="form-control" />
+            <input asp-for="DataInativacao" type="hidden" class="form-control" />
             <input asp-for="IdLoginNavigation.SenhaPadrao" type="hidden" class="form-control" />
             <!--<span asp-validation-for="Ativo" class="text-danger"></span>
     </div>-->
@@ -82,7 +84,3 @@
 </div>
 
 
-@*para halidtar validação por meio do JavaScript*@
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

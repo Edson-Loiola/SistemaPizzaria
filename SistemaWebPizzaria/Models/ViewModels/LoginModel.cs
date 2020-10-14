@@ -18,6 +18,7 @@ namespace SistemaWebPizzaria.Models.ViewModels
         public string Senha { get; set; }
 
 
+
        
         public LoginModel()
         {
@@ -30,7 +31,7 @@ namespace SistemaWebPizzaria.Models.ViewModels
             Id = id;
             Email = email;
             Senha = senha;
-      
+        
         }
 
 

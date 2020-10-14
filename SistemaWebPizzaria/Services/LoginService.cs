@@ -33,7 +33,7 @@ namespace SistemaWebPizzaria.Services
         }
 
 
-        //função remover despesa do banco pelo id
+    //função remover despesa do banco pelo id
         public async Task RemoveAsync(int id)
         {
             try
@@ -57,6 +57,11 @@ namespace SistemaWebPizzaria.Services
             //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal
         }
 
+
+        public async Task<Login> LoginAsync(string email, string senha)
+        {
+            return await _context.Login.FirstOrDefaultAsync(obj => obj.Email == email && obj.Senha == senha);
+        }
 
 
 
@@ -83,6 +88,29 @@ namespace SistemaWebPizzaria.Services
             }
 
         }
+
+        public async Task TrocaSenhaAsync(Login obj)
+        {
+            //pra atualizar um objeto o id desse objeto já precisa existir no banco
+            bool hasAny = await _context.Login.AnyAsync(x => x.IdLogin == obj.IdLogin);
+
+            if (!hasAny)  // verifica se expressão passada não existe no banco
+            {
+                throw new NotFiniteNumberException("Login não existe!");
+            }
+
+            try
+            {
+                _context.Update(obj); //atualiza o objeto
+                await _context.SaveChangesAsync(); //confirmar alteração
+            }
+            catch (DllNotFoundException e)
+            {
+                throw new NotFoundException(e.Message);
+            }
+
+        }
+
 
 
 

@@ -12787,19 +12787,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\wellison\\.nuget\\packages\\": {}
+    "C:\\Users\\izaias\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\wellison\\Documents\\GitHub\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
+      "projectUniqueName": "C:\\Users\\izaias\\Documents\\GitHub\\SistemaPizzaria2\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
       "projectName": "SistemaWebPizzaria",
-      "projectPath": "C:\\Users\\wellison\\Documents\\GitHub\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
-      "packagesPath": "C:\\Users\\wellison\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wellison\\Documents\\GitHub\\SistemaPizzaria\\SistemaWebPizzaria\\obj\\",
+      "projectPath": "C:\\Users\\izaias\\Documents\\GitHub\\SistemaPizzaria2\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
+      "packagesPath": "C:\\Users\\izaias\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\izaias\\Documents\\GitHub\\SistemaPizzaria2\\SistemaWebPizzaria\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\wellison\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\izaias\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12835,7 +12839,6 @@
             "version": "[2.1.2, )"
           },
           "Microsoft.NETCore.App": {
-            "suppressParent": "All",
             "target": "Package",
             "version": "[2.1.0, )",
             "autoReferenced": true
@@ -12858,16 +12861,10 @@
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   },
@@ -12876,7 +12873,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "O pacote 'MySql.Data.Entity 6.10.9' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v2.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "message": "O pacote 'MySql.Data.Entity 6.10.9' foi restaurado usando '.NETFramework,Version=v4.6.1' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v2.1'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
       "libraryId": "MySql.Data.Entity",
       "targetGraphs": [
         ".NETCoreApp,Version=v2.1"
