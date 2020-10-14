@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SistemaWebPizzaria.Models;
+﻿using SistemaWebPizzaria.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,30 +15,83 @@ namespace SistemaWebPizzaria.Services
         }
 
 
-        //função que recebe duas datas e retornar as vendas nesse intervalo (busca agrupada)
-        //public async Task<List<IGrouping<Funcionario, Produtoestoque>>> FindByDateGroupingpAsync(DateTime? minDate, DateTime? maxDate)
-        //{
-        //    //cria um objeto do tipo SalesRecord e guarda na variavel um objeto do tipo IQueryable que permite fazer outras consultas
-        //    var result = from obj in _context.Pedido select obj;
+        public async Task<double> SomaTotal(DateTime? minDate, DateTime? maxDate)
+        {
+
+            var listdesp = from obj in _context.Despesa select obj;
+            var listprod = from obj in _context.Produtoestoque select obj;
+            //   var listfunc = from obj in _context.Funcionario select obj;
 
 
-        //    if (minDate.HasValue) //se minDate tem valor, fazer a consulta abaixo
-        //    {
-        //        result = result.Where(x => x.DataHora >= minDate.Value);
-        //    }
-        //    else
-        //    {
-        //        result = result.Where(x => x.DataHora <= maxDate.Value);
-        //    }
+            //var listdesp = await _context.Despesa.ToListAsync();
+            //var listfunc = await _context.Funcionario.ToListAsync();
+            //var listprod = await _context.Produtoestoque.ToListAsync();
 
-        //    return await result
-        //        .Include(x => x.IdFuncioarioNavigation.Salario) //isso faz o join das tabelas  Seller e SalesRecord
-        //      //  .Include(x => x.DataHora) // isso faz o join das tabelas  Sales e Departamento
-        //     //   .OrderByDescending(x => x.Date) //oredena por data
-        //    //    .GroupBy(x => x.Seller.Department) //ao fazer o fazer esse agrupamento tem qie mudar o tipo da lista para IGroup
-        //        .ToListAsync();
-        //}
+            if (minDate.HasValue)
+            {
+                listdesp = listdesp.Where(d => d.DataDespesa >= minDate.Value);
+                listprod = listprod.Where(p => p.DataCompra >= minDate.Value);
+                //   listfunc = listfunc.Where(f => f.Ativo == "S");
 
+            }
+            if (maxDate.HasValue)
+            {
+                listdesp = listdesp.Where(d => d.DataDespesa <= maxDate.Value);
+                listprod = listprod.Where(p => p.DataCompra <= maxDate.Value);
+                //   listfunc = listfunc.Where(f => f.Ativo == "S");
+
+            }
+
+
+            var somadesp = listdesp.Sum(x => x.Valor);
+            // var somafunc = listfunc.Sum(x => x.Salario);
+            var somaprod = listprod.Sum(x => x.PrecoCompra);
+
+            var somatotal = (somadesp + /*somafunc*/  somaprod);
+
+            return somatotal;
+        }
+
+
+        public double ValorEntrada(DateTime? minDate, DateTime? maxDate)
+        {
+
+            var entrada = 10000.00;
+            //if (minDate.HasValue)
+            //{
+            //    desp = desp.Where(x => x.DataDespesa >= minDate.Value);
+            //}
+            //if (maxDate.HasValue)
+            //{
+            //    desp = desp.Where(x => x.DataDespesa <= maxDate.Value);
+            //}
+
+
+            return entrada;
+
+
+        }
+
+
+        public async Task<double> ValorTotalLucro(DateTime? minDate, DateTime? maxDate)
+        {
+
+            var saida = await SomaTotal(minDate, maxDate);
+            var entrada = ValorEntrada(minDate, maxDate);
+            //if (minDate.HasValue)
+            //{
+            //    desp = desp.Where(x => x.DataDespesa >= minDate.Value);
+            //}
+            //if (maxDate.HasValue)
+            //{
+            //    desp = desp.Where(x => x.DataDespesa <= maxDate.Value);
+            //}
+
+
+
+            var lucro = (entrada - saida);
+
+            return lucro;
+        }
     }
 }
-
