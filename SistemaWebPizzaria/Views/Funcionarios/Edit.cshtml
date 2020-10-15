@@ -10,77 +10,84 @@
 <h2>@ViewData["Title"]</h2>
 
 <hr />
-<div class="row">
-    @*  esse div row ocupa a largura da rela  *@
-    <div class="col-md-4">
-        @* md-4 ocupa um 1/4 da tela *@
-        <form asp-action="Edit">
-            @*chama ação Edit metodo post*@
+<div class="container">
+    <br />
+    <div class="img-rounded row col-md-12" style="box-shadow: #808080 0px 1px 5px">
+        @*  esse div row ocupa a largura da rela  *@
+        <div class="col-md-12">
+            @* md-4 ocupa um 1/4 da tela *@
+            <form asp-action="Edit">
+                @*chama ação Edit metodo post*@
+                <br />
+                <br />
+                <input type="hidden" asp-for="IdFuncionario" /> @*campo oculto passando o id do vendedor*@
 
-            <input type="hidden" asp-for="IdFuncionario" /> @*campo oculto passando o id do vendedor*@
-
-
-            <div class="form-group">
-
-                @*  o compilador consegue entender que o "Name" é um atributo do objeto Seller *@
-                <label asp-for="Nome" class="control-label"></label>
-                <input asp-for="Nome" class="form-control" />
-
-                @*mostra a validacção pendente agora abaixo do campo, (Posso usar assim ou em forma de lista como inlcuido no começo do form *@
-                <!--<span asp-validation-for="NomeDespesa" class="text-danger"></span>-->
-
-            </div>
-
-            <div class="form-group">
-                @*  o compilador consegue entender que o "Email" é um atributo do objeto Seller *@
-                <label asp-for="Cpf" class="control-label"></label>
-                <input asp-for="Cpf" class="form-control" />
-                <!--  <span asp-validation-for="Cpf" class="text-danger"></span>-->
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <!--<span asp-validation-for="Email" class="text-danger"></span>-->
-
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Celular" class="control-label"></label>
-                <input asp-for="Celular" class="form-control" />
-                <!-- <span asp-validation-for="Celular" class="text-danger"></span>-->
-            </div>
-            <div class="form-group">
-                <label asp-for="Salario" class="control-label"></label>
-                <input asp-for="Salario" class="form-control" />
-                <span asp-validation-for="Salario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Tipo</label>
-                <select class="form-control" asp-for="Tipo" name="Tipo">
-                    <option value="Gerente">Gerente</option>
-                    <option value="Atendente">Atendente</option>
-                    <option value="Outros">Outros</option>
-                </select>
-            </div>
-            <!-- <div class="form-group">
-    <label asp-for="Ativo" class="control-label"></label>-->
-            <input asp-for="Ativo" type="hidden" class="form-control" />
-            <input asp-for="IdLogin" type="hidden" class="form-control" />
-            <input asp-for="IdLoginNavigation.Senha" type="hidden" class="form-control" />
-            <input asp-for="DataCadastro" type="hidden" class="form-control" />
-            <input asp-for="DataInativacao" type="hidden" class="form-control" />
-            <input asp-for="IdLoginNavigation.SenhaPadrao" type="hidden" class="form-control" />
-            <!--<span asp-validation-for="Ativo" class="text-danger"></span>
-    </div>-->
+                <input asp-for="Ativo" type="hidden" class="form-control" />
+                <input asp-for="IdLogin" type="hidden" class="form-control" />
+                <input asp-for="IdLoginNavigation.Senha" type="hidden" class="form-control" />
+                <input asp-for="DataCadastro" type="hidden" class="form-control" />
+                <input asp-for="DataInativacao" type="hidden" class="form-control" />
+                <input asp-for="IdLoginNavigation.SenhaPadrao" type="hidden" class="form-control" />
 
 
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
-            </div>
 
-        </form>
+                <div class="form-group col-md-3">
+
+                    @*  o compilador consegue entender que o "Name" é um atributo do objeto Seller *@
+                    <label asp-for="Nome" class="control-label"></label>
+                    <input asp-for="Nome" class="form-control" />
+
+                    @*mostra a validacção pendente agora abaixo do campo, (Posso usar assim ou em forma de lista como inlcuido no começo do form *@
+                    <!--<span asp-validation-for="NomeDespesa" class="text-danger"></span>-->
+
+                </div>
+
+                <div class="form-group col-md-3">
+                    @*  o compilador consegue entender que o "Email" é um atributo do objeto Seller *@
+                    <label asp-for="Cpf" class="control-label"></label>
+                    <input asp-for="Cpf" class="form-control" />
+                    <!--  <span asp-validation-for="Cpf" class="text-danger"></span>-->
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label asp-for="Celular" class="control-label"></label>
+                    <input asp-for="Celular" class="form-control" />
+                    <!-- <span asp-validation-for="Celular" class="text-danger"></span>-->
+                </div>
+
+                <div class="form-group col-md-5">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <!--<span asp-validation-for="Email" class="text-danger"></span>-->
+
+                </div>
+
+
+                <div class="form-group col-md-3">
+                    <label asp-for="Salario" class="control-label"></label>
+                    <input asp-for="Salario" class="form-control" />
+                    <span asp-validation-for="Salario" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label class="control-label">Tipo</label>
+                    <select class="form-control" asp-for="Tipo" name="Tipo">
+                        <option value="Gerente">Gerente</option>
+                        <option value="Atendente">Atendente</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+
+
+
+                <div class="form-group col-md-3">
+                    <br />
+                    <input type="submit" value="Salvar" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-primary">Voltar</a>
+                    <br /><br /><br /><br />
+                </div>
+
+            </form>
+        </div>
     </div>
 </div>
-
 
