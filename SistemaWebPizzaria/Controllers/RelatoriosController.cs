@@ -52,7 +52,7 @@ namespace SistemaWebPizzaria.Controllers
 
             if (!minDate.HasValue)
             {
-                minDate = new DateTime(DateTime.Now.Year, 1, 1);
+                minDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             }
             if (!maxDate.HasValue)
             {
@@ -64,34 +64,33 @@ namespace SistemaWebPizzaria.Controllers
 
             var somaTotal = await _relatoioService.SomaTotal(minDate, maxDate);
 
-
             return View(somaTotal);
         }
 
 
 
 
-        public async Task<IActionResult> Ganho(DateTime? minDate, DateTime? maxDate)
-        {
 
-            if (!minDate.HasValue)
-            {
-                minDate = new DateTime(DateTime.Now.Year, 1, 1);
-            }
-            if (!maxDate.HasValue)
-            {
-                maxDate = DateTime.Now;
-            }
-            ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
-            ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
+        //public async Task<IActionResult> Ganho(DateTime? minDate, DateTime? maxDate)
+        //{
 
-
-            var lucro = await _relatoioService.ValorTotalLucro(minDate, maxDate);
+        //    if (!minDate.HasValue)
+        //    {
+        //        minDate = new DateTime(DateTime.Now.Year, 1, 1);
+        //    }
+        //    if (!maxDate.HasValue)
+        //    {
+        //        maxDate = DateTime.Now;
+        //    }
+        //    ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
+        //    ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
 
 
-            return View(lucro);
-        }
+        //    // var lucro = await _relatoioService.ValorTotalLucro(minDate, maxDate);
 
+
+        //    return View(lucro);
+      //  }
 
 
 

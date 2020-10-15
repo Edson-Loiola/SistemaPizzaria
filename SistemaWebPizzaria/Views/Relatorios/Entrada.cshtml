@@ -1,60 +1,70 @@
-﻿         
-            @model Double
+﻿
+@model Double
 
 
-            <div class="container-fluid">
-                <div class="row col-md-12">
+@{
+    ViewData["Title"] = "Total de Entradas";
+}
 
-                    <div class="col-sm-6 col-md-offset-4 col-md-7">
-                        <br /><br />
-                        <form class="form-horizontal" asp-action="Entrada">
-                            <fieldset>
-                                <div class="form-group col-md-4">
-                                    <label for="minDate">Data Início</label>
-                                    <input type="date" name="minDate" class="form-control" />
-                                </div>
-                                <div class="form-group col-md-4 col-md-offset-1">
-                                    <label for="maxDate" class="col-md-offset-1">Data Fim</label>
-                                    <input type="date" name="maxDate" class="form-control col-md-offset-1" />
-                                </div>
-                                <div class="form-group col-md-4 col-md-offset-1">
-                                    <br />
-                                    <button type="submit" class="btn btn-primary col-md-offset-3">Submit</button>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
+<div class="container-fluid">
 
-                    <div class="col-sm-2 col-md-2 sidebar">
-                        <ul class="nav nav-sidebar">
-                            <li class="active"><a asp-action="../Relatorios/Entrada">Entradas <span class="sr-only">(current)</span></a></li>
-                            <li><a asp-action="../Relatorios/Saida">Saídas</a></li>
-                            <li><a asp-action="../Relatorios/Ganho">Ganhos</a></li>
-                            <li> <a asp-action="../Home/MenuSistema">Home</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6 col-sm-offset-3 col-md-7 col-md-offset-2 main">
-                        <h1 class="">Total de Entradas</h1>
-                        <div class="row text-center">
-                            <div class="img-rounded row col-md-12" style="box-shadow: #808080 0px 1px 5px; background-color: #ffe65e">
+    <h2 class="col-lg-offset-4">@ViewData["Title"]</h2>
+    <hr />
+
+        <div class="row col-md-12">
+
+            <div class="col-sm-6 col-md-offset-4 col-md-7">
+                <br /><br />
+                <form class="form-horizontal" asp-action="">
+                    <fieldset>
+                        <div class="col-md-12">
+                            <div class="col-md-4">
+                                <label>Data Início</label>
+                                <input type="date" name="minDate" class="form-control" />
+                            </div>
+                            <div class=" col-md-4">
+                                <label>Data Fim</label>
+                                <input type="date" name="maxDate" class="form-control " />
+                            </div>
+                            <div class="col-md-4">
                                 <br />
-                                @*<h1 class="" style="color:#424242; font-family:Impact">R$ 0,00  </h1><br /><br />*@
-                                <h1 class="" style="color:#424242; font-family:Impact">R$   @Model.ToString()</h1><br /><br />
-
+                                <button type="submit" class="btn btn-primary ">Submit</button>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
+                </form>
+            </div>
 
+            <div class="col-sm-2 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a asp-action="../Relatorios/Entrada">Entradas <span class="sr-only">(current)</span></a></li>
+                    <li><a asp-action="../Relatorios/Saida">Saídas</a></li>
+                    <li><a asp-action="../Relatorios/Ganho">Ganhos</a></li>
+                    <li> <a asp-action="../Home/MenuSistema">Home</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-6 col-sm-offset-3 col-md-7 col-md-offset-2 main">
+                <br />
+                <div class="row text-center">
+                    <div class="img-rounded row col-md-12" style="box-shadow: #808080 0px 1px 5px; background-color: #ffe65e">
+                        <br />
+                        @*<h1 class="" style="color:#424242; font-family:Impact">R$ 0,00  </h1><br /><br />*@
+                        <h1 class="" style="color:#424242; font-family:Impact">R$   @Model.ToString("F2")</h1><br /><br />
+
+                    </div>
                 </div>
             </div>
 
+        </div>
+    </div>
 
 
 
 
 
 
-            @*<h2 class="sub-header">Section title</h2>
+
+    @*<h2 class="sub-header">Section title</h2>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -160,6 +170,6 @@
                 </tbody>
             </table>
         </div>*@
-        </div>
+</div>
     </div>
 </div>

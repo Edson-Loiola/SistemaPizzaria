@@ -16,7 +16,7 @@ namespace SistemaWebPizzaria.Models
         public string Celular { get; set; }
         public string Email { get; set; }
         public string Ativo { get; set; }
-        public decimal? Salario { get; set; }
+        public double Salario { get; set; }
         public string Tipo { get; set; }
         public int? IdLogin { get; set; }
         public DateTime? DataCadastro { get; set; }
