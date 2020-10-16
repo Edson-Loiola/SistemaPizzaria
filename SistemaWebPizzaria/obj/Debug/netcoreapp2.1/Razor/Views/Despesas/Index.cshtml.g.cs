@@ -87,7 +87,7 @@ Write(ViewData["Title"]);
             WriteLiteral("</h2>\r\n<hr />\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(165, 77, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6360ac30205a488d961e0741d4911ac1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "054a29937e0e48fbb7bb43be11a2dd82", async() => {
                 BeginContext(226, 12, true);
                 WriteLiteral("Nova Despesa");
                 EndContext();
@@ -110,7 +110,7 @@ Write(ViewData["Title"]);
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(248, 75, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57f3f49f28634cc08a009a3c0c10336b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d8bb0b1db12747d2a7c5570a48011e31", async() => {
                 BeginContext(315, 4, true);
                 WriteLiteral("Home");
                 EndContext();
@@ -207,7 +207,7 @@ Write(ViewData["Title"]);
             WriteLiteral("\r\n                </td>\r\n\r\n                <td>\r\n                    ");
             EndContext();
             BeginContext(1547, 127, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "690399d797ab4ce8bff2f0de46263b10", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd00496d89db4d38aac2177a237c3668", async() => {
                 BeginContext(1630, 40, true);
                 WriteLiteral("<span class=\"material-icons\">edit</span>");
                 EndContext();
@@ -281,7 +281,7 @@ WriteAttributeValue("", 2006, item.IdDespesa, 2006, 15, false);
                             ");
             EndContext();
             BeginContext(2706, 95, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "49479b246c6f4a84a72dcc8016d7eb72", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "51154de87a6447b4b3398385182c2310", async() => {
                 BeginContext(2790, 7, true);
                 WriteLiteral("Deletar");
                 EndContext();
