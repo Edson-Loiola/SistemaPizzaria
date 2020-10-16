@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaWebPizzaria.Models
 {
@@ -19,7 +20,12 @@ namespace SistemaWebPizzaria.Models
         public double Salario { get; set; }
         public string Tipo { get; set; }
         public int? IdLogin { get; set; }
+
+        [Display(Name = "Data")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? DataCadastro { get; set; }
+        [Display(Name = "Data")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? DataInativacao { get; set; }
 
         public Login IdLoginNavigation { get; set; }

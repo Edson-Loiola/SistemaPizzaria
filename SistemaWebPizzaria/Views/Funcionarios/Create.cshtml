@@ -10,82 +10,73 @@
 
 <div class="container">
     <br />
- 
-    <div class="img-rounded row col-md-10" style="box-shadow: #f5de62 0px 1px 5px">
+
+    <div class="img-rounded row col-md-12" style="box-shadow: #808080 0px 1px 5px">
         @*  esse div row ocupa a largura da rela  *@
         <div class="col-md-12 ">
             <br /><br />
             @* md-4 ocupa um 1/4 da tela *@
 
-            <form asp-action="Create">
-                <p>
-                    <a asp-action="../Home/MenuSistema" class="btn btn-info btn-lg">Voltar</a>
-                </p>
-                <div class="form-group col-md-3">
+                  <form asp-action="Create">
+                    
+                      <div class="form-group col-md-3">
 
-                    @*  o compilador consegue entender que o "Name" é um atributo do objeto Seller *@
-                    <label class="control-label">Nome</label>
-                    <input asp-for="Nome" class="form-control" />
+                          @*  o compilador consegue entender que o "Name" é um atributo do objeto Seller *@
+                          <label class="control-label">Nome</label>
+                          <input asp-for="Nome" class="form-control" />
 
-                    @*mostra a mensagem de erro caso o campo fique em branco *@
-                    <!-- <span asp-validation-for="Nome" class="text-danger"></span>-->
-                </div>
+                          @*mostra a mensagem de erro caso o campo fique em branco *@
+                          <!-- <span asp-validation-for="Nome" class="text-danger"></span>-->
+                      </div>
 
-                <div class="form-group col-md-3">
-                    @*  o compilador consegue entender que o "Email" é um atributo do objeto Seller *@
-                    <label class="control-label">CPF:</label>
-                    <input asp-for="Cpf" class="form-control" />
+                      <div class="form-group col-md-3">
+                          @*  o compilador consegue entender que o "Email" é um atributo do objeto Seller *@
+                          <label class="control-label">CPF:</label>
+                          <input asp-for="Cpf" class="form-control" />
 
 
-                    @*mostra a mensagem de erro caso o campo fique em branco *@
-                    <!-- <span asp-validation-for="Valor" class="text-danger"></span>-->
-                </div>
+                          @*mostra a mensagem de erro caso o campo fique em branco *@
+                          <!-- <span asp-validation-for="Valor" class="text-danger"></span>-->
+                      </div>
 
-                <div class="form-group col-md-3">
-                    <label class="control-label">Celular</label>
-                    <input asp-for="Celular" class="form-control" />
-                </div>
+                      <div class="form-group col-md-3">
+                          <label class="control-label">Celular</label>
+                          <input asp-for="Celular" class="form-control" />
+                      </div>
 
-                <div class="form-group col-md-5">
-                    <label class="control-label">Email</label>
-                    <input asp-for="Email" type="email" class="form-control" />
-                </div>
-                <div class="form-group col-md-3">
-                    <label class="control-label">Salário</label>
+                      <div class="form-group col-md-5">
+                          <label class="control-label">Email</label>
+                          <input asp-for="Email" type="email" class="form-control" />
+                      </div>
+                      <div class="form-group col-md-3">
+                          <label class="control-label">Salário</label>
 
-                    <input asp-for="Salario" type="text" class="form-control" />
+                          <input asp-for="Salario" type="text" class="form-control" />
 
 
-                </div>
-                <div class="form-group col-md-3">
-                    <label class="control-label">Tipo</label>
-                    <select class="form-control" asp-for="Tipo" name="Tipo" >
-                        <option value="Gerente" >Gerente</option>
-                        <option value="Atendente">Atendente</option>
-                        <option value="Outros">Outros</option>
-                    </select>
-                </div>
-                <input asp-for="Ativo" type="hidden" value="S" class="form-control" />
-                
-                <div class="form-group col-md-1">
-                    <label class="control-label"> </label>
-                    <input type="submit" value="Inserir" class="btn btn-default alert-info" />
-                   
-                    <br /><br /><br /><br />
-                </div>
+                      </div>
+                      <div class="form-group col-md-3">
+                          <label class="control-label">Tipo</label>
+                          <select class="form-control" asp-for="Tipo" name="Tipo">
+                              <option value="Gerente">Gerente</option>
+                              <option value="Atendente">Atendente</option>
+                              <option value="Outros">Outros</option>
+                          </select>
+                      </div>
+                      <input asp-for="Ativo" type="hidden" value="S" class="form-control" />
 
-            </form>
-            
-       
-  
-        <div class="form-group col-md-1">
-            <br />
-            <a asp-action="Index" class="btn btn-info btn-lg">Listar Funcionários</a>
+                     
+                          <div class="form-group col-md-3">
+                               <br />
+                              <input type="submit" value="Inserir" class="btn btn-primary" />
+                              <a asp-action="Index" class="btn btn-primary">Voltar</a>
+                              <br /><br /><br /><br />
+                          </div>
+                       
+                  </form>
         </div>
-
     </div>
 </div>
-    </div>
 
 
 

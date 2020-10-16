@@ -2,7 +2,7 @@
 @model IEnumerable<SistemaWebPizzaria.Models.Funcionario>
 
 
-@{ViewData["Title"] = "Funcionarios Cadastradas";}
+@{ViewData["Title"] = "Funcionarios Cadastrados";}
 
 <h2>@ViewData["Title"]</h2>
 <hr />
@@ -17,7 +17,10 @@
         <thead>
             <tr class="bg-primary">
                 <th>
-                    <label class="control-label text-center">Nome do Funcionário</label>
+                    <label class="control-label text-center">Nome</label>
+                </th>
+                <th>
+                    <label class="control-label">CPF</label>
                 </th>
                 <th>
                     <label class="control-label">Tipo</label>
@@ -32,10 +35,13 @@
                     <label class="control-label">Salario</label>
                 </th>
                 <th>
-                    <label class="control-label">Status</label>
+                    <label class="control-label">Cadastro</label>
                 </th>
                 <th>
                     <label class="control-label">Senha Padrão</label>
+                </th>
+                <th>
+                    <label class="control-label">Inativação</label>
                 </th>
                 <th>
                     <label class="control-label">Ações</label>
@@ -50,6 +56,9 @@
                     @Html.DisplayFor(modelItem => item.Nome)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Cpf)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Tipo)
                 </td>
                 <td>
@@ -62,11 +71,12 @@
                     @Html.DisplayFor(modelItem => item.Salario)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Ativo)
+                    @Html.DisplayFor(modelItem => item.DataCadastro)
                 </td>
                 <td>
                     @{
-                        if(item.IdLoginNavigation != null) { 
+                        if (item.IdLoginNavigation != null)
+                        {
                             if (item.IdLoginNavigation.SenhaPadrao == "S")
                             {
                                 @Html.DisplayFor(modelItem => item.IdLoginNavigation.Senha)
@@ -76,12 +86,16 @@
                     }
                 </td>
                 <td>
-                    <a asp-action="Edit" class="btn btn-default btn-sm" asp-route-id="@item.IdFuncionario">Editar</a>
+                    @Html.DisplayFor(modelItem => item.DataInativacao)
+                </td>
+                <td>
+
                     @{ if (item.Ativo == "S")
                         {
-                        <a asp-action="Inativa" class="btn btn-default btn-sm" asp-route-id="@item.IdFuncionario">Inativar</a> @*quando for clicado, vai acionar o metodo delete no controlador*@
-                            }
+                            <a asp-action="Edit" class="btn btn-default btn-sm" asp-route-id="@item.IdFuncionario">Editar</a>
+                            <a asp-action="Inativa" class="btn btn-default btn-sm" asp-route-id="@item.IdFuncionario">Inativar</a> @*quando for clicado, vai acionar o metodo delete no controlador*@
                         }
+                    }
                 </td>
             </tr>
                     }

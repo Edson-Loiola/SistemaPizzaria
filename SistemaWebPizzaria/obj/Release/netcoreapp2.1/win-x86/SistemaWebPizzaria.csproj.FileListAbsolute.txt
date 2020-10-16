@@ -103,7 +103,6 @@ C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release\netcoreapp2.1\win-x86\Razor\Views\Teste\Funcionario.g.cshtml.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release\netcoreapp2.1\win-x86\Razor\Views\Teste\Index.g.cshtml.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release\netcoreapp2.1\win-x86\Razor\Views\Teste\Produto.g.cshtml.cs
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release\netcoreapp2.1\win-x86\Razor\Views\Teste\Relatorio.g.cshtml.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release\netcoreapp2.1\win-x86\Razor\Views\Teste\StatusPed.g.cshtml.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release\netcoreapp2.1\win-x86\Razor\Views\_ViewImports.g.cshtml.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release\netcoreapp2.1\win-x86\Razor\Views\_ViewStart.g.cshtml.cs
@@ -113,3 +112,6 @@ C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release\netcoreapp2.1\win-x86\SistemaWebPizzaria.dll
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release\netcoreapp2.1\win-x86\SistemaWebPizzaria.pdb
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release\netcoreapp2.1\win-x86\SistemaWebPizzaria.csproj.CopyComplete
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release\netcoreapp2.1\win-x86\Razor\Views\Home\AlterarSenha.g.cshtml.cs
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release\netcoreapp2.1\win-x86\Razor\Views\Relatorios\Entrada.g.cshtml.cs
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Release\netcoreapp2.1\win-x86\Razor\Views\Relatorios\Ganho.g.cshtml.cs
