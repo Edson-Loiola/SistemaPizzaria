@@ -22,7 +22,7 @@ namespace SistemaWebPizzaria.Controllers
             return View(list);
         }
 
-        public async Task<IActionResult> Pedido()
+        public IActionResult Pedido()
         {
             return View();
         }

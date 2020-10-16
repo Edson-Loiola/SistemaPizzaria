@@ -42,6 +42,36 @@
         });
     };
 
+    function ListaCardapio() {
+        $.ajax({
+            type: "GET",
+            url: "ListaCardapio",
+            dataType: 'json',
+            success: function (response) {
+
+                $.each(response, function (index, value) {
+                    $("#selectCardapio").append("<option value=" + value.IdCardapio + ">"+ value.Tipo + " - " + value.Sabor + "</option>");
+                });
+                console.log(response);
+            }
+        });
+    };
+
+    function ListaProdutos() {
+        $.ajax({
+            type: "GET",
+            url: "ListaProduto",
+            dataType: 'json',
+            success: function (response) {
+
+                $.each(response, function (index, value) {
+                    $("#selectProdutos").append("<option value=" + value.IdProduto + "> " + value.Nome + "</option>");
+                });
+                console.log(response);
+            }
+        });
+    };
+
 </script>
 
 <div class="row">
@@ -55,7 +85,7 @@
 
                 <div class="col-md-2">
                     <label for="">Entrega</label>
-                    <select asp-for="TipoEntrega" class="custom-select">
+                    <select asp-for="TipoEntrega" class="form-control">
                         <option value="Retirada">Retirada na loja</option>
                         <option value="Motoboy">Entrega via motoboy</option>
                     </select>
@@ -63,7 +93,7 @@
 
                 <div class="col-md-2">
                     <label for="">Forma de pagamento</label>
-                    <select asp-for="FormaPagamento" class="custom-select">
+                    <select asp-for="FormaPagamento" class="form-control">
                         <option value="debito">Cartão debito</option>
                         <option value="cretido">cartão de credito</option>
                         <option value="dinheiro">Dinheiro</option>
@@ -72,12 +102,12 @@
 
                 <div class="col-md-2">
                     <label for="">Lista de Funcionário</label>
-                    <select id="selectFuncionarios" asp-for="IdFuncioarioNavigation.IdFuncionario"></select>
+                    <select id="selectFuncionarios" asp-for="IdFuncioarioNavigation.IdFuncionario" class="form-control"></select>
                 </div>
 
                 <div class="col-md-2">
                     <label for="">Cliente registrado?</label>
-                    <select class="custom-select">
+                    <select class="form-control">
                         <option value="true">Sim</option>
                         <option value="false">Não</option>
                     </select>
@@ -85,17 +115,12 @@
 
                 <div class="col-md-2">
                     <label for="">Cliente</label>
-                    <select id="selectClientes" asp-for="IdClienteNavigation.IdCliente"></select>
-                </div>
-
-                <div class="col-md-2">
-                    <label for="">Total</label>
-                    <input asp-for="TotalPedido" class="form-control">
+                    <select id="selectClientes" asp-for="IdClienteNavigation.IdCliente" class="form-control"></select>
                 </div>
 
                 <div class="col-md-2">
                     <label for="">Estado</label>
-                    <select asp-for="Status" class="custom-select">
+                    <select asp-for="Status" class="form-control">
                         <option value="preparando">Preparando</option>
                         <option value="entregue">Entregue</option>
                         <option value="viagem">Em viagem</option>
@@ -103,39 +128,57 @@
                     </select>
                 </div>
             </div>
-            @*<div class="row" style="margin-bottom:15px;">
-                    <div class="col-md-3">
-                        <label for="">Nº NotaFiscal</label>
-                        <input asp-for="NotaFiscal" class="form-control">
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="">Marca</label>
-                        <input asp-for="Marca" type="text" class="form-control">
-                    </div>
-
-                    <div class="col-md-4">
-                        <label for="firstName">Nome do Fornecedor</label>
-                        <input asp-for="NomeFornecedor" class="form-control">
-                    </div>
-
-                    <div class="col-md-4">
-                        <label for="firstName">Nome do Fornecedor</label>
-                        <input asp-for="Categoria" class="form-control">
-                    </div>
-
-                    <div class="col-md-4">
-                        <label for="firstName">Nome do Fornecedor</label>
-                        <input asp-for="Vende" class="form-control">
-                    </div>
-
-                </div>*@
+            <div class="row">
+                <div class="col-md-5">
+                    <label for="">Cardápio</label>
+                    <select id="selectCardapio" asp-for="Itemcardapio" class="form-control"></select>
+                </div>
+                <div class="col-md-5">
+                    <label for="">Produtos</label>
+                    <select id="selectProdutos" asp-for="Itemproduto" class="form-control"></select>
+                </div>
+                <div class="col-md-2">
+                    <a asp-action="AdicionarItemAoPedido" asp-route-id="Itemcardapio" class="btn btn-success">Adicionar</a>
+                </div>
+                </div>
+                <div class="row" style="margin-bottom:15px;">
+                    <table class="table table-bordered">
+                        <thead>
+                        <th>col 1</th>
+                        <th>cola 2</th>
+                        <th>coal 3</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>teste 1</td>
+                                <td>teste 1</td>
+                                <td>teste 1</td>
+                            </tr>
+                            <tr>
+                                <td>teste 1</td>
+                                <td>teste 1</td>
+                                <td>teste 1</td>
+                            </tr>
+                            <tr>
+                                <td>teste 1</td>
+                                <td>teste 1</td>
+                                <td>teste 1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="row">
+                    <div class="col-md-4 pull-right">
+                        <label for="">Total</label>
+                        <input asp-for="TotalPedido" class="form-control">
+                    </div>
+                </div>
+                <div class="row" style="margin-top:20px;">
                     <div class="col-md-12 text-right">
                         <input class="btn btn-success btn-lg" type="submit" value="Cadastrar novo produto" />
                         <a href="/Pedidos/Index" class="btn btn-danger btn-lg">Voltar</a>
                     </div>
                 </div>
-        </form>
+</form>
     </div>
 </div>

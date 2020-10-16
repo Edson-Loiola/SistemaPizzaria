@@ -47,6 +47,16 @@ namespace SistemaWebPizzaria.Services {
             return await _context.Cliente.ToListAsync();
         }
 
+        public async Task<List<Cardapiopizza>> ListaCardapio()
+        {
+            return await _context.Cardapiopizza.ToListAsync();
+        }
+
+        public async Task<List<Produtoestoque>> ListaProduto()
+        {
+            return await _context.Produtoestoque.ToListAsync();
+        }
+
 
         //função remover  do banco pelo id
         public async Task RemoveAsync(Pedido pedido)

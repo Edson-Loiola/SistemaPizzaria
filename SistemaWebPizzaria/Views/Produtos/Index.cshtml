@@ -30,13 +30,16 @@
             <thead>
                 <tr>
                     <th>
+                        <label class="control-label text-center">ID</label>
+                    </th>
+                    <th>
                         <label class="control-label text-center">Nome da Despesa</label>
                     </th>
                     <th>
                         <label class="control-label">Valor (R$)</label>
                     </th>
                     <th>
-                        <label class="control-label">Qtd</label>
+                        <label class="control-label">Estoq</label>
                     </th>
                     <th>
                         <label class="control-label">Marca</label>
@@ -53,6 +56,9 @@
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td readonly>
+                            @Html.DisplayFor(modelItem => item.IdProduto)
+                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Nome)
                         </td>
@@ -70,18 +76,18 @@
                         </td>
                         <td>
                             <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdProduto"><span class="material-icons">edit</span></a>
-                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal"><span class="material-icons">delete</span></a>
+                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdProduto"><span class="material-icons">delete</span></a>
                         </td>
                     </tr>
                     <!-- Modal -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal fade" id="myModal-@item.IdProduto" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h3 class="modal-title" id="myModalLabel">Atenção</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Deseja mesmo deletar esse item?</p>
+                                    <p>Deseja mesmo deletar o item @item.IdProduto?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
