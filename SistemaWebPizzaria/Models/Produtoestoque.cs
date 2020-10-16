@@ -23,6 +23,7 @@ namespace SistemaWebPizzaria.Models
         public string NotaFiscal { get; set; }
         public string Categoria { get; set; }
         public string Vende { get; set; }
+        public string UnidadeMedida { get; set; }
 
         public ICollection<Itemproduto> Itemproduto { get; set; }
     }

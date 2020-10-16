@@ -47,7 +47,7 @@ namespace SistemaWebPizzaria.Services
             // var somafunc = listfunc.Sum(x => x.Salario);
             var somaprod = listprod.Sum(x => x.PrecoCompra);
 
-            var somatotal = (somadesp + /*somafunc*/  somaprod);
+            var somatotal = (somadesp + Convert.ToDouble(somaprod));
 
             return somatotal;
         }

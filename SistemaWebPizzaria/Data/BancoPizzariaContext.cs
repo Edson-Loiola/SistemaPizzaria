@@ -342,6 +342,10 @@ namespace SistemaWebPizzaria.Models
                 entity.Property(e => e.Vende)
                     .IsRequired()
                     .HasColumnType("char(1)");
+
+                entity.Property(e => e.UnidadeMedida)
+                    .IsRequired()
+                    .HasColumnType("char(3)");
             });
         }
     }

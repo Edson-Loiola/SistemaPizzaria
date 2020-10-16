@@ -61,20 +61,26 @@ namespace SistemaWebPizzaria.Controllers
             }
             else
             {
-                HttpContext.Session.SetString("Usuario", email);
-                HttpContext.Session.SetString("IdUsu", obj.IdLogin.ToString());
-                HttpContext.Session.SetString("Perfil", obj.Perfil.ToString());
-
-                if (obj.SenhaPadrao == "S")
+                if(obj.Ativo == "S" || obj.Ativo==null)
                 {
-                    return RedirectToAction("AlterarSenha", "Home");
+                    HttpContext.Session.SetString("Usuario", email);
+                    HttpContext.Session.SetString("IdUsu", obj.IdLogin.ToString());
+                    HttpContext.Session.SetString("Perfil", obj.Perfil.ToString());
+
+                    if (obj.SenhaPadrao == "S")
+                    {
+                        return RedirectToAction("AlterarSenha", "Home");
+                    }
+                    else
+                    {
+                        return RedirectToAction("MenuSistema", "Home");
+                    }
                 }
                 else
                 {
-                    return RedirectToAction("MenuSistema", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
-
-          
+                
 
             }
 
@@ -87,7 +93,7 @@ namespace SistemaWebPizzaria.Controllers
         {
                 var id = HttpContext.Session.GetString("IdUsu");
                 var obj = await _loginService.FindByIdAsync(Convert.ToInt32(id));
-
+                
                 obj.Senha = senha;
                 obj.SenhaPadrao = "N";
 
