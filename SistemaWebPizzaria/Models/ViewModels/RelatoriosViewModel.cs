@@ -7,10 +7,14 @@ namespace SistemaWebPizzaria.Models.ViewModels
 {
     public class RelatoriosViewModel
     {
-        public Despesa Despesas { get; set; }
+        public List<Despesa> Despesas { get; set; }
         public Funcionario Funcionarios { get; set; }        
-        public Produtoestoque Produtoestoque { get; set; }
+        public List<Produtoestoque> Produtoestoque { get; set; }
 
-   
+        public RelatoriosViewModel(List<Despesa> despesas, List<Produtoestoque> produtoestoque)
+        {
+            Despesas = despesas;
+            Produtoestoque = produtoestoque;
+        }
     }
 }

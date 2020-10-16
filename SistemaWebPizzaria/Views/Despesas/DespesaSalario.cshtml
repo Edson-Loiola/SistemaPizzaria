@@ -1,0 +1,59 @@
+﻿
+
+@model SistemaWebPizzaria.Models.Despesa
+
+@{ViewData["Title"] = "Despesas com Salário";}
+
+<h2>@ViewData["Title"]</h2>
+
+
+<hr />
+
+
+
+
+<div class="container">
+    <br />
+
+    <div class="img-rounded row col-md-12" style="box-shadow: #808080 0px 1px 5px">
+        <br /><br />
+        @* md-4 ocupa um 1/4 da tela *@
+
+        <form asp-action="Create">
+            <div class="form-group col-md-3">
+                <label class="control-label">Nome Funcionário</label>
+                <input asp-for="NomeDespesa" class="form-control" />
+                <span asp-validation-for="NomeDespesa" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="control-label">Salário</label>
+                <input asp-for="Valor" type="text" class="form-control" />
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label class="control-label">Descrição</label>
+                <input asp-for="Descricao" type="text" value="Despesa com Salário" class="form-control" />
+            </div>
+            <div class="form-group col-md-2">
+                <label class="control-label">Dia do pagamento</label>
+                <input asp-for="DataDespesa" type="date" class="form-control" />
+                <span asp-validation-for="DataDespesa" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-3" br>
+                <br />
+                <input type="submit" value="Inserir" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Voltar</a>
+                <br /><br /><br /><br />
+            </div>
+        </form>
+    </div>
+</div>
+
+@*para halidtar validação por meio do JavaScript*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
