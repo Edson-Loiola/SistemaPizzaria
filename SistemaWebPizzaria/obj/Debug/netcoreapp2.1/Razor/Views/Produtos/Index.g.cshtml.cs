@@ -88,7 +88,7 @@ Write(ViewData["Title"]);
             WriteLiteral("<div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n        ");
             EndContext();
             BeginContext(601, 75, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a280aa912eff47e6ab7568353bc5cae7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c654f8535ecb46698ce498c9b891d8f6", async() => {
                 BeginContext(656, 16, true);
                 WriteLiteral("Cadatrar Produto");
                 EndContext();
@@ -208,7 +208,7 @@ Write(ViewData["Title"]);
             WriteLiteral("\r\n                        </td>\r\n                        <td>\r\n                            ");
             EndContext();
             BeginContext(2653, 130, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ae79f79329548949fdd53ac0efbf5c5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2182d0db4d224208aee1388849658bb1", async() => {
                 BeginContext(2739, 40, true);
                 WriteLiteral("<span class=\"material-icons\">edit</span>");
                 EndContext();
@@ -260,7 +260,7 @@ Write(ViewData["Title"]);
             WriteLiteral("ar</button>\r\n                                    ");
             EndContext();
             BeginContext(3856, 95, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c8f5878abf874fbd9381b5b47bb73e6b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7d249e6b314d45128c1b38158e13b5f9", async() => {
                 BeginContext(3940, 7, true);
                 WriteLiteral("Deletar");
                 EndContext();

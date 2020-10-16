@@ -92,7 +92,7 @@
 
                     @{ if (item.Ativo == "S")
                         {
-                            <a asp-action="Edit" class="btn btn-default btn-sm" asp-route-id="@item.IdFuncionario">Editar</a>
+                            <a asp-action="Edit" class="btn btn-default btn-sm" asp-route-id="@item.IdFuncionario"><span class="material-icons">edit</span></a>
                             <a asp-action="Inativa" class="btn btn-default btn-sm" asp-route-id="@item.IdFuncionario">Inativar</a> @*quando for clicado, vai acionar o metodo delete no controlador*@
                         }
                     }
