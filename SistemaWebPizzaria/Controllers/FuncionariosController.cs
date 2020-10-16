@@ -74,6 +74,7 @@ namespace SistemaWebPizzaria.Controllers
                  }
                  login.Senha = senha;
                  login.SenhaPadrao = "S";
+                login.Ativo = "S";
                  await _loginService.InsertAsync(login);
                  funcionario.IdLogin = login.IdLogin;
             }
@@ -134,13 +135,21 @@ namespace SistemaWebPizzaria.Controllers
         public async Task<IActionResult> Inativa(int id)
         {
             var obj = await _funcionarioService.FindByIdAsync(id);
+            var objLog = await _loginService.FindByIdAsync(Convert.ToInt32(obj.IdLogin));
             try
             {
                
                 obj.Ativo = "N";
                 obj.DataInativacao = DateTime.Now;
-
                 await _funcionarioService.UpdateAsync(obj);
+
+                if(objLog != null)
+                {
+                    objLog.Ativo = "N";
+                    await _loginService.UpdateAsync(objLog);
+                }
+              
+
                 return RedirectToAction(nameof(Index));
             }
             catch (KeyNotFoundException)
@@ -148,6 +157,8 @@ namespace SistemaWebPizzaria.Controllers
                 return RedirectToAction(nameof(Index));
             }
         }
+
+
 
         //ação edit -metodo post
         [HttpPost]

@@ -60,7 +60,7 @@
                             @Html.DisplayFor(modelItem => item.Tamanho)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Sabor) @*@Html.DisplayFor(modelItem => item.UnidadeMedida)*@
+                            @Html.DisplayFor(modelItem => item.Sabor)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Descricao)
@@ -73,6 +73,7 @@
                             <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdCardapio"><span class="material-icons">delete</span></a>
                         </td>
                     </tr>
+
                     <!-- Modal -->
                     <div class="modal fade" id="myModal-@item.IdCardapio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">

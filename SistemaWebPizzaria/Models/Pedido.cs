@@ -22,7 +22,6 @@ namespace SistemaWebPizzaria.Models
 
         public Cliente IdClienteNavigation { get; set; }
         public Funcionario IdFuncioarioNavigation { get; set; }
-
         public ICollection<Itemcardapio> Itemcardapio { get; set; }
         public ICollection<Itemproduto> Itemproduto { get; set; }
     }

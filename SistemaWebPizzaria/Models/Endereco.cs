@@ -8,8 +8,8 @@ namespace SistemaWebPizzaria.Models
     {
         public int IdEndereco { get; set; }
 
-       
-        
+
+
         public string Cep { get; set; }
 
         [Display(Name = "Informar:")]

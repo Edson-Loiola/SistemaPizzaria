@@ -241,6 +241,8 @@ namespace SistemaWebPizzaria.Models
 
                 entity.Property(e => e.IdLogin).HasColumnType("int(11)");
 
+                entity.Property(e => e.Ativo).HasColumnType("char(1)");
+
                 entity.Property(e => e.DataCriacao).HasColumnType("date");
 
                 entity.Property(e => e.Email)
@@ -344,3 +346,4 @@ namespace SistemaWebPizzaria.Models
         }
     }
 }
+

@@ -45,6 +45,6 @@ namespace SistemaWebPizzaria.Models
             Valor = valor;
             DataDespesa = dataDespesa;
         }
-    }   
+    }
 
 }

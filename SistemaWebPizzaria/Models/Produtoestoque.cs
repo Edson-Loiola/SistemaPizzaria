@@ -12,7 +12,7 @@ namespace SistemaWebPizzaria.Models
 
         public int IdProduto { get; set; }
         public string Nome { get; set; }
-        public double PrecoCompra { get; set; }
+        public decimal PrecoCompra { get; set; }
         public decimal? PrecoVenda { get; set; }
         public int Quantidade { get; set; }
         public DateTime? DataCompra { get; set; }
@@ -23,7 +23,6 @@ namespace SistemaWebPizzaria.Models
         public string NotaFiscal { get; set; }
         public string Categoria { get; set; }
         public string Vende { get; set; }
-        public string UnidadeMedida { get; set; }
 
         public ICollection<Itemproduto> Itemproduto { get; set; }
     }
