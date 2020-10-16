@@ -35,7 +35,6 @@
                     </div>
                 </fieldset>
             </form><br />
-
             <div class="img-rounded col-md-12 text-center" style="box-shadow: #505050 0px 1px 5px; background-color: #ff6666">
                 <br />
                 <h1  style="color:#424242; font-family:Impact">R$ @((Model.Despesas.Sum(x => x.Valor) + Model.Produtoestoque.Sum(x => x.PrecoCompra)).ToString("F2"))</h1>
