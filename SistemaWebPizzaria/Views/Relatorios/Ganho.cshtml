@@ -3,28 +3,16 @@
 @model Double
 
 
-<div class="container-fluid">
-    <div class="row col-md-12">
+@{
+    ViewData["Title"] = "Meus Ganhos";
+}
 
-        <div class="col-sm-6 col-md-offset-4 col-md-7">
-            <br /><br />
-            <form class="form-horizontal" asp-action="Ganho">
-                <fieldset>
-                    <div class="form-group col-md-4">
-                        <label for="minDate">Data Início</label>
-                        <input type="date" name="minDate" class="form-control" />
-                    </div>
-                    <div class="form-group col-md-4 col-md-offset-1">
-                        <label for="maxDate" class="col-md-offset-1">Data Fim</label>
-                        <input type="date" name="maxDate" class="form-control col-md-offset-1" />
-                    </div>
-                    <div class="form-group col-md-4 col-md-offset-1">
-                        <br />
-                        <button type="submit" class="btn btn-primary col-md-offset-3">Submit</button>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
+
+<div class="container-fluid">
+
+    <h2>Total de Saídas</h2>
+    <hr />
+    <div class="row col-md-12">
 
         <div class="col-sm-2 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
@@ -34,17 +22,30 @@
                 <li> <a asp-action="../Home/MenuSistema">Home</a></li>
             </ul>
         </div>
-        <div class="col-sm-6 col-sm-offset-3 col-md-7 col-md-offset-2 main">
-            <h1 class="">Meu Lucro</h1>
-            <div class="row text-center">
-                <div class="img-rounded row col-md-12" style="box-shadow: #808080 0px 1px 5px; background-color: #90EE90">
-                    <br />
-                    @*<h1 class="" style="color:#424242; font-family:Impact">R$  0,00</h1><br /><br />*@
-                    <h1 class="" style="color:#424242; font-family:Impact">R$   @Model.ToString()</h1><br /><br />
 
-                </div>
+        <div class="col-sm-6 col-sm-offset-3 col-md-9 col-md-offset-0">
+            <form class="form-horizontal col-md-offset-1" asp-action="Saida">
+                <fieldset>
+                    <div class="col-md-4">
+                        <label>Data Início</label>
+                        <input type="date" name="minDate" class="form-control" />
+                    </div>
+                    <div class=" col-md-4">
+                        <label>Data Fim</label>
+                        <input type="date" name="maxDate" class="form-control " />
+                    </div>
+                    <div class="col-md-4">
+                        <br />
+                        <button type="submit" class="btn btn-primary ">Submit</button>
+                    </div>
+                </fieldset>
+            </form><br />
+
+            <div class="img-rounded col-md-12 text-center" style="box-shadow: #505050 0px 1px 5px; background-color: #90EE90">
+                <br />
+                @*<h1 class="" style="color:#424242; font-family:Impact">R$  0,00</h1><br /><br />*@
+                <h1 class="" style="color:#424242; font-family:Impact">R$   @Model.ToString("F2")</h1><br /><br />
             </div>
         </div>
-
     </div>
 </div>
