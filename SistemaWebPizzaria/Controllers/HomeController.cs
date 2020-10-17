@@ -108,6 +108,22 @@ namespace SistemaWebPizzaria.Controllers
 
             return View();
         }
+        
+        
+        public async Task<bool> VerificaSenhaAtual(string senhaAtual)
+        {
+            var id = HttpContext.Session.GetString("IdUsu");
+            bool obj = await _loginService.ComparePassword(Convert.ToInt32(id),senhaAtual);
+
+            if(obj){
+                return false;
+            }
+            else{
+                return true;
+            }
+
+             
+        }
 
 
 
