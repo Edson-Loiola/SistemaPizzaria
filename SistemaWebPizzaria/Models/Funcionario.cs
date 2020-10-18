@@ -12,6 +12,7 @@ namespace SistemaWebPizzaria.Models
             Pedido = new HashSet<Pedido>();
         }
 
+        [Display(Name = "IdFuncionario")]
         public int IdFuncionario { get; set; }
 
         [Display(Name = "Cpf")]
@@ -32,7 +33,7 @@ namespace SistemaWebPizzaria.Models
         [Required(ErrorMessage = "{0} não informado!")]
         [EmailAddress(ErrorMessage = "Entre com um email válido")]
         [StringLength(30, ErrorMessage = "{0} Máximo de 30 caracteres")]
-        [Remote("VerificaEmail", "Funcionarios", ErrorMessage = "Email já cadastrado, utilize outro")]
+        [Remote("VerificaEmail", "Funcionarios", AdditionalFields = nameof(IdFuncionario), ErrorMessage = "Email já cadastrado, utilize outro")]
         public string Email { get; set; }
 
         public string Ativo { get; set; }

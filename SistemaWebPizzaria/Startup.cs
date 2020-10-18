@@ -57,6 +57,7 @@ namespace SistemaWebPizzaria
             //cinfigurando sessions
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+      
 
         }
 

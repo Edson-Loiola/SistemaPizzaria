@@ -152,13 +152,6 @@ C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\
 C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Pedidos\Pedido.cshtml.g.cs
 C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Relatorios\Saida.cshtml.g.cs
 C:\Users\wellison\Documents\GitHub\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csprojAssemblyReference.cache
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csprojAssemblyReference.cache
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csproj.CoreCompileInputs.cache
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.RazorAssemblyInfo.cache
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.RazorAssemblyInfo.cs
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.AssemblyInfoInputs.cache
-C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.AssemblyInfo.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.deps.json
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.runtimeconfig.json
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.runtimeconfig.dev.json
@@ -166,6 +159,13 @@ C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\bin\Debug\n
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.pdb
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.Views.dll
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.Views.pdb
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csprojAssemblyReference.cache
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csproj.CoreCompileInputs.cache
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.RazorAssemblyInfo.cache
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.RazorAssemblyInfo.cs
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.AssemblyInfoInputs.cache
+C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.AssemblyInfo.cs
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.TagHelpers.input.cache
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.TagHelpers.output.cache
 C:\Users\izaias\Documents\GitHub\SistemaPizzaria2\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.RazorCoreGenerate.cache

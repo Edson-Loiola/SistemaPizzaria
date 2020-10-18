@@ -228,22 +228,36 @@ namespace SistemaWebPizzaria.Controllers
 
         }
 
-        public async Task<bool> VerificaEmail(string email)
+     
+        public async Task<bool> VerificaEmail(string email, string idFuncionario)
         {
             
             var obj = await _funcionarioService.FindAllAsync();
 
-            if (!obj.Any(x => x.Email == email))
-            {
-                
-                return true;
+         
+                if (!obj.Any(x => x.Email == email))
+                {
+
+                    return true;
+                }
+                else
+                {
+                    if (obj.Any(x => x.Email == email && x.IdFuncionario == Convert.ToInt32(idFuncionario)))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    
+                }
             }
-            else
-            {
-                return false;
-            }
+       
+            
+
 
 
         }
     }
-}
+
