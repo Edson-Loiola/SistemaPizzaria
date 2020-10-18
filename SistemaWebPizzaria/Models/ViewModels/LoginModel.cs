@@ -23,13 +23,14 @@ namespace SistemaWebPizzaria.Models.ViewModels
         public string Senha { get; set; }
 
         [Display(Name = "SenhaNova")]
+        //[Compare("SenhaAtual", ErrorMessage = "Senhas são diferentes")]
         [Required(ErrorMessage = "Senha Nova não informada!")]
-        [StringLength(30, MinimumLength = 6, ErrorMessage = "{0} Máximo de 30 caracteres")]
+        [StringLength(30, MinimumLength = 6, ErrorMessage = "Senha Nova Máximo de 30 caracteres")]
         public string SenhaNova { get; set; }
 
         [Display(Name = "SenhaAtual")]
         [Required(ErrorMessage = "Senha Atual não informada!")]
-        [StringLength(30, MinimumLength = 6, ErrorMessage = "{0} Máximo de 30 caracteres")]
+        [StringLength(30, MinimumLength = 6, ErrorMessage = "Senha Atual Máximo de 30 caracteres")]
         [Remote("VerificaSenhaAtual", "Home", ErrorMessage = "Senha é diferente da senha cadastrada atualmente")]
         public string SenhaAtual { get; set; }
 

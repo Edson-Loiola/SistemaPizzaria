@@ -19,6 +19,7 @@
                 <div class="col-md-6">
                     <label for="Sabor">Sabor</label>
                     <input asp-for="Sabor" class="form-control" placeholder="">
+                    <span asp-validation-for="Sabor" class="text-danger"></span>
                 </div>
 
 
@@ -34,6 +35,7 @@
                 <div class="col-md-2">
                     <label for="Valor">Valor </label>
                     <input asp-for="ValorUnitario" class="form-control" placeholder="R$">
+                    <span asp-validation-for="ValorUnitario" class="text-danger"></span>
                 </div>
 
 
@@ -41,7 +43,8 @@
             <div class="row" style="margin-bottom:15px;">
                 <div class="col-md-12">
                     <label for="Descricao">Campo para descrição</label>
-                    <textarea asp-for="Descricao" class="form-control " placeholder="Máximo 500 caracteres" aria-label="With textarea"></textarea>
+                    <textarea asp-for="Descricao" class="form-control " placeholder="Máximo 100 caracteres" aria-label="With textarea"></textarea>
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
                 </div>
             </div>
             <div class="row">
@@ -53,3 +56,10 @@
         </form>
     </div>
 </div>
+
+@*para halidtar validação por meio do JavaScript*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

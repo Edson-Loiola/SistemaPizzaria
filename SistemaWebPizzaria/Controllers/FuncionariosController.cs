@@ -227,5 +227,23 @@ namespace SistemaWebPizzaria.Controllers
 
 
         }
+
+        public async Task<bool> VerificaEmail(string email)
+        {
+            
+            var obj = await _funcionarioService.FindAllAsync();
+
+            if (!obj.Any(x => x.Email == email))
+            {
+                
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
     }
 }
