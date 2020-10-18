@@ -125,6 +125,22 @@ namespace SistemaWebPizzaria.Controllers
 
              
         }
+        public async Task<bool> ComparaSenhaNova(string senhaNova)
+        {
+            var id = HttpContext.Session.GetString("IdUsu");
+            var obj = await _loginService.FindByIdAsync(Convert.ToInt32(id));
+
+            if (obj.Senha == senhaNova)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+
+        }
 
 
 
