@@ -11,5 +11,8 @@ namespace SistemaWebPizzaria.Models.ViewModels
         public Endereco Endereco { get; set; }
         public Cliente Cliente { get; set; }
 
+
+        public Despesa Despesa { get; set; } //usado na tel salario despesas
+
     }
 }

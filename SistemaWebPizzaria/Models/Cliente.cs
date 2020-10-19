@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -21,7 +22,7 @@ namespace SistemaWebPizzaria.Models
 
         [Display(Name = "Telefone")]
         [Required(ErrorMessage = "{0} não informado!")]
-        [StringLength(11, MinimumLength = 10, ErrorMessage = "{0} inválido")]
+        [StringLength(11, MinimumLength = 10, ErrorMessage = "{0} inválido")]    
         public string Telefone { get; set; }
 
         public ICollection<Endereco> Endereco { get; set; }

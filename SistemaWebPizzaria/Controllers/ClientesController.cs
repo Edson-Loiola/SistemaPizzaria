@@ -3,6 +3,7 @@ using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SistemaWebPizzaria.Controllers
@@ -22,6 +23,7 @@ namespace SistemaWebPizzaria.Controllers
         {
             return View();
         }
+
 
         public async Task<IActionResult> Lista()
         {
@@ -44,14 +46,14 @@ namespace SistemaWebPizzaria.Controllers
             if (endereco.Cep != null && endereco.Rua != null && endereco.Numero != null && endereco.Bairro != null)
             {
 
-                endereco.ClienteIdCliente = cliente.IdCliente;             
+                endereco.ClienteIdCliente = cliente.IdCliente;
                 await _clienteService.InsertEnderecoAsync(endereco);
 
-            }         
+            }
             else
             {
                 //campos em branco salva o mesmo id na tabela de endereço do cliente
-                
+
                 endereco.Cep = "-";
                 endereco.Bairro = "-";
                 endereco.Cidade = "-";
@@ -76,7 +78,6 @@ namespace SistemaWebPizzaria.Controllers
 
                 var obj = await _clienteService.FindByIdAsync(id.Value);
 
-
                 await _clienteService.RemoveAsync(obj.IdCliente); //chamando o metodo remove 
                 return RedirectToAction(nameof(Lista));
             }
@@ -87,22 +88,21 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
-        //metodo de pesquisar cliente pelo telefone
+        //metodo de pesquisar cliente pelo telefone - chama a mesma action Lista de listagem de clientes
         [HttpPost]
-        public async Task<IActionResult> BuscarCliente(int? id, string tel, Endereco endereco)
+        public async Task<IActionResult> Buscar(string telefone)
         {
-            var list = await _clienteService.FindByIdAsync(id.Value);
 
-            if (id == endereco.ClienteIdCliente && tel == endereco.ClienteIdClienteNavigation.Telefone)
-            {
-                return View(list);
-            }
-            else
+            var obj = await _clienteService.FindAllEndeAsync();
+            var cl = obj.Where(x => x.ClienteIdClienteNavigation.Telefone == telefone);
+
+
+            if (!cl.Any(x => x.ClienteIdClienteNavigation.Telefone == telefone)) // se o telefone passado não existir no banco, direcionar para create
             {
                 return RedirectToAction(nameof(Index));
             }
-
-
+            else
+                return View(nameof(Lista), cl); // se existir retornar a lista
         }
 
 
@@ -149,8 +149,6 @@ namespace SistemaWebPizzaria.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditCliente(int id, Endereco objEndereco)
         {
-
-
             //----------------------------------------------------------------
             //essa validação ocorrerá se o JavaScript do usuário estiver desabilitado, pois não fará as validações feitas no html e nas propriedades
             if (!ModelState.IsValid)
@@ -191,9 +189,6 @@ namespace SistemaWebPizzaria.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-
-            //alterado esses dois cath por apenas 1 passando a super classe ApplicationException
-
 
         }
 

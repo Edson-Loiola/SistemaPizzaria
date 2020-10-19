@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SistemaWebPizzaria.Models;
+using SistemaWebPizzaria.Models.ViewModels;
 using SistemaWebPizzaria.Services;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,12 @@ namespace SistemaWebPizzaria.Controllers
     public class DespesasController : Controller
     {
         public readonly DespesaService _despesaService;
+        private readonly RelatorioService _relatorioService;
 
-
-
-        public DespesasController(DespesaService despesaService)
+        public DespesasController(DespesaService despesaService, RelatorioService relatorioService)
         {
             _despesaService = despesaService;
+            _relatorioService = relatorioService;
         }
 
 
@@ -34,8 +35,7 @@ namespace SistemaWebPizzaria.Controllers
 
 
 
-
-        //inserir dados no banco (essa função é passada no form da minha view CreatDespesa
+          //inserir dados no banco (essa função é passada no form da minha view CreatDespesa
         [HttpPost] //esse método é um post pois está criando/enviando um novo objeto
         [ValidateAntiForgeryToken] //essa notação evita que a aplicação receba ataques CSRF (envio de dados malicioso na autenticação)
         public async Task<IActionResult> Create(Despesa despesa)
@@ -134,14 +134,12 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
-        public IActionResult DespesaSalario()
+        public async Task<IActionResult> DespesaSalario()
         {
+                        
             return View();
-        }
 
-
-
-
+        }       
 
     }
 

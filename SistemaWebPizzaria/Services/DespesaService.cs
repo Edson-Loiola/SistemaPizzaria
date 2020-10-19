@@ -1,9 +1,11 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using SistemaWebPizzaria.Models;
+using SistemaWebPizzaria.Models.ViewModels;
 using SistemaWebPizzaria.Services.Exception;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SistemaWebPizzaria.Services
@@ -31,6 +33,15 @@ namespace SistemaWebPizzaria.Services
         {
             return await _context.Despesa.ToListAsync();
         }
+
+
+        //lista funcionario
+        public async Task<List<Funcionario>> ListaFunc()
+        {
+            return await _context.Funcionario.OrderBy(x => x.Nome).ToListAsync();
+        }
+
+
 
 
         //função remover despesa do banco pelo id
@@ -81,8 +92,36 @@ namespace SistemaWebPizzaria.Services
             {
                 throw new NotFoundException(e.Message);
             }
-
         }
+
+        //public async Task<RelatoriosViewModel> SaidaDesp (DateTime? minDate, DateTime? maxDate)
+        //{
+
+        //    var teste = from obj in _context.Cliente select obj;        
+
+        //    if (minDate.HasValue)
+        //    {
+        //        listdesp = listdesp.Where(d => d.DataDespesa >= minDate.Value);
+               
+        //        //    listfunc = listfunc.Where(f => f.DataCadastro >= minDate.Value);
+        //    }
+        //    if (maxDate.HasValue)
+        //    {
+        //        listdesp = listdesp.Where(d => d.DataDespesa <= maxDate.Value);
+    
+        //    }
+
+
+        //    RelatoriosViewModel list = new RelatoriosViewModel(
+
+        //            listdesp.ToList(),
+        //            listprod.ToList()
+
+        //        );
+
+        //    return list;
+
+        //}
 
 
 

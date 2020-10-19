@@ -20,9 +20,8 @@ namespace SistemaWebPizzaria.Models
         public string Descricao { get; set; }
 
 
-
-        [DisplayFormat(DataFormatString = "{0:F2}")]
-        [Display(Name = "Valor")]
+        [Range(0.00, 999999.99, ErrorMessage = "{0} R$ de {1} até {2}")]
+        [DisplayFormat(DataFormatString = "{0:F2}")]        
         [Required(ErrorMessage = "{0} não informado!")]
         public double Valor { get; set; }
 
