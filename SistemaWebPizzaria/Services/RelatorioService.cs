@@ -18,7 +18,7 @@ namespace SistemaWebPizzaria.Services
         }
 
 
-        public async Task<RelatoriosViewModel> SomaTotal(DateTime? minDate, DateTime? maxDate)
+        public async Task<RelatoriosViewModel> SaidaDespesas(DateTime? minDate, DateTime? maxDate)
         {
 
 

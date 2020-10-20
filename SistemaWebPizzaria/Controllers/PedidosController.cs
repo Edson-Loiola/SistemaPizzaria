@@ -38,6 +38,32 @@ namespace SistemaWebPizzaria.Controllers
             return await _pedidoService.ListaClientes();
         }
 
+        public async Task<List<Cardapiopizza>> ListaCardapio()
+        {
+            return await _pedidoService.ListaCardapio();
+        }
+
+        public async Task<List<Produtoestoque>> ListaProduto()
+        {
+            return await _pedidoService.ListaProduto();
+        }
+
+        [HttpPost]
+        public async Task<Itemcardapio> AdicionarItemCardapioAoPedido(int qtd, int cardapioid)
+        {
+            var cardap = await _pedidoService.findByIdCardapio(cardapioid);
+
+            var item = new Itemcardapio();
+
+            item.IdCardapioNavigation = cardap;
+            item.IdCardapio = cardapioid;
+            item.PrecoUnidade = cardap.ValorUnitario;
+            item.Quantidade = qtd;
+            item.Total = (cardap.ValorUnitario * qtd);
+
+            return item;
+        }
+
         public async Task<IActionResult> Detalhe(int id)
         {
             var result = await _pedidoService.FindByIdAsync(id);

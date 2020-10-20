@@ -37,11 +37,10 @@
                 <span asp-validation-for="NomeDespesa" class="text-danger"></span>
             </div>
 
-            <div class="form-group col-md-3 body-content=pt-br ">
+            <div class="form-group col-md-3">
                 @*  o compilador consegue entender que o "Email" é um atributo do objeto Seller *@
                 <label class="control-label">Valor</label>
                 <input asp-for="Valor" class="form-control" />
-
 
                 @*mostra a mensagem de erro caso o campo fique em branco *@
                 <span asp-validation-for="Valor" class="text-danger"></span>

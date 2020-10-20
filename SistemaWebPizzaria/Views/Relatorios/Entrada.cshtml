@@ -21,11 +21,11 @@
                 <fieldset>
                     <div class="col-md-4">
                         <label>Data Início</label>
-                        <input type="date" name="minDate" class="form-control" />
+                        <input type="date" name="minDate" class="form-control" value=@ViewData["minDate"] />
                     </div>
                     <div class=" col-md-4">
                         <label>Data Fim</label>
-                        <input type="date" name="maxDate" class="form-control " />
+                        <input type="date" name="maxDate" class="form-control" value=@ViewData["maxDate"] />
                     </div>
                     <div class="col-md-4">
                         <br />
@@ -37,9 +37,12 @@
             <div class="img-rounded col-md-12 text-center" style="box-shadow: #505050 0px 1px 5px; background-color: #ffe240">
                 <br />
                 @*<h1 class="" style="color:#424242; font-family:Impact">R$   @Model.ToString("F2")</h1><br /><br />*@
-                <h1 class="" style="color:#424242; font-family:Impact">R$  @Model.ToString("F2")  </h1><br /><br />
-            
+                <h1 class="" style="color:#424242; font-family:Impact">R$  @Model.ToString("F2")  </h1><br /><br />  
+                <p class="" style="color:#ff0000; font-family:Verdana">
+                 Relatório em construção!
+            </p> 
             </div>
+            
 
         </div>
     </div>

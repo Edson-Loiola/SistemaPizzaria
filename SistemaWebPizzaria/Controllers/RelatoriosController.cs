@@ -58,9 +58,9 @@ namespace SistemaWebPizzaria.Controllers
             ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
 
 
-            var somaTotal = await _relatoioService.SomaTotal(minDate, maxDate);
+            var relsaidas = await _relatoioService.SaidaDespesas(minDate, maxDate);
 
-            return View(somaTotal);
+            return View(relsaidas);
         }
 
 
@@ -82,8 +82,7 @@ namespace SistemaWebPizzaria.Controllers
             ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
             ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
 
-
-            var listasaida = await _relatoioService.SomaTotal(minDate, maxDate);
+            var listasaida = await _relatoioService.SaidaDespesas(minDate, maxDate);
             var entrada = _relatoioService.ValorEntrada(minDate, maxDate);
 
             var somasaida = listasaida.Despesas.Sum(x => x.Valor) + listasaida.Produtoestoque.Sum(x => x.PrecoCompra);

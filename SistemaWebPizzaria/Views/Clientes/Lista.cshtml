@@ -5,106 +5,111 @@
     ViewData["Title"] = "Lista de Clientes";
 }
 
+<div class="container col-md-12">
 
 
-<h2>@ViewData["Title"]</h2>
-<hr />
 
-<p>
-    <a asp-action="Index" class="btn btn-primary btn-lg">Novo Cliente</a>
-    <a asp-action="../Home/MenuSistema" class="btn btn-primary btn-lg">Home</a>
-</p>
-
-@*<div class="col-md-offset-11">
-    <form asp-action="BuscaCliente">
-        <div>
-            <input type="text" class="form-control" />
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+    <div class="row">
+        <form method="post" asp-action="Buscar">
+            <div class="col-md-10 input-group-lg">
+                <input class="form-control" type="text" name="telefone" placeholder="Buscar telefone" />
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-info btn-block btn-lg" type="submit">Buscar</button>
+            </div>
+        </form>
+    </div>
+    <hr />
+    <div class="row col-md-12 col-sm-3">
+        <div class="row col-md-3">
+            <p>
+                <a asp-action="Index" class="btn btn-primary btn-lg">Novo Cliente</a>
+                <a asp-action="../Home/MenuSistema" class="btn btn-primary btn-lg">Home</a>
+            </p>
         </div>
-        <div>
-            <input type="submit" value="Inserir" class="btn btn-primary" />
-        </div>
-    </form>
-</div>*@
 
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="bg-primary">
+                    <th>
+                        <label class="control-label text-center">Nome do cliente</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Telefone</label>
+                    </th>
+                    <th>
+                        <label class="control-label">CEP</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Rua</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Nº</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Complemento</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Bairro</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Ações</label>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClienteIdClienteNavigation.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ClienteIdClienteNavigation.Telefone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cep)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rua)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Numero)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Complemento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bairro)
+                        </td>
+                        <td class="text-center">
+                            <a asp-action="EditCliente" class="btn btn-default btn-sm" asp-route-id="@item.ClienteIdCliente"><span class="material-icons">edit</span></a> @*chama tela de ditar com os campos preenchidos*@
+                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.ClienteIdCliente"><span class="material-icons">delete</span></a>
+                        </td>
+                    </tr>
 
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr class="bg-primary">
-            <th>
-                <label class="control-label text-center">Nome do cliente</label>
-            </th>
-            <th>
-                <label class="control-label">Telefone</label>
-            </th>
-            <th>
-                <label class="control-label">CEP</label>
-            </th>
-            <th>
-                <label class="control-label">Rua</label>
-            </th>
-            <th>
-                <label class="control-label">Nº</label>
-            </th>
-            <th>
-                <label class="control-label">Complemento</label>
-            </th>
-            <th>
-                <label class="control-label">Bairro</label>
-            </th>
-            <th>
-                <label class="control-label">Ações</label>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClienteIdClienteNavigation.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClienteIdClienteNavigation.Telefone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cep)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rua)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Numero)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Complemento)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Bairro)
-                </td>
-
-                <td>
-                    <a asp-action="EditCliente" class="btn btn-default btn-sm" asp-route-id="@item.ClienteIdCliente"><span class="material-icons">edit</span></a> @*chama tela de ditar com os campos preenchidos*@
-                    <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.ClienteIdCliente"><span class="material-icons">delete</span></a>
-                </td>
-            </tr>
-
-            <!-- Modal -->
-            <div class="modal fade" id="myModal-@item.ClienteIdCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title" id="myModalLabel">Atenção</h3>
-                        </div>
-                        <div class="modal-body">
-                            <p>Deseja mesmo deletar esse cliente?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
-                            <a asp-action="DeleteCliente" asp-route-id="@item.ClienteIdCliente" class="btn btn-danger">Deletar</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal-@item.ClienteIdCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="myModalLabel">Atenção</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Deseja mesmo deletar esse cliente?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
+                                    <a asp-action="DeleteCliente" asp-route-id="@item.ClienteIdCliente" class="btn btn-danger">Deletar</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        }
-    </tbody>
-</table>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
