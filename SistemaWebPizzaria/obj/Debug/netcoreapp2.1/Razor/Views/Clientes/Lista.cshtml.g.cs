@@ -91,7 +91,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("</h2>\r\n        <hr />\r\n\r\n        <div class=\"row col-md-12 col-sm-3\">\r\n            <div class=\"row col-md-3\">\r\n                <p>                   \r\n                    ");
             EndContext();
             BeginContext(361, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "742b017640d94cd9953a5390ef6b481e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f0c76567595a45a4b5ceeba558ebf00f", async() => {
                 BeginContext(414, 12, true);
                 WriteLiteral("Novo Cliente");
                 EndContext();
@@ -114,7 +114,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("\r\n                    ");
             EndContext();
             BeginContext(452, 75, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f960986d421d4f0b8c477e934beb1c71", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4e5184202f964db9a628545b18d96f26", async() => {
                 BeginContext(519, 4, true);
                 WriteLiteral("Home");
                 EndContext();
@@ -137,7 +137,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("\r\n                </p>\r\n            </div>\r\n\r\n            <div class=\"row col-md-6  col-sm-3 col-md-offset-3\">                \r\n                    ");
             EndContext();
             BeginContext(675, 495, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "351a1d5dbc924888b0c982e9d3adf0a0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a31f7a528d244db1acc1aa02d3fffef7", async() => {
                 BeginContext(715, 169, true);
                 WriteLiteral("\r\n                        <div class=\"col-md-4 col-sm-8\">                       \r\n                            <input class=\"form-control\" type=\"text\" name=\"telefone\" /> ");
                 EndContext();
@@ -273,7 +273,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("\r\n                        </td>\r\n                        <td class=\"text-center\">\r\n                            ");
             EndContext();
             BeginContext(3546, 141, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8ab06b4f31424217864c25db822db7db", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "43e9a9d4686a47e79aefbefcff3a46a7", async() => {
                 BeginContext(3643, 40, true);
                 WriteLiteral("<span class=\"material-icons\">edit</span>");
                 EndContext();
@@ -347,7 +347,7 @@ WriteAttributeValue("", 4066, item.ClienteIdCliente, 4066, 22, false);
                                     ");
             EndContext();
             BeginContext(4861, 102, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0f151667edbf470b8ce3e27fd0ba5fd4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e00ef3bb518b45e4bbf52a857b7bf2a5", async() => {
                 BeginContext(4952, 7, true);
                 WriteLiteral("Deletar");
                 EndContext();

@@ -5,31 +5,29 @@
     ViewData["Title"] = "Lista de Clientes";
 }
 
-    <div class="container col-md-12">
+<div class="container col-md-12">
 
 
 
-        <h2>@ViewData["Title"]</h2>
-        <hr />
-
-        <div class="row col-md-12 col-sm-3">
-            <div class="row col-md-3">
-                <p>                   
-                    <a asp-action="Index" class="btn btn-primary btn-lg">Novo Cliente</a>
-                    <a asp-action="../Home/MenuSistema" class="btn btn-primary btn-lg">Home</a>
-                </p>
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+    <div class="row">
+        <form method="post" asp-action="Buscar">
+            <div class="col-md-10 input-group-lg">
+                <input class="form-control" type="text" name="telefone" placeholder="Buscar telefone" />
             </div>
-
-            <div class="row col-md-6  col-sm-3 col-md-offset-3">                
-                    <form method="post" asp-action="Buscar">
-                        <div class="col-md-4 col-sm-8">                       
-                            <input class="form-control" type="text" name="telefone" /> @*name='telefone' para receber o valor na função buscar*@
-                        </div>
-                        <div>
-                            <input type="submit" value="Buscar por telefone" class="btn btn-primary" />
-                        </div>
-                    </form>
-                </div>
+            <div class="col-md-2">
+                <button class="btn btn-info btn-block btn-lg" type="submit">Buscar</button>
+            </div>
+        </form>
+    </div>
+    <hr />
+    <div class="row col-md-12 col-sm-3">
+        <div class="row col-md-3">
+            <p>
+                <a asp-action="Index" class="btn btn-primary btn-lg">Novo Cliente</a>
+                <a asp-action="../Home/MenuSistema" class="btn btn-primary btn-lg">Home</a>
+            </p>
         </div>
 
         <table class="table table-bordered table-hover">
@@ -108,9 +106,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>                
+                    </div>
 
                 }
             </tbody>
         </table>
     </div>
+</div>

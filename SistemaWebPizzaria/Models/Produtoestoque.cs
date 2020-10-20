@@ -37,8 +37,13 @@ namespace SistemaWebPizzaria.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? Validade { get; set; }
 
+        [StringLength(50, ErrorMessage = "{0} Máximo de 50 caracteres")]
         public string Marca { get; set; }
+
+        [StringLength(50, ErrorMessage = "{0} Máximo de 50 caracteres")]
         public string NomeFornecedor { get; set; }
+
+        [StringLength(100, ErrorMessage = "{0} Máximo de 100 caracteres")]
         public string Descricao { get; set; }
 
         [Required(ErrorMessage = "{0} não informado!")]

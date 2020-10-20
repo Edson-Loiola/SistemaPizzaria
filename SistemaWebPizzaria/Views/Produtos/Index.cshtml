@@ -4,19 +4,18 @@
 @{ViewData["Title"] = "Produtos";}
 
 <h2>@ViewData["Title"]</h2>
-<hr />
-<!-- busca -->
-@*<div class="row">
-    <form asp-action="Buscar">
+<hr />  
+<div class="row">
+    <form method="post" asp-action="BuscarProdPeloNome">
         <div class="col-md-10 input-group-lg">
-            <input class="form-control" type="search" id="searchString" placeholder="Buscar produto">
+            <input class="form-control" type="text" name="nomeprod"  placeholder="Buscar produto">
         </div>
         <div class="col-md-2">
             <button class="btn btn-info btn-block btn-lg" type="submit">Buscar</button>
         </div>
     </form>
 </div>
-<hr />*@
+<hr />
 <div class="row">
     <div class="col-md-12">
         <a asp-action="Produto" class="btn btn-primary btn-lg">Cadatrar Produto</a>
