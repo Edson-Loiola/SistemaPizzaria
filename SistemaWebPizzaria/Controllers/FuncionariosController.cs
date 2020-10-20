@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SistemaWebPizzaria.Models;
+using SistemaWebPizzaria.Models.Util;
 using SistemaWebPizzaria.Models.ViewModels;
 using SistemaWebPizzaria.Services;
 using System;
@@ -15,9 +16,9 @@ namespace SistemaWebPizzaria.Controllers
     {
         public readonly FuncionarioService _funcionarioService;
         public readonly LoginService _loginService;
-        
 
-        public FuncionariosController(FuncionarioService funcionarioService,LoginService loginService)
+
+        public FuncionariosController(FuncionarioService funcionarioService, LoginService loginService)
         {
             _funcionarioService = funcionarioService;
             _loginService = loginService;
@@ -39,7 +40,7 @@ namespace SistemaWebPizzaria.Controllers
             var list = await _funcionarioService.FindAllAsync();
             return list;
         }
-        
+
 
         //inserir dados no banco (essa função é passada no form da minha view CreatDespesa
         [HttpPost] //esse método é um post pois está criando/enviando um novo objeto
@@ -48,37 +49,37 @@ namespace SistemaWebPizzaria.Controllers
         {
 
 
-           
+
 
             if (funcionario.Tipo == "Gerente" || funcionario.Tipo == "Atendente")
             {
                 Login login = new Login();
                 var rand = new Random();
 
-                 login.Email = funcionario.Email;
-                 login.DataCriacao = DateTime.Now;
+                login.Email = funcionario.Email;
+                login.DataCriacao = DateTime.Now;
 
-                 if (funcionario.Tipo == "Gerente")
-                 {
-                     login.Perfil = "A";
-                 }
-                 else
-                 {
-                     login.Perfil = "U";
-                 }
+                if (funcionario.Tipo == "Gerente")
+                {
+                    login.Perfil = "A";
+                }
+                else
+                {
+                    login.Perfil = "U";
+                }
 
-                 string senha = "";
-                 for (int ctr = 0; ctr <= 5; ctr++)
-                 {
-                     senha += rand.Next(0, 9).ToString();
-                 }
-                 login.Senha = senha;
-                 login.SenhaPadrao = "S";
+                string senha = "";
+                for (int ctr = 0; ctr <= 5; ctr++)
+                {
+                    senha += rand.Next(0, 9).ToString();
+                }
+                login.Senha = senha;
+                login.SenhaPadrao = "S";
                 login.Ativo = "S";
-                 await _loginService.InsertAsync(login);
-                 funcionario.IdLogin = login.IdLogin;
+                await _loginService.InsertAsync(login);
+                funcionario.IdLogin = login.IdLogin;
             }
-            
+
             funcionario.DataCadastro = DateTime.Now;
 
             await _funcionarioService.InsertAsync(funcionario);
@@ -103,7 +104,7 @@ namespace SistemaWebPizzaria.Controllers
         //ao clicar em edit ira abrir a tela com os campos carregados com os dados da despesa
         public async Task<IActionResult> Edit(int? id)
         {
-      
+
 
             var obj = await _funcionarioService.FindByIdAsync(id.Value);
             var objLog = await _loginService.FindByIdAsync(Convert.ToInt32(obj.IdLogin));
@@ -138,17 +139,17 @@ namespace SistemaWebPizzaria.Controllers
             var objLog = await _loginService.FindByIdAsync(Convert.ToInt32(obj.IdLogin));
             try
             {
-               
+
                 obj.Ativo = "N";
                 obj.DataInativacao = DateTime.Now;
                 await _funcionarioService.UpdateAsync(obj);
 
-                if(objLog != null)
+                if (objLog != null)
                 {
                     objLog.Ativo = "N";
                     await _loginService.UpdateAsync(objLog);
                 }
-              
+
 
                 return RedirectToAction(nameof(Index));
             }
@@ -166,7 +167,7 @@ namespace SistemaWebPizzaria.Controllers
         public async Task<IActionResult> Edit(int id, Funcionario obj)
         {
 
-   
+
             if (id != obj.IdFuncionario) //verifica se o Id é diferente
             {
                 return RedirectToAction(nameof(Index));
@@ -174,7 +175,7 @@ namespace SistemaWebPizzaria.Controllers
 
             try
             {
-                if(obj.Tipo == "Gerente" || obj.Tipo == "Atendente")
+                if (obj.Tipo == "Gerente" || obj.Tipo == "Atendente")
                 {
                     Login login = new Login();
                     login.Email = obj.Email;
@@ -209,8 +210,8 @@ namespace SistemaWebPizzaria.Controllers
                         login.SenhaPadrao = obj.IdLoginNavigation.SenhaPadrao;
                         await _loginService.UpdateAsync(login);
                     }
-                   
-                  
+
+
                 }
                 else
                 {
@@ -228,36 +229,49 @@ namespace SistemaWebPizzaria.Controllers
 
         }
 
-     
+
         public async Task<bool> VerificaEmail(string email, string idFuncionario)
         {
-            
+
             var obj = await _funcionarioService.FindAllAsync();
 
-         
-                if (!obj.Any(x => x.Email == email))
-                {
 
+            if (!obj.Any(x => x.Email == email))
+            {
+
+                return true;
+            }
+            else
+            {
+                if (obj.Any(x => x.Email == email && x.IdFuncionario == Convert.ToInt32(idFuncionario)))
+                {
                     return true;
                 }
                 else
                 {
-                    if (obj.Any(x => x.Email == email && x.IdFuncionario == Convert.ToInt32(idFuncionario)))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                    
+                    return false;
                 }
+
             }
-       
-            
+        }
+
+        public async Task<bool> ValidarCPF(string cpf)
+        {
+
+            //var resp = 
+
+            if (ValidaCPF.isCPF(cpf))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
 
 
         }
     }
+}
 

@@ -55,6 +55,13 @@ namespace SistemaWebPizzaria
 
 
             //cinfigurando sessions
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".SistemaWebPizzaria.Session";
+                //options.IdleTimeout = TimeSpan.FromSeconds();
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
       

@@ -4,10 +4,15 @@
 @{ViewData["Title"] = "Cadastar Funcionário";}
 
 <h2>@ViewData["Title"]</h2>
-
-
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 <hr />
-
+<script>
+    $(document).ready(function ($) {
+        $('#Cpf').mask('999.999.999-99', { reverse: false });
+        $('#Celular').mask('99999-9999', { reverse: false });
+});
+</script>
 
 <div class="container">
     <br />
@@ -33,7 +38,7 @@
                     <div class="form-group col-md-3">
                         @*  o compilador consegue entender que o "Email" é um atributo do objeto Seller *@
                         <label asp-for="Cpf" class="control-label">CPF:</label>
-                        <input asp-for="Cpf" id="CPF" class="form-control" />
+                        <input asp-for="Cpf" id="Cpf" class="form-control" />
                         <span asp-validation-for="Cpf" class="text-danger"></span>
 
                         @*mostra a mensagem de erro caso o campo fique em branco *@

@@ -35,6 +35,7 @@ namespace SistemaWebPizzaria.Models.ViewModels
         [Remote("VerificaSenhaAtual", "Home", ErrorMessage = "Senha é diferente da senha cadastrada atualmente")]
         public string SenhaAtual { get; set; }
 
+       // public string MensagemErro { get; set; }
 
 
 

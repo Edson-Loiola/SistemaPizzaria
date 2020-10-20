@@ -21,6 +21,7 @@ namespace SistemaWebPizzaria.Controllers
 
         public IActionResult Index()
         {
+           
             return View();
         }
         public IActionResult AlterarSenha(string e)
@@ -57,6 +58,7 @@ namespace SistemaWebPizzaria.Controllers
                 }
                 else
                 {
+                    TempData["ErroLogin"] = "Login ou senha Inválido";
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -79,6 +81,7 @@ namespace SistemaWebPizzaria.Controllers
                 }
                 else
                 {
+                    TempData["ErroLogin"] = "Login ou senha Inválido";
                     return RedirectToAction("Index", "Home");
                 }
                 
