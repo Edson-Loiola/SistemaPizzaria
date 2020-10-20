@@ -52,6 +52,11 @@ namespace SistemaWebPizzaria.Services {
             return await _context.Cardapiopizza.ToListAsync();
         }
 
+        public async Task<Cardapiopizza> findByIdCardapio(int id)
+        {
+            return await _context.Cardapiopizza.FindAsync(id);
+        }
+
         public async Task<List<Produtoestoque>> ListaProduto()
         {
             return await _context.Produtoestoque.ToListAsync();
