@@ -3,6 +3,7 @@ using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SistemaWebPizzaria.Controllers
@@ -75,9 +76,35 @@ namespace SistemaWebPizzaria.Controllers
                 return RedirectToAction(nameof(Index));
             }
         }
+
+
+
+
+        //metodo de pesquisar produto pelo nome 
+        [HttpPost]
+        public async Task<IActionResult> BuscarProdPeloNome(string nomeprod)
+        {
+           
+            var obj = await _produtoService.FindAllAsync();
+
+
+            if (nomeprod == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+
+            var listprod = obj.Where(x => x.Nome == nomeprod);          
+            
+
+            if (!listprod.Any(x => x.Nome == nomeprod)) // se o telefone passado não existir no banco, direcionar para create
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            else
+                return View(nameof(Index), listprod); // se existir retornar a lista
+        }
+
     }
-
-
-
 
 }

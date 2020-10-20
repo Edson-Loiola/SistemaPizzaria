@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SistemaWebPizzaria.Models;
+using SistemaWebPizzaria.Models.ViewModels;
 using SistemaWebPizzaria.Services.Exception;
 using System;
 using System.Collections.Generic;
@@ -78,7 +79,7 @@ namespace SistemaWebPizzaria.Services
             return await _context.Cliente.ToListAsync();
         }
 
-
+        //lista tudo na tela
         public async Task<List<Endereco>> FindAllEndeAsync()
         {
             return await _context.Endereco.Include(c => c.ClienteIdClienteNavigation).ToListAsync();
@@ -86,7 +87,7 @@ namespace SistemaWebPizzaria.Services
 
 
 
-        //listar endereço
+        //listar
         public async Task<Endereco> FindByEndIdAsync(int id)
         {
             return await _context.Endereco.FirstOrDefaultAsync(obj => obj.ClienteIdClienteNavigation.IdCliente == id);
@@ -127,6 +128,9 @@ namespace SistemaWebPizzaria.Services
             }
 
         }
+
+
+
     }
 
 }

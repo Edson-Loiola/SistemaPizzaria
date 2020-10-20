@@ -108,7 +108,6 @@ C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\bin\Debug\netcore
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.pdb
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.Views.dll
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\bin\Debug\netcoreapp2.1\SistemaWebPizzaria.Views.pdb
-C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csprojAssemblyReference.cache
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.AssemblyInfoInputs.cache
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.AssemblyInfo.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csproj.CoreCompileInputs.cache
@@ -125,6 +124,7 @@ C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcore
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Clientes\Index.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Clientes\Lista.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Despesas\CreateDespesa.cshtml.g.cs
+C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Despesas\DespesaSalario.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Despesas\Edit.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Despesas\Index.cshtml.g.cs
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Funcionarios\Create.cshtml.g.cs
@@ -160,4 +160,4 @@ C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcore
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.pdb
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.genruntimeconfig.cache
 C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csproj.CopyComplete
-C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\Razor\Views\Despesas\DespesaSalario.cshtml.g.cs
+C:\Users\Edson\source\repos\SistemaPizzaria\SistemaWebPizzaria\obj\Debug\netcoreapp2.1\SistemaWebPizzaria.csprojAssemblyReference.cache

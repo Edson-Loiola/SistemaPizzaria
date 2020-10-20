@@ -112,6 +112,34 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
+        //metodo de pesquisar produto pelo nome 
+        [HttpPost]
+        public async Task<IActionResult> BuscarCardapio(string nomeprod)
+        {
+
+            var obj = await _cardapioService.FindAllAsync();
+
+
+            if (nomeprod == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+
+            var filtrocardapio = obj.Where(x => x.Sabor == nomeprod);
+
+
+            if (!filtrocardapio.Any(x => x.Sabor == nomeprod)) // se o telefone passado não existir no banco, direcionar para create
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            else
+                return View(nameof(Index), filtrocardapio); // se existir retornar a lista
+        }
+
+
+
+
 
     }
 

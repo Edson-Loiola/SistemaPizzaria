@@ -18,66 +18,52 @@
             @* md-4 ocupa um 1/4 da tela *@
 
             <form asp-action="CreateCliente">
-
                 <div class="row">
                     <div class="form-group col-md-8">
-
                         <label class="control-label">Nome Cliente</label>
                         <input asp-for="Cliente.Nome" class="form-control" />
                         <span asp-validation-for="Cliente.Nome" class="text-danger"></span>
                     </div>
-
                     <div class="form-group col-md-2">
-
                         <label class="control-label">Telefone</label>
-                        <input asp-for="Cliente.Telefone" class="form-control" />
+                        <input asp-for="Cliente.Telefone"  class="form-control" />
                         <span asp-validation-for="Cliente.Telefone" class="text-danger"></span>
                     </div>
                 </div>
-
-
                 <div class="row">
                     <div class="form-group col-md-2">
                         <label class="control-label">Cep</label>
                         <input asp-for="Endereco.Cep" class="form-control" id="cep" onblur="pesquisacep(this.value)" />
                         <span asp-validation-for="Endereco.Cep" class="text-danger"></span>
                     </div>
-
-
                     <div class="form-group col-md-4">
                         <label class="control-label">Rua</label>
                         <input asp-for="Endereco.Rua" value="-" class="form-control" id="rua" />
                         <span asp-validation-for="Endereco.Rua" class="text-danger"></span>
                     </div>
-
                     <div class="form-group col-md-2">
                         <label class="control-label">Número</label>
                         <input asp-for="Endereco.Numero" class="form-control"  value="-" />
                         <span asp-validation-for="Endereco.Numero" class="text-danger"></span>
                     </div>
-
                     <div class="form-group col-md-2">
                         <label class="control-label">Compemento</label>
                         <input asp-for="Endereco.Complemento" value="-" class="form-control" />
-                     
+                        <span asp-validation-for="Endereco.Complemento" class="text-danger"></span>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="form-group col-md-4">
                         <label class="control-label">Bairro</label>
                         <input asp-for="Endereco.Bairro" value="-" class="form-control" id="bairro" />
                         <span asp-validation-for="Endereco.Bairro" class="text-danger"></span>
                     </div>
-
-
                     <div class="form-group col-md-3">
                         <label class="control-label">Cidade</label>
                         <input asp-for="Endereco.Cidade" value="-" class="form-control" id="cidade" />
                         <span asp-validation-for="Endereco.Cidade" class="text-danger"></span>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="form-group col-md-3" br>
                         <br />
@@ -101,6 +87,7 @@
 
         function limpa_formulário_cep() {
             //Limpa valores do formulário de cep.
+         
             document.getElementById('rua').value = ("-");
             document.getElementById('bairro').value = ("-");
             document.getElementById('cidade').value = ("-");
@@ -168,7 +155,6 @@
         };
 
     </script>
-
 
 
 }
