@@ -16,6 +16,7 @@ namespace SistemaWebPizzaria.Models
         public DateTime DataCriacao { get; set; }
         public string Perfil { get; set; }
         public string SenhaPadrao { get; set; }
+        public string Ativo { get; set; }
 
         public ICollection<Funcionario> Funcionario { get; set; }
     }

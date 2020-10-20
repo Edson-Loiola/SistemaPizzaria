@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
+using System.Web;
+using Microsoft.AspNetCore.Http;
 
 namespace SistemaWebPizzaria.Controllers
 {
@@ -20,6 +21,7 @@ namespace SistemaWebPizzaria.Controllers
 
         public IActionResult Index()
         {
+           
             return View();
         }
         public IActionResult AlterarSenha(string e)
@@ -56,25 +58,33 @@ namespace SistemaWebPizzaria.Controllers
                 }
                 else
                 {
+                    TempData["ErroLogin"] = "Login ou senha Inválido";
                     return RedirectToAction("Index", "Home");
                 }
             }
             else
             {
-                HttpContext.Session.SetString("Usuario", email);
-                HttpContext.Session.SetString("IdUsu", obj.IdLogin.ToString());
-                HttpContext.Session.SetString("Perfil", obj.Perfil.ToString());
-
-                if (obj.SenhaPadrao == "S")
+                if(obj.Ativo == "S" || obj.Ativo==null)
                 {
-                    return RedirectToAction("AlterarSenha", "Home");
+                    HttpContext.Session.SetString("Usuario", email);
+                    HttpContext.Session.SetString("IdUsu", obj.IdLogin.ToString());
+                    HttpContext.Session.SetString("Perfil", obj.Perfil.ToString());
+
+                    if (obj.SenhaPadrao == "S")
+                    {
+                        return RedirectToAction("AlterarSenha", "Home");
+                    }
+                    else
+                    {
+                        return RedirectToAction("MenuSistema", "Home");
+                    }
                 }
                 else
                 {
-                    return RedirectToAction("MenuSistema", "Home");
+                    TempData["ErroLogin"] = "Login ou senha Inválido";
+                    return RedirectToAction("Index", "Home");
                 }
-
-          
+                
 
             }
 
@@ -87,7 +97,7 @@ namespace SistemaWebPizzaria.Controllers
         {
                 var id = HttpContext.Session.GetString("IdUsu");
                 var obj = await _loginService.FindByIdAsync(Convert.ToInt32(id));
-
+                
                 obj.Senha = senha;
                 obj.SenhaPadrao = "N";
 
@@ -101,6 +111,38 @@ namespace SistemaWebPizzaria.Controllers
             ViewData["Message"] = "Veja aqui os planos.";
 
             return View();
+        }
+
+        
+        public async Task<bool> VerificaSenhaAtual(string senhaAtual)
+        {
+            var id = HttpContext.Session.GetString("IdUsu");
+            bool obj = await _loginService.ComparePassword(Convert.ToInt32(id),senhaAtual);
+
+            if(obj){
+                return false;
+            }
+            else{
+                return true;
+            }
+
+             
+        }
+        public async Task<bool> ComparaSenhaNova(string senhaNova)
+        {
+            var id = HttpContext.Session.GetString("IdUsu");
+            var obj = await _loginService.FindByIdAsync(Convert.ToInt32(id));
+
+            if (obj.Senha == senhaNova)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+
         }
 
 

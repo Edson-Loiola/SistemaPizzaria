@@ -8,7 +8,15 @@
 }
 
 <h2>@ViewData["Title"]</h2>
-
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<hr />
+<script>
+    $(document).ready(function ($) {
+        $('#Cpf').mask('999.999.999-99', { reverse: false });
+        $('#Celular').mask('99999-9999', { reverse: false });
+});
+</script>
 <hr />
 <div class="container">
     <br />
@@ -30,53 +38,54 @@
                 <input asp-for="IdLoginNavigation.SenhaPadrao" type="hidden" class="form-control" />
 
 
+                <div class="row">
+                    <div class="form-group col-md-3">
 
-                <div class="form-group col-md-3">
+                        @*  o compilador consegue entender que o "Name" é um atributo do objeto Seller *@
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" />
 
-                    @*  o compilador consegue entender que o "Name" é um atributo do objeto Seller *@
-                    <label asp-for="Nome" class="control-label"></label>
-                    <input asp-for="Nome" class="form-control" />
+                        @*mostra a validacção pendente agora abaixo do campo, (Posso usar assim ou em forma de lista como inlcuido no começo do form *@
+                        <!--<span asp-validation-for="NomeDespesa" class="text-danger"></span>-->
 
-                    @*mostra a validacção pendente agora abaixo do campo, (Posso usar assim ou em forma de lista como inlcuido no começo do form *@
-                    <!--<span asp-validation-for="NomeDespesa" class="text-danger"></span>-->
+                    </div>
 
+                    <div class="form-group col-md-3">
+                        @*  o compilador consegue entender que o "Email" é um atributo do objeto Seller *@
+                        <label asp-for="Cpf" class="control-label"></label>
+                        <input asp-for="Cpf" id="Cpf" class="form-control" />
+                        <span asp-validation-for="Cpf" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label asp-for="Celular" class="control-label"></label>
+                        <input asp-for="Celular" class="form-control" />
+                        <span asp-validation-for="Celular" class="text-danger"></span>
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="form-group col-md-5">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
 
-                <div class="form-group col-md-3">
-                    @*  o compilador consegue entender que o "Email" é um atributo do objeto Seller *@
-                    <label asp-for="Cpf" class="control-label"></label>
-                    <input asp-for="Cpf" class="form-control" />
-                    <!--  <span asp-validation-for="Cpf" class="text-danger"></span>-->
+                    </div>
+
+
+                    <div class="form-group col-md-3">
+                        <label asp-for="Salario" class="control-label"></label>
+                        <input asp-for="Salario" class="form-control" />
+                        <span asp-validation-for="Salario" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="control-label">Tipo</label>
+                        <select class="form-control" asp-for="Tipo" name="Tipo">
+                            <option value="Gerente">Gerente</option>
+                            <option value="Atendente">Atendente</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
                 </div>
-
-                <div class="form-group col-md-3">
-                    <label asp-for="Celular" class="control-label"></label>
-                    <input asp-for="Celular" class="form-control" />
-                    <!-- <span asp-validation-for="Celular" class="text-danger"></span>-->
-                </div>
-
-                <div class="form-group col-md-5">
-                    <label asp-for="Email" class="control-label"></label>
-                    <input asp-for="Email" class="form-control" />
-                    <!--<span asp-validation-for="Email" class="text-danger"></span>-->
-
-                </div>
-
-
-                <div class="form-group col-md-3">
-                    <label asp-for="Salario" class="control-label"></label>
-                    <input asp-for="Salario" class="form-control" />
-                    <span asp-validation-for="Salario" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-3">
-                    <label class="control-label">Tipo</label>
-                    <select class="form-control" asp-for="Tipo" name="Tipo">
-                        <option value="Gerente">Gerente</option>
-                        <option value="Atendente">Atendente</option>
-                        <option value="Outros">Outros</option>
-                    </select>
-                </div>
-
 
 
                 <div class="form-group col-md-3">
@@ -90,4 +99,10 @@
         </div>
     </div>
 </div>
+
+
+@*para halidtar validação por meio do JavaScript*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 

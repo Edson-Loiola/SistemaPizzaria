@@ -15,16 +15,21 @@
                 </div>
                 <div class="col-md-2">
                     <label for="">Tipo</label>
-                    <input asp-for="Tipo" class="form-control">
+                    <select class="form-control" asp-for="Tipo" name="Tipo">
+                        <option value="Esfiha">Esfiha</option>
+                        <option value="Pizza">Pizza</option>
+                    </select>
                 </div>
                 <div class="col-md-5">
                     <label for="firstName">Sabor</label>
                     <input asp-for="Sabor" class="form-control" placeholder="">
+                    <span asp-validation-for="Sabor" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-2">
                     <label for="">Valor</label>
                     <input asp-for="ValorUnitario" class="form-control" placeholder="R$">
+                    <span asp-validation-for="ValorUnitario" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-2">
@@ -37,24 +42,11 @@
                 </div>
             </div>
 
-
-            <!-- <div class="col-md-2">
-                <label for="">Tipo</label><br />
-                @*<select asp-for="UnidadeMedida" class="custom-select">
-                    <option value="UN">Unidade</option>
-                    <option value="KL">Kilograma</option>
-                    <option value="GM">grama</option>
-                    <option value="LT">Litro</option>
-                    <option value="ML">Mililitro</option>
-                </select>*@
-            </div>
-               -->
-
-
             <div class="row" style="margin-bottom:15px;">
                 <div class="col-md-12">
                     <label for="firstName">Campo para descrição</label>
-                    <textarea asp-for="Descricao" class="form-control " placeholder="Máximo 500 caracteres" aria-label="With textarea"></textarea>
+                    <textarea asp-for="Descricao" class="form-control " placeholder="Máximo 100 caracteres" aria-label="With textarea"></textarea>
+                    <span asp-validation-for="Sabor" class="text-danger"></span>
                 </div>
             </div>
             <div class="row">

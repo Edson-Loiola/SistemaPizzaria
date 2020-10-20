@@ -111,6 +111,19 @@ namespace SistemaWebPizzaria.Services
 
         }
 
+        public async Task<bool> ComparePassword(int id, string senha)
+        {
+            var resp = await _context.Login.FirstOrDefaultAsync(obj => obj.IdLogin == id && obj.Senha == senha);
+            if (resp == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+            
 
 
 
