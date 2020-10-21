@@ -22,7 +22,8 @@ namespace SistemaWebPizzaria.Models
 
         [Display(Name = "Telefone")]
         [Required(ErrorMessage = "{0} não informado!")]
-        [StringLength(11, MinimumLength = 10, ErrorMessage = "{0} inválido")]    
+        [StringLength(11, MinimumLength = 10, ErrorMessage = "{0} inválido")]
+        [Remote("VerificaTelefone", "Clientes", AdditionalFields = nameof(IdCliente), ErrorMessage = "Telefone já cadastrado! Realize a busca!")] // validaçao para vericar se telefone já existe
         public string Telefone { get; set; }
 
         public ICollection<Endereco> Endereco { get; set; }

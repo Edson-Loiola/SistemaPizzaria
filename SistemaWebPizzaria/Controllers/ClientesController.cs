@@ -193,6 +193,52 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
+
+
+
+
+        //verificar se o telefone cadastro já existe
+
+
+        public async Task<bool> VerificaTelefone(string telefone, string idCliente)
+        {
+
+            if (Request.Query.Any( x => x.Key == "Cliente.Telefone"))
+            {
+                telefone = HttpContext.Request.Query["Cliente.Telefone"];  
+                //unica forma de conseguir pegar o tel vindo da tela para comparar com o banco  - pagina create
+                
+            }
+            else
+            {
+                telefone = HttpContext.Request.Query["ClienteIdClienteNavigation.Telefone"];  //unica forma de conseguir pegar o tel vindo da tela para comparar com o banco  - pagina editar
+                idCliente = HttpContext.Request.Query["ClienteIdClienteNavigation.IdCliente"];
+            
+            }
+
+
+            var obj = await _clienteService.FindAllAsync();
+
+
+            if (!obj.Any(x => x.Telefone == telefone))
+            {
+                return true;
+            }
+            else
+            {
+                if (obj.Any(x => x.Telefone == telefone && x.IdCliente == Convert.ToInt32(idCliente)))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+        }
+
+
     }
 
 }
