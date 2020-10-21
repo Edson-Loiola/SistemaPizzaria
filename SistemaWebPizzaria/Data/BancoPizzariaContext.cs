@@ -135,7 +135,7 @@ namespace SistemaWebPizzaria.Models
 
                 entity.Property(e => e.Ativo).HasColumnType("varchar(1)");
 
-                entity.Property(e => e.Celular).HasColumnType("varchar(11)");
+                entity.Property(e => e.Celular).HasColumnType("varchar(14)");
 
                 entity.Property(e => e.Cpf)
                     .IsRequired()
