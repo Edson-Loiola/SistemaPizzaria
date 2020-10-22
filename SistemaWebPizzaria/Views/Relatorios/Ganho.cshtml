@@ -5,7 +5,7 @@
 
 <div class="container-fluid">
 
-    <h2>Lucro Total no Período</h2>
+    <h2>Ganhos</h2>
     <hr />
     <div class="row col-md-12">
 
@@ -19,7 +19,7 @@
         </div>
 
         <div class="col-sm-6 col-sm-offset-3 col-md-9 col-md-offset-0">
-            <form class="form-horizontal col-md-offset-1" asp-action="Ganho">
+            <form class="form-horizontal col-md-offset-2" asp-action="Ganho">
                 <fieldset>
                     <div class="col-md-4">
                         <label>Data Início</label>
@@ -35,14 +35,11 @@
                     </div>
                 </fieldset>
             </form><br />
-
-            <div class="img-rounded col-md-12 text-center" style="box-shadow: #505050 0px 1px 5px; background-color: #90EE90">
-                <br />
-                <h1 class="" style="color:#424242; font-family:Impact">R$   @Model.ToString("F2")</h1><br /><br />
-                <p class="" style="color:#ff0000; font-family:Verdana">
-                     Relatório em construção!
-                </p>
-            </div>
+                   <div class="img-rounded col-md-12 text-center" style="box-shadow: #505050 0px 1px 5px; background-color: #90EE90">
+                       <br />
+                       <span style="color:#424242; font-family:Verdana; font-size:medium">Valor de lucro geral</span>
+                       <h1 class="" style="color:#424242; font-family:Impact">R$   @Model.ToString("F2")</h1><br /><br />
+                   </div>
         </div>
     </div>
 </div>

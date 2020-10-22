@@ -7,8 +7,7 @@ namespace SistemaWebPizzaria.Models
     {
         public Pedido()
         {
-            Itemcardapio = new HashSet<Itemcardapio>();
-            Itemproduto = new HashSet<Itemproduto>();
+            Itempedido = new HashSet<Itempedido>();
         }
 
         public int IdPedido { get; set; }
@@ -17,12 +16,11 @@ namespace SistemaWebPizzaria.Models
         public string FormaPagamento { get; set; }
         public int IdFuncioario { get; set; }
         public int IdCliente { get; set; }
-        public decimal? TotalPedido { get; set; }
+        public double TotalPedido { get; set; }
         public string Status { get; set; }
 
         public Cliente IdClienteNavigation { get; set; }
         public Funcionario IdFuncioarioNavigation { get; set; }
-        public ICollection<Itemcardapio> Itemcardapio { get; set; }
-        public ICollection<Itemproduto> Itemproduto { get; set; }
+        public ICollection<Itempedido> Itempedido { get; set; }
     }
 }

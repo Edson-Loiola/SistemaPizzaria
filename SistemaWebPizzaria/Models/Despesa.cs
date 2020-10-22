@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Globalization;
 
 namespace SistemaWebPizzaria.Models
 {
@@ -21,7 +18,7 @@ namespace SistemaWebPizzaria.Models
 
 
         [Range(0.00, 999999.99, ErrorMessage = "{0} R$ de {1} até {2}")]
-        [DisplayFormat(DataFormatString = "{0:F2}")]        
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         [Required(ErrorMessage = "{0} não informado!")]
         public double Valor { get; set; }
 
@@ -45,5 +42,4 @@ namespace SistemaWebPizzaria.Models
             DataDespesa = dataDespesa;
         }
     }
-
 }

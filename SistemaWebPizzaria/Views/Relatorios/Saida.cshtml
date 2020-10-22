@@ -1,11 +1,9 @@
 ﻿
 @model SistemaWebPizzaria.Models.ViewModels.RelatoriosViewModel
 
-
-
 <div class="container-fluid">
 
-    <h2>Total de Saídas</h2>
+    <h2>Saídas</h2>
     <hr />
     <div class="row col-md-12">
 
@@ -19,7 +17,7 @@
         </div>
 
         <div class="col-sm-6 col-sm-offset-3 col-md-9 col-md-offset-0">
-            <form class="form-horizontal col-md-offset-1" asp-action="Saida">
+            <form class="form-horizontal col-md-offset-2" asp-action="Saida">
                 <fieldset>
                     <div class="col-md-4">
                         <label>Data Início</label>
@@ -35,11 +33,12 @@
                     </div>
                 </fieldset>
             </form><br />
-            <div class="img-rounded col-md-12 text-center" style="box-shadow: #505050 0px 1px 5px; background-color: #ff6666">
-                <br />
-                <h1  style="color:#424242; font-family:Impact">R$ @((Model.Despesas.Sum(x => x.Valor) + Model.Produtoestoque.Sum(x => x.PrecoCompra)).ToString("F2"))</h1>
-                <br /><br />
-            </div>
+                   <div class="img-rounded col-md-12 text-center" style="box-shadow: #505050 0px 1px 5px; background-color: #ff6666">
+                       <br />
+                       <span style="color:#424242; font-family:Verdana; font-size:medium">Valor de saída com despesas</span>
+                       <h1 style="color:#424242; font-family:Impact">R$ @((Model.Despesas.Sum(d => d.Valor) + Model.Produtoestoque.Sum(x => x.PrecoCompra)).ToString("F2"))</h1>
+                       <br />
+                   </div>
 
         </div>
     </div>

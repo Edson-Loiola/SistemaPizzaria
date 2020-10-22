@@ -25,28 +25,21 @@ namespace SistemaWebPizzaria.Services
 
             var listdesp = from obj in _context.Despesa select obj;
             var listprod = from obj in _context.Produtoestoque select obj;
-            // var listfunc = from obj in _context.Funcionario select obj;
+            
 
 
             if (minDate.HasValue)
             {
                 listdesp = listdesp.Where(d => d.DataDespesa >= minDate.Value);
                 listprod = listprod.Where(p => p.DataCompra >= minDate.Value);
-                //    listfunc = listfunc.Where(f => f.DataCadastro >= minDate.Value);
+              
             }
             if (maxDate.HasValue)
             {
                 listdesp = listdesp.Where(d => d.DataDespesa <= maxDate.Value);
                 listprod = listprod.Where(p => p.DataCompra <= maxDate.Value);
-                //   listfunc = listfunc.Where(f => f.DataCadastro <= maxDate);
+               
             }
-
-
-            //       var somadesp = listdesp.Sum(x => x.Valor);
-            //var somafunc = listfunc.Sum(x => x.Salario);
-            //        var somaprod = listprod.Sum(x => x.PrecoCompra);
-
-            //         var somatotal = (somadesp + /*somafunc +*/ somaprod);
 
 
             RelatoriosViewModel list = new RelatoriosViewModel(
@@ -61,25 +54,33 @@ namespace SistemaWebPizzaria.Services
         }
 
 
-        public double ValorEntrada(DateTime? minDate, DateTime? maxDate)
+        public async Task<RelatoriosViewModel> ValorEntrada(DateTime? minDate, DateTime? maxDate)
         {
 
-            var entrada = 10000.00;
-            //if (minDate.HasValue)
-            //{
-            //    desp = desp.Where(x => x.DataDespesa >= minDate.Value);
-            //}
-            //if (maxDate.HasValue)
-            //{
-            //    desp = desp.Where(x => x.DataDespesa <= maxDate.Value);
-            //}
+      
+            var listpedido = from obj in _context.Pedido select obj;            
 
 
-            return entrada;
+            if (minDate.HasValue)
+            {
+                listpedido = listpedido.Where(p => p.DataHora >= minDate.Value);
+            }
+            if (maxDate.HasValue)
+            {
+                listpedido = listpedido.Where(p => p.DataHora <= maxDate.Value);
+            }
 
+            RelatoriosViewModel list = new RelatoriosViewModel
+                (
+                    listpedido.ToList()                    
+                );
+
+            return list;
 
         }
 
+
+        //o de lucro foi feito direto no html
 
         //    public async Task<double> ValorTotalLucro(DateTime? minDate, DateTime? maxDate)
         //    {

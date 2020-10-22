@@ -1,9 +1,9 @@
 ﻿
-@model Double
+@model SistemaWebPizzaria.Models.ViewModels.RelatoriosViewModel
 
 <div class="container-fluid">
 
-    <h2>Total de Entradas</h2>
+    <h2>Entradas</h2>
     <hr />
     <div class="row col-md-12">
 
@@ -17,7 +17,7 @@
         </div>
 
         <div class="col-sm-6 col-sm-offset-3 col-md-9 col-md-offset-0">
-            <form class="form-horizontal col-md-offset-1" asp-action="Entrada">
+            <form class="form-horizontal col-md-offset-2" asp-action="Entrada">
                 <fieldset>
                     <div class="col-md-4">
                         <label>Data Início</label>
@@ -33,83 +33,100 @@
                     </div>
                 </fieldset>
             </form><br />
+                   <div class="img-rounded col-md-12 text-center" style="box-shadow: #505050 0px 1px 5px; background-color: #ffe240">
+                       <br />
+                       <span style="color:#424242; font-family:Verdana; font-size:medium">Valor de entrada com vendas</span>
+                       <h1 style="color:#424242; font-family:Impact"> R$ @(Model.Pedidos.Where(x => x.Status == "Finalizado").Sum(p => p.TotalPedido).ToString("F2"))</h1>
+                       <br />
+                   </div>
 
-            <div class="img-rounded col-md-12 text-center" style="box-shadow: #505050 0px 1px 5px; background-color: #ffe240">
-                <br />
-                @*<h1 class="" style="color:#424242; font-family:Impact">R$   @Model.ToString("F2")</h1><br /><br />*@
-                <h1 class="" style="color:#424242; font-family:Impact">R$  @Model.ToString("F2")  </h1><br /><br />  
-                <p class="" style="color:#ff0000; font-family:Verdana">
-                 Relatório em construção!
-            </p> 
+            <span class="row" style="color: #fff">---</span>
+           
+
+
+            <div class="row col-md-12">
+                <div class="row img-rounded col-md-4 text-center col-md-offset-2" style="box-shadow: #505050 0px 1px 5px; background-color: #ddddd">
+                    <br />
+                    <span style="color:#424242; font-family:Verdana; font-size:medium">Pedidos Finalizados</span>
+                    <h2 style="color:#2b42c7; font-family:Impact"> @(Model.Pedidos.Where(x => x.Status == "Finalizado").Count()) </h2>                  
+                </div>
+                <span style="color: #fff">---</span>
+                <div class="row img-rounded col-md-4 text-center col-md-offset-1 " style="box-shadow: #505050 0px 1px 5px; background-color: #ddddd">
+                    <br />
+                    <span style="color:#424242; font-family:Verdana; font-size:medium">Pedidos Cancelados</span>
+                    <h2 style="color:#f54f4f; font-family:Impact"> @(Model.Pedidos.Where(x => x.Status == "Cancelado").Count()) </h2>
+                   
+                </div>
+
             </div>
-            
-
         </div>
     </div>
-
-    @*<div class="col-sm-6 col-sm-offset-3 col-md-9 col-md-offset-2">
-            <br />
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr class="">
-                        <th>
-                            <label class="control-label text-center">Nome da Despesa</label>
-                        </th>
-                        <th>
-                            <label class="control-label">Valor (R$)</label>
-                        </th>
-                        <th>
-                            <label class="control-label">Descrição</label>
-                        </th>
-                        <th>
-                            <label class="control-label">Data</label>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Despesas)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NomeDespesa)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Valor)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Descricao)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DataDespesa)
-                            </td>
-                        </tr>
-                    }
-
-                    @foreach (var item in Model.Produtoestoque)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nome)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PrecoCompra)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Descricao)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DataCompra)
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-
-        </div>*@
 </div>
 
 
+@*<div class="col-sm-6 col-sm-offset-3 col-md-9 col-md-offset-2">
+        <br />
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="">
+                    <th>
+                        <label class="control-label text-center">ID Pedido</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Data</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Entrega</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Tipo Pagamento</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Tipo Pagamento</label>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Despesas)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeDespesa)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Valor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataDespesa)
+                        </td>
+                    </tr>
+                }
 
+                @foreach (var item in Model.Produtoestoque)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrecoCompra)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataCompra)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>*@
+        
 
 
 
