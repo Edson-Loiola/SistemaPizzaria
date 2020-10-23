@@ -22,8 +22,9 @@ namespace SistemaWebPizzaria.Services {
         //função de inserir no banco
         public async Task InsertAsync(Pedido obj)
         {
-            obj.IdFuncioarioNavigation = _context.Funcionario.Find(obj.IdFuncioarioNavigation.IdFuncionario);
-            obj.IdClienteNavigation = _context.Cliente.Find(obj.IdClienteNavigation.IdCliente);
+            obj.DataHora = DateTime.Now;
+            obj.IdClienteNavigation = _context.Cliente.Find(obj.IdCliente);
+            obj.IdFuncioarioNavigation = _context.Funcionario.Find(obj.IdFuncioario);
             _context.Add(obj);
             await _context.SaveChangesAsync();
         }
@@ -60,6 +61,17 @@ namespace SistemaWebPizzaria.Services {
         public async Task<List<Produtoestoque>> ListaProduto()
         {
             return await _context.Produtoestoque.ToListAsync();
+        }
+
+        public async Task<Produtoestoque> findByIdProduto(int id)
+        {
+            return await _context.Produtoestoque.FindAsync(id);
+        }
+
+        public async Task InsertItemPedido(Itempedido itemPedido)
+        {
+            _context.Add(itemPedido);
+            await _context.SaveChangesAsync();
         }
 
 

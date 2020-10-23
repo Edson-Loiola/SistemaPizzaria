@@ -11,10 +11,10 @@
 </style>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script>
+<script type="text/javascript">
 
-    $("#quantidadeCardapio").val(1);
-    $("#quantidadeProduto").val(1);
+    $("#quantidadeCardapio").val();
+    $("#quantidadeProduto").val();
     var listItemPedido = [];
 
     ListaFuncionarios();
@@ -34,7 +34,7 @@
                 $.each(response, function (index, value) {
                     $("#selectFuncionarios").append("<option value=" + value.idFuncionario + ">"+value.nome+"</option>");
                 });
-                console.log(response);
+                //console.log(response);
             }
         });
     };
@@ -49,7 +49,7 @@
                 $.each(response, function (index, value) {
                     $("#selectClientes").append("<option value=" + value.idCliente + ">"+value.nome+"</option>");
                 });
-                console.log(response);
+                //console.log(response);
             }
         });
     };
@@ -64,7 +64,7 @@
                 $.each(response, function (index, value) {
                     $("#selectCardapio").append("<option value=" + value.idCardapio + ">" + value.tipo + " de " + value.sabor + "</option>");
                 });
-                console.log(response);
+                //console.log(response);
             }
         });
     };
@@ -81,7 +81,7 @@
                         $("#selectProdutos").append("<option value=" + value.idProduto + "> Produto:" + value.nome + " - Valor: R$" + value.precoVenda + "</option>");
                     }
                 });
-                console.log(response);
+                //console.log(response);
             }
         });
     };
@@ -94,29 +94,43 @@
 
         $.post('AdicionarItemCardapioAoPedido', { qtd: qtd, cardapioid: itemCardapioId},
             function (returnedData) {
-                console.log(returnedData);
+                //console.log(returnedData);
 
                 listItemPedido.push(returnedData);
 
-                $("#tabelaProdutos").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + returnedData.idCardapioNavigation.tipo + " de " + returnedData.idCardapioNavigation.sabor + "</td><td>" + returnedData.precoUnidade + "</td><td>" + returnedData.quantidade + "</td><td>" + returnedData.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) +")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
+                $("#tabelaProdutos").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + returnedData.cardapioPizzaIdCardapioNavigation.tipo + " de " + returnedData.cardapioPizzaIdCardapioNavigation.sabor + "</td><td>" + returnedData.precoUnidade + "</td><td>" + returnedData.quantidade + "</td><td>" + returnedData.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
+
+                calculaTotal();
             }
         );
     }
 
-    function AdicionarItemCardapioAoPedido() {
+    function AdicionarItemProdutoAoPedido() {
 
-        var qtd = $("#quantidadeCardapio").val();
-        var itemCardapioId = $("#selectCardapio").val();
+        var qtd = $("#quantidadeProduto").val();
+        var itemProdutoId = $("#selectProdutos").val();
 
-        $.post('AdicionarItemCardapioAoPedido', { qtd: qtd, cardapioid: itemCardapioId},
+        $.post('AdicionarItemProdutoAoPedido', { qtd: qtd, produtoid: itemProdutoId },
             function (returnedData) {
-                console.log(returnedData);
+                //console.log(returnedData);
 
                 listItemPedido.push(returnedData);
 
-                $("#tabelaProdutos").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + returnedData.idCardapioNavigation.tipo + " de " + returnedData.idCardapioNavigation.sabor + "</td><td>" + returnedData.precoUnidade + "</td><td>" + returnedData.quantidade + "</td><td>" + returnedData.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
+                $("#tabelaProdutos").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + returnedData.produtoEstoqueIdProdutoNavigation.nome + "</td><td>" + returnedData.precoUnidade + "</td><td>" + returnedData.quantidade + "</td><td>" + returnedData.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
+
+                calculaTotal();
             }
         );
+    }
+
+    function calculaTotal() {
+        var total = 0;
+
+        $.each(listItemPedido, function (index, item) {
+            total += item.total;
+        });
+
+        $("#TotalPedido").val(total);
     }
 
     function removeItem(idItem) {
@@ -131,6 +145,28 @@
         }
     }
 
+    function createPedido() {
+
+        var pedido = {
+            "TipoEntrega": $("#TipoEntrega option:selected").val(),
+            "FormaPagamento": $("#FormaPagamento option:selected").val(),
+            "IdFuncioario": $("#selectFuncionarios option:selected").val(),
+            "IdCliente": $("#selectClientes option:selected").val(),
+            "Status": $("#Status option:selected").val(),
+            "TotalPedido": $("#TotalPedido").val(),
+        }
+
+        console.log("cheguei");
+        console.log(pedido);
+
+        $.post('Create', { pedido: pedido },
+            function (returnedData) {
+                alert("GRAVADO COM SUCESSO");
+                window.location.href = "/Pedidos/Index";
+            }
+        );
+    }
+
 </script>
 
 <div class="row">
@@ -141,7 +177,7 @@
 
                 <div class="col-md-2">
                     <label for="">Entrega</label>
-                    <select asp-for="TipoEntrega" class="form-control">
+                    <select id="TipoEntrega" asp-for="TipoEntrega" class="form-control">
                         <option value="Retirada">Retirada na loja</option>
                         <option value="Motoboy">Entrega via motoboy</option>
                     </select>
@@ -149,7 +185,7 @@
 
                 <div class="col-md-2">
                     <label for="">Forma de pagamento</label>
-                    <select asp-for="FormaPagamento" class="form-control">
+                    <select id="FormaPagamento" asp-for="FormaPagamento" class="form-control">
                         <option value="debito">Cartão debito</option>
                         <option value="cretido">cartão de credito</option>
                         <option value="dinheiro">Dinheiro</option>
@@ -176,7 +212,7 @@
 
                 <div class="col-md-2">
                     <label for="">Estado</label>
-                    <select id="testeStatus" asp-for="Status" class="form-control">
+                    <select id="Status" asp-for="Status" class="form-control">
                         <option value="preparando">Preparando</option>
                         <option value="entregue">Entregue</option>
                         <option value="viagem">Em viagem</option>
@@ -233,12 +269,12 @@
             <div class="row">
                 <div class="col-md-4 pull-right">
                     <label for="">Total</label>
-                    <input asp-for="TotalPedido" class="form-control">
+                    <input id="TotalPedido" asp-for="TotalPedido" class="form-control">
                 </div>
             </div>
             <div class="row" style="margin-top:20px;">
                 <div class="col-md-12 text-right">
-                    <input class="btn btn-success btn-lg" type="submit" value="Cadastrar novo produto" />
+                    <input class="btn btn-success btn-lg" onclick="createPedido()" value="Cadastrar novo produto" />
                     <a href="/Pedidos/Index" class="btn btn-danger btn-lg">Voltar</a>
                 </div>
             </div>
