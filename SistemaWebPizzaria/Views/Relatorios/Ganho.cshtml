@@ -19,27 +19,31 @@
         </div>
 
         <div class="col-sm-6 col-sm-offset-3 col-md-9 col-md-offset-0">
-            <form class="form-horizontal col-md-offset-2" asp-action="Ganho">
-                <fieldset>
-                    <div class="col-md-4">
-                        <label>Data Início</label>
-                        <input type="date" name="minDate" class="form-control" value=@ViewData["minDate"] />
-                    </div>
-                    <div class=" col-md-4">
-                        <label>Data Fim</label>
-                        <input type="date" name="maxDate" class="form-control" value=@ViewData["maxDate"] />
-                    </div>
-                    <div class="col-md-4">
-                        <br />
-                        <button type="submit" class="btn btn-primary ">Submit</button>
-                    </div>
-                </fieldset>
-            </form><br />
-                   <div class="img-rounded col-md-12 text-center" style="box-shadow: #505050 0px 1px 5px; background-color: #90EE90">
-                       <br />
-                       <span style="color:#424242; font-family:Verdana; font-size:medium">Valor de lucro geral</span>
-                       <h1 class="" style="color:#424242; font-family:Impact">R$   @Model.ToString("F2")</h1><br /><br />
-                   </div>
+            <div class="row">
+                <form class="form-horizontal col-md-offset-2" asp-action="Entrada">
+                    <fieldset>
+                        <div class="col-md-4">
+                            @*<label>Data Início</label>*@
+                            <input type="date" name="minDate" class="form-control" value=@ViewData["minDate"] />
+                        </div>
+                        <div class=" col-md-4">
+                            @*<label>Data Fim</label>*@
+                            <input type="date" name="maxDate" class="form-control" value=@ViewData["maxDate"] />
+                        </div>
+                        <div class="col-md-4">
+
+                            <button type="submit" class="btn btn-primary ">Buscar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div> <br />
+            <div class="row">
+                <div class="img-rounded col-md-8 text-center col-md-offset-2" style="box-shadow: #505050 0px 1px 5px; background-color: #90EE90">
+                    <br />
+                    <span style="color:#424242; font-family:Verdana; font-size:medium">Valor de lucro geral</span>
+                    <h1 class="" style="color:#424242; font-family:Impact">R$   @Model.ToString("F2")</h1><br />
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    </div>

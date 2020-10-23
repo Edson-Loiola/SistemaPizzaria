@@ -6,10 +6,9 @@
     <h2>Entradas</h2>
     <hr />
     <div class="row col-md-12">
-
         <div class="col-sm-2 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li class="active"><a asp-action="../Relatorios/Entrada">Entradas <span class="sr-only">(current)</span></a></li>
+                <li class="active btn-outline-primary"><a asp-action="../Relatorios/Entrada">Entradas <span class="sr-only">(current)</span></a></li>
                 <li><a asp-action="../Relatorios/Saida">Saídas</a></li>
                 <li><a asp-action="../Relatorios/Ganho">Ganhos</a></li>
                 <li> <a asp-action="../Home/MenuSistema">Home</a></li>
@@ -17,52 +16,49 @@
         </div>
 
         <div class="col-sm-6 col-sm-offset-3 col-md-9 col-md-offset-0">
-            <form class="form-horizontal col-md-offset-2" asp-action="Entrada">
-                <fieldset>
-                    <div class="col-md-4">
-                        <label>Data Início</label>
-                        <input type="date" name="minDate" class="form-control" value=@ViewData["minDate"] />
-                    </div>
-                    <div class=" col-md-4">
-                        <label>Data Fim</label>
-                        <input type="date" name="maxDate" class="form-control" value=@ViewData["maxDate"] />
-                    </div>
-                    <div class="col-md-4">
-                        <br />
-                        <button type="submit" class="btn btn-primary ">Submit</button>
-                    </div>
-                </fieldset>
-            </form><br />
-                   <div class="img-rounded col-md-12 text-center" style="box-shadow: #505050 0px 1px 5px; background-color: #ffe240">
-                       <br />
-                       <span style="color:#424242; font-family:Verdana; font-size:medium">Valor de entrada com vendas</span>
-                       <h1 style="color:#424242; font-family:Impact"> R$ @(Model.Pedidos.Where(x => x.Status == "Finalizado").Sum(p => p.TotalPedido).ToString("F2"))</h1>
-                       <br />
-                   </div>
 
-            <span class="row" style="color: #fff">---</span>
-           
+            <div class="row">
+                <form class="form-horizontal col-md-offset-2" asp-action="Entrada">
+                    <fieldset>
+                        <div class="col-md-4">
+                            @*<label>Data Início</label>*@
+                            <input type="date" name="minDate" class="form-control" value=@ViewData["minDate"] />
+                        </div>
+                        <div class=" col-md-4">
+                            @*<label>Data Fim</label>*@
+                            <input type="date" name="maxDate" class="form-control" value=@ViewData["maxDate"] />
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary ">Buscar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div><br />
 
-
-            <div class="row col-md-12">
-                <div class="row img-rounded col-md-4 text-center col-md-offset-2" style="box-shadow: #505050 0px 1px 5px; background-color: #ddddd">
+            <div class="row">
+                <div class="img-rounded col-md-8 text-center col-md-offset-2" style="box-shadow: #505050 0px 1px 5px; background-color: #ffea75">
                     <br />
-                    <span style="color:#424242; font-family:Verdana; font-size:medium">Pedidos Finalizados</span>
-                    <h2 style="color:#2b42c7; font-family:Impact"> @(Model.Pedidos.Where(x => x.Status == "Finalizado").Count()) </h2>                  
+                    <span style="color:#424242; font-family:Verdana; font-size:medium">Valor de entrada com vendas</span>
+                    <h1 style="color:#424242; font-family:Impact"> R$ @(Model.Pedidos.Where(x => x.Status == "Finalizado").Sum(p => p.TotalPedido).ToString("F2"))</h1> <br />
                 </div>
-                <span style="color: #fff">---</span>
-                <div class="row img-rounded col-md-4 text-center col-md-offset-1 " style="box-shadow: #505050 0px 1px 5px; background-color: #ddddd">
-                    <br />
+            </div><br />
+
+            <div class="row col-md-offset-2">
+                <div class="img-rounded col-md-4 text-center" style="box-shadow: #505050 0px 1px 5px; background-color: #fff">
+
+                    <span style="color:#424242; font-family:Verdana; font-size:medium">Pedidos Finalizados</span>
+                    <h2 style="color:#2b42c7; font-family:Impact"> @(Model.Pedidos.Where(x => x.Status == "Finalizado").Count()) </h2>
+                </div>
+
+                <div class="img-rounded col-md-4 text-center col-lg-offset-1" style="box-shadow: #505050 0px 1px 5px; background-color: #fff">
                     <span style="color:#424242; font-family:Verdana; font-size:medium">Pedidos Cancelados</span>
                     <h2 style="color:#f54f4f; font-family:Impact"> @(Model.Pedidos.Where(x => x.Status == "Cancelado").Count()) </h2>
-                   
                 </div>
-
             </div>
+
         </div>
     </div>
 </div>
-
 
 @*<div class="col-sm-6 col-sm-offset-3 col-md-9 col-md-offset-2">
         <br />
@@ -126,7 +122,7 @@
         </table>
 
     </div>*@
-        
+
 
 
 

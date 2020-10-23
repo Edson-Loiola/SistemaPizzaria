@@ -64,7 +64,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("\r\n\r\n<div class=\"container\">\r\n\r\n    <h4 class=\"mb-3\"> Insira os dados do Funcionário </h4>\r\n    <hr />\r\n\r\n    <div class=\"row col-md-12\">\r\n        ");
             EndContext();
             BeginContext(146, 315, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8115c3a18be94421b8a3b1d9ec902cb8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "debe53492b9144239a8fa3fa4abfb64a", async() => {
                 BeginContext(176, 278, true);
                 WriteLiteral(@"
             <div class=""col-md-3"">
@@ -96,7 +96,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("\r\n    </div><br /><br />  <hr />\r\n\r\n    ");
             EndContext();
             BeginContext(501, 2985, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a22c35374dbb493089c01dd1112ec3d7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6867f7fdeeba48edafb3966850ebacc2", async() => {
                 BeginContext(532, 2151, true);
                 WriteLiteral(@"
         <div class=""row col-md-12"">
@@ -164,7 +164,7 @@ using SistemaWebPizzaria.Models.ViewModels;
                 WriteLiteral("ado\">Estado</label><br />\r\n                <select class=\"custom-select\" id=\"uf\">\r\n                    ");
                 EndContext();
                 BeginContext(2683, 28, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3413ab23a5da4761afe1e1279f0041f6", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0b27d4ebfe2c4c549d78ba8724e42e51", async() => {
                     BeginContext(2700, 2, true);
                     WriteLiteral("SP");
                     EndContext();
@@ -186,7 +186,7 @@ using SistemaWebPizzaria.Models.ViewModels;
                 WriteLiteral("\r\n                    ");
                 EndContext();
                 BeginContext(2733, 19, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "939fe1283e04486ca09ff3315384b1d6", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fe3e9d2628ce4c228c416e1e69b02eca", async() => {
                     BeginContext(2741, 2, true);
                     WriteLiteral("SP");
                     EndContext();
@@ -206,7 +206,7 @@ using SistemaWebPizzaria.Models.ViewModels;
                 WriteLiteral("\r\n                    ");
                 EndContext();
                 BeginContext(2774, 19, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7e678b05c80b49c48e43209ec3e48ae3", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ad8beee0cde4756a052dfb018130518", async() => {
                     BeginContext(2782, 2, true);
                     WriteLiteral("MG");
                     EndContext();
@@ -226,7 +226,7 @@ using SistemaWebPizzaria.Models.ViewModels;
                 WriteLiteral("\r\n                    ");
                 EndContext();
                 BeginContext(2815, 19, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0b2f57b25a8c485684fc7dedb800cd6e", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "24cdc7aaf96b43268bc44f2875adf43f", async() => {
                     BeginContext(2823, 2, true);
                     WriteLiteral("RJ");
                     EndContext();
@@ -246,7 +246,7 @@ using SistemaWebPizzaria.Models.ViewModels;
                 WriteLiteral("\r\n                    ");
                 EndContext();
                 BeginContext(2856, 19, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8add150fb9c5488bb1ce295f232f791c", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0442c9f6c5b3472299f2c6c0ee7c8ed1", async() => {
                     BeginContext(2864, 2, true);
                     WriteLiteral("PR");
                     EndContext();
@@ -266,7 +266,7 @@ using SistemaWebPizzaria.Models.ViewModels;
                 WriteLiteral("\r\n                    ");
                 EndContext();
                 BeginContext(2897, 19, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5da6cd0a1f86439bb08c5a7bec6a7eed", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ed873e31938f4a7e8782a5f4d0fb9a39", async() => {
                     BeginContext(2905, 2, true);
                     WriteLiteral("SC");
                     EndContext();
