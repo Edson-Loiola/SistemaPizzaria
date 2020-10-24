@@ -41,12 +41,16 @@ namespace SistemaWebPizzaria.Controllers
         public async Task<IActionResult> CreateCliente(Cliente cliente, Endereco endereco)
 
         {
+
+            //salva o cliente
+            cliente.Ativo = "S";
             await _clienteService.InsertClienteAsync(cliente);
 
             if (endereco.Cep != null && endereco.Rua != null && endereco.Numero != null && endereco.Bairro != null)
             {
-
-                endereco.ClienteIdCliente = cliente.IdCliente;
+                //salva o endereço
+                 endereco.Ativo = "S";               
+;                endereco.ClienteIdCliente = cliente.IdCliente;
                 await _clienteService.InsertEnderecoAsync(endereco);
 
             }
@@ -60,6 +64,7 @@ namespace SistemaWebPizzaria.Controllers
                 endereco.Rua = "-";
                 endereco.Numero = "-";
                 endereco.Complemento = "-";
+                endereco.Ativo = "S";
 
                 endereco.ClienteIdCliente = cliente.IdCliente;
                 await _clienteService.InsertEnderecoAsync(endereco);
@@ -136,8 +141,8 @@ namespace SistemaWebPizzaria.Controllers
                 Bairro = objEndereco.Bairro,
                 Cidade = objEndereco.Cidade,
                 Complemento = objEndereco.Complemento,
-                ClienteIdClienteNavigation = objEndereco.ClienteIdClienteNavigation // sem essa referencia não carrega os dados do cliente na tela de edit vindo do banco
-
+                ClienteIdClienteNavigation = objEndereco.ClienteIdClienteNavigation, // sem essa referencia não carrega os dados do cliente na tela de edit vindo do banco
+                Ativo = objEndereco.Ativo
             };
 
             return View(viewModel);
@@ -166,7 +171,8 @@ namespace SistemaWebPizzaria.Controllers
                     Cidade = objEndereco.Cidade,
                     Complemento = objEndereco.Complemento,
                     ClienteIdCliente = objEndereco.ClienteIdCliente,
-                    ClienteIdClienteNavigation = objEndereco.ClienteIdClienteNavigation
+                    ClienteIdClienteNavigation = objEndereco.ClienteIdClienteNavigation,
+                    Ativo = objEndereco.Ativo
                 };
 
                 return View(viewModel);
@@ -190,6 +196,68 @@ namespace SistemaWebPizzaria.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
+        }
+
+
+
+        //inativar o cliente
+        public async Task<IActionResult> InativaCliente(int? id)
+        {
+            var objCliente = await _clienteService.FindByIdAsync(id.Value);
+            var objEndereco = await _clienteService.FindByEndIdAsync(id.Value);
+            //var objLog = await _loginService.FindByIdAsync(Convert.ToInt32(obj.IdLogin));
+            try
+            {
+
+                objEndereco.Ativo = "N";
+                objCliente.Ativo = "N";
+              
+                await _clienteService.UpdateAsync(objEndereco, objCliente);
+
+                if (objEndereco != null && objEndereco != null)
+                {
+                    objEndereco.Ativo = "N";
+                    objCliente.Ativo = "N";
+                    await _clienteService.UpdateAsync(objEndereco, objCliente);
+                }
+
+
+                return RedirectToAction(nameof(Lista));
+            }
+            catch (KeyNotFoundException)
+            {
+                return RedirectToAction(nameof(Lista));
+            }
+        }
+
+        //ativar o  desativado
+        public async Task<IActionResult> AtivaCliente(int? id)
+        {
+            var objCliente = await _clienteService.FindByIdAsync(id.Value);
+            var objEndereco = await _clienteService.FindByEndIdAsync(id.Value);
+            //var objLog = await _loginService.FindByIdAsync(Convert.ToInt32(obj.IdLogin));
+            try
+            {
+
+                objEndereco.Ativo = "S";
+                objCliente.Ativo = "S";
+
+                await _clienteService.UpdateAsync(objEndereco, objCliente);
+
+                if (objEndereco != null && objEndereco != null)
+                {
+                    objEndereco.Ativo = "S";
+                    objCliente.Ativo = "S";
+                    await _clienteService.UpdateAsync(objEndereco, objCliente);
+                }
+
+
+                return RedirectToAction(nameof(Lista));
+            }
+            catch (KeyNotFoundException)
+            {
+                return RedirectToAction(nameof(Lista));
+            }
         }
 
 

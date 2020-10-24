@@ -61,6 +61,8 @@ namespace SistemaWebPizzaria.Models
                 entity.Property(e => e.Nome).HasColumnType("varchar(45)");
 
                 entity.Property(e => e.Telefone).HasColumnType("varchar(11)");
+
+                entity.Property(e => e.Ativo).HasColumnType("char(1)");
             });
 
             modelBuilder.Entity<Despesa>(entity =>
@@ -103,12 +105,14 @@ namespace SistemaWebPizzaria.Models
 
                 entity.Property(e => e.Numero).HasColumnType("varchar(10)");
 
-                entity.Property(e => e.Rua).HasColumnType("varchar(45)");
+                entity.Property(e => e.Rua).HasColumnType("varchar(45)");             
 
                 entity.HasOne(d => d.ClienteIdClienteNavigation)
                     .WithMany(p => p.Endereco)
                     .HasForeignKey(d => d.ClienteIdCliente)
                     .HasConstraintName("fk_Endereco_Cliente1");
+
+                entity.Property(e => e.Ativo).HasColumnType("char(1)");
             });
 
             modelBuilder.Entity<Funcionario>(entity =>

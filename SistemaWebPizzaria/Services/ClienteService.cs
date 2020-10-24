@@ -23,6 +23,7 @@ namespace SistemaWebPizzaria.Services
         //função de inserir cliente
         public async Task InsertClienteAsync(Cliente cliente)
         {
+               
             _context.Add(cliente);
             await _context.SaveChangesAsync();
         }
