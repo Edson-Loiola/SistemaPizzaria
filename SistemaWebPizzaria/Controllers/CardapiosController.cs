@@ -47,7 +47,7 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int  id)
         {
             try
             {
@@ -129,12 +129,12 @@ namespace SistemaWebPizzaria.Controllers
             var filtrocardapio = obj.Where(x => x.Sabor == nomeprod);
 
 
-            if (!filtrocardapio.Any(x => x.Sabor == nomeprod)) // se o telefone passado não existir no banco, direcionar para create
-            {
-                return RedirectToAction(nameof(Index));
-            }
+            /* if (!filtrocardapio.Any(x => x.Sabor.ToLower() == nomeprod.ToLower())) // se o telefone passado não existir no banco, direcionar para create
+             {*/
+            return View(nameof(Index), filtrocardapio);
+            /*}
             else
-                return View(nameof(Index), filtrocardapio); // se existir retornar a lista
+                return View(nameof(Index), filtrocardapio); */ // se existir retornar a lista
         }
 
 

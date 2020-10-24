@@ -63,6 +63,10 @@ namespace SistemaWebPizzaria.Services
             return await _context.Login.FirstOrDefaultAsync(obj => obj.Email == email && obj.Senha == senha);
         }
 
+        public async Task<Login> FindByEmailAsync(string email)
+        {
+            return await _context.Login.FirstOrDefaultAsync(obj => obj.Email == email && obj.Ativo == "S");
+        }
 
 
 

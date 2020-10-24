@@ -12,10 +12,11 @@
 
             <form id="form" class="form-signin" asp-action="TrocaSenha">
                 <div class="col-md-4 col-md-offset-4">
+                    @{ if (TempData["EsqueceuSenha"].ToString() != "S") {
                     <input asp-for="SenhaAtual" type="password" id="senhaAtual" class="form-control" placeholder="Senha Atual" style="margin:2px auto" />
                     <label for="inputPassword" class="sr-only">Senha Atual</label>
                     <span asp-validation-for="SenhaAtual" id="msgSenAtual" class="text-danger"></span><br />
-
+                            } }
                     <input asp-for="SenhaNova" type="password" id="senhaNova" class="form-control" placeholder="Nova Senha" />
                     <span asp-validation-for="SenhaNova" id="msgSenNova" class="text-danger"></span><br />
 

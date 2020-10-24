@@ -66,6 +66,7 @@ namespace SistemaWebPizzaria.Models
                 entity.Property(e => e.Nome).HasColumnType("varchar(45)");
 
                 entity.Property(e => e.Telefone).HasColumnType("varchar(45)");
+
             });
 
             modelBuilder.Entity<Despesa>(entity =>

@@ -51,6 +51,9 @@
     <Content Update="Views\Cardapios\Create.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Home\EsqueceuSenha.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Home\AlterarSenha.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
