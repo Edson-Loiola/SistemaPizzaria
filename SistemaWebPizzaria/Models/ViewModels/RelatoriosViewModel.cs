@@ -11,10 +11,21 @@ namespace SistemaWebPizzaria.Models.ViewModels
         public Funcionario Funcionarios { get; set; }        
         public List<Produtoestoque> Produtoestoque { get; set; }
 
-        public RelatoriosViewModel(List<Despesa> despesas, List<Produtoestoque> produtoestoque)
+        public List<Pedido> Pedidos { get; set; }
+
+        public RelatoriosViewModel(List<Despesa> despesas, List<Produtoestoque> produtoestoque) //construtor com 2 argumentos usado no relatorio saida (relatorios service)
         {
             Despesas = despesas;
-            Produtoestoque = produtoestoque;
+            Produtoestoque = produtoestoque;           
+
         }
+
+        public RelatoriosViewModel(List<Pedido> pedidos) //construtor com 1 argumento usado no relatorio entrada (relatorios service)
+        {
+            Pedidos = pedidos;
+
+        }
+
+
     }
 }

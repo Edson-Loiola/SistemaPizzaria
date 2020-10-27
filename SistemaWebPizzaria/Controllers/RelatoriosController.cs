@@ -18,7 +18,7 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
-        public IActionResult  Entrada (DateTime? minDate, DateTime? maxDate)
+        public async Task<IActionResult>  Entrada (DateTime? minDate, DateTime? maxDate)
         {
 
             if (!minDate.HasValue)
@@ -30,11 +30,11 @@ namespace SistemaWebPizzaria.Controllers
                 maxDate = DateTime.Now;
             }
             ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
-            ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
+            ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");         
 
+            var entrada = await _relatoioService.ValorEntrada(minDate, maxDate);
 
-            var entrada = _relatoioService.ValorEntrada(minDate, maxDate);
-
+            //var entradasped = entrada.Pedidos.Where(f => f.Status == "Finalizado").Sum(u => u.TotalPedido);
 
             return View(entrada);
         }
@@ -83,11 +83,13 @@ namespace SistemaWebPizzaria.Controllers
             ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
 
             var listasaida = await _relatoioService.SaidaDespesas(minDate, maxDate);
-            var entrada = _relatoioService.ValorEntrada(minDate, maxDate);
+            var listaentrada = await _relatoioService.ValorEntrada(minDate, maxDate);
 
+
+            var somaentrada = listaentrada.Pedidos.Sum(p => p.TotalPedido);
             var somasaida = listasaida.Despesas.Sum(x => x.Valor) + listasaida.Produtoestoque.Sum(x => x.PrecoCompra);
          
-            var lucro = (entrada - somasaida);
+            var lucro = (somaentrada - somasaida);
 
             return View(lucro);
         }

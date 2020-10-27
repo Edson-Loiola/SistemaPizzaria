@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SistemaWebPizzaria.Models
@@ -8,7 +7,7 @@ namespace SistemaWebPizzaria.Models
     {
         public Cardapiopizza()
         {
-            Itemcardapio = new HashSet<Itemcardapio>();
+            Itempedido = new HashSet<Itempedido>();
         }
 
         public int IdCardapio { get; set; }
@@ -33,6 +32,6 @@ namespace SistemaWebPizzaria.Models
         [StringLength(100, ErrorMessage = "{0} Máximo de 100 caracteres")]
         public string Descricao { get; set; }
 
-        public ICollection<Itemcardapio> Itemcardapio { get; set; }
+        public ICollection<Itempedido> Itempedido { get; set; }
     }
 }

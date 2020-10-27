@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SistemaWebPizzaria.Models
 {
     public partial class Endereco
     {
         public int IdEndereco { get; set; }
-
-
 
         public string Cep { get; set; }
 
@@ -29,6 +25,8 @@ namespace SistemaWebPizzaria.Models
         [Required(ErrorMessage = "{0}  Cidade ou ' - '")]
         public string Cidade { get; set; }
         public int? ClienteIdCliente { get; set; }
+
+        public string Ativo { get; set; }
 
         public Cliente ClienteIdClienteNavigation { get; set; }
     }

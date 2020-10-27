@@ -16,7 +16,7 @@ namespace SistemaWebPizzaria.Models
         public string FormaPagamento { get; set; }
         public int IdFuncioario { get; set; }
         public int IdCliente { get; set; }
-        public decimal? TotalPedido { get; set; }
+        public double TotalPedido { get; set; }
         public string Status { get; set; }
 
         public Cliente IdClienteNavigation { get; set; }

@@ -84,9 +84,24 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Bairro)
                         </td>
+
                         <td class="text-center">
-                            <a asp-action="EditCliente" class="btn btn-default btn-sm" asp-route-id="@item.ClienteIdCliente"><span class="material-icons">edit</span></a> @*chama tela de ditar com os campos preenchidos*@
-                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.ClienteIdCliente"><span class="material-icons">delete</span></a>
+
+                            @{ if (item.Ativo == "S")
+                                {
+                                    <a asp-action="EditCliente" class="btn btn-default btn-sm" asp-route-id="@item.ClienteIdCliente"><span class="material-icons">edit</span></a> @*chama tela de ditar com os campos preenchidos*@
+                                    <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.ClienteIdCliente"><span class="material-icons">delete</span></a>
+                                }
+                            }
+
+                            @{ if (item.Ativo == "N")
+                                {
+
+                                    <a asp-action="AtivaCliente" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModalAtivaCliente-@item.ClienteIdCliente"><span class="material-icons">loop</span></a>                                    
+                                    <a class="btn btn-danger btn-sm" data-toggle="modal" @*data-target="#myModal-@item.ClienteIdCliente"*@><span class="material-icons">person_add_disabled</span></a>
+
+                                }
+                            }
                         </td>
                     </tr>
 
@@ -98,15 +113,34 @@
                                     <h3 class="modal-title" id="myModalLabel">Atenção</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Deseja mesmo deletar esse cliente?</p>
+                                    <p>Deseja mesmo inativar o cliente @Html.DisplayFor(modelItem => item.ClienteIdClienteNavigation.Nome) ?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
-                                    <a asp-action="DeleteCliente" asp-route-id="@item.ClienteIdCliente" class="btn btn-danger">Deletar</a>
+                                    <a asp-action="InativaCliente" asp-route-id="@item.ClienteIdCliente" class="btn btn-danger">Inativar</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Modal reativar cliente -->
+                    <div class="modal fade" id="myModalAtivaCliente-@item.ClienteIdCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="myModalLabel">Atenção</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Deseja mesmo reativar o cliente @Html.DisplayFor(modelItem => item.ClienteIdClienteNavigation.Nome) ? </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
+                                    <a asp-action="AtivaCliente" asp-route-id="@item.ClienteIdCliente" class="btn btn-primary">Reativar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                 }
             </tbody>
