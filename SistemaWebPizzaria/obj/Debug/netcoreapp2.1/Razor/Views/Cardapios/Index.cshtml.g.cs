@@ -90,7 +90,7 @@ Write(ViewData["Title"]);
             WriteLiteral("</h2>\r\n<hr />\r\n<!-- busca -->\r\n<div class=\"row\">\r\n    ");
             EndContext();
             BeginContext(179, 361, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "806af739eb9640109ee73fa86cd7b863", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ca478824b6e84a5ba3bb3b6501ff9fcd", async() => {
                 BeginContext(227, 306, true);
                 WriteLiteral(@"
         <div class=""col-md-10 input-group-lg"">
@@ -123,7 +123,7 @@ Write(ViewData["Title"]);
             WriteLiteral("\r\n</div>\r\n    <hr />\r\n<div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n        ");
             EndContext();
             BeginContext(618, 67, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3f6d6a5ec2ae4596b187ae3df48ee660", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "71c7f954c651452cb928b9c93d93ce9c", async() => {
                 BeginContext(672, 9, true);
                 WriteLiteral("Adicionar");
                 EndContext();
@@ -146,7 +146,7 @@ Write(ViewData["Title"]);
             WriteLiteral("\r\n        ");
             EndContext();
             BeginContext(695, 75, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d37cf7a416114f008b850f94596c186f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eec94820ff8247b6ba668e97c32cce5a", async() => {
                 BeginContext(762, 4, true);
                 WriteLiteral("Home");
                 EndContext();
@@ -258,7 +258,7 @@ Write(ViewData["Title"]);
             WriteLiteral("\r\n                        </td>\r\n                        <td>\r\n                            ");
             EndContext();
             BeginContext(2628, 131, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dcaa66364edb4d3da727bc8ebcde762d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a93d217558984d2f8a695e0361943fbb", async() => {
                 BeginContext(2715, 40, true);
                 WriteLiteral("<span class=\"material-icons\">edit</span>");
                 EndContext();
@@ -329,7 +329,7 @@ WriteAttributeValue("", 3082, item.IdCardapio, 3082, 16, false);
                                     ");
             EndContext();
             BeginContext(3868, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a774d4d15e714fdd84d2bf201b95ecc3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d06f714f6e784c37bf171b302f432b93", async() => {
                 BeginContext(3946, 7, true);
                 WriteLiteral("Deletar");
                 EndContext();
