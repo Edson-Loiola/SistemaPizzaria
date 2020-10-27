@@ -94,14 +94,8 @@ namespace SistemaWebPizzaria.Controllers
             }
 
 
-            var listprod = obj.Where(x => x.Nome == nomeprod);          
+            var listprod = obj.Where(x => x.Nome.ToUpper().Contains(nomeprod.ToUpper()));          
             
-
-            if (!listprod.Any(x => x.Nome == nomeprod)) // se o telefone passado não existir no banco, direcionar para create
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            else
                 return View(nameof(Index), listprod); // se existir retornar a lista
         }
 

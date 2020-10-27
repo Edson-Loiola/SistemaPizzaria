@@ -20,7 +20,6 @@ namespace SistemaWebPizzaria.Controllers
 
         public async Task<IActionResult>  Entrada (DateTime? minDate, DateTime? maxDate)
         {
-
             if (!minDate.HasValue)
             {
                 minDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
@@ -37,6 +36,8 @@ namespace SistemaWebPizzaria.Controllers
             //var entradasped = entrada.Pedidos.Where(f => f.Status == "Finalizado").Sum(u => u.TotalPedido);
 
             return View(entrada);
+           
+      
         }
 
 
@@ -69,7 +70,7 @@ namespace SistemaWebPizzaria.Controllers
 
         public async Task<IActionResult> Ganho(DateTime? minDate, DateTime? maxDate)
         {
-
+          
             if (!minDate.HasValue)
             {
                 minDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
@@ -92,6 +93,8 @@ namespace SistemaWebPizzaria.Controllers
             var lucro = (somaentrada - somasaida);
 
             return View(lucro);
+          
+           
         }
 
     }

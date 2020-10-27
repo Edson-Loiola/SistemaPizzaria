@@ -255,12 +255,37 @@ namespace SistemaWebPizzaria.Controllers
             }
         }
 
-        public async Task<bool> ValidarCPF(string cpf)
+        public async Task<bool> VerificaCPFExiste(string cpf, int id)
         {
 
-            //var resp = 
+            var obj = await _funcionarioService.FindAllAsync();
 
-            if (ValidaCPF.isCPF(cpf))
+
+            if (!obj.Any(x => x.Cpf == cpf))
+            {
+
+                return true;
+            }
+            else
+            {
+                if (obj.Any(x => x.Cpf == cpf && x.IdFuncionario == id))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+        }
+
+        public async Task<bool> ValidarCPF(string cpf, string idFuncionario)
+       {
+
+            var resp = VerificaCPFExiste(cpf, Convert.ToInt32(idFuncionario));
+
+            if (ValidaCPF.isCPF(cpf) && resp.Result == true)
             {
                 return true;
             }
