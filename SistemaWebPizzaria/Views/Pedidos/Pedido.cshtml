@@ -152,14 +152,14 @@
             "FormaPagamento": $("#FormaPagamento option:selected").val(),
             "IdFuncioario": $("#selectFuncionarios option:selected").val(),
             "IdCliente": $("#selectClientes option:selected").val(),
-            "Status": $("#Status option:selected").val(),
+            "Status": "fila",
             "TotalPedido": $("#TotalPedido").val(),
         }
 
         console.log("cheguei");
         console.log(pedido);
 
-        $.post('Create', { pedido: pedido },
+        $.post('Create', { pedido: pedido, listaItemPedido: listItemPedido },
             function (returnedData) {
                 alert("GRAVADO COM SUCESSO");
                 window.location.href = "/Pedidos/Index";
@@ -208,16 +208,6 @@
                 <div class="col-md-2">
                     <label for="">Cliente</label>
                     <select id="selectClientes" asp-for="IdClienteNavigation.IdCliente" class="form-control"></select>
-                </div>
-
-                <div class="col-md-2">
-                    <label for="">Estado</label>
-                    <select id="Status" asp-for="Status" class="form-control">
-                        <option value="preparando">Preparando</option>
-                        <option value="entregue">Entregue</option>
-                        <option value="viagem">Em viagem</option>
-                        <option value="cancelado">Cancelado</option>
-                    </select>
                 </div>
             </div>
             <hr />

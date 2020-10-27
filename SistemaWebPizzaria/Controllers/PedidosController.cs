@@ -51,7 +51,7 @@ namespace SistemaWebPizzaria.Controllers
         [HttpPost]
         public async Task<Itempedido> AdicionarItemCardapioAoPedido(int qtd, int cardapioid)
         {
-            var cardap = await _pedidoService.findByIdCardapio(cardapioid);
+            var cardap = await _pedidoService.FindByIdCardapio(cardapioid);
 
             var item = new Itempedido();
 
@@ -68,7 +68,7 @@ namespace SistemaWebPizzaria.Controllers
         [HttpPost]
         public async Task<Itempedido> AdicionarItemProdutoAoPedido(int qtd, int produtoid)
         {
-            var produto = await _pedidoService.findByIdProduto(produtoid);
+            var produto = await _pedidoService.FindByIdProduto(produtoid);
 
             var item = new Itempedido();
 
@@ -93,12 +93,12 @@ namespace SistemaWebPizzaria.Controllers
         {
             await _pedidoService.InsertAsync(pedido);
 
-            foreach (Itempedido item in listaItemPedido)
-            {
-                item.PedidoIdPedido = pedido.IdPedido;
-                item.PedidoIdPedidoNavigation = pedido;
-                await _pedidoService.InsertItemPedido(item);
-            }
+            //foreach (Itempedido item in listaItemPedido)
+            //{
+            //    item.PedidoIdPedido = pedido.IdPedido;
+            //    item.PedidoIdPedidoNavigation = pedido;
+            //    await _pedidoService.InsertItemPedido(item);
+            //}
 
             return RedirectToAction(nameof(Index));
         }

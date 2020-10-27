@@ -10,9 +10,9 @@ namespace SistemaWebPizzaria.Models
         public decimal? PrecoUnidade { get; set; }
         public decimal? Total { get; set; }
         public string Produto { get; set; }
-        public int ProdutoEstoqueIdProduto { get; set; } 
-        public int CardapioPizzaIdCardapio { get; set; }
-        public int PedidoIdPedido { get; set; } //itemID
+        public int? ProdutoEstoqueIdProduto { get; set; }
+        public int? CardapioPizzaIdCardapio { get; set; }
+        public int? PedidoIdPedido { get; set; }
 
         public Cardapiopizza CardapioPizzaIdCardapioNavigation { get; set; }
         public Pedido PedidoIdPedidoNavigation { get; set; }

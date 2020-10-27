@@ -25,7 +25,14 @@ namespace SistemaWebPizzaria.Models
         public virtual DbSet<Pedido> Pedido { get; set; }
         public virtual DbSet<Produtoestoque> Produtoestoque { get; set; }
 
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=den1.mysql5.gear.host;userid=bancopizzaria;password=Ls465_9!69Y9;database=bancopizzaria");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -64,7 +71,7 @@ namespace SistemaWebPizzaria.Models
 
                 entity.Property(e => e.Nome).HasColumnType("varchar(45)");
 
-                entity.Property(e => e.Telefone).HasColumnType("varchar(45)");
+                entity.Property(e => e.Telefone).HasColumnType("varchar(11)");
             });
 
             modelBuilder.Entity<Despesa>(entity =>
@@ -93,7 +100,7 @@ namespace SistemaWebPizzaria.Models
                 entity.ToTable("endereco");
 
                 entity.HasIndex(e => e.ClienteIdCliente)
-                    .HasName("fk_Endereco_Cliente1");
+                    .HasName("fk_Endereco_Cliente1_idx");
 
                 entity.Property(e => e.IdEndereco).HasColumnType("int(11)");
 
@@ -127,8 +134,12 @@ namespace SistemaWebPizzaria.Models
 
                 entity.ToTable("funcionario");
 
+                entity.HasIndex(e => e.Cpf)
+                    .HasName("CPF_Func_UNIQUE")
+                    .IsUnique();
+
                 entity.HasIndex(e => e.IdLogin)
-                    .HasName("fk_Funcionario_Login1");
+                    .HasName("fk_Funcionario_Login1_idx");
 
                 entity.Property(e => e.IdFuncionario).HasColumnType("int(11)");
 
@@ -162,6 +173,58 @@ namespace SistemaWebPizzaria.Models
                     .HasConstraintName("fk_Funcionario_Login1");
             });
 
+            modelBuilder.Entity<Itempedido>(entity =>
+            {
+                entity.ToTable("itempedido");
+
+                entity.HasIndex(e => e.CardapioPizzaIdCardapio)
+                    .HasName("fk_ItemPedido_CardapioPizza1_idx");
+
+                entity.HasIndex(e => e.PedidoIdPedido)
+                    .HasName("fk_ItemPedido_Pedido1_idx");
+
+                entity.HasIndex(e => e.ProdutoEstoqueIdProduto)
+                    .HasName("fk_ItemPedido_ProdutoEstoque1_idx");
+
+                entity.Property(e => e.Id).HasColumnType("int(11)");
+
+                entity.Property(e => e.CardapioPizzaIdCardapio)
+                    .HasColumnName("CardapioPizza_IdCardapio")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.PedidoIdPedido)
+                    .HasColumnName("Pedido_IdPedido")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.PrecoUnidade).HasColumnType("decimal(10,2)");
+
+                entity.Property(e => e.Produto)
+                    .IsRequired()
+                    .HasColumnType("char(1)");
+
+                entity.Property(e => e.ProdutoEstoqueIdProduto)
+                    .HasColumnName("ProdutoEstoque_IdProduto")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Quantidade).HasColumnType("int(11)");
+
+                entity.Property(e => e.Total).HasColumnType("decimal(10,2)");
+
+                entity.HasOne(d => d.CardapioPizzaIdCardapioNavigation)
+                    .WithMany(p => p.Itempedido)
+                    .HasForeignKey(d => d.CardapioPizzaIdCardapio)
+                    .HasConstraintName("fk_ItemPedido_CardapioPizza1");
+
+                entity.HasOne(d => d.PedidoIdPedidoNavigation)
+                    .WithMany(p => p.Itempedido)
+                    .HasForeignKey(d => d.PedidoIdPedido)
+                    .HasConstraintName("fk_ItemPedido_Pedido1");
+
+                entity.HasOne(d => d.ProdutoEstoqueIdProdutoNavigation)
+                    .WithMany(p => p.Itempedido)
+                    .HasForeignKey(d => d.ProdutoEstoqueIdProduto)
+                    .HasConstraintName("fk_ItemPedido_ProdutoEstoque1");
+            });
 
             modelBuilder.Entity<Login>(entity =>
             {
@@ -197,10 +260,14 @@ namespace SistemaWebPizzaria.Models
                 entity.ToTable("pedido");
 
                 entity.HasIndex(e => e.IdCliente)
-                    .HasName("fk_tbPedido_tbCliente1");
+                    .HasName("fk_tbPedido_tbCliente1_idx");
 
                 entity.HasIndex(e => e.IdFuncioario)
-                    .HasName("fk_tbPedido_tbFuncionario1");
+                    .HasName("fk_tbPedido_tbFuncionario1_idx");
+
+                entity.HasIndex(e => e.IdPedido)
+                    .HasName("IdPedido_UNIQUE")
+                    .IsUnique();
 
                 entity.Property(e => e.IdPedido).HasColumnType("int(11)");
 
@@ -267,17 +334,16 @@ namespace SistemaWebPizzaria.Models
 
                 entity.Property(e => e.Quantidade).HasColumnType("int(11)");
 
+                entity.Property(e => e.UnidadeMedida)
+                    .IsRequired()
+                    .HasColumnType("char(3)");
+
                 entity.Property(e => e.Validade).HasColumnType("date");
 
                 entity.Property(e => e.Vende)
                     .IsRequired()
                     .HasColumnType("char(1)");
-
-                entity.Property(e => e.UnidadeMedida)
-                    .IsRequired()
-                    .HasColumnType("char(3)");
             });
         }
     }
 }
-
