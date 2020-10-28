@@ -27,6 +27,8 @@
                 <input type="hidden" asp-for="ClienteIdCliente" /> @*campo oculto passando o id do cliente*@
                 <input type="hidden" asp-for="ClienteIdClienteNavigation.IdCliente" />
                 <input type="hidden" asp-for="IdEndereco" />
+                <input asp-for="Ativo" type="hidden" class="form-control" />
+                <input asp-for="ClienteIdClienteNavigation.Ativo" type="hidden" class="form-control" />
 
                 <div class="row">
                     <div class="form-group col-md-8">

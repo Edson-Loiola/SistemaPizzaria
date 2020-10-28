@@ -51,6 +51,10 @@ namespace SistemaWebPizzaria.Controllers
             return View();
         }
 
+        public IActionResult Manutencao()
+        {
+            return View();
+        }
 
         //inserir dados no banco
         [HttpPost] //esse método é um post pois está criando/enviando um novo objeto

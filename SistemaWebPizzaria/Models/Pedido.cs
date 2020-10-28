@@ -7,7 +7,7 @@ namespace SistemaWebPizzaria.Models
     {
         public Pedido()
         {
-            Itempedido = new HashSet<Itempedido>();
+            Itempedido = new HashSet<ItemPedido>();
         }
 
         public int IdPedido { get; set; }
@@ -21,6 +21,6 @@ namespace SistemaWebPizzaria.Models
 
         public Cliente IdClienteNavigation { get; set; }
         public Funcionario IdFuncioarioNavigation { get; set; }
-        public ICollection<Itempedido> Itempedido { get; set; }
+        public ICollection<ItemPedido> Itempedido { get; set; }
     }
 }

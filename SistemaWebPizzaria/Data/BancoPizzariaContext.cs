@@ -20,12 +20,19 @@ namespace SistemaWebPizzaria.Models
         public virtual DbSet<Despesa> Despesa { get; set; }
         public virtual DbSet<Endereco> Endereco { get; set; }
         public virtual DbSet<Funcionario> Funcionario { get; set; }
-        public virtual DbSet<Itempedido> Itempedido { get; set; }
+        public virtual DbSet<ItemPedido> Itempedido { get; set; }
         public virtual DbSet<Login> Login { get; set; }
         public virtual DbSet<Pedido> Pedido { get; set; }
         public virtual DbSet<Produtoestoque> Produtoestoque { get; set; }
 
-      
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=den1.mysql5.gear.host;userid=bancopizzaria;password=Ls465_9!69Y9;database=bancopizzaria");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -61,6 +68,8 @@ namespace SistemaWebPizzaria.Models
                 entity.Property(e => e.Nome).HasColumnType("varchar(45)");
 
                 entity.Property(e => e.Telefone).HasColumnType("varchar(11)");
+
+                entity.Property(e => e.Ativo).HasColumnType("char(1)");
             });
 
             modelBuilder.Entity<Despesa>(entity =>
@@ -103,12 +112,14 @@ namespace SistemaWebPizzaria.Models
 
                 entity.Property(e => e.Numero).HasColumnType("varchar(10)");
 
-                entity.Property(e => e.Rua).HasColumnType("varchar(45)");
+                entity.Property(e => e.Rua).HasColumnType("varchar(45)");             
 
                 entity.HasOne(d => d.ClienteIdClienteNavigation)
                     .WithMany(p => p.Endereco)
                     .HasForeignKey(d => d.ClienteIdCliente)
                     .HasConstraintName("fk_Endereco_Cliente1");
+
+                entity.Property(e => e.Ativo).HasColumnType("char(1)");
             });
 
             modelBuilder.Entity<Funcionario>(entity =>
@@ -152,7 +163,7 @@ namespace SistemaWebPizzaria.Models
                     .HasConstraintName("fk_Funcionario_Login1");
             });
 
-            modelBuilder.Entity<Itempedido>(entity =>
+            modelBuilder.Entity<ItemPedido>(entity =>
             {
                 entity.ToTable("itempedido");
 
@@ -165,9 +176,16 @@ namespace SistemaWebPizzaria.Models
                 entity.HasIndex(e => e.ProdutoEstoqueIdProduto)
                     .HasName("fk_ItemPedido_ProdutoEstoque1_idx");
 
-                entity.Property(e => e.CardapioPizzaIdCardapio).HasColumnName("CardapioPizza_IdCardapio");
+                entity.HasIndex(e => e.ProdutoEstoqueIdProduto)
+                    .HasName("fk_ItemPedido_ProdutoEstoque1_idx");
 
-                entity.Property(e => e.PedidoIdPedido).HasColumnName("Pedido_IdPedido");
+                entity.Property(e => e.CardapioPizzaIdCardapio)
+                    .HasColumnName("CardapioPizza_IdCardapio")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.PedidoIdPedido)
+                    .HasColumnName("Pedido_IdPedido")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.PrecoUnidade).HasColumnType("decimal(10,2)");
 
@@ -175,26 +193,27 @@ namespace SistemaWebPizzaria.Models
                     .IsRequired()
                     .HasColumnType("char(1)");
 
-                entity.Property(e => e.ProdutoEstoqueIdProduto).HasColumnName("ProdutoEstoque_IdProduto");
+                entity.Property(e => e.ProdutoEstoqueIdProduto)
+                    .HasColumnName("ProdutoEstoque_IdProduto")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Quantidade).HasColumnType("int(11)");
 
                 entity.Property(e => e.Total).HasColumnType("decimal(10,2)");
 
                 entity.HasOne(d => d.CardapioPizzaIdCardapioNavigation)
                     .WithMany(p => p.Itempedido)
                     .HasForeignKey(d => d.CardapioPizzaIdCardapio)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_ItemPedido_CardapioPizza1");
 
                 entity.HasOne(d => d.PedidoIdPedidoNavigation)
                     .WithMany(p => p.Itempedido)
                     .HasForeignKey(d => d.PedidoIdPedido)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_ItemPedido_Pedido1");
 
                 entity.HasOne(d => d.ProdutoEstoqueIdProdutoNavigation)
                     .WithMany(p => p.Itempedido)
                     .HasForeignKey(d => d.ProdutoEstoqueIdProduto)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_ItemPedido_ProdutoEstoque1");
             });
 
@@ -234,6 +253,10 @@ namespace SistemaWebPizzaria.Models
 
                 entity.HasIndex(e => e.IdFuncioario)
                     .HasName("fk_tbPedido_tbFuncionario1_idx");
+
+                entity.HasIndex(e => e.IdPedido)
+                    .HasName("IdPedido_UNIQUE")
+                    .IsUnique();
 
                 entity.HasIndex(e => e.IdPedido)
                     .HasName("IdPedido_UNIQUE")
@@ -293,6 +316,10 @@ namespace SistemaWebPizzaria.Models
                 entity.Property(e => e.PrecoCompra).HasColumnType("decimal(10,2)");
 
                 entity.Property(e => e.PrecoVenda).HasColumnType("decimal(10,2)");
+
+                entity.Property(e => e.UnidadeMedida)
+                    .IsRequired()
+                    .HasColumnType("char(3)");
 
                 entity.Property(e => e.UnidadeMedida)
                     .IsRequired()

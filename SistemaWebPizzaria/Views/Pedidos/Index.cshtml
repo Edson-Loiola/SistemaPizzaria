@@ -1,7 +1,13 @@
-﻿
-@model IEnumerable<SistemaWebPizzaria.Models.Pedido>
+﻿@model IEnumerable<SistemaWebPizzaria.Models.Pedido>
 
 @{ViewData["Title"] = "Pedidos";}
+
+<style>
+    tr.cancelado {
+        background-color: #FF6347 !important;
+        color: white !important;
+    }
+</style>
 
 <h2>@ViewData["Title"]</h2>
 <hr />
@@ -53,12 +59,15 @@
                     <th>
                         <label class="control-label">Status</label>
                     </th>
+                    <th>
+                        <label class="control-label">Ações</label>
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                    <tr class="@Html.DisplayFor(modelItem => item.Status)">
                         <td>
                             @Html.DisplayFor(modelItem => item.IdPedido)
                         </td>
@@ -85,7 +94,7 @@
                         </td>
                         <td>
                             <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdPedido"><span class="material-icons">edit</span></a>
-                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal"><span class="material-icons">delete</span></a>
+                            <a class="btn btn-danger btn-sm pull-right" data-toggle="modal" data-target="#myModal"><span class="material-icons">cancel</span></a>
                         </td>
                     </tr>
                     //@Html.DisplayFor(modelItem => item)
@@ -97,16 +106,16 @@
                                     <h3 class="modal-title" id="myModalLabel">Atenção</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Deseja mesmo deletar esse item?</p>
+                                    <p>Deseja mesmo Cancelar esse Pedido?</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
-                                    <a asp-action="DeletePedido" asp-route-id="@item.IdPedido" class="btn btn-danger">Deletar</a>
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">Não</button>
+                                    <a asp-action="InativaPedido" asp-route-id="@item.IdPedido" class="btn btn-danger">Cancelar</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                }
+            }
             </tbody>
         </table>
     </div>

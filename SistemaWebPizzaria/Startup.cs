@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -58,7 +59,7 @@ namespace SistemaWebPizzaria
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".SistemaWebPizzaria.Session";
-                //options.IdleTimeout = TimeSpan.FromSeconds();
+                options.IdleTimeout = TimeSpan.FromHours(1);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });

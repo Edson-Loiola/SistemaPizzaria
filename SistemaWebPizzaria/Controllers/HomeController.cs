@@ -21,10 +21,22 @@ namespace SistemaWebPizzaria.Controllers
 
         public IActionResult Index()
         {
-           
+            if (HttpContext.Session.Keys.Equals("Usuario"))
+            {
+                HttpContext.Session.Remove("Usuario");
+                HttpContext.Session.Remove("IdUsu");
+                HttpContext.Session.Remove("Perfil");
+            }
+          
+
             return View();
         }
-        public IActionResult AlterarSenha(string e)
+        public IActionResult AlterarSenha()
+        {
+            return View();
+        }
+
+        public IActionResult EsqueceuSenha()
         {
             return View();
         }
@@ -104,6 +116,31 @@ namespace SistemaWebPizzaria.Controllers
                 await _loginService.TrocaSenhaAsync(obj);
                 return RedirectToAction(nameof(MenuSistema));
             
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmaEmail(string email)
+        {
+            var obj = await _loginService.FindByEmailAsync(email);
+
+            if(obj != null)
+            {
+                
+                HttpContext.Session.SetString("Usuario", obj.Email);
+                HttpContext.Session.SetString("IdUsu", obj.IdLogin.ToString());
+                HttpContext.Session.SetString("Perfil", obj.Perfil.ToString());
+                TempData["EsqueceuSenha"] = "S";
+                return RedirectToAction(nameof(AlterarSenha));
+            }
+            else
+            {
+                TempData["ErroEmail"] = "Email não cadastrado ou inválido";
+                return RedirectToAction(nameof(EsqueceuSenha));
+            }
+                 
+           
+
         }
 
         public IActionResult MenuSistema()

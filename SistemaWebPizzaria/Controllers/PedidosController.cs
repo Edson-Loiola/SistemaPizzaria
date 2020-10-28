@@ -49,17 +49,35 @@ namespace SistemaWebPizzaria.Controllers
         }
 
         [HttpPost]
-        public async Task<Itemcardapio> AdicionarItemCardapioAoPedido(int qtd, int cardapioid)
+        public async Task<ItemPedido> AdicionarItemCardapioAoPedido(int qtd, int cardapioid)
         {
-            var cardap = await _pedidoService.findByIdCardapio(cardapioid);
+            var cardap = await _pedidoService.FindByIdCardapio(cardapioid);
 
-            var item = new Itemcardapio();
+            var item = new ItemPedido();
 
-            item.IdCardapioNavigation = cardap;
-            item.IdCardapio = cardapioid;
+            item.Produto = "N";
+            item.CardapioPizzaIdCardapioNavigation = cardap;
+            item.PedidoIdPedido = cardapioid;
             item.PrecoUnidade = cardap.ValorUnitario;
             item.Quantidade = qtd;
             item.Total = (cardap.ValorUnitario * qtd);
+
+            return item;
+        }
+
+        [HttpPost]
+        public async Task<ItemPedido> AdicionarItemProdutoAoPedido(int qtd, int produtoid)
+        {
+            var produto = await _pedidoService.FindByIdProduto(produtoid);
+
+            var item = new ItemPedido();
+
+            item.Produto = "S";
+            item.ProdutoEstoqueIdProdutoNavigation = produto;
+            item.PedidoIdPedido = produtoid;
+            item.PrecoUnidade = produto.PrecoVenda;
+            item.Quantidade = qtd;
+            item.Total = (produto.PrecoVenda * qtd);
 
             return item;
         }
@@ -70,15 +88,19 @@ namespace SistemaWebPizzaria.Controllers
             return View(result);
         }
 
-
-        //inserir dados no banco (essa função é passada no form da minha view CreatProduto
-        [HttpPost] //esse método é um post pois está criando/enviando um novo objeto
-        [ValidateAntiForgeryToken] //essa notação evita que a aplicação receba ataques CSRF (envio de dados malicioso na autenticação)
-        public async Task<IActionResult> Create(Pedido pedido)
+        [HttpPost]
+        public async Task<IActionResult> Create(Pedido pedido, List<ItemPedido> listaItemPedido)
         {
-            
             await _pedidoService.InsertAsync(pedido);
-            return RedirectToAction(nameof(Index)); //ao clicar em criar um nova Produto, direciona para a propria tela
+
+            //foreach (Itempedido item in listaItemPedido)
+            //{
+            //    item.PedidoIdPedido = pedido.IdPedido;
+            //    item.PedidoIdPedidoNavigation = pedido;
+            //    await _pedidoService.InsertItemPedido(item);
+            //}
+
+            return RedirectToAction(nameof(Index));
         }
 
 
@@ -93,6 +115,22 @@ namespace SistemaWebPizzaria.Controllers
             catch (Exception)
             {
                 return NotFound();
+            }
+        }
+
+        public async Task<IActionResult> InativaPedido(int id)
+        {
+            try
+            {
+                var pedido = await _pedidoService.FindByIdAsync(id);
+                pedido.Status = "cancelado";
+
+                await _pedidoService.UpdateAsync(pedido);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (KeyNotFoundException)
+            {
+                return RedirectToAction(nameof(Index));
             }
         }
 

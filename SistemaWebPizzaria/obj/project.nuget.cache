@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Z5Ef7baKcSnyCQvqlLksvDlNDOIkyGc3JAYoqYcnWf8gUOFXfW3T301i6UlqBPlvPCtIBuCoshNQe2rUwbK7yw==",
+  "dgSpecHash": "UrmbkuowfOMl0RGCDDwQNME+FzE9xu52AGb2QjPdjlcZg5bf4ztD8v/bI2j4Jixkrb76GbN2Cq3Tqm7AgRJhLQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Edson\\source\\repos\\SistemaPizzaria\\SistemaWebPizzaria\\SistemaWebPizzaria.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Edson\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",
     "C:\\Users\\Edson\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.1.1\\microsoft.aspnetcore.antiforgery.2.1.1.nupkg.sha512",

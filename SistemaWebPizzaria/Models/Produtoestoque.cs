@@ -8,7 +8,7 @@ namespace SistemaWebPizzaria.Models
     {
         public Produtoestoque()
         {
-            Itempedido = new HashSet<Itempedido>();
+            Itempedido = new HashSet<ItemPedido>();
         }
 
         public int IdProduto { get; set; }
@@ -58,6 +58,6 @@ namespace SistemaWebPizzaria.Models
         public string UnidadeMedida { get; set; }
 
 
-        public ICollection<Itempedido> Itempedido { get; set; }
+        public ICollection<ItemPedido> Itempedido { get; set; }
     }
 }

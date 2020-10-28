@@ -26,6 +26,8 @@ namespace SistemaWebPizzaria.Models
         public string Cidade { get; set; }
         public int? ClienteIdCliente { get; set; }
 
+        public string Ativo { get; set; }
+
         public Cliente ClienteIdClienteNavigation { get; set; }
     }
 }

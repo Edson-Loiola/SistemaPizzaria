@@ -26,6 +26,8 @@ namespace SistemaWebPizzaria.Models
         [Remote("VerificaTelefone", "Clientes", AdditionalFields = nameof(IdCliente), ErrorMessage = "Telefone já cadastrado! Realize a busca!")] // validaçao para vericar se telefone já existe
         public string Telefone { get; set; }
 
+        public string Ativo { get; set; }
+
         public ICollection<Endereco> Endereco { get; set; }
         public ICollection<Pedido> Pedido { get; set; }
     }

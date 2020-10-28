@@ -18,7 +18,7 @@ namespace SistemaWebPizzaria.Models
         [Display(Name = "Cpf")]
         [Required(ErrorMessage = "{0} não informado!")]
         [StringLength(14, ErrorMessage = "{0} Máximo de 14 dígitos")]
-        [Remote("ValidarCPF", "Funcionarios", ErrorMessage = "{0} Inválido.")]
+        [Remote("ValidarCPF", "Funcionarios", AdditionalFields = nameof(IdFuncionario), ErrorMessage = "{0} Inválido ou já cadastrado.")]
         public string Cpf { get; set; }
 
         [Display(Name = "Nome")]
@@ -27,7 +27,7 @@ namespace SistemaWebPizzaria.Models
         public string Nome { get; set; }
 
         [Display(Name = "Celular")]
-        [StringLength(11, ErrorMessage = "{0} Máximo de 11 caracteres")]
+        [StringLength(14, ErrorMessage = "{0} Máximo de 14 caracteres")]
         public string Celular { get; set; }
 
         [Display(Name = "Email")]

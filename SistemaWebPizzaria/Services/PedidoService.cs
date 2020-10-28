@@ -22,8 +22,9 @@ namespace SistemaWebPizzaria.Services {
         //função de inserir no banco
         public async Task InsertAsync(Pedido obj)
         {
-            obj.IdFuncioarioNavigation = _context.Funcionario.Find(obj.IdFuncioarioNavigation.IdFuncionario);
-            obj.IdClienteNavigation = _context.Cliente.Find(obj.IdClienteNavigation.IdCliente);
+            obj.DataHora = DateTime.Now;
+            obj.IdClienteNavigation = _context.Cliente.Find(obj.IdCliente);
+            obj.IdFuncioarioNavigation = _context.Funcionario.Find(obj.IdFuncioario);
             _context.Add(obj);
             await _context.SaveChangesAsync();
         }
@@ -32,7 +33,7 @@ namespace SistemaWebPizzaria.Services {
         //função de fazer listagem dos pedidos
         public async Task<List<Pedido>> FindAllAsync()
         {
-            return await _context.Pedido.Include(f => f.IdFuncioarioNavigation).Include(c => c.IdClienteNavigation).ToListAsync();
+            return await _context.Pedido.Include(f => f.IdFuncioarioNavigation).Include(c => c.IdClienteNavigation).Include(i => i.Itempedido).ToListAsync();
         }
 
         //função de fazer listagem dos funcionarios
@@ -52,7 +53,7 @@ namespace SistemaWebPizzaria.Services {
             return await _context.Cardapiopizza.ToListAsync();
         }
 
-        public async Task<Cardapiopizza> findByIdCardapio(int id)
+        public async Task<Cardapiopizza> FindByIdCardapio(int id)
         {
             return await _context.Cardapiopizza.FindAsync(id);
         }
@@ -60,6 +61,28 @@ namespace SistemaWebPizzaria.Services {
         public async Task<List<Produtoestoque>> ListaProduto()
         {
             return await _context.Produtoestoque.ToListAsync();
+        }
+
+        public async Task<Produtoestoque> FindByIdProduto(int id)
+        {
+            return await _context.Produtoestoque.FindAsync(id);
+        }
+
+        public async Task InsertItemPedido(ItemPedido itemPedido)
+        {
+            if (itemPedido.CardapioPizzaIdCardapio != null)
+            {
+                itemPedido.CardapioPizzaIdCardapioNavigation = _context.Cardapiopizza.Find(itemPedido.CardapioPizzaIdCardapio);
+
+            }
+
+            if (itemPedido.ProdutoEstoqueIdProduto != null)
+            {
+                itemPedido.ProdutoEstoqueIdProdutoNavigation = _context.Produtoestoque.Find(itemPedido.ProdutoEstoqueIdProduto);
+            }
+
+            _context.Add(itemPedido);
+            await _context.SaveChangesAsync();
         }
 
 
@@ -80,7 +103,19 @@ namespace SistemaWebPizzaria.Services {
 
         public async Task<Pedido> FindByIdAsync(int id)
         {
-            return await _context.Pedido.FirstOrDefaultAsync(obj => obj.IdPedido == id);
+            var pedido = await _context.Pedido.Include(f => f.IdFuncioarioNavigation).Include(c => c.IdClienteNavigation).FirstOrDefaultAsync(obj => obj.IdPedido == id);
+
+            var listaItemPedido = await _context.Itempedido.ToListAsync();
+
+            foreach (ItemPedido item in listaItemPedido)
+            {
+                if (item.PedidoIdPedido == pedido.IdPedido)
+                {
+                    pedido.Itempedido.Add(item);
+                }
+            }
+
+            return pedido;
 
             //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal (no caso o departamento)
         }
