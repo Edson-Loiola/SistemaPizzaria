@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PagedList;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 using System;
@@ -25,12 +26,16 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
-        public async Task<IActionResult> Lista()
+
+        public async Task<IActionResult> Lista(int? pagina)
         {
-
             var list = await _clienteService.FindAllEndeAsync();
+            int paginaTamanho = 10;
+            int paginaNumero = (pagina ?? 1);
 
-            return View(list);
+
+
+            return View(list.ToPagedList(paginaNumero, paginaTamanho));
         }
 
 
@@ -95,19 +100,21 @@ namespace SistemaWebPizzaria.Controllers
 
         //metodo de pesquisar cliente pelo telefone - chama a mesma action Lista de listagem de clientes
         [HttpPost]
-        public async Task<IActionResult> Buscar(string telefone)
+        public async Task<IActionResult> Buscar(string telefone, int? pagina)
         {
 
             var obj = await _clienteService.FindAllEndeAsync();
             var cl = obj.Where(x => x.ClienteIdClienteNavigation.Telefone == telefone);
 
+            int paginaTamanho = 4;
+            int paginaNumero = (pagina ?? 1);
 
             if (!cl.Any(x => x.ClienteIdClienteNavigation.Telefone == telefone)) // se o telefone passado não existir no banco, direcionar para create
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Lista));
             }
             else
-                return View(nameof(Lista), cl); // se existir retornar a lista
+                return View(nameof(Lista), cl.ToPagedList(paginaNumero, paginaTamanho)); // se existir retornar a lista
         }
 
 

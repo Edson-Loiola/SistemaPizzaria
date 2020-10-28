@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<SistemaWebPizzaria.Models.Endereco>
+@model PagedList.IPagedList<SistemaWebPizzaria.Models.Endereco>
 
 @{
     ViewData["Title"] = "Lista de Clientes";
@@ -97,7 +97,7 @@
                             @{ if (item.Ativo == "N")
                                 {
 
-                                    <a asp-action="AtivaCliente" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModalAtivaCliente-@item.ClienteIdCliente"><span class="material-icons">loop</span></a>                                    
+                                    <a asp-action="AtivaCliente" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModalAtivaCliente-@item.ClienteIdCliente"><span class="material-icons">loop</span></a>
                                     <a class="btn btn-danger btn-sm" data-toggle="modal" @*data-target="#myModal-@item.ClienteIdCliente"*@><span class="material-icons">person_add_disabled</span></a>
 
                                 }
@@ -145,5 +145,35 @@
                 }
             </tbody>
         </table>
+        <div>
+            Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+            of @Model.PageCount
+
+            @if (Model.HasPreviousPage)
+            {
+                @Html.ActionLink("<<", "Lista", new { pagina = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                @Html.Raw(" ");
+                @Html.ActionLink("< Anterior", "Lista", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+            }
+            else
+            {
+                @:<<
+                @Html.Raw(" ");
+                @:< Anterior
+            }
+
+            @if (Model.HasNextPage)
+            {
+                @Html.ActionLink("Próxima >", "Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                @Html.Raw(" ");
+                @Html.ActionLink(">>", "Lista", new { pagina = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+            }
+            else
+            {
+                @:Próxima >
+                @Html.Raw(" ")
+                @:>>
+            }
+        </div>
     </div>
 </div>
