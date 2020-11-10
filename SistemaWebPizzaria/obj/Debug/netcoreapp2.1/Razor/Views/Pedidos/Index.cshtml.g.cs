@@ -85,7 +85,7 @@ Write(ViewData["Title"]);
             WriteLiteral("<div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n        ");
             EndContext();
             BeginContext(759, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9857417ccb6a4f8ea156b6b11627193e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fd84489407c34646a8af550df95e0e76", async() => {
                 BeginContext(813, 11, true);
                 WriteLiteral("Novo Pedido");
                 EndContext();
@@ -248,7 +248,7 @@ WriteAttributeValue("", 2391, Html.DisplayFor(modelItem => item.Status), 2391, 4
             WriteLiteral("\r\n                        </td>\r\n                        <td>\r\n                            ");
             EndContext();
             BeginContext(3620, 129, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c3c6392cc227495daf4d79e432c41f66", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "65dcd82762da43c69784db135b173a84", async() => {
                 BeginContext(3705, 40, true);
                 WriteLiteral("<span class=\"material-icons\">edit</span>");
                 EndContext();
@@ -304,7 +304,7 @@ WriteAttributeValue("", 2391, Html.DisplayFor(modelItem => item.Status), 2391, 4
                                     ");
             EndContext();
             BeginContext(4892, 95, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "be0c69694b1e41eb948a3b3fef210494", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "96b627c8f4fc42df8db4ef5adc681b84", async() => {
                 BeginContext(4975, 8, true);
                 WriteLiteral("Cancelar");
                 EndContext();

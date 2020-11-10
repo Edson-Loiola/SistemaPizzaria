@@ -26,14 +26,12 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
-
+       
         public async Task<IActionResult> Lista(int? pagina)
         {
             var list = await _clienteService.FindAllEndeAsync();
             int paginaTamanho = 10;
             int paginaNumero = (pagina ?? 1);
-
-
 
             return View(list.ToPagedList(paginaNumero, paginaTamanho));
         }
@@ -106,15 +104,17 @@ namespace SistemaWebPizzaria.Controllers
             var obj = await _clienteService.FindAllEndeAsync();
             var cl = obj.Where(x => x.ClienteIdClienteNavigation.Telefone == telefone);
 
-            int paginaTamanho = 4;
+            int paginaTamanho = 10;
             int paginaNumero = (pagina ?? 1);
 
-            if (!cl.Any(x => x.ClienteIdClienteNavigation.Telefone == telefone)) // se o telefone passado não existir no banco, direcionar para create
+            if (!cl.Any(x => x.ClienteIdClienteNavigation.Telefone == telefone)) // se o telefone passado não existir no banco
             {
                 return RedirectToAction(nameof(Lista));
             }
             else
+            {
                 return View(nameof(Lista), cl.ToPagedList(paginaNumero, paginaTamanho)); // se existir retornar a lista
+            }
         }
 
 
@@ -273,8 +273,6 @@ namespace SistemaWebPizzaria.Controllers
 
 
         //verificar se o telefone cadastro já existe
-
-
         public async Task<bool> VerificaTelefone(string telefone, string idCliente)
         {
 

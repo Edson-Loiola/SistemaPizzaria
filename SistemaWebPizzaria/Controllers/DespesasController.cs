@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PagedList;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Models.ViewModels;
 using SistemaWebPizzaria.Services;
@@ -25,11 +26,30 @@ namespace SistemaWebPizzaria.Controllers
         public IActionResult CreateDespesa()
         {
             return View();
-        }
-        public async Task<IActionResult> Index()
-        {
-            var list = await _despesaService.FindAllAsync();
 
+
+
+        }
+        public async Task<IActionResult> Index(DateTime? minDate, DateTime? maxDate)
+        {
+
+
+            if (!minDate.HasValue)
+            {
+               minDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            }
+            if (!maxDate.HasValue)
+            {
+                maxDate = DateTime.Now;
+            }
+
+          
+            ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
+            ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
+                       
+
+            var list = await _despesaService.FindAllAsync(minDate, maxDate);
+           
             return View(list);
         }
 
@@ -92,13 +112,13 @@ namespace SistemaWebPizzaria.Controllers
         //ação edit -metodo post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Despesa obj)
+        public async Task<IActionResult> Edit(int id, Despesa obj, DateTime? minDate, DateTime? maxDate, int? pagina)
         {
 
             //essa validação ocorrerá se o JavaScript do usuário estiver desabilitado, pois não fará as validações feitas no html e nas propriedades
             if (!ModelState.IsValid)
             {
-                var departments = await _despesaService.FindAllAsync(); //carrega 
+                var despesas = await _despesaService.FindAllAsync(minDate, maxDate); //carrega 
 
                 var viewModel = new Despesa
                 {

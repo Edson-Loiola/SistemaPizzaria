@@ -12,7 +12,8 @@
     <h2>@ViewData["Title"]</h2>
     <hr />
     <div class="row">
-        <form method="post" asp-action="Buscar">
+
+        <form method="post" asp-action="Buscar">       
             <div class="col-md-10 input-group-lg">
                 <input class="form-control" type="text" name="telefone" placeholder="Buscar telefone" />
             </div>
@@ -145,35 +146,57 @@
                 }
             </tbody>
         </table>
-        <div>
-            Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
-            of @Model.PageCount
 
-            @if (Model.HasPreviousPage)
-            {
-                @Html.ActionLink("<<", "Lista", new { pagina = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
-                @Html.Raw(" ");
-                @Html.ActionLink("< Anterior", "Lista", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
-            }
-            else
-            {
-                @:<<
-                @Html.Raw(" ");
-                @:< Anterior
-            }
 
-            @if (Model.HasNextPage)
-            {
-                @Html.ActionLink("Próxima >", "Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
-                @Html.Raw(" ");
-                @Html.ActionLink(">>", "Lista", new { pagina = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
-            }
-            else
-            {
-                @:Próxima >
-                @Html.Raw(" ")
-                @:>>
-            }
-        </div>
+        <nav aria-label="Navegação de página exemplo">
+            <ul class="text-center">
+
+                Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                de @Model.PageCount
+
+                @if (Model.HasPreviousPage)
+                {
+
+
+
+                    @*@Html.ActionLink("<<", "Lista", new { pagina = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
+
+
+                    @Html.Raw(" ")
+                    @Html.ActionLink("Anterior", "Lista", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+
+                }
+                else
+                {
+                    @*@:<<*@
+                    @Html.Raw(" ")
+                    @:< Anterior
+                }
+
+                @if (Model.HasNextPage)
+                {
+
+
+
+                    @Html.ActionLink("Próxima >", "Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                    @Html.Raw(" ")
+
+                    @*@Html.ActionLink(">>", "Lista", new { pagina = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
+
+                }
+                else
+                {
+
+                    @:Próxima >
+                    @Html.Raw(" ")
+                    @*@:>>*@
+                }
+            </ul><br /><br /><br />
+        </nav>
     </div>
 </div>
+
+
+
+
+

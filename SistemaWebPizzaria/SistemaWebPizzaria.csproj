@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Enums\**" />
+    <Content Remove="Models\Enums\**" />
+    <EmbeddedResource Remove="Models\Enums\**" />
+    <None Remove="Models\Enums\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Controllers\LoginController.cs" />
     <Compile Remove="Models\ViewModels\DespesaViewModel.cs" />
     <Compile Remove="Views\Home\Menu.cshtml.cs" />

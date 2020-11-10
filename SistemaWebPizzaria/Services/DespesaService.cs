@@ -29,14 +29,32 @@ namespace SistemaWebPizzaria.Services
 
 
         //função de fazer listagem das despesas
-        public async Task<List<Despesa>> FindAllAsync()
+        public async Task<List<Despesa>> FindAllAsync(DateTime? minDate, DateTime? maxDate)
         {
-            return await _context.Despesa.ToListAsync();
+            //return await _context.Despesa.ToListAsync();
+
+            var listdesp = from obj in _context.Despesa select obj;
+
+            if (minDate.HasValue)
+            {
+                listdesp =  listdesp.Where(d => d.DataDespesa >= minDate.Value);
+            }
+            if(maxDate.HasValue)
+            {
+                listdesp = listdesp.Where(d => d.DataDespesa <= maxDate.Value);
+            }
+
+            return await listdesp.ToListAsync();
+
+
+        
         }
 
 
-        //lista funcionario
-        public async Task<List<Funcionario>> ListaFunc()
+
+
+            //lista funcionario
+            public async Task<List<Funcionario>> ListaFunc()
         {
             return await _context.Funcionario.OrderBy(x => x.Nome).ToListAsync();
         }
@@ -92,37 +110,7 @@ namespace SistemaWebPizzaria.Services
             {
                 throw new NotFoundException(e.Message);
             }
-        }
-
-        //public async Task<RelatoriosViewModel> SaidaDesp (DateTime? minDate, DateTime? maxDate)
-        //{
-
-        //    var teste = from obj in _context.Cliente select obj;        
-
-        //    if (minDate.HasValue)
-        //    {
-        //        listdesp = listdesp.Where(d => d.DataDespesa >= minDate.Value);
-               
-        //        //    listfunc = listfunc.Where(f => f.DataCadastro >= minDate.Value);
-        //    }
-        //    if (maxDate.HasValue)
-        //    {
-        //        listdesp = listdesp.Where(d => d.DataDespesa <= maxDate.Value);
-    
-        //    }
-
-
-        //    RelatoriosViewModel list = new RelatoriosViewModel(
-
-        //            listdesp.ToList(),
-        //            listprod.ToList()
-
-        //        );
-
-        //    return list;
-
-        //}
-
+        }      
 
 
     }
