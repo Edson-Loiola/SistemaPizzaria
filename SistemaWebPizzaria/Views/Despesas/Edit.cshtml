@@ -10,17 +10,19 @@
 <h2>@ViewData["Title"]</h2>
 
 <hr />
+
+<br />
 <div class="row">
     @*  esse div row ocupa a largura da rela  *@
-    <div class="col-md-4">
-        @* md-4 ocupa um 1/4 da tela *@
-        <form asp-action="Edit">
-            @*chama ação Edit metodo post*@
+    <div class="img-rounded row col-md-12" style="box-shadow: #808080 0px 1px 5px">
+        <br /><br />
 
+
+        <form asp-action="Edit">
             <input type="hidden" asp-for="IdDespesa" /> @*campo oculto passando o id do vendedor*@
 
 
-            <div class="form-group">
+            <div class="form-group col-md-5">
 
                 @*  o compilador consegue entender que o "Name" é um atributo do objeto Seller *@
                 <label asp-for="NomeDespesa" class="control-label"></label>
@@ -31,31 +33,31 @@
 
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-3">
                 @*  o compilador consegue entender que o "Email" é um atributo do objeto Seller *@
                 <label asp-for="Valor" class="control-label"></label>
                 <input asp-for="Valor" class="form-control" />
                 <span asp-validation-for="Valor" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group col-md-3">
+                <label asp-for="DataDespesa" class="control-label"></label>
+                <input asp-for="DataDespesa" class="form-control" type="date" />
+                <span asp-validation-for="DataDespesa" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-11">
                 <label asp-for="Descricao" class="control-label"></label>
                 <input asp-for="Descricao" class="form-control" />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
 
             </div>
 
-            <div class="form-group">
-                <label asp-for="DataDespesa" class="control-label"></label>
-                <input asp-for="DataDespesa" class="form-control"  type="date"/>
-                <span asp-validation-for="DataDespesa"  class="text-danger"></span>
-            </div>
-
-
-            <div class="form-group">
+            <div class="form-group col-md-12" br>
+                <br />
                 <input type="submit" value="Salvar" class="btn btn-primary" />
                 <a asp-action="Index" class="btn btn-primary">Voltar</a>
-            </div>
+            </div><br /><br /><br />
 
         </form>
     </div>

@@ -18,7 +18,7 @@
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <a asp-action="Produto" class="btn btn-primary btn-lg">Cadatrar Produto</a>
+        <a asp-action="Produto" class="btn btn-primary btn-lg">Cadastrar Produto</a>
         <a href="../Home/MenuSistema" class="btn btn-danger btn-lg pull-right">Voltar</a>
     </div>
 </div>
@@ -32,19 +32,22 @@
                         <label class="control-label text-center">ID</label>
                     </th>
                     <th>
-                        <label class="control-label text-center">Nome da Despesa</label>
+                        <label class="control-label text-center">Nome do Produto</label>
                     </th>
                     <th>
                         <label class="control-label">Valor (R$)</label>
                     </th>
                     <th>
-                        <label class="control-label">Estoq</label>
+                        <label class="control-label">Qtde Estoque</label>
                     </th>
                     <th>
                         <label class="control-label">Marca</label>
                     </th>
                     <th>
                         <label class="control-label">Descrição</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Validade</label>
                     </th>
                     <th>
                         <label class="control-label">Ações</label>
@@ -54,30 +57,33 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td readonly>
-                            @Html.DisplayFor(modelItem => item.IdProduto)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PrecoVenda)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Quantidade) @Html.DisplayFor(modelItem => item.UnidadeMedida)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Marca)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Descricao)
-                        </td>
-                        <td>
-                            <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdProduto"><span class="material-icons">edit</span></a>
-                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdProduto"><span class="material-icons">delete</span></a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td readonly>
+                        @Html.DisplayFor(modelItem => item.IdProduto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrecoVenda)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantidade) @Html.DisplayFor(modelItem => item.UnidadeMedida)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Marca)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Validade)
+                    </td>
+                    <td class="text-center">
+                        <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdProduto"><span class="material-icons">edit</span></a>
+                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdProduto"><span class="material-icons">delete</span></a>
+                    </td>
+                </tr>
                     <!-- Modal -->
                     <div class="modal fade" id="myModal-@item.IdProduto" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">

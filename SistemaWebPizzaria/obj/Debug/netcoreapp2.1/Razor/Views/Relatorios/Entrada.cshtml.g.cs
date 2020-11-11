@@ -69,7 +69,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("\r\n<div class=\"container-fluid\">\r\n\r\n    <h2>Entradas</h2>\r\n    <hr />\r\n    <div class=\"row col-md-12\">\r\n        <div class=\"col-sm-2 col-md-2 sidebar\">\r\n            <ul class=\"nav nav-sidebar\">\r\n                <li class=\"active btn-outline-primary\">");
             EndContext();
             BeginContext(316, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3ffcb68f3c1e4134a5ce42710fbdef42", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1e97d483f277419d886db66346be1da2", async() => {
                 BeginContext(354, 47, true);
                 WriteLiteral("Entradas <span class=\"sr-only\">(current)</span>");
                 EndContext();
@@ -91,7 +91,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("</li>\r\n                <li>");
             EndContext();
             BeginContext(432, 46, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "175c7ae1082b4e88ab8cfa44490672d1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9b8c3dfcff40405c85a72d6fd6035253", async() => {
                 BeginContext(468, 6, true);
                 WriteLiteral("Saídas");
                 EndContext();
@@ -113,7 +113,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("</li>\r\n                <li>");
             EndContext();
             BeginContext(505, 46, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a352e6bfa9d04c99959e2144aab99ece", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cc1c5bdf05a54c3cb0ca2d7f3f64097f", async() => {
                 BeginContext(541, 6, true);
                 WriteLiteral("Ganhos");
                 EndContext();
@@ -135,7 +135,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("</li>\r\n                <li> ");
             EndContext();
             BeginContext(579, 44, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ffd765ecb46f48fa8fe2de2caff30349", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5736df61d56745afad80aca799235a7b", async() => {
                 BeginContext(615, 4, true);
                 WriteLiteral("Home");
                 EndContext();
@@ -157,7 +157,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("</li>\r\n            </ul>\r\n        </div>\r\n\r\n        <div class=\"col-sm-6 col-sm-offset-3 col-md-9 col-md-offset-0\">\r\n\r\n            <div class=\"row\">\r\n                ");
             EndContext();
             BeginContext(789, 835, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4ba6c424ca7b420bb65295bf08544f08", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a51df321e984dc0b7ddfffd2c3ee9e9", async() => {
                 BeginContext(856, 82, true);
                 WriteLiteral("\r\n                    <fieldset>\r\n                        <div class=\"col-md-4\">\r\n");
                 EndContext();
