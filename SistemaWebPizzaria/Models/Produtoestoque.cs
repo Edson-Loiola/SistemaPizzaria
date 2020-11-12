@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -18,15 +19,17 @@ namespace SistemaWebPizzaria.Models
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "{0} não informado!")]
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         [Range(0.00, 999999.99, ErrorMessage = "{0} R$ de {1} até {2}")]
         public double PrecoCompra { get; set; }
 
         [Required(ErrorMessage = "{0} não informado!")]
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         [Range(0.00, 999999.99, ErrorMessage = "{0} R$ de {1} até {2}")]
         public decimal? PrecoVenda { get; set; }
 
         [Required(ErrorMessage = "{0} não informado!")]
-        [Range(0.00, 999999.99, ErrorMessage = "{0} R$ de {1} até {2}")]
+        [Range(0, 999999.99, ErrorMessage = "{0} R$ de {1} até {2}")]
         public int Quantidade { get; set; }
 
         [Required(ErrorMessage = "{0} não informado!")]
@@ -35,6 +38,7 @@ namespace SistemaWebPizzaria.Models
 
         [Required(ErrorMessage = "{0} não informado!")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [Remote("Validade", "Produtos", AdditionalFields = nameof(DataCompra), ErrorMessage = "{0} menor que a Data de Compra!")]
         public DateTime? Validade { get; set; }
 
         [StringLength(50, ErrorMessage = "{0} Máximo de 50 caracteres")]

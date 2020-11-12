@@ -25,8 +25,7 @@
 
             <form asp-action="Create">
                 <div class="row">
-                    <div class="form-group col-md-3">
-
+                    <div class="form-group col-md-5">
                         @*  o compilador consegue entender que o "Name" é um atributo do objeto Seller *@
                         <label asp-for="Nome" class="control-label">Nome</label>
                         <input asp-for="Nome" class="form-control" />
@@ -37,7 +36,7 @@
 
                     <div class="form-group col-md-3">
                         @*  o compilador consegue entender que o "Email" é um atributo do objeto Seller *@
-                        <label asp-for="Cpf" class="control-label">CPF:</label>
+                        <label asp-for="Cpf" class="control-label">CPF</label>
                         <input asp-for="Cpf" id="Cpf" class="form-control" />
                         <span asp-validation-for="Cpf" class="text-danger"></span>
 
@@ -53,7 +52,7 @@
                 </div>
                 <div class="row">
                     <div class="form-group col-md-5">
-                        <label asp-for="Email" class="control-label">Email</label>
+                        <label asp-for="Email" class="control-label">E-mail</label>
                         <input asp-for="Email" type="email" class="form-control" />
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>

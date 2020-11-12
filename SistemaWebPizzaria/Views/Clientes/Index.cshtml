@@ -5,81 +5,99 @@
     ViewData["Title"] = "Cadastro de Cliente";
 }
 
-<div class="container">
+    <div class="container">
 
-    <h2>@ViewData["Title"]</h2>
-    <hr />
+        <h2>@ViewData["Title"]</h2>
+        <hr />
 
-    <br />
-    <div class="img-rounded row col-md-12" style="box-shadow: #808080 0px 1px 5px">
-        @*  esse div row ocupa a largura da rela  *@
-        <div class="col-md-12 ">
-            <br /><br />
-            @* md-4 ocupa um 1/4 da tela *@
+        <br />
+        <div class="img-rounded row col-md-12" style="box-shadow: #808080 0px 1px 5px">
+            @*  esse div row ocupa a largura da rela  *@
+            <div class="col-md-12 ">
+                <br /><br />
+                @* md-4 ocupa um 1/4 da tela *@
+                <form asp-action="CreateCliente">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label class="control-label">Nome Cliente</label>
+                            <input asp-for="Cliente.Nome" class="form-control" />
+                            <span asp-validation-for="Cliente.Nome" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label class="control-label">Telefone</label>
+                            <input asp-for="Cliente.Telefone" class="form-control" />
+                            <span asp-validation-for="Cliente.Telefone" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-2">
+                            <label class="control-label">Cep</label>
+                            <input asp-for="Endereco.Cep" class="form-control" id="cep" onblur="pesquisacep(this.value)" />
+                            <span asp-validation-for="Endereco.Cep" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Rua</label>
+                            <input asp-for="Endereco.Rua" value="-" class="form-control" id="rua" />
+                            <span asp-validation-for="Endereco.Rua" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label class="control-label">Número</label>
+                            <input asp-for="Endereco.Numero" class="form-control" value="-" />
+                            <span asp-validation-for="Endereco.Numero" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label class="control-label">Compemento</label>
+                            <input asp-for="Endereco.Complemento" value="-" class="form-control" />
+                            <span asp-validation-for="Endereco.Complemento" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Bairro</label>
+                            <input asp-for="Endereco.Bairro" value="-" class="form-control" id="bairro" />
+                            <span asp-validation-for="Endereco.Bairro" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label class="control-label">Cidade</label>
+                            <input asp-for="Endereco.Cidade" value="-" class="form-control" id="cidade" />
+                            <span asp-validation-for="Endereco.Cidade" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-3" br>
+                            <br />
+                            <input type="submit" value="Inserir" class="btn btn-primary data-toggle="modal" data-target="#myModalAtivaCliente" />
+                            <a asp-action="Lista" class="btn btn-primary">Voltar</a>
+                            <br /><br /><br /><br />
+                        </div>
+                    </div>
 
+                </form>
 
-
-        <form asp-action="CreateCliente">
-            <div class="row">
-                <div class="form-group col-md-8">
-                    <label class="control-label">Nome Cliente</label>
-                    <input asp-for="Cliente.Nome" class="form-control" />
-                    <span asp-validation-for="Cliente.Nome" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-2">
-                    <label class="control-label">Telefone</label>
-                    <input asp-for="Cliente.Telefone" class="form-control" />
-                    <span asp-validation-for="Cliente.Telefone" class="text-danger"></span>
-                </div>
             </div>
-            <div class="row">
-                <div class="form-group col-md-2">
-                    <label class="control-label">Cep</label>
-                    <input asp-for="Endereco.Cep" class="form-control" id="cep" onblur="pesquisacep(this.value)" />
-                    <span asp-validation-for="Endereco.Cep" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-4">
-                    <label class="control-label">Rua</label>
-                    <input asp-for="Endereco.Rua" value="-" class="form-control" id="rua" />
-                    <span asp-validation-for="Endereco.Rua" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-2">
-                    <label class="control-label">Número</label>
-                    <input asp-for="Endereco.Numero" class="form-control" value="-" />
-                    <span asp-validation-for="Endereco.Numero" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-2">
-                    <label class="control-label">Compemento</label>
-                    <input asp-for="Endereco.Complemento" value="-" class="form-control" />
-                    <span asp-validation-for="Endereco.Complemento" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <label class="control-label">Bairro</label>
-                    <input asp-for="Endereco.Bairro" value="-" class="form-control" id="bairro" />
-                    <span asp-validation-for="Endereco.Bairro" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-3">
-                    <label class="control-label">Cidade</label>
-                    <input asp-for="Endereco.Cidade" value="-" class="form-control" id="cidade" />
-                    <span asp-validation-for="Endereco.Cidade" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-3" br>
-                    <br />
-                    <input type="submit" value="Inserir" class="btn btn-primary" />
-                    <a asp-action="Lista" class="btn btn-primary">Voltar</a>
-                    <br /><br /><br /><br />
-                </div>
-            </div>
-           
-        </form>
-       
         </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModalAtivaCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="myModalLabel">Atenção</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>Deseja mesmo</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
+                        @*<input type="hidden" asp-for="Cliente.IdCliente" />*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
-</div>
 
 
 @*para halidtar validação por meio do JavaScript*@

@@ -37,18 +37,10 @@ namespace SistemaWebPizzaria.Controllers
         [ValidateAntiForgeryToken] //essa notação evita que a aplicação receba ataques CSRF (envio de dados malicioso na autenticação)
         public async Task<IActionResult> Create(Produtoestoque produto)
         {
-            if (produto.Validade <= produto.DataCompra)
-            {               
 
-                return RedirectToAction(nameof(Produto));
-            }
-            else
-            {
-                 await _produtoService.InsertAsync(produto);
-                 return RedirectToAction(nameof(Index)); //ao clicar em criar um nova Produto, direciona para a propria tela
-            }
+            await _produtoService.InsertAsync(produto);
+            return RedirectToAction(nameof(Index)); //ao clicar em criar um nova Produto, direciona para a propria tela
 
-           
         }
 
         public async Task<IActionResult> Buscar(String valorBuscar)
@@ -79,19 +71,9 @@ namespace SistemaWebPizzaria.Controllers
             try
             {
 
-                if (produto.Validade <= produto.DataCompra)
-                {
+                await _produtoService.UpdateAsync(produto);
+                return RedirectToAction(nameof(Index));
 
-                    return RedirectToAction(nameof(Produto));
-                }
-                else
-                {
-                    await _produtoService.UpdateAsync(produto);
-                    return RedirectToAction(nameof(Index));
-                }
-
-
-                
             }
             catch (KeyNotFoundException)
             {
@@ -106,7 +88,7 @@ namespace SistemaWebPizzaria.Controllers
         [HttpPost]
         public async Task<IActionResult> BuscarProdPeloNome(string nomeprod)
         {
-           
+
             var obj = await _produtoService.FindAllAsync();
 
 
@@ -116,9 +98,27 @@ namespace SistemaWebPizzaria.Controllers
             }
 
 
-            var listprod = obj.Where(x => x.Nome.ToUpper().Contains(nomeprod.ToUpper()));          
-            
-                return View(nameof(Index), listprod); // se existir retornar a lista
+            var listprod = obj.Where(x => x.Nome.ToUpper().Contains(nomeprod.ToUpper()));
+
+            return View(nameof(Index), listprod); // se existir retornar a lista
+        }
+
+
+
+
+        public async Task<bool> Validade(string DataCompra, string Validade) //obs os parametros tem que ter o mesmo nome dos atributos da classe
+        {
+
+
+            if (Convert.ToDateTime(Validade) <= Convert.ToDateTime(DataCompra))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
         }
 
     }

@@ -78,7 +78,7 @@ namespace SistemaWebPizzaria.Controllers
 
 
 
-        //deletar cliente.
+        //deletar cliente. não utilizado mais
         public async Task<IActionResult> DeleteCliente(int? id)
         {
             try
@@ -102,12 +102,20 @@ namespace SistemaWebPizzaria.Controllers
         {
 
             var obj = await _clienteService.FindAllEndeAsync();
-            var cl = obj.Where(x => x.ClienteIdClienteNavigation.Telefone == telefone);
+
+            //nao estourar erro se a busca for vazia
+            if (telefone == null)
+            {
+                telefone = "";
+            }
+
+
+            var cl = obj.Where(x => x.ClienteIdClienteNavigation.Telefone == telefone || x.ClienteIdClienteNavigation.Nome.ToUpper().Contains(telefone.ToUpper()));
 
             int paginaTamanho = 10;
             int paginaNumero = (pagina ?? 1);
 
-            if (!cl.Any(x => x.ClienteIdClienteNavigation.Telefone == telefone)) // se o telefone passado não existir no banco
+            if (!cl.Any(x => x.ClienteIdClienteNavigation.Telefone == telefone || x.ClienteIdClienteNavigation.Nome.ToUpper().Contains(telefone.ToUpper()))) // se o telefone passado não existir no banco ou o nome
             {
                 return RedirectToAction(nameof(Lista));
             }
@@ -119,10 +127,12 @@ namespace SistemaWebPizzaria.Controllers
 
 
 
+   // var listprod = obj.Where(x => x.Nome.ToUpper().Contains(nomeprod.ToUpper()));
 
 
-        //ao clicar em edit ira abrir a tela com os campos carregados com os dados de cliente
-        public async Task<IActionResult> EditCliente(int? id)
+
+    //ao clicar em edit ira abrir a tela com os campos carregados com os dados de cliente
+    public async Task<IActionResult> EditCliente(int? id)
         {
             if (id == null) //validação se o id é nulo
             {
@@ -237,7 +247,7 @@ namespace SistemaWebPizzaria.Controllers
             }
         }
 
-        //ativar o  desativado
+        //ativar o cliente desativado
         public async Task<IActionResult> AtivaCliente(int? id)
         {
             var objCliente = await _clienteService.FindByIdAsync(id.Value);

@@ -13,9 +13,9 @@
     <hr />
     <div class="row">
 
-        <form method="post" asp-action="Buscar">       
+        <form method="post" asp-action="Buscar">
             <div class="col-md-10 input-group-lg">
-                <input class="form-control" type="text" name="telefone" placeholder="Buscar telefone" />
+                <input class="form-control" type="text" name="telefone" placeholder="Buscar nome ou telefone" />
             </div>
             <div class="col-md-2">
                 <button class="btn btn-info btn-block btn-lg" type="submit">Buscar</button>
@@ -142,62 +142,55 @@
                             </div>
                         </div>
                     </div>
-
-
                 }
             </tbody>
-        </table>
+        </table><br /><br />
 
-
-        <nav aria-label="Navegação de página exemplo">
+        <div class="row col-md-12">
             <ul class="text-center">
 
-                Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
-                de @Model.PageCount
+                <div class="col-md-12">
+                    Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                    de @Model.PageCount
+                </div>
 
                 @if (Model.HasPreviousPage)
                 {
 
 
-
-                    @*@Html.ActionLink("<<", "Lista", new { pagina = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
-
-
-                    @Html.Raw(" ")
-                    @Html.ActionLink("Anterior", "Lista", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                    <button class="btn btn-sm btn-primary">
+                        @*@Html.ActionLink("Anterior", "Lista", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
+                        <a style="color : #ffffff" href="@Url.Action("Lista", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Anterior </a>
+                    </button>
 
                 }
                 else
                 {
-                    @*@:<<*@
-                    @Html.Raw(" ")
-                    @:< Anterior
+
+                    <button class="btn btn-sm btn-primary">
+                        <a style="color : #ffffff"> Anterior</a>
+                    </button>
                 }
 
                 @if (Model.HasNextPage)
                 {
 
-
-
-                    @Html.ActionLink("Próxima >", "Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
-                    @Html.Raw(" ")
-
-                    @*@Html.ActionLink(">>", "Lista", new { pagina = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
+                    <button class="btn btn-sm btn-primary">
+                        @*@Html.ActionLink("Próxima", "Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
+                        <a style="color : #ffffff" href="@Url.Action("Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Anterior </a>
+                    </button>
 
                 }
                 else
                 {
-
-                    @:Próxima >
-                    @Html.Raw(" ")
-                    @*@:>>*@
+                    <button class="btn btn-sm btn-primary">
+                        <a style="color : #ffffff">Próximo</a>
+                    </button>
                 }
-            </ul><br /><br /><br />
-        </nav>
+            </ul><br /><br /><br /><br />
+
+        </div>
     </div>
 </div>
-
-
-
 
 

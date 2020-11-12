@@ -37,9 +37,9 @@ namespace SistemaWebPizzaria.Services
 
             if (minDate.HasValue)
             {
-                listdesp =  listdesp.Where(d => d.DataDespesa >= minDate.Value);
+                listdesp = listdesp.Where(d => d.DataDespesa >= minDate.Value);
             }
-            if(maxDate.HasValue)
+            if (maxDate.HasValue)
             {
                 listdesp = listdesp.Where(d => d.DataDespesa <= maxDate.Value);
             }
@@ -47,14 +47,14 @@ namespace SistemaWebPizzaria.Services
             return await listdesp.ToListAsync();
 
 
-        
+
         }
 
 
 
 
-            //lista funcionario
-            public async Task<List<Funcionario>> ListaFunc()
+        //lista funcionario
+        public async Task<List<Funcionario>> ListaFuncio()
         {
             return await _context.Funcionario.OrderBy(x => x.Nome).ToListAsync();
         }
@@ -110,7 +110,7 @@ namespace SistemaWebPizzaria.Services
             {
                 throw new NotFoundException(e.Message);
             }
-        }      
+        }
 
 
     }

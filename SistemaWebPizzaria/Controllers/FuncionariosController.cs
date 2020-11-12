@@ -161,6 +161,35 @@ namespace SistemaWebPizzaria.Controllers
 
 
 
+        //ativar o  desativado
+        public async Task<IActionResult> AtivarFuncionario(int id)
+        {
+            var obj = await _funcionarioService.FindByIdAsync(id);
+            var objLog = await _loginService.FindByIdAsync(Convert.ToInt32(obj.IdLogin));
+            try
+            {
+
+                obj.Ativo = "S";
+                obj.DataInativacao = null;
+                await _funcionarioService.UpdateAsync(obj);
+
+                if (objLog != null)
+                {
+                    objLog.Ativo = "S";
+                    await _loginService.UpdateAsync(objLog);
+                }
+
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (KeyNotFoundException)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+
+
         //ação edit -metodo post
         [HttpPost]
         [ValidateAntiForgeryToken]

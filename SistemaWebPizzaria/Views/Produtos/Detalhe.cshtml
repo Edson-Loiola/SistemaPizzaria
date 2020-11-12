@@ -16,22 +16,26 @@
                 <div class="col-md-11">
                     <label for="firstName">Nome do Produto</label>
                     <input asp-for="Nome" class="form-control" placeholder="">
+                    <span asp-validation-for="Nome" class="text-danger"></span>
                 </div>
             </div>
             <div class="row" style="margin-bottom:15px;">
                 <div class="col-md-2">
                     <label for="">Valor Compra</label>
                     <input asp-for="PrecoCompra" class="form-control" placeholder="R$">
+                    <span asp-validation-for="PrecoCompra" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-2">
                     <label for="">Valor Venda</label>
                     <input asp-for="PrecoVenda" class="form-control" placeholder="R$">
+                    <span asp-validation-for="PrecoVenda" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-2">
                     <label for="">Quantidade</label>
-                    <input asp-for="Quantidade" type="number" class="form-control">
+                    <input asp-for="Quantidade" type="number" class="form-control " min="0">
+                    <span asp-validation-for="Quantidade" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-2">
@@ -48,11 +52,13 @@
                 <div class="col-md-2">
                     <label for="">Data de Compra</label>
                     <input asp-for="DataCompra" type="date" class="form-control">
+                    <span asp-validation-for="DataCompra" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-2">
                     <label for="">Data de Validade</label>
                     <input asp-for="Validade" type="date" class="form-control">
+                    <span asp-validation-for="Validade" class="text-danger"></span>
                 </div>
 
             </div>
@@ -61,19 +67,21 @@
                 <div class="col-md-3">
                     <label for="">Marca</label>
                     <input asp-for="Marca" type="text" class="form-control">
+                    <span asp-validation-for="Marca" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-4">
                     <label for="firstName">Nome do Fornecedor</label>
                     <input asp-for="NomeFornecedor" class="form-control">
+                    <span asp-validation-for="NomeFornecedor" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-3">
-                    <label for="firstName">Categoria</label>                 
+                    <label for="firstName">Categoria</label>
                     <select asp-for="Categoria" class="custom-select form-control">
                         <option value="bebida">Bebida</option>
-                        <option value="limpeza">Limpeza</option>
-                        <option value="Produto Pizza">Produto Pizza</option>
+                        @*<option value="limpeza">Limpeza</option>*@
+                        <option value="Produto Pizza">Ingrediente Pizza</option>
                     </select>
                 </div>
 
@@ -91,6 +99,7 @@
                 <div class="col-md-12">
                     <label for="firstName">Campo para descrição</label>
                     <textarea asp-for="Descricao" class="form-control " placeholder="Máximo 500 caracteres" aria-label="With textarea"></textarea>
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
                 </div>
             </div>
             <div class="row">
@@ -102,3 +111,8 @@
         </form>
     </div>
 </div>
+
+@*para halidtar validação por meio do JavaScript*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

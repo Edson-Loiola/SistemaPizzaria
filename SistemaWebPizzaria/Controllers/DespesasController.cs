@@ -18,6 +18,7 @@ namespace SistemaWebPizzaria.Controllers
         {
             _despesaService = despesaService;
             _relatorioService = relatorioService;
+
         }
 
 
@@ -27,35 +28,34 @@ namespace SistemaWebPizzaria.Controllers
         {
             return View();
 
-
-
         }
+
+
         public async Task<IActionResult> Index(DateTime? minDate, DateTime? maxDate)
         {
 
-
             if (!minDate.HasValue)
             {
-               minDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                minDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             }
             if (!maxDate.HasValue)
             {
                 maxDate = DateTime.Now;
             }
 
-          
+
             ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
             ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
-                       
+
 
             var list = await _despesaService.FindAllAsync(minDate, maxDate);
-           
+
             return View(list);
         }
 
 
 
-          //inserir dados no banco (essa função é passada no form da minha view CreatDespesa
+        //inserir dados no banco (essa função é passada no form da minha view CreatDespesa
         [HttpPost] //esse método é um post pois está criando/enviando um novo objeto
         [ValidateAntiForgeryToken] //essa notação evita que a aplicação receba ataques CSRF (envio de dados malicioso na autenticação)
         public async Task<IActionResult> Create(Despesa despesa)
@@ -156,11 +156,10 @@ namespace SistemaWebPizzaria.Controllers
 
         public async Task<IActionResult> DespesaSalario()
         {
-                        
             return View();
+        }
 
-        }       
-
+      
     }
 
 
