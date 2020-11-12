@@ -92,16 +92,31 @@ namespace SistemaWebPizzaria.Controllers
         public async Task<IActionResult> Create(Pedido pedido, List<Itempedido> listaItemPedido)
         {
             await _pedidoService.InsertAsync(pedido);
+           
+            foreach (Itempedido item in listaItemPedido)
+             {
+                 item.PedidoIdPedido = pedido.IdPedido;
+                //item.PedidoIdPedidoNavigation = pedido;
+                if (item.CardapioPizzaIdCardapioNavigation != null) { 
+                    item.CardapioPizzaIdCardapio = item.CardapioPizzaIdCardapioNavigation.IdCardapio;
+                }
 
-            //foreach (Itempedido item in listaItemPedido)
-            //{
-            //    item.PedidoIdPedido = pedido.IdPedido;
-            //    item.PedidoIdPedidoNavigation = pedido;
-            //    await _pedidoService.InsertItemPedido(item);
-            //}
+                if (item.ProdutoEstoqueIdProdutoNavigation != null)
+                {
+                    item.ProdutoEstoqueIdProduto = item.ProdutoEstoqueIdProdutoNavigation.IdProduto;
+                }
+                
+
+
+            }
+            await _pedidoService.InsertItemPedido(listaItemPedido);
+
+
 
             return RedirectToAction(nameof(Index));
         }
+
+
 
 
         public async Task<IActionResult> DeletePedido(int id)

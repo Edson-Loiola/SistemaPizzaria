@@ -1,16 +1,15 @@
-
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SistemaWebPizzaria.Models;
+using SistemaWebPizzaria.Models.ViewModels;
 using SistemaWebPizzaria.Services.Exception;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SistemaWebPizzaria.Services { 
+namespace SistemaWebPizzaria.Services {
 
-    public class PedidoService : ControllerBase
-{
+    public class PedidoService
+    {
         private readonly BancoPizzariaContext _context;
 
         public PedidoService(BancoPizzariaContext context)
@@ -25,15 +24,24 @@ namespace SistemaWebPizzaria.Services {
             obj.DataHora = DateTime.Now;
             obj.IdClienteNavigation = _context.Cliente.Find(obj.IdCliente);
             obj.IdFuncioarioNavigation = _context.Funcionario.Find(obj.IdFuncioario);
-            _context.Add(obj);
-            await _context.SaveChangesAsync();
+
+            try {
+                _context.Add(obj);
+                await _context.SaveChangesAsync();
+            }
+
+            catch (DbUpdateException e)
+            {
+                throw new System.Exception(e.Message);
+            }
         }
 
 
         //função de fazer listagem dos pedidos
         public async Task<List<Pedido>> FindAllAsync()
         {
-            return await _context.Pedido.Include(f => f.IdFuncioarioNavigation).Include(c => c.IdClienteNavigation).Include(i => i.Itempedido).ToListAsync();
+            return await  _context.Pedido.Include(f => f.IdFuncioarioNavigation).Include(c => c.IdClienteNavigation).Include(i => i.Itempedido).ToListAsync();
+          
         }
 
         //função de fazer listagem dos funcionarios
@@ -68,23 +76,49 @@ namespace SistemaWebPizzaria.Services {
             return await _context.Produtoestoque.FindAsync(id);
         }
 
-        public async Task InsertItemPedido(Itempedido itemPedido)
+        public async Task InsertItemPedido(List<Itempedido> itemPedido)
         {
-            if (itemPedido.CardapioPizzaIdCardapio != null)
-            {
-                itemPedido.CardapioPizzaIdCardapioNavigation = _context.Cardapiopizza.Find(itemPedido.CardapioPizzaIdCardapio);
+            /* if (itemPedido.CardapioPizzaIdCardapio != null)
+             {
+                 itemPedido.CardapioPizzaIdCardapioNavigation = _context.Cardapiopizza.Find(itemPedido.CardapioPizzaIdCardapio);
 
+             }
+
+             if (itemPedido.ProdutoEstoqueIdProduto != null)
+             {
+                 itemPedido.ProdutoEstoqueIdProdutoNavigation = _context.Produtoestoque.Find(itemPedido.ProdutoEstoqueIdProduto);
+             }*/
+           
+
+                for (int i = 0; i < itemPedido.Count;i++)
+                {
+                itemPedido[i].CardapioPizzaIdCardapioNavigation = null;
+                itemPedido[i].ProdutoEstoqueIdProdutoNavigation = null;
+                try
+                {
+                    _context.Itempedido.Add(itemPedido[i]);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateException e)
+                {
+                    throw new System.Exception(e.Message);
+                }
             }
 
-            if (itemPedido.ProdutoEstoqueIdProduto != null)
-            {
-                itemPedido.ProdutoEstoqueIdProdutoNavigation = _context.Produtoestoque.Find(itemPedido.ProdutoEstoqueIdProduto);
-            }
+          
 
-            _context.Add(itemPedido);
-            await _context.SaveChangesAsync();
+
+
+
+
+
         }
 
+        public async Task TiraDoEstoque(Produtoestoque produto)
+        {
+            _context.Produtoestoque.Update(produto); //atualiza o objeto
+            await _context.SaveChangesAsync(); //confirmar alteração
+        }
 
         //função remover  do banco pelo id
         public async Task RemoveAsync(Pedido pedido)
