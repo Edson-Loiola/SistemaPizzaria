@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PagedList;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 using System;
@@ -27,11 +28,13 @@ namespace SistemaWebPizzaria.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? pagina)
         {
             var list = await _cardapioService.FindAllAsync();
+            int paginaTamanho = 10;
+            int paginaNumero = (pagina ?? 1);
 
-            return View(list);
+            return View(list.ToPagedList(paginaNumero, paginaTamanho));
         }
 
 
@@ -114,7 +117,7 @@ namespace SistemaWebPizzaria.Controllers
 
         //metodo de pesquisar produto pelo nome 
         [HttpPost]
-        public async Task<IActionResult> BuscarCardapio(string nomeprod)
+        public async Task<IActionResult> BuscarCardapio(string nomeprod, int? pagina)
         {
 
             var obj = await _cardapioService.FindAllAsync();
@@ -127,10 +130,11 @@ namespace SistemaWebPizzaria.Controllers
 
 
             var filtrocardapio = obj.Where(x => x.Sabor.ToUpper().Contains(nomeprod.ToUpper()));
+            int paginaTamanho = 10;
+            int paginaNumero = (pagina ?? 1);
 
 
-        
-            return View(nameof(Index), filtrocardapio);
+            return View(nameof(Index), filtrocardapio.ToPagedList(paginaNumero, paginaTamanho));
    
         }
 

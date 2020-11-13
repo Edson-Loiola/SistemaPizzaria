@@ -1,14 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-<<<<<<< HEAD
       "C:\\Users\\Edson\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\Edson\\.nuget\\packages"
-=======
-      "C:\\Users\\izaias\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\izaias\\.nuget\\packages",
-      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
->>>>>>> origin/TelaLogin3
     ]
   }
 }

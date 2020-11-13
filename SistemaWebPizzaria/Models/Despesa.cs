@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SistemaWebPizzaria.Models
@@ -27,6 +28,8 @@ namespace SistemaWebPizzaria.Models
         [Required(ErrorMessage = "{0} não informado!")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataDespesa { get; set; }
+
+       
 
         public Despesa()
         {

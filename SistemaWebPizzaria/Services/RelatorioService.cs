@@ -82,26 +82,6 @@ namespace SistemaWebPizzaria.Services
 
         //o de lucro foi feito direto no html
 
-        //    public async Task<double> ValorTotalLucro(DateTime? minDate, DateTime? maxDate)
-        //    {
-
-        //        var saida = await SomaTotal(minDate, maxDate);
-        //        var entrada = ValorEntrada(minDate, maxDate);
-        //        if (minDate.HasValue)
-        //        {
-        //            desp = desp.Where(x => x.DataDespesa >= minDate.Value);
-        //        }
-        //        if (maxDate.HasValue)
-        //        {
-        //            desp = desp.Where(x => x.DataDespesa <= maxDate.Value);
-        //        }
-
-
-
-        //        var lucro = (entrada - saida);
-
-        //        return lucro;
-        //    }
-        //}
+        
     }
 }

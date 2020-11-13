@@ -52,7 +52,7 @@
 
                 <div class="img-rounded col-md-4 text-center col-lg-offset-1" style="box-shadow: #505050 0px 1px 5px; background-color: #fff">
                     <span style="color:#424242; font-family:Verdana; font-size:medium">Pedidos Cancelados</span>
-                    <h2 style="color:#f54f4f; font-family:Impact"> @(Model.Pedidos.Where(x => x.Status == "Cancelado").Count()) </h2>
+                    <h2 style="color:#f54f4f; font-family:Impact"> @(Model.Pedidos.Where(x => x.Status == "cancelado").Count()) </h2>
                 </div>
             </div>
 

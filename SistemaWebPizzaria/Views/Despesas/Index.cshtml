@@ -5,97 +5,97 @@
     ViewData["Title"] = "Despesas Cadastradas";
 }
 
-    <div class="container">
-        <h2>@ViewData["Title"]</h2>
-        <hr />
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+    <div class="row ">
 
-        <p>
-            <a asp-action="CreateDespesa" class="btn btn-primary btn-lg">Nova Despesa</a>
-            <a asp-action="../Home/MenuSistema" class="btn btn-primary btn-lg">Home</a>
-        </p>
+        <div class="col-md-3">
+            <p>
+                <a asp-action="CreateDespesa" class="btn btn-primary btn-lg">Nova Despesa</a>
+                <a asp-action="../Home/MenuSistema" class="btn btn-primary btn-lg">Home</a>
+            </p>
+        </div>
 
-        @*<div class="col-sm-6 col-sm-offset-3 col-md-9 col-md-offset-0">
-            
-            <form class="form-horizontal col-md-offset-1" asp-action="BuscaDespesa">
-                <fieldset>
-                    <div class="col-md-4">
-                        <label>Data Início</label>
-                        <input type="date" name="minDate" class="form-control" value=@ViewData["minDate"] />
-                    </div>
-                    <div class=" col-md-4">
-                        <label>Data Fim</label>
-                        <input type="date" name="maxDate" class="form-control" value=@ViewData["maxDate"] />
-                    </div>
-                    <div class="col-md-4">
-                        <br />
-                        <button type="submit" class="btn btn-primary ">Submit</button>
-                    </div>
-                </fieldset>
-            </form><br />            
-
-        </div>*@
+        <form class="col-md-offset-6" asp-action="Index">
+            <fieldset>
+                <div class="col-md-4">
+                    @*<label>Data Início</label>*@
+                    <input type="date" name="minDate" class="form-control" value=@ViewData["minDate"] />
+                </div>
+                <div class=" col-md-4">
+                    @*<label>Data Fim</label>*@
+                    <input type="date" name="maxDate" class="form-control" value=@ViewData["maxDate"] />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary ">Buscar</button>
+                </div>
+            </fieldset>
+        </form>
+    </div><br />
 
 
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr class="bg-primary">
-                    <th>
-                        <label class="control-label text-center">Nome da Despesa</label>
-                    </th>
-                    <th>
-                        <label class="control-label">Valor (R$)</label>
-                    </th>
-                    <th>
-                        <label class="control-label">Descrição</label>
-                    </th>
-                    <th>
-                        <label class="control-label">Data</label>
-                    </th>
-                    <th>
-                        <label class="control-label">Ações</label>
-                    </th>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="bg-primary">
+                <th>
+                    <label class="control-label text-center">Nome da Despesa</label>
+                </th>
+                <th>
+                    <label class="control-label">Valor (R$)</label>
+                </th>
+                <th>
+                    <label class="control-label">Descrição</label>
+                </th>
+                <th>
+                    <label class="control-label">Data</label>
+                </th>
+                <th>
+                    <label class="control-label">Ações</label>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeDespesa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Valor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataDespesa)
+                    </td>
+                    <td class="text-center">
+                        <a asp-action="Edit" class="btn btn-default btn-sm" asp-route-id="@item.IdDespesa"><span class="material-icons">edit</span></a> @*chama tela de ditar com os campos preenchidos*@
+                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdDespesa"><span class="material-icons">delete</span></a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NomeDespesa)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Valor)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Descricao)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DataDespesa)
-                        </td>
-                        <td class="text-center">
-                            <a asp-action="Edit" class="btn btn-default btn-sm" asp-route-id="@item.IdDespesa"><span class="material-icons">edit</span></a> @*chama tela de ditar com os campos preenchidos*@
-                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdDespesa"><span class="material-icons">delete</span></a>
-                        </td>
-                    </tr>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal-@item.IdDespesa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h3 class="modal-title" id="myModalLabel">Atenção</h3>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Deseja mesmo deletar essa despesa?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
-                                    <a asp-action="DeleteDespesa" asp-route-id="@item.IdDespesa" class="btn btn-danger">Deletar</a>
-                                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal-@item.IdDespesa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="myModalLabel">Atenção</h3>
+                            </div>
+                            <div class="modal-body">
+                                <p>Deseja mesmo deletar essa despesa?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
+                                <a asp-action="DeleteDespesa" asp-route-id="@item.IdDespesa" class="btn btn-danger">Deletar</a>
                             </div>
                         </div>
                     </div>
-                }
-            </tbody>
-        </table>
-    </div>
+                </div>
+            }
+        </tbody>
+    </table>
+</div>
+

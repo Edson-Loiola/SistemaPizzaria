@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PagedList;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 using System;
@@ -15,6 +16,7 @@ namespace SistemaWebPizzaria.Controllers
 
         public ClientesController(ClienteService clienteService)
         {
+
             _clienteService = clienteService;
         }
 
@@ -25,12 +27,21 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
-        public async Task<IActionResult> Lista()
+       
+        public async Task<IActionResult> Lista(int? pagina)
         {
+
+            
 
             var list = await _clienteService.FindAllEndeAsync();
 
-            return View(list);
+            TempData["TotalClienteA"] = list.Where(x => x.Ativo == "S").Count(); //total de lcientes ativos
+            TempData["TotalClienteI"] = list.Where(x => x.Ativo == "N").Count(); //total de lcientes ativos
+
+            int paginaTamanho = 10;
+            int paginaNumero = (pagina ?? 1);
+
+            return View(list.ToPagedList(paginaNumero, paginaTamanho));
         }
 
 
@@ -75,7 +86,7 @@ namespace SistemaWebPizzaria.Controllers
 
 
 
-        //deletar cliente.
+        //deletar cliente. não utilizado mais
         public async Task<IActionResult> DeleteCliente(int? id)
         {
             try
@@ -95,27 +106,43 @@ namespace SistemaWebPizzaria.Controllers
 
         //metodo de pesquisar cliente pelo telefone - chama a mesma action Lista de listagem de clientes
         [HttpPost]
-        public async Task<IActionResult> Buscar(string telefone)
+        public async Task<IActionResult> Buscar(string telefone, int? pagina)
         {
 
             var obj = await _clienteService.FindAllEndeAsync();
-            var cl = obj.Where(x => x.ClienteIdClienteNavigation.Telefone == telefone);
-
-
-            if (!cl.Any(x => x.ClienteIdClienteNavigation.Telefone == telefone)) // se o telefone passado não existir no banco, direcionar para create
+            TempData["TotalClienteA"] = obj.Where(x => x.Ativo == "S").Count(); //total de lcientes ativos
+            TempData["TotalClienteI"] = obj.Where(x => x.Ativo == "N").Count(); //total de lcientes ativos
+            //nao estourar erro se a busca for vazia
+            if (telefone == null)
             {
-                return RedirectToAction(nameof(Index));
+                telefone = "";
+            }
+
+
+            var cl = obj.Where(x => x.ClienteIdClienteNavigation.Telefone == telefone || x.ClienteIdClienteNavigation.Nome.ToUpper().Contains(telefone.ToUpper()));
+            
+
+            int paginaTamanho = 10;
+            int paginaNumero = (pagina ?? 1);
+
+            if (!cl.Any(x => x.ClienteIdClienteNavigation.Telefone == telefone || x.ClienteIdClienteNavigation.Nome.ToUpper().Contains(telefone.ToUpper()))) // se o telefone passado não existir no banco ou o nome
+            {
+                return RedirectToAction(nameof(Lista));
             }
             else
-                return View(nameof(Lista), cl); // se existir retornar a lista
+            {
+                return View(nameof(Lista), cl.ToPagedList(paginaNumero, paginaTamanho)); // se existir retornar a lista
+            }
         }
 
 
 
+   // var listprod = obj.Where(x => x.Nome.ToUpper().Contains(nomeprod.ToUpper()));
 
 
-        //ao clicar em edit ira abrir a tela com os campos carregados com os dados de cliente
-        public async Task<IActionResult> EditCliente(int? id)
+
+    //ao clicar em edit ira abrir a tela com os campos carregados com os dados de cliente
+    public async Task<IActionResult> EditCliente(int? id)
         {
             if (id == null) //validação se o id é nulo
             {
@@ -230,7 +257,7 @@ namespace SistemaWebPizzaria.Controllers
             }
         }
 
-        //ativar o  desativado
+        //ativar o cliente desativado
         public async Task<IActionResult> AtivaCliente(int? id)
         {
             var objCliente = await _clienteService.FindByIdAsync(id.Value);
@@ -266,8 +293,6 @@ namespace SistemaWebPizzaria.Controllers
 
 
         //verificar se o telefone cadastro já existe
-
-
         public async Task<bool> VerificaTelefone(string telefone, string idCliente)
         {
 
