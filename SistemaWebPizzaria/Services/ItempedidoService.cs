@@ -21,8 +21,32 @@ namespace SistemaWebPizzaria.Services {
         //função de inserir no banco
         public async Task InsertAsync(Itempedido obj)
         {
-            _context.Add(obj);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Add(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch(DbUpdateException e)
+            {
+                throw new System.Exception(e.Message);
+            }
+
+        }
+
+        public async Task<List<Itempedido>> FindAllAsyncByIdPedido(int idPedido)
+        {
+            var listaItemPedido = new List<Itempedido>();
+            var list = await _context.Itempedido.ToListAsync();
+
+            foreach (Itempedido itempedido in list)
+            {
+                if (itempedido.PedidoId == idPedido)
+                {
+                    listaItemPedido.Add(itempedido);
+                }
+            }
+
+            return listaItemPedido;
         }
 
 
@@ -74,9 +98,6 @@ namespace SistemaWebPizzaria.Services {
             {
                 throw new NotFoundException(e.Message);
             }
-
         }
-
-
     }
 }

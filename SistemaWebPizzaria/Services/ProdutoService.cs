@@ -48,7 +48,7 @@ namespace SistemaWebPizzaria.Services
         }
 
 
-        public async Task<Produtoestoque> FindByIdAsync(int id)
+        public async Task<Produtoestoque> FindByIdAsync(int? id)
         {
             return await _context.Produtoestoque.FirstOrDefaultAsync(obj => obj.IdProduto == id);
 
