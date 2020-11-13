@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PagedList;
 using SistemaWebPizzaria.Models;
 using SistemaWebPizzaria.Services;
 using System;
@@ -17,11 +18,17 @@ namespace SistemaWebPizzaria.Controllers
             _produtoService = produtoService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? pagina)
         {
             var list = await _produtoService.FindAllAsync();
-            return View(list);
+
+            int paginaTamanho = 10;
+            int paginaNumero = (pagina ?? 1);
+
+            return View(list.ToPagedList(paginaNumero, paginaTamanho));
         }
+
+
         public IActionResult Produto()
         {
             return View();
@@ -37,14 +44,10 @@ namespace SistemaWebPizzaria.Controllers
         [ValidateAntiForgeryToken] //essa notação evita que a aplicação receba ataques CSRF (envio de dados malicioso na autenticação)
         public async Task<IActionResult> Create(Produtoestoque produto)
         {
+
             await _produtoService.InsertAsync(produto);
             return RedirectToAction(nameof(Index)); //ao clicar em criar um nova Produto, direciona para a propria tela
-        }
 
-        public async Task<IActionResult> Buscar(String valorBuscar)
-        {
-            await _produtoService.FindByName(valorBuscar);
-            return RedirectToAction(nameof(Index)); //ao clicar em criar um nova Produto, direciona para a propria tela
         }
 
 
@@ -68,8 +71,10 @@ namespace SistemaWebPizzaria.Controllers
         {
             try
             {
+
                 await _produtoService.UpdateAsync(produto);
                 return RedirectToAction(nameof(Index));
+
             }
             catch (KeyNotFoundException)
             {
@@ -82,9 +87,9 @@ namespace SistemaWebPizzaria.Controllers
 
         //metodo de pesquisar produto pelo nome 
         [HttpPost]
-        public async Task<IActionResult> BuscarProdPeloNome(string nomeprod)
+        public async Task<IActionResult> BuscarProdPeloNome(string nomeprod, int? pagina)
         {
-           
+
             var obj = await _produtoService.FindAllAsync();
 
 
@@ -94,9 +99,30 @@ namespace SistemaWebPizzaria.Controllers
             }
 
 
-            var listprod = obj.Where(x => x.Nome.ToUpper().Contains(nomeprod.ToUpper()));          
-            
-                return View(nameof(Index), listprod); // se existir retornar a lista
+            var listprod = obj.Where(x => x.Nome.ToUpper().Contains(nomeprod.ToUpper()));
+
+            int paginaTamanho = 10;
+            int paginaNumero = (pagina ?? 1);
+
+            return View(nameof(Index), listprod.ToPagedList(paginaNumero, paginaTamanho)); // se existir retornar a lista
+        }
+
+
+
+
+        public async Task<bool> Validade(string DataCompra, string Validade) //obs os parametros tem que ter o mesmo nome dos atributos da classe
+        {
+
+
+            if (Convert.ToDateTime(Validade) <= Convert.ToDateTime(DataCompra))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
         }
 
     }

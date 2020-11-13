@@ -30,13 +30,13 @@
 
                 <div class="col-md-2">
                     <label for="">Quantidade</label>
-                    <input asp-for="Quantidade" type="number" class="form-control">
+                    <input asp-for="Quantidade" type="number" class="form-control" min="0">
                     <span asp-validation-for="Quantidade" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-2">
-                    <label for="">Tipo</label><br />
-                    <select asp-for="UnidadeMedida" class="custom-select">
+                    <label for="">Tipo</label>
+                    <select asp-for="UnidadeMedida" class="custom-select form-control">
                         <option value="UN">Unidade</option>
                         <option value="KL">Kilograma</option>
                         <option value="GM">grama</option>
@@ -48,13 +48,13 @@
                 <div class="col-md-2">
                     <label for="">Data de Compra</label>
                     <input asp-for="DataCompra" type="date" class="form-control">
-                    <span asp-validation-for="DataCompra" class="text-danger"></span>
+                    <span asp-validation-for="DataCompra" class="text-danger"></span>                  
                 </div>
 
                 <div class="col-md-2">
                     <label>Data de Validade</label>
                     <input asp-for="Validade" type="date" class="form-control">
-                    <span asp-validation-for="Validade" class="text-danger"></span>
+                    <span asp-validation-for="Validade" class="text-danger"></span>                   
                 </div>
 
             </div>
@@ -63,28 +63,28 @@
                 <div class="col-md-3">
                     <label>Marca</label>
                     <input asp-for="Marca" type="text" class="form-control">
-                    <span asp-validation-for="Marca" class="text-danger"></span>
+                    <span asp-validation-for="Marca" class="text-danger"></span>                   
                 </div>
 
                 <div class="col-md-4">
                     <label>Nome do Fornecedor</label>
                     <input asp-for="NomeFornecedor" class="form-control">
-                    <span asp-validation-for="NomeFornecedor" class="text-danger"></span>
-                </div>
-
-                <div class="col-md-2">
-                    <label>Categoria</label>
-                    <select asp-for="Categoria" class="custom-select">
-                        <option value="bebida">Bebida</option>
-                        <option value="limpeza">Limpeza</option>
-                        <option value="Produto Pizza">Produto Pizza</option>
-                    </select>
+                    <span asp-validation-for="NomeFornecedor" class="text-danger"></span>                 
                 </div>
 
                 <div class="col-md-3">
-                    @*<input id="produtoVenda" asp-for="Vende" type="checkbox" value="true" style="margin-top:30px; margin-right:5px;">*@
+                    <label>Categoria</label>
+                    <select asp-for="Categoria" class="custom-select form-control">
+                        <option value="bebida">Bebida</option>
+                        @*<option value="limpeza">Limpeza</option>*@
+                        <option value="Produto Pizza">Ingrediente Pizza</option>
+                    </select>
+                </div>
+
+                 <div class="col-md-2">
+                    @*<input id="produtoVenda" asp-for="Vende" type="checkbox" value="" style="margin-top:30px; margin-right:5px;">*@
                     <label>Produto para venda?</label>
-                    <select asp-for="Vende" class="custom-select">
+                    <select asp-for="Vende" class="custom-select form-control">
                         <option value="1">Sim</option>
                         <option value="0">Não</option>
                     </select>
@@ -95,7 +95,7 @@
                 <div class="col-md-12">
                     <label>Campo para descrição</label>
                     <textarea asp-for="Descricao" class="form-control " placeholder="Máximo 100 caracteres" aria-label="With textarea"></textarea>
-                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                    <span asp-validation-for="Descricao" class="text-danger"></span>                 
                 </div>
             </div>
             <div class="row">

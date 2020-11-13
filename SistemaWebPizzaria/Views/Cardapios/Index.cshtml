@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<SistemaWebPizzaria.Models.Cardapiopizza>
+@model PagedList.IPagedList<SistemaWebPizzaria.Models.Cardapiopizza>
 
 @{ViewData["Title"] = "Cardápio";}
 
@@ -16,11 +16,12 @@
         </div>
     </form>
 </div>
-    <hr />
+<hr />
 <div class="row">
     <div class="col-md-12">
         <a asp-action="Create" class="btn btn-primary btn-lg">Adicionar</a>
         <a asp-action="../Home/MenuSistema" class="btn btn-primary btn-lg">Home</a>
+        <a asp-action="../Pedidos/Pedido" class="btn btn-success btn-lg">Pedido</a>
     </div>
 </div>
 <br />
@@ -68,7 +69,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.ValorUnitario)
                         </td>
-                        <td>
+                        <td class="text-center">
                             <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdCardapio"><span class="material-icons">edit</span></a>
                             <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdCardapio"><span class="material-icons">delete</span></a>
                         </td>
@@ -93,6 +94,54 @@
                     </div>
                 }
             </tbody>
-        </table>
+        </table><br /><br />
+
+        <div class="row col-md-12">
+            <ul class="text-center">
+
+                <div class="col-md-12">
+                    Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                    de @Model.PageCount
+                </div>
+
+
+                @if (Model.HasPreviousPage)
+                {
+
+                    
+                        <button class="btn btn-sm btn-primary">
+                            @*@Html.ActionLink("Anterior", "Lista", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
+                            <a style="color : #ffffff" href="@Url.Action("Index", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Anterior </a>
+                        </button>
+
+                }
+                else
+                {
+
+                    <button class="btn btn-sm btn-primary">
+                        <a style="color : #ffffff"> Anterior</a>
+                    </button>
+                }
+
+                @if (Model.HasNextPage)
+                {
+
+                    <button class="btn btn-sm btn-primary">
+                        @*@Html.ActionLink("Próxima", "Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
+                        <a style="color : #ffffff" href="@Url.Action("Index", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Próximo </a>
+                    </button>
+
+                }
+                else
+                {
+                    <button class="btn btn-sm btn-primary">
+                        <a style="color : #ffffff">Próximo</a>
+                    </button>
+                }
+
+            </ul><br /><br /><br /><br /><br />
+        </div>
     </div>
 </div>
+
+

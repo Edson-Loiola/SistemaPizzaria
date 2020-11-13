@@ -65,7 +65,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.OrderByDescending(x => x.IdPedido))
                 {
                     <tr class="@Html.DisplayFor(modelItem => item.Status)">
                         <td>
@@ -90,7 +90,13 @@
                             @Html.DisplayFor(modelItem => item.TotalPedido)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Status)
+                            <select id="FormaPagamento" asp-for="@item.Status" class="form-control">
+                                <option value="cancelado">Cancelado</option>
+                                <option value="em preparo">Em preparo</option>
+                                <option value="pronto">Pronto</option>
+                                <option value="finalizado">Finalizado</option>
+                                <option value="fila">Fila</option>
+                            </select>
                         </td>
                         <td>
                             <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdPedido"><span class="material-icons">edit</span></a>

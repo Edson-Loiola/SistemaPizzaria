@@ -75,6 +75,7 @@
             url: "ListaProduto",
             dataType: 'json',
             success: function (response) {
+                ListaProdutos = response;
 
                 $.each(response, function (index, value) {
                     if (value.vende == 1) {
@@ -94,13 +95,14 @@
 
         $.post('AdicionarItemCardapioAoPedido', { qtd: qtd, cardapioid: itemCardapioId},
             function (returnedData) {
-                //console.log(returnedData);
+                console.log(returnedData);
 
                 listItemPedido.push(returnedData);
-
-                $("#tabelaProdutos").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + returnedData.cardapioPizzaIdCardapioNavigation.tipo + " de " + returnedData.cardapioPizzaIdCardapioNavigation.sabor + "</td><td>" + returnedData.precoUnidade + "</td><td>" + returnedData.quantidade + "</td><td>" + returnedData.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
+                
+                $("#tabelaProdutos").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + returnedData.nomeProduto + "</td><td>" + returnedData.precoUnidade + "</td><td>" + returnedData.quantidade + "</td><td>" + returnedData.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
 
                 calculaTotal();
+
             }
         );
     }
@@ -110,17 +112,28 @@
         var qtd = $("#quantidadeProduto").val();
         var itemProdutoId = $("#selectProdutos").val();
 
-        $.post('AdicionarItemProdutoAoPedido', { qtd: qtd, produtoid: itemProdutoId },
-            function (returnedData) {
-                //console.log(returnedData);
+        $.each(ListaProdutos, function (index, value) {
+            if (value.idProduto == itemProdutoId) {
 
-                listItemPedido.push(returnedData);
+                if (value.quantidade >= qtd) {
+                    $.post('AdicionarItemProdutoAoPedido', { qtd: qtd, produtoid: itemProdutoId },
+                        function (returnedData) {
+                            console.log(returnedData);
 
-                $("#tabelaProdutos").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + returnedData.produtoEstoqueIdProdutoNavigation.nome + "</td><td>" + returnedData.precoUnidade + "</td><td>" + returnedData.quantidade + "</td><td>" + returnedData.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
+                            listItemPedido.push(returnedData);
 
-                calculaTotal();
-            }
-        );
+                            $("#tabelaProdutos").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + returnedData.nomeProduto + "</td><td>" + returnedData.precoUnidade + "</td><td>" + returnedData.quantidade + "</td><td>" + returnedData.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
+
+                            calculaTotal();
+                        }
+                    );
+                } else {
+                    alert("Quantidade de produto em estoque é de " + value.quantidade + " ");
+                }
+            } 
+        });
+
+        
     }
 
     function calculaTotal() {
@@ -159,7 +172,7 @@
         console.log("cheguei");
         console.log(pedido);
 
-        $.post('Create', { pedido: pedido, listaItemPedido: listItemPedido },
+        $.post('Create', { pedido: pedido, listItemPedido: listItemPedido },
             function (returnedData) {
                 alert("GRAVADO COM SUCESSO");
                 window.location.href = "/Pedidos/Index";

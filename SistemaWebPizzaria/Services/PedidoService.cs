@@ -33,7 +33,7 @@ namespace SistemaWebPizzaria.Services {
         //função de fazer listagem dos pedidos
         public async Task<List<Pedido>> FindAllAsync()
         {
-            return await _context.Pedido.Include(f => f.IdFuncioarioNavigation).Include(c => c.IdClienteNavigation).Include(i => i.Itempedido).ToListAsync();
+            return await _context.Pedido.Include(f => f.IdFuncioarioNavigation).Include(c => c.IdClienteNavigation).ToListAsync();
         }
 
         //função de fazer listagem dos funcionarios
@@ -70,17 +70,6 @@ namespace SistemaWebPizzaria.Services {
 
         public async Task InsertItemPedido(ItemPedido itemPedido)
         {
-            if (itemPedido.CardapioPizzaIdCardapio != null)
-            {
-                itemPedido.CardapioPizzaIdCardapioNavigation = _context.Cardapiopizza.Find(itemPedido.CardapioPizzaIdCardapio);
-
-            }
-
-            if (itemPedido.ProdutoEstoqueIdProduto != null)
-            {
-                itemPedido.ProdutoEstoqueIdProdutoNavigation = _context.Produtoestoque.Find(itemPedido.ProdutoEstoqueIdProduto);
-            }
-
             _context.Add(itemPedido);
             await _context.SaveChangesAsync();
         }
@@ -109,10 +98,10 @@ namespace SistemaWebPizzaria.Services {
 
             foreach (ItemPedido item in listaItemPedido)
             {
-                if (item.PedidoIdPedido == pedido.IdPedido)
-                {
-                    pedido.Itempedido.Add(item);
-                }
+                //if (item.PedidoIdPedido == pedido.IdPedido)
+                //{
+                //    pedido.Itempedido.Add(item);
+                //}
             }
 
             return pedido;

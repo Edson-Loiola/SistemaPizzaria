@@ -9,6 +9,30 @@
     }
 </style>
 
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+
+    var listItemPedido = [];
+    GetItemPedido();
+
+    function GetItemPedido() {
+        //console.log(idPedido);
+        $.post('@Url.Action("ListaItemPedido", "Pedidos")', { id: '@Model.IdPedido'},
+            function (response) {
+                console.log(response);
+                listItemPedido = response;
+
+                $.each(response, function (index, value) {
+
+                    $("#tableItemPedido").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + value.nomeProduto + "</td><td>" + value.precoUnidade + "</td><td>" + value.quantidade + "</td><td>" + value.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
+
+                });
+            }
+        );
+    };
+
+</script>
+
 <h2>@ViewData["Title"]</h2>
 
 <div class="row">
@@ -19,7 +43,7 @@
 
                 <div class="col-md-1">
                     <label for="">ID</label>
-                    <input class="form-control" asp-for="IdPedido" type="text" readonly />
+                    <input id="idpedido" class="form-control" asp-for="IdPedido" type="text" readonly />
                 </div>
 
                 <div class="col-md-2">
@@ -51,24 +75,7 @@
                     <th>Qtd</th>
                     <th>Total</th>
                     </thead>
-                    <tbody>
-                        @foreach (var item in Model.Itempedido)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CardapioPizzaIdCardapioNavigation.Tipo) +"DE"+ @Html.DisplayFor(modelItem => item.CardapioPizzaIdCardapioNavigation.Sabor)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PrecoUnidade)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Quantidade)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Total)
-                                </td>
-                            </tr>
-                        }
+                    <tbody id="tableItemPedido">
                     </tbody>
                 </table>
             </div>

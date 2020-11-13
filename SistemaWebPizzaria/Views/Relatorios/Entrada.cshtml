@@ -39,7 +39,7 @@
                 <div class="img-rounded col-md-8 text-center col-md-offset-2" style="box-shadow: #505050 0px 1px 5px; background-color: #ffea75">
                     <br />
                     <span style="color:#424242; font-family:Verdana; font-size:medium">Valor de entrada com vendas</span>
-                    <h1 style="color:#424242; font-family:Impact"> R$ @(Model.Pedidos.Where(x => x.Status == "Finalizado").Sum(p => p.TotalPedido).ToString("F2"))</h1> <br />
+                    <h1 style="color:#424242; font-family:Impact"> R$ @(Model.Pedidos.Where(x => x.Status == "Finalizado").Sum(p => (double) p.TotalPedido).ToString("F2"))</h1> <br />
                 </div>
             </div><br />
 

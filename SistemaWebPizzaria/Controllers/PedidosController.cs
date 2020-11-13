@@ -10,10 +10,14 @@ namespace SistemaWebPizzaria.Controllers
     public class PedidosController : Controller
     {
         public readonly PedidoService _pedidoService;
+        public readonly ItempedidoService _itempedidoService;
+        public readonly ProdutoService _produtoestoqueService;
 
-        public PedidosController(PedidoService pedidoService)
+        public PedidosController(PedidoService pedidoService, ItempedidoService itempedidoService, ProdutoService produtoestoqueService)
         {
             _pedidoService = pedidoService;
+            _itempedidoService = itempedidoService;
+            _produtoestoqueService = produtoestoqueService;
         }
 
         public async Task<IActionResult> Index()
@@ -42,10 +46,23 @@ namespace SistemaWebPizzaria.Controllers
         {
             return await _pedidoService.ListaCardapio();
         }
-
+        public async Task<Cardapiopizza> CardapioById(int id)
+        {
+            return await _pedidoService.FindByIdCardapio(id);
+        }
         public async Task<List<Produtoestoque>> ListaProduto()
         {
             return await _pedidoService.ListaProduto();
+        }
+
+        public async Task<Produtoestoque> ProdutoById(int id)
+        {
+            return await _pedidoService.FindByIdProduto(id);
+        }
+
+        public async Task<List<ItemPedido>> ListaItemPedido(int id)
+        {
+            return await _itempedidoService.FindAllAsyncByIdPedido(id);
         }
 
         [HttpPost]
@@ -56,8 +73,9 @@ namespace SistemaWebPizzaria.Controllers
             var item = new ItemPedido();
 
             item.Produto = "N";
-            item.CardapioPizzaIdCardapioNavigation = cardap;
-            item.PedidoIdPedido = cardapioid;
+            item.CardapioPizzaId = cardapioid;
+            item.ProdutoEstoqueId = null;
+            item.NomeProduto = "" + cardap.Tipo + " de " + cardap.Sabor + "";
             item.PrecoUnidade = cardap.ValorUnitario;
             item.Quantidade = qtd;
             item.Total = (cardap.ValorUnitario * qtd);
@@ -68,18 +86,27 @@ namespace SistemaWebPizzaria.Controllers
         [HttpPost]
         public async Task<ItemPedido> AdicionarItemProdutoAoPedido(int qtd, int produtoid)
         {
-            var produto = await _pedidoService.FindByIdProduto(produtoid);
+            try
+            {
+                var produto = await _pedidoService.FindByIdProduto(produtoid);
 
-            var item = new ItemPedido();
+                var item = new ItemPedido();
 
-            item.Produto = "S";
-            item.ProdutoEstoqueIdProdutoNavigation = produto;
-            item.PedidoIdPedido = produtoid;
-            item.PrecoUnidade = produto.PrecoVenda;
-            item.Quantidade = qtd;
-            item.Total = (produto.PrecoVenda * qtd);
+                item.Produto = "S";
+                item.CardapioPizzaId = null;
+                item.ProdutoEstoqueId = produtoid;
+                item.NomeProduto = produto.Nome;
+                item.PrecoUnidade = produto.PrecoVenda;
+                item.Quantidade = qtd;
+                item.Total = (produto.PrecoVenda * qtd);
 
-            return item;
+                return item;
+            }
+            catch (ArgumentException e)
+            {
+                throw new System.Exception( "Erro ao gravar o pedido." + e.Message);
+            }
+            
         }
 
         public async Task<IActionResult> Detalhe(int id)
@@ -89,16 +116,22 @@ namespace SistemaWebPizzaria.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Pedido pedido, List<ItemPedido> listaItemPedido)
+        public async Task<IActionResult> Create(Pedido pedido, List<ItemPedido> listItemPedido)
         {
             await _pedidoService.InsertAsync(pedido);
 
-            //foreach (Itempedido item in listaItemPedido)
-            //{
-            //    item.PedidoIdPedido = pedido.IdPedido;
-            //    item.PedidoIdPedidoNavigation = pedido;
-            //    await _pedidoService.InsertItemPedido(item);
-            //}
+            foreach (ItemPedido item in listItemPedido)
+            {
+                item.PedidoId = pedido.IdPedido;
+                await _itempedidoService.InsertAsync(item);
+
+                //remover
+                if (item.Produto == "S"){
+                    var produto = await _produtoestoqueService.FindByIdAsync(item.ProdutoEstoqueId);
+                    produto.Quantidade = produto.Quantidade - item.Quantidade;
+                    await _produtoestoqueService.UpdateAsync(produto);
+                }
+            }
 
             return RedirectToAction(nameof(Index));
         }
@@ -117,6 +150,7 @@ namespace SistemaWebPizzaria.Controllers
                 return NotFound();
             }
         }
+
 
         public async Task<IActionResult> InativaPedido(int id)
         {

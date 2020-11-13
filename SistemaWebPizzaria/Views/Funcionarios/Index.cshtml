@@ -2,7 +2,7 @@
 @model IEnumerable<SistemaWebPizzaria.Models.Funcionario>
 
 
-@{ViewData["Title"] = "Funcionarios Cadastrados";}
+@{ViewData["Title"] = "Funcionários Cadastrados";}
 
 <h2>@ViewData["Title"]</h2>
 <hr />
@@ -12,8 +12,8 @@
     <a asp-action="../Home/MenuSistema" class="btn btn-primary btn-lg">Home</a>
 </p>
 
-<div >
-    <table class="table table-bordered table-hover"  style="border-color:#9a9a9a">
+<div>
+    <table class="table table-bordered table-hover" style="border-color:#9a9a9a">
         <thead>
             <tr class="bg-primary">
                 <th>
@@ -26,13 +26,13 @@
                     <label class="control-label">Tipo</label>
                 </th>
                 <th>
-                    <label class="control-label">Email</label>
+                    <label class="control-label">E-mail</label>
                 </th>
                 <th>
                     <label class="control-label">Celular</label>
                 </th>
                 <th>
-                    <label class="control-label">Salario</label>
+                    <label class="control-label">Salário</label>
                 </th>
                 <th>
                     <label class="control-label">Cadastro</label>
@@ -75,25 +75,38 @@
                         </td>
                         <td>
                             @{
-                                if (item.IdLoginNavigation != null)
-                                {
-                                    if (item.IdLoginNavigation.SenhaPadrao == "S")
+                                    if (item.IdLoginNavigation != null)
                                     {
-                                        @Html.DisplayFor(modelItem => item.IdLoginNavigation.Senha)
+                                        if (item.IdLoginNavigation.SenhaPadrao == "S")
+                                        {
+                                            @Html.DisplayFor(modelItem => item.IdLoginNavigation.Senha)
+                                        }
                                     }
-                                }
 
-                            }
+                                }
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DataInativacao)
                         </td>
                         <td>
 
+
                             @{ if (item.Ativo == "S")
                                 {
-                                    <a asp-action="Edit" class="btn btn-default btn-sm" asp-route-id="@item.IdFuncionario"><span class="material-icons">edit</span></a>
-                                    <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdFuncionario"><span class="material-icons">person_add_disabled</span></a>
+                                                                       
+
+                                    <a asp-action="Edit" class="btn btn-default btn-sm" asp-route-id="@item.IdFuncionario"><span class="material-icons">edit</span></a> @*chama tela de ditar com os campos preenchidos*@
+                                    <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdFuncionario"><span class="material-icons">delete</span></a>
+
+                                }
+                            }
+
+                            @{ if (item.Ativo == "N")
+                                {
+
+                                    <a asp-action="AtivaFuncionario" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModalAtivaCliente-@item.IdFuncionario"><span class="material-icons">loop</span></a>
+                                    <a class="btn btn-danger btn-sm " data-toggle="modal" @*data-target="#myModal-@item.ClienteIdCliente"*@><span class="material-icons">person_add_disabled</span></a>
+
                                 }
                             }
                         </td>
@@ -105,11 +118,28 @@
                                     <h3 class="modal-title" id="myModalLabel">Atenção</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Deseja mesmo inativar este Funcionário?</p>
+                                    <p>Deseja mesmo inativar o funcionário @Html.DisplayFor(modelItem => item.Nome) ?
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
                                     <a asp-action="Inativa" asp-route-id="@item.IdFuncionario" class="btn btn-danger">Inativar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal reativar cliente -->
+                    <div class="modal fade" id="myModalAtivaCliente-@item.IdFuncionario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="myModalLabel">Atenção</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Deseja mesmo reativar o funcionário @Html.DisplayFor(modelItem => item.Nome) ? </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
+                                    <a asp-action="AtivarFuncionario" asp-route-id="@item.IdFuncionario" class="btn btn-primary">Reativar</a>
                                 </div>
                             </div>
                         </div>

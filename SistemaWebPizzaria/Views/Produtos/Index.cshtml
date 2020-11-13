@@ -1,14 +1,14 @@
 ﻿
-@model IEnumerable<SistemaWebPizzaria.Models.Produtoestoque>
+@model PagedList.IPagedList<SistemaWebPizzaria.Models.Produtoestoque>
 
 @{ViewData["Title"] = "Produtos";}
 
 <h2>@ViewData["Title"]</h2>
-<hr />  
+<hr />
 <div class="row">
     <form method="post" asp-action="BuscarProdPeloNome">
         <div class="col-md-10 input-group-lg">
-            <input class="form-control" type="text" name="nomeprod"  placeholder="Buscar produto">
+            <input class="form-control" type="text" name="nomeprod" placeholder="Buscar produto">
         </div>
         <div class="col-md-2">
             <button class="btn btn-info btn-block btn-lg" type="submit">Buscar</button>
@@ -18,7 +18,7 @@
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <a asp-action="Produto" class="btn btn-primary btn-lg">Cadatrar Produto</a>
+        <a asp-action="Produto" class="btn btn-primary btn-lg">Cadastrar Produto</a>
         <a href="../Home/MenuSistema" class="btn btn-danger btn-lg pull-right">Voltar</a>
     </div>
 </div>
@@ -32,19 +32,22 @@
                         <label class="control-label text-center">ID</label>
                     </th>
                     <th>
-                        <label class="control-label text-center">Nome da Despesa</label>
+                        <label class="control-label text-center">Nome do Produto</label>
                     </th>
                     <th>
                         <label class="control-label">Valor (R$)</label>
                     </th>
                     <th>
-                        <label class="control-label">Estoq</label>
+                        <label class="control-label">Qtde Estoque</label>
                     </th>
                     <th>
                         <label class="control-label">Marca</label>
                     </th>
                     <th>
                         <label class="control-label">Descrição</label>
+                    </th>
+                    <th>
+                        <label class="control-label">Validade</label>
                     </th>
                     <th>
                         <label class="control-label">Ações</label>
@@ -74,6 +77,9 @@
                             @Html.DisplayFor(modelItem => item.Descricao)
                         </td>
                         <td>
+                            @Html.DisplayFor(modelItem => item.Validade)
+                        </td>
+                        <td class="text-center">
                             <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdProduto"><span class="material-icons">edit</span></a>
                             <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdProduto"><span class="material-icons">delete</span></a>
                         </td>
@@ -98,5 +104,47 @@
                 }
             </tbody>
         </table>
+        <div class="row col-md-12">
+            <ul class="text-center">
+
+                <div class="col-md-12">
+                    Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                    de @Model.PageCount
+                </div>
+
+                @if (Model.HasPreviousPage)
+                {
+
+                    <button class="btn btn-sm btn-primary">
+                        @*@Html.ActionLink("Anterior", "Lista", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
+                        <a style="color : #ffffff" href="@Url.Action("Index", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Anterior </a>
+                    </button>
+
+                }
+                else
+                {
+
+                    <button class="btn btn-sm btn-primary">
+                        <a style="color : #ffffff"> Anterior</a>
+                    </button>
+                }
+
+                @if (Model.HasNextPage)
+                {
+
+                    <button class="btn btn-sm btn-primary">
+                        @*@Html.ActionLink("Próxima", "Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
+                        <a style="color : #ffffff" href="@Url.Action("Index", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Próximo </a>
+                    </button>
+
+                }
+                else
+                {
+                    <button class="btn btn-sm btn-primary">
+                        <a style="color : #ffffff">Próximo</a>
+                    </button>
+                }
+            </ul><br /><br /><br /><br />
+        </div>
     </div>
 </div>

@@ -87,7 +87,7 @@ namespace SistemaWebPizzaria.Controllers
             var listaentrada = await _relatoioService.ValorEntrada(minDate, maxDate);
 
 
-            var somaentrada = listaentrada.Pedidos.Where(x => x.Status == "Finalizado").Sum(p => p.TotalPedido);
+            var somaentrada = (double) listaentrada.Pedidos.Where(x => x.Status == "Finalizado").Sum(p => p.TotalPedido);
             var somasaida = listasaida.Despesas.Sum(x => x.Valor) + listasaida.Produtoestoque.Sum(x => x.PrecoCompra);
          
             var lucro = (somaentrada - somasaida);
