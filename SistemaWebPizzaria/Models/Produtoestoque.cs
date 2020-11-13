@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaWebPizzaria.Models
 {
@@ -17,7 +18,7 @@ namespace SistemaWebPizzaria.Models
         [Required(ErrorMessage = "{0} não informado!")]
         [DisplayFormat(DataFormatString = "{0:F2}")]
         [Range(0.00, 999999.99, ErrorMessage = "{0} R$ de {1} até {2}")]
-        public decimal? PrecoVenda { get; set; }
+        public decimal PrecoVenda { get; set; }
 
         [Required(ErrorMessage = "{0} não informado!")]
         [Range(0, 999999.99, ErrorMessage = "{0} R$ de {1} até {2}")]

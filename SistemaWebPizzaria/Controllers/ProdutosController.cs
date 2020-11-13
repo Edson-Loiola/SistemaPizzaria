@@ -22,7 +22,7 @@ namespace SistemaWebPizzaria.Controllers
         {
             var list = await _produtoService.FindAllAsync();
 
-            int paginaTamanho = 2;
+            int paginaTamanho = 10;
             int paginaNumero = (pagina ?? 1);
 
             return View(list.ToPagedList(paginaNumero, paginaTamanho));
@@ -101,7 +101,7 @@ namespace SistemaWebPizzaria.Controllers
 
             var listprod = obj.Where(x => x.Nome.ToUpper().Contains(nomeprod.ToUpper()));
 
-            int paginaTamanho = 2;
+            int paginaTamanho = 10;
             int paginaNumero = (pagina ?? 1);
 
             return View(nameof(Index), listprod.ToPagedList(paginaNumero, paginaTamanho)); // se existir retornar a lista

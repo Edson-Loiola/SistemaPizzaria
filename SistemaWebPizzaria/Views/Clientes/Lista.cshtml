@@ -183,7 +183,7 @@
 
                     <button class="btn btn-sm btn-primary">
                         @*@Html.ActionLink("Próxima", "Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
-                        <a style="color : #ffffff" href="@Url.Action("Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Anterior </a>
+                        <a style="color : #ffffff" href="@Url.Action("Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Próximo </a>
                     </button>
 
                 }
