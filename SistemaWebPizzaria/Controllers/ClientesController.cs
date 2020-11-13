@@ -16,6 +16,7 @@ namespace SistemaWebPizzaria.Controllers
 
         public ClientesController(ClienteService clienteService)
         {
+
             _clienteService = clienteService;
         }
 
@@ -29,7 +30,14 @@ namespace SistemaWebPizzaria.Controllers
        
         public async Task<IActionResult> Lista(int? pagina)
         {
+
+            
+
             var list = await _clienteService.FindAllEndeAsync();
+
+            TempData["TotalClienteA"] = list.Where(x => x.Ativo == "S").Count(); //total de lcientes ativos
+            TempData["TotalClienteI"] = list.Where(x => x.Ativo == "N").Count(); //total de lcientes ativos
+
             int paginaTamanho = 10;
             int paginaNumero = (pagina ?? 1);
 
@@ -102,7 +110,8 @@ namespace SistemaWebPizzaria.Controllers
         {
 
             var obj = await _clienteService.FindAllEndeAsync();
-
+            TempData["TotalClienteA"] = obj.Where(x => x.Ativo == "S").Count(); //total de lcientes ativos
+            TempData["TotalClienteI"] = obj.Where(x => x.Ativo == "N").Count(); //total de lcientes ativos
             //nao estourar erro se a busca for vazia
             if (telefone == null)
             {
@@ -111,6 +120,7 @@ namespace SistemaWebPizzaria.Controllers
 
 
             var cl = obj.Where(x => x.ClienteIdClienteNavigation.Telefone == telefone || x.ClienteIdClienteNavigation.Nome.ToUpper().Contains(telefone.ToUpper()));
+            
 
             int paginaTamanho = 10;
             int paginaNumero = (pagina ?? 1);
