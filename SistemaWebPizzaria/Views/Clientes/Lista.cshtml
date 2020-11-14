@@ -34,7 +34,7 @@
             <p>               
                 <a asp-action="Index" class="btn btn-primary btn-lg">Novo Cliente</a>
                 <a asp-action="../Home/MenuSistema" class="btn btn-primary btn-lg">Home</a>
-                <a asp-action="../Pedidos/Pedido" class="btn btn-success btn-lg">Pedido</a>
+                <a href="../Pedidos/Pedido" class="btn btn-success btn-lg">Pedido</a>
             </p>
         </div>
 
@@ -105,8 +105,8 @@
                             @{ if (item.Ativo == "N")
                                 {
 
-                                    <a asp-action="AtivaCliente" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModalAtivaCliente-@item.ClienteIdCliente"><span class="material-icons">loop</span></a>
-                                    <a class="btn btn-danger btn-sm" data-toggle="modal" @*data-target="#myModal-@item.ClienteIdCliente"*@><span class="material-icons">person_add_disabled</span></a>
+                                    <a asp-action="AtivaCliente" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModalAtivaCliente-@item.ClienteIdCliente"><span class="material-icons">loop</span></a>
+                                    <a class="btn btn-default btn-sm" data-toggle="modal" @*data-target="#myModal-@item.ClienteIdCliente"*@><span class="material-icons">block</span></a>
 
                                 }
                             }

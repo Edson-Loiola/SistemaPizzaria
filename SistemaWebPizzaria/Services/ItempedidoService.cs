@@ -19,7 +19,7 @@ namespace SistemaWebPizzaria.Services {
         }
 
         //função de inserir no banco
-        public async Task InsertAsync(ItemPedido obj)
+        public async Task InsertAsync(Itempedido obj)
         {
             try
             {
@@ -33,35 +33,35 @@ namespace SistemaWebPizzaria.Services {
 
         }
 
-        public async Task<List<ItemPedido>> FindAllAsyncByIdPedido(int idPedido)
+        public async Task<List<Itempedido>> FindAllAsyncByIdPedido(int idPedido)
         {
-            var listaItemPedido = new List<ItemPedido>();
+            var listaItempedido = new List<Itempedido>();
             var list = await _context.Itempedido.ToListAsync();
 
-            foreach (ItemPedido itempedido in list)
+            foreach (Itempedido Itempedido in list)
             {
-                if (itempedido.PedidoId == idPedido)
+                if (Itempedido.PedidoId == idPedido)
                 {
-                    listaItemPedido.Add(itempedido);
+                    listaItempedido.Add(Itempedido);
                 }
             }
 
-            return listaItemPedido;
+            return listaItempedido;
         }
 
 
         //função de fazer listagem dos pedidos
-        public async Task<List<ItemPedido>> FindAllAsync()
+        public async Task<List<Itempedido>> FindAllAsync()
         {
             return await _context.Itempedido.ToListAsync();
         }
 
         //função remover  do banco pelo id
-        public async Task RemoveAsync(ItemPedido itempedido)
+        public async Task RemoveAsync(Itempedido Itempedido)
         {
             try
             {
-                _context.Itempedido.Remove(itempedido);
+                _context.Itempedido.Remove(Itempedido);
                 await _context.SaveChangesAsync();
             }
             catch (NotFoundException e)
@@ -71,22 +71,22 @@ namespace SistemaWebPizzaria.Services {
         }
 
 
-        public async Task<ItemPedido> FindByIdAsync(int id)
+        public async Task<Itempedido> FindByIdAsync(int id)
         {
-            var itempedido = await _context.Itempedido.FirstOrDefaultAsync(obj => obj.Id == id);
+            var Itempedido = await _context.Itempedido.FirstOrDefaultAsync(obj => obj.Id == id);
 
-            return itempedido;
+            return Itempedido;
         }
 
         //função de atualizar uma 
-        public async Task UpdateAsync(ItemPedido obj)
+        public async Task UpdateAsync(Itempedido obj)
         {
             //pra atualizar um objeto o id desse objeto já precisa existir no banco
             bool hasAny = await _context.Itempedido.AnyAsync(x => x.Id == obj.Id);
 
             if (!hasAny)  // verifica se expressão passada não existe no banco
             {
-                throw new NotFiniteNumberException("itempedido não existe!");
+                throw new NotFiniteNumberException("Itempedido não existe!");
             }
 
             try

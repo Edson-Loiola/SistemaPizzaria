@@ -108,13 +108,45 @@ namespace SistemaWebPizzaria.Controllers
         }
 
 
+        //listagem dos produtos vencidos
+        [HttpPost]
+        public async Task<IActionResult> ProdutosVencidos(int? pagina)
+        {
+
+            var obj = await _produtoService.FindAllAsync();
+
+            var prodVencidos = obj.Where(x => x.Validade < DateTime.Now).ToList();
+          
+            int paginaTamanho = 10;
+            int paginaNumero = (pagina ?? 1);
+
+            return View(nameof(Index), prodVencidos.ToPagedList(paginaNumero, paginaTamanho)); // se existir retornar a lista
+        }
 
 
-        public async Task<bool> Validade(string DataCompra, string Validade) //obs os parametros tem que ter o mesmo nome dos atributos da classe
+        //listagem dos produtos com estoque abaixo de 10
+        [HttpPost]
+        public async Task<IActionResult> EstoqueBaixo(int? pagina)
+        {
+
+            var obj = await _produtoService.FindAllAsync();
+
+            var prodBaixo = obj.Where(x => x.Quantidade < 10).ToList();
+
+            int paginaTamanho = 10;
+            int paginaNumero = (pagina ?? 1);
+
+            return View(nameof(Index), prodBaixo.ToPagedList(paginaNumero, paginaTamanho)); // se existir retornar a lista
+        }
+
+
+
+
+        public async Task<bool> Validade(string Validade) //obs os parametros tem que ter o mesmo nome dos atributos da classe
         {
 
 
-            if (Convert.ToDateTime(Validade) <= Convert.ToDateTime(DataCompra))
+            if (Convert.ToDateTime(Validade) <= Convert.ToDateTime(DateTime.Now))
             {
                 return false;
             }

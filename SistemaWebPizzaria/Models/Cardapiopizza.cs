@@ -7,7 +7,7 @@ namespace SistemaWebPizzaria.Models
     {
         public Cardapiopizza()
         {
-            Itempedido = new HashSet<ItemPedido>();
+            Itempedido = new HashSet<Itempedido>();
         }
 
         public int IdCardapio { get; set; }
@@ -32,6 +32,6 @@ namespace SistemaWebPizzaria.Models
         [StringLength(100, ErrorMessage = "{0} Máximo de 100 caracteres")]
         public string Descricao { get; set; }
 
-        public ICollection<ItemPedido> Itempedido { get; set; }
+        public ICollection<Itempedido> Itempedido { get; set; }
     }
 }

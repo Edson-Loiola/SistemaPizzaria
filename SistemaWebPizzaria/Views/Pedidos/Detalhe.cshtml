@@ -12,19 +12,19 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
 
-    var listItemPedido = [];
-    GetItemPedido();
+    var listItempedido = [];
+    GetItempedido();
 
-    function GetItemPedido() {
+    function GetItempedido() {
         //console.log(idPedido);
-        $.post('@Url.Action("ListaItemPedido", "Pedidos")', { id: '@Model.IdPedido'},
+        $.post('@Url.Action("ListaItempedido", "Pedidos")', { id: '@Model.IdPedido'},
             function (response) {
                 console.log(response);
-                listItemPedido = response;
+                listItempedido = response;
 
                 $.each(response, function (index, value) {
 
-                    $("#tableItemPedido").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + value.nomeProduto + "</td><td>" + value.precoUnidade + "</td><td>" + value.quantidade + "</td><td>" + value.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
+                    $("#tableItempedido").append("<tr id='tb_" + (listItempedido.length - 1) + "'><td>" + value.nomeProduto + "</td><td>" + value.precoUnidade + "</td><td>" + value.quantidade + "</td><td>" + value.total + "</td><td><a onClick='removeItem(" + (listItempedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
 
                 });
             }
@@ -75,7 +75,7 @@
                     <th>Qtd</th>
                     <th>Total</th>
                     </thead>
-                    <tbody id="tableItemPedido">
+                    <tbody id="tableItempedido">
                     </tbody>
                 </table>
             </div>

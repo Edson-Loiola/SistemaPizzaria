@@ -10,13 +10,13 @@ namespace SistemaWebPizzaria.Controllers
     public class PedidosController : Controller
     {
         public readonly PedidoService _pedidoService;
-        public readonly ItempedidoService _itempedidoService;
+        public readonly ItempedidoService _ItempedidoService;
         public readonly ProdutoService _produtoestoqueService;
 
-        public PedidosController(PedidoService pedidoService, ItempedidoService itempedidoService, ProdutoService produtoestoqueService)
+        public PedidosController(PedidoService pedidoService, ItempedidoService ItempedidoService, ProdutoService produtoestoqueService)
         {
             _pedidoService = pedidoService;
-            _itempedidoService = itempedidoService;
+            _ItempedidoService = ItempedidoService;
             _produtoestoqueService = produtoestoqueService;
         }
 
@@ -60,17 +60,17 @@ namespace SistemaWebPizzaria.Controllers
             return await _pedidoService.FindByIdProduto(id);
         }
 
-        public async Task<List<ItemPedido>> ListaItemPedido(int id)
+        public async Task<List<Itempedido>> ListaItempedido(int id)
         {
-            return await _itempedidoService.FindAllAsyncByIdPedido(id);
+            return await _ItempedidoService.FindAllAsyncByIdPedido(id);
         }
 
         [HttpPost]
-        public async Task<ItemPedido> AdicionarItemCardapioAoPedido(int qtd, int cardapioid)
+        public async Task<Itempedido> AdicionarItemCardapioAoPedido(int qtd, int cardapioid)
         {
             var cardap = await _pedidoService.FindByIdCardapio(cardapioid);
 
-            var item = new ItemPedido();
+            var item = new Itempedido();
 
             item.Produto = "N";
             item.CardapioPizzaId = cardapioid;
@@ -84,13 +84,13 @@ namespace SistemaWebPizzaria.Controllers
         }
 
         [HttpPost]
-        public async Task<ItemPedido> AdicionarItemProdutoAoPedido(int qtd, int produtoid)
+        public async Task<Itempedido> AdicionarItemProdutoAoPedido(int qtd, int produtoid)
         {
             try
             {
                 var produto = await _pedidoService.FindByIdProduto(produtoid);
 
-                var item = new ItemPedido();
+                var item = new Itempedido();
 
                 item.Produto = "S";
                 item.CardapioPizzaId = null;
@@ -116,14 +116,14 @@ namespace SistemaWebPizzaria.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Pedido pedido, List<ItemPedido> listItemPedido)
+        public async Task<IActionResult> Create(Pedido pedido, List<Itempedido> listItempedido)
         {
             await _pedidoService.InsertAsync(pedido);
 
-            foreach (ItemPedido item in listItemPedido)
+            foreach (Itempedido item in listItempedido)
             {
                 item.PedidoId = pedido.IdPedido;
-                await _itempedidoService.InsertAsync(item);
+                await _ItempedidoService.InsertAsync(item);
 
                 //remover
                 if (item.Produto == "S"){

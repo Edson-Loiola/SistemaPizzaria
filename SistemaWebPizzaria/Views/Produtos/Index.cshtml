@@ -3,148 +3,175 @@
 
 @{ViewData["Title"] = "Produtos";}
 
-<h2>@ViewData["Title"]</h2>
-<hr />
-<div class="row">
-    <form method="post" asp-action="BuscarProdPeloNome">
-        <div class="col-md-10 input-group-lg">
-            <input class="form-control" type="text" name="nomeprod" placeholder="Buscar produto">
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <hr />
+    <div class="row md-12">
+
+        <div class="col-md-4">
+            <a asp-action="Produto" class="btn btn-primary btn-lg">Cadastrar Produto</a>
+            <a asp-action="../Home/MenuSistema" class="btn btn-primary btn-lg">Home</a>
         </div>
-        <div class="col-md-2">
-            <button class="btn btn-info btn-block btn-lg" type="submit">Buscar</button>
+
+        <div class="col-md-8 pull-right">
+            <form method="post" asp-action="BuscarProdPeloNome">
+                <div class="col-md-10 input-group-lg">
+                    <input class="form-control" type="text" name="nomeprod" placeholder="Buscar produto">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-info btn-block btn-lg" type="submit">Buscar</button>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
-<hr />
-<div class="row">
-    <div class="col-md-12">
-        <a asp-action="Produto" class="btn btn-primary btn-lg">Cadastrar Produto</a>
-        <a href="../Home/MenuSistema" class="btn btn-danger btn-lg pull-right">Voltar</a>
     </div>
-</div>
-<br />
-<div class="row">
-    <div class="col-md-12">
-        <table class="table table-striped table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>
-                        <label class="control-label text-center">ID</label>
-                    </th>
-                    <th>
-                        <label class="control-label text-center">Nome do Produto</label>
-                    </th>
-                    <th>
-                        <label class="control-label">Valor (R$)</label>
-                    </th>
-                    <th>
-                        <label class="control-label">Qtde Estoque</label>
-                    </th>
-                    <th>
-                        <label class="control-label">Marca</label>
-                    </th>
-                    <th>
-                        <label class="control-label">Descrição</label>
-                    </th>
-                    <th>
-                        <label class="control-label">Validade</label>
-                    </th>
-                    <th>
-                        <label class="control-label">Ações</label>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+    <hr />
+    <br />
+    @*<div class="row">*@
+    <div class="row">
+        <div class="row col-md-12">
+            <div class="col-md-9">
+                <form method="post" asp-action="ProdutosVencidos">
+                    <a class="btn btn-default" style="color:#ffffff; background-color:#b4b4b4; font-family:Verdana; font-size:large"> Valor Total Estoque: (R$ @(Model.Sum(x => x.PrecoVenda * x.Quantidade).ToString("F2")))</a>
+                    <a class="btn btn-default" style="color:#ffffff; background-color:#b4b4b4; font-family:Verdana; font-size:large"> Total Cadastrados: (@(Model.Select(x => x.Quantidade).Sum()))</a>
+
+                    @* dentro do forme apenas para conseguir alinhas os botoes acima *@
+                    <button type="submit" class="btn btn-default" style="color:#ffffff; background-color:#b4b4b4; font-family:Verdana; font-size:large"> Produtos Vencidos: (@(Model.Where(x => x.Validade <=    DateTime.Now).Count()))</button>
+                </form>
+            </div>
+            <div class="col-md-2">
+                <form method="post" asp-action="EstoqueBaixo">
+                    <button class="btn btn-default" style="color:#ffffff; background-color:#b4b4b4; font-family:Verdana; font-size:large"> Prod com Estoque Baixo: (@(Model.Where(x => x.Quantidade < 10 ).Count()))</button>
+                </form>
+            </div>
+
+        </div>
+    </div><br />
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
                     <tr>
-                        <td readonly>
-                            @Html.DisplayFor(modelItem => item.IdProduto)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nome)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PrecoVenda)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Quantidade) @Html.DisplayFor(modelItem => item.UnidadeMedida)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Marca)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Descricao)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Validade)
-                        </td>
-                        <td class="text-center">
-                            <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdProduto"><span class="material-icons">edit</span></a>
-                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdProduto"><span class="material-icons">delete</span></a>
-                        </td>
+                        <th>
+                            <label class="control-label text-center">ID</label>
+                        </th>
+                        <th>
+                            <label class="control-label text-center">Nome do Produto</label>
+                        </th>
+                        <th>
+                            <label class="control-label">Valor (R$)</label>
+                        </th>
+                        <th>
+                            <label class="control-label">Quantidade</label>
+                        </th>
+                        <th>
+                            <label class="control-label">Marca</label>
+                        </th>
+                        <th>
+                            <label class="control-label">Descrição</label>
+                        </th>
+                        <th>
+                            <label class="control-label">Validade</label>
+                        </th>
+                        <th>
+                            <label class="control-label">Ações</label>
+                        </th>
                     </tr>
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal-@item.IdProduto" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h3 class="modal-title" id="myModalLabel">Atenção</h3>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Deseja mesmo deletar o item @item.IdProduto?</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
-                                    <a asp-action="DeleteProduto" asp-route-id="@item.IdProduto" class="btn btn-danger">Deletar</a>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td readonly>
+                                @Html.DisplayFor(modelItem => item.IdProduto)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PrecoVenda)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantidade) @Html.DisplayFor(modelItem => item.UnidadeMedida)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Marca)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descricao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Validade)
+                            </td>
+                            <td class="text-center">
+                                <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdProduto"><span class="material-icons">edit</span></a>
+                                <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdProduto"><span class="material-icons">delete</span></a>
+                            </td>
+                        </tr>
+
+                        <div class="modal fade" id="myModal-@item.IdProduto" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title" id="myModalLabel">Atenção</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Deseja mesmo deletar o item @item.IdProduto?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
+                                        <a asp-action="DeleteProduto" asp-route-id="@item.IdProduto" class="btn btn-danger">Deletar</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    }
+                </tbody>
+            </table><br />
+            <div class="row col-md-12">
+                <ul class="text-center">
+
+                    <div class="col-md-12">
+                        Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                        de @Model.PageCount
                     </div>
-                }
-            </tbody>
-        </table>
-        <div class="row col-md-12">
-            <ul class="text-center">
 
-                <div class="col-md-12">
-                    Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
-                    de @Model.PageCount
-                </div>
+                    @if (Model.HasPreviousPage)
+                    {
 
-                @if (Model.HasPreviousPage)
-                {
+                        <button class="btn btn-sm btn-primary">
+                            @*@Html.ActionLink("Anterior", "Lista", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
+                            <a style="color : #ffffff" href="@Url.Action("Index", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Anterior </a>
+                        </button>
 
-                    <button class="btn btn-sm btn-primary">
-                        @*@Html.ActionLink("Anterior", "Lista", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
-                        <a style="color : #ffffff" href="@Url.Action("Index", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Anterior </a>
-                    </button>
+                    }
+                    else
+                    {
 
-                }
-                else
-                {
+                        <button class="btn btn-sm btn-primary">
+                            <a style="color : #ffffff"> Anterior</a>
+                        </button>
+                    }
 
-                    <button class="btn btn-sm btn-primary">
-                        <a style="color : #ffffff"> Anterior</a>
-                    </button>
-                }
+                    @if (Model.HasNextPage)
+                    {
 
-                @if (Model.HasNextPage)
-                {
+                        <button class="btn btn-sm btn-primary">
+                            @*@Html.ActionLink("Próxima", "Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
+                            <a style="color : #ffffff" href="@Url.Action("Index", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Próximo </a>
+                        </button>
 
-                    <button class="btn btn-sm btn-primary">
-                        @*@Html.ActionLink("Próxima", "Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
-                        <a style="color : #ffffff" href="@Url.Action("Index", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Próximo </a>
-                    </button>
-
-                }
-                else
-                {
-                    <button class="btn btn-sm btn-primary">
-                        <a style="color : #ffffff">Próximo</a>
-                    </button>
-                }
-            </ul><br /><br /><br /><br />
+                    }
+                    else
+                    {
+                        <button class="btn btn-sm btn-primary">
+                            <a style="color : #ffffff">Próximo</a>
+                        </button>
+                    }
+                </ul><br /><br /><br /><br />
+            </div>
         </div>
     </div>
 </div>

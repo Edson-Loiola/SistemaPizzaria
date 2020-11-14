@@ -8,6 +8,10 @@ namespace SistemaWebPizzaria.Models
     public partial class Produtoestoque
     {
         public int IdProduto { get; set; }
+
+        [Display(Name = "Nome")]
+        [Required(ErrorMessage = "{0} não informado!")]
+        [StringLength(45, ErrorMessage = "{0} Máximo de 45 caracteres")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "{0} não informado!")]
@@ -23,11 +27,14 @@ namespace SistemaWebPizzaria.Models
         [Required(ErrorMessage = "{0} não informado!")]
         [Range(0, 999999.99, ErrorMessage = "{0} R$ de {1} até {2}")]
         public int Quantidade { get; set; }
+
+        [Required(ErrorMessage = "{0} não informado!")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? DataCompra { get; set; }
 
         [Required(ErrorMessage = "{0} não informado!")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        [Remote("Validade", "Produtos", AdditionalFields = nameof(DataCompra), ErrorMessage = "{0} menor que a Data de Compra!")]
+        [Remote("Validade", "Produtos", AdditionalFields = nameof(Validade), ErrorMessage = "{0} fora do prazo!")]
         public DateTime? Validade { get; set; }
         public string Marca { get; set; }
         public string NomeFornecedor { get; set; }
