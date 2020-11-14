@@ -1,5 +1,5 @@
 ﻿
-@model PagedList.IPagedList<SistemaWebPizzaria.Models.Produtoestoque>
+@model IEnumerable<SistemaWebPizzaria.Models.Produtoestoque>
 
 @{ViewData["Title"] = "Produtos";}
 
@@ -31,16 +31,15 @@
         <div class="row col-md-12">
             <div class="col-md-9">
                 <form method="post" asp-action="ProdutosVencidos">
-                    <a class="btn btn-default" style="color:#ffffff; background-color:#b4b4b4; font-family:Verdana; font-size:large"> Valor Total Estoque: (R$ @(Model.Sum(x => x.PrecoVenda * x.Quantidade).ToString("F2")))</a>
+                    <a class="btn btn-default" style="color:#ffffff; background-color:#b4b4b4; font-family:Verdana; font-size:large"> Valor Total Estoque: (R$ @(Model.Sum(a => a.PrecoCompra * a.Quantidade).ToString("F2")))</a>
                     <a class="btn btn-default" style="color:#ffffff; background-color:#b4b4b4; font-family:Verdana; font-size:large"> Total Cadastrados: (@(Model.Select(x => x.Quantidade).Sum()))</a>
-
                     @* dentro do forme apenas para conseguir alinhas os botoes acima *@
                     <button type="submit" class="btn btn-default" style="color:#ffffff; background-color:#b4b4b4; font-family:Verdana; font-size:large"> Produtos Vencidos: (@(Model.Where(x => x.Validade <=    DateTime.Now).Count()))</button>
                 </form>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <form method="post" asp-action="EstoqueBaixo">
-                    <button class="btn btn-default" style="color:#ffffff; background-color:#b4b4b4; font-family:Verdana; font-size:large"> Prod com Estoque Baixo: (@(Model.Where(x => x.Quantidade < 10 ).Count()))</button>
+                    <button class="btn btn-default " style="color:#ffffff; background-color:#b4b4b4; font-family:Verdana; font-size:large"> Prod com Estoque Baixo: (@(Model.Where(x => x.Quantidade < 10 ).Count()))</button>
                 </form>
             </div>
 
@@ -61,7 +60,10 @@
                             <label class="control-label text-center">Nome do Produto</label>
                         </th>
                         <th>
-                            <label class="control-label">Valor (R$)</label>
+                            <label class="control-label">Valor Compra (R$)</label>
+                        </th>
+                        <th>
+                            <label class="control-label">Valor Venda (R$)</label>
                         </th>
                         <th>
                             <label class="control-label">Quantidade</label>
@@ -89,6 +91,9 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PrecoCompra)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.PrecoVenda)
@@ -129,49 +134,7 @@
                         </div>
                     }
                 </tbody>
-            </table><br />
-            <div class="row col-md-12">
-                <ul class="text-center">
-
-                    <div class="col-md-12">
-                        Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
-                        de @Model.PageCount
-                    </div>
-
-                    @if (Model.HasPreviousPage)
-                    {
-
-                        <button class="btn btn-sm btn-primary">
-                            @*@Html.ActionLink("Anterior", "Lista", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
-                            <a style="color : #ffffff" href="@Url.Action("Index", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Anterior </a>
-                        </button>
-
-                    }
-                    else
-                    {
-
-                        <button class="btn btn-sm btn-primary">
-                            <a style="color : #ffffff"> Anterior</a>
-                        </button>
-                    }
-
-                    @if (Model.HasNextPage)
-                    {
-
-                        <button class="btn btn-sm btn-primary">
-                            @*@Html.ActionLink("Próxima", "Lista", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })*@
-                            <a style="color : #ffffff" href="@Url.Action("Index", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })">Próximo </a>
-                        </button>
-
-                    }
-                    else
-                    {
-                        <button class="btn btn-sm btn-primary">
-                            <a style="color : #ffffff">Próximo</a>
-                        </button>
-                    }
-                </ul><br /><br /><br /><br />
-            </div>
+            </table><br />            
         </div>
     </div>
 </div>

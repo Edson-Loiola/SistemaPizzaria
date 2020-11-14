@@ -66,7 +66,7 @@
                     <div class="row">
                         <div class="form-group col-md-3" br>
                             <br />
-                            <input type="submit" value="Inserir" class="btn btn-primary" data-toggle="modal" data-target="#myModalAtivaCliente" />
+                            <input type="submit" value="Inserir" class="btn btn-primary" data-toggle="modal" />
                             <a asp-action="Lista" class="btn btn-primary">Voltar</a>
                             <br /><br /><br /><br />
                         </div>
@@ -75,28 +75,7 @@
                 </form>
 
             </div>
-        </div>
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModalAtivaCliente" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="myModalLabel">Atenção</h3>
-                    </div>
-                    <div class="modal-body">
-                        <p>Deseja mesmo</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">voltar</button>
-                        @*<input type="hidden" asp-for="Cliente.IdCliente" />*@
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
+        </div>    
     </div>
 
 

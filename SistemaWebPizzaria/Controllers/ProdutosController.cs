@@ -18,14 +18,13 @@ namespace SistemaWebPizzaria.Controllers
             _produtoService = produtoService;
         }
 
-        public async Task<IActionResult> Index(int? pagina)
+        public async Task<IActionResult> Index()
         {
             var list = await _produtoService.FindAllAsync();
 
-            int paginaTamanho = 10;
-            int paginaNumero = (pagina ?? 1);
+           
 
-            return View(list.ToPagedList(paginaNumero, paginaTamanho));
+            return View(list);
         }
 
 
@@ -87,7 +86,7 @@ namespace SistemaWebPizzaria.Controllers
 
         //metodo de pesquisar produto pelo nome 
         [HttpPost]
-        public async Task<IActionResult> BuscarProdPeloNome(string nomeprod, int? pagina)
+        public async Task<IActionResult> BuscarProdPeloNome(string nomeprod)
         {
 
             var obj = await _produtoService.FindAllAsync();
@@ -101,42 +100,40 @@ namespace SistemaWebPizzaria.Controllers
 
             var listprod = obj.Where(x => x.Nome.ToUpper().Contains(nomeprod.ToUpper()));
 
-            int paginaTamanho = 10;
-            int paginaNumero = (pagina ?? 1);
 
-            return View(nameof(Index), listprod.ToPagedList(paginaNumero, paginaTamanho)); // se existir retornar a lista
+
+
+            return View(nameof(Index), listprod);  // se existir retornar a lista
         }
 
 
         //listagem dos produtos vencidos
         [HttpPost]
-        public async Task<IActionResult> ProdutosVencidos(int? pagina)
+        public async Task<IActionResult> ProdutosVencidos()
         {
 
             var obj = await _produtoService.FindAllAsync();
 
             var prodVencidos = obj.Where(x => x.Validade < DateTime.Now).ToList();
           
-            int paginaTamanho = 10;
-            int paginaNumero = (pagina ?? 1);
+          
 
-            return View(nameof(Index), prodVencidos.ToPagedList(paginaNumero, paginaTamanho)); // se existir retornar a lista
+            return View(nameof(Index), prodVencidos); // se existir retornar a lista
         }
 
 
         //listagem dos produtos com estoque abaixo de 10
         [HttpPost]
-        public async Task<IActionResult> EstoqueBaixo(int? pagina)
+        public async Task<IActionResult> EstoqueBaixo()
         {
 
             var obj = await _produtoService.FindAllAsync();
 
             var prodBaixo = obj.Where(x => x.Quantidade < 10).ToList();
 
-            int paginaTamanho = 10;
-            int paginaNumero = (pagina ?? 1);
+            
 
-            return View(nameof(Index), prodBaixo.ToPagedList(paginaNumero, paginaTamanho)); // se existir retornar a lista
+            return View(nameof(Index), prodBaixo); // se existir retornar a lista
         }
 
 
@@ -146,7 +143,7 @@ namespace SistemaWebPizzaria.Controllers
         {
 
 
-            if (Convert.ToDateTime(Validade) <= Convert.ToDateTime(DateTime.Now))
+            if (Convert.ToDateTime(Validade) < Convert.ToDateTime(DateTime.Now))
             {
                 return false;
             }
