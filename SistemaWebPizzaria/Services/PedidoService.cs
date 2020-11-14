@@ -68,7 +68,7 @@ namespace SistemaWebPizzaria.Services {
             return await _context.Produtoestoque.FindAsync(id);
         }
 
-        public async Task InsertItempedido(Itempedido Itempedido)
+        public async Task InsertItempedido(ItemPedido Itempedido)
         {
             _context.Add(Itempedido);
             await _context.SaveChangesAsync();
@@ -96,7 +96,7 @@ namespace SistemaWebPizzaria.Services {
 
             var listaItempedido = await _context.Itempedido.ToListAsync();
 
-            foreach (Itempedido item in listaItempedido)
+            foreach (ItemPedido item in listaItempedido)
             {
                 //if (item.PedidoIdPedido == pedido.IdPedido)
                 //{
