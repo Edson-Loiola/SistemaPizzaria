@@ -213,6 +213,20 @@ namespace SistemaWebPizzaria.Controllers
         {
             var pedido = await _pedidoService.FindByIdAsync(id);
             pedido.Status = status;
+            if(status == "Cancelado")
+            {
+                //CancelarPedido(pedido);
+                var removeList = await ListaItemPedido(pedido.IdPedido);
+                foreach (ItemPedido itemRemove in removeList)
+                {
+                    if (itemRemove.Produto.Equals("S"))
+                    {
+                        var produto = await _produtoestoqueService.FindByIdAsync(itemRemove.ProdutoEstoqueId);
+                        produto.Quantidade = produto.Quantidade - itemRemove.Quantidade;
+                        await _produtoestoqueService.UpdateAsync(produto);
+                    }
+                }
+            }
             await _pedidoService.UpdateAsync(pedido);
             return RedirectToAction(nameof(Index));
         }
@@ -239,30 +253,53 @@ namespace SistemaWebPizzaria.Controllers
         {
             try
             {
-                pedido.IdFuncioarioNavigation = null;
-                pedido.IdClienteNavigation = null;
-                await _pedidoService.UpdateAsync(pedido);
-
-                var removeList = await ListaItemPedido(pedido.IdPedido);
-                foreach (ItemPedido itemRemove in removeList)
+                if(pedido.Status == "Cancelado")
                 {
-                    await _itempedidoService.RemoveAsync(itemRemove);
-                }
-
-                foreach (ItemPedido item in listItemPedido)
-                {
-                    item.PedidoId = pedido.IdPedido;
-                    await _itempedidoService.InsertAsync(item);
-
-                    //remover
-                    if (item.Produto == "S")
+                    //CancelarPedido(pedido);
+                    var removeList = await ListaItemPedido(pedido.IdPedido);
+                    foreach (ItemPedido itemRemove in removeList)
                     {
-                        var produto = await _produtoestoqueService.FindByIdAsync(item.ProdutoEstoqueId);
-                        produto.Quantidade = produto.Quantidade - item.Quantidade;
-                        await _produtoestoqueService.UpdateAsync(produto);
+                        if (itemRemove.Produto.Equals("S"))
+                        {
+                            var produto = await _produtoestoqueService.FindByIdAsync(itemRemove.ProdutoEstoqueId);
+                            produto.Quantidade = produto.Quantidade - itemRemove.Quantidade;
+                            await _produtoestoqueService.UpdateAsync(produto);
+                        }
                     }
                 }
+                else
+                {
+                    pedido.IdFuncioarioNavigation = null;
+                    pedido.IdClienteNavigation = null;
+                    await _pedidoService.UpdateAsync(pedido);
 
+                    var removeList = await ListaItemPedido(pedido.IdPedido);
+                    foreach (ItemPedido itemRemove in removeList)
+                    {
+                        await _itempedidoService.RemoveAsync(itemRemove);
+                        if (itemRemove.Produto.Equals("S"))
+                        {
+                            var prod = await _produtoestoqueService.FindByIdAsync(itemRemove.ProdutoEstoqueId);
+                            prod.Quantidade = prod.Quantidade + itemRemove.Quantidade;
+                            await _produtoestoqueService.UpdateAsync(prod);
+                        }
+                    }
+
+                    foreach (ItemPedido item in listItemPedido)
+                    {
+                        item.PedidoId = pedido.IdPedido;
+                        await _itempedidoService.InsertAsync(item);
+
+                        //remover
+                        if (item.Produto == "S")
+                        {
+                            var produto = await _produtoestoqueService.FindByIdAsync(item.ProdutoEstoqueId);
+                            produto.Quantidade = produto.Quantidade - item.Quantidade;
+                            await _produtoestoqueService.UpdateAsync(produto);
+                        }
+                    }
+                }
+                
                 return RedirectToAction(nameof(Index));
             }
             catch (KeyNotFoundException)

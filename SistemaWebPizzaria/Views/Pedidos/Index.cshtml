@@ -14,11 +14,12 @@
 </style>
 
 <script>
-    function AlterarStatus() {
-        var idpedido = $("#idpedido").val();
-        var status = $("#SelectStatus option:selected").val();
+    function AlterarStatus(id) {
+        var status = $("#SelectStatus_"+id+" option:selected").val();
 
-        $.post('/Pedidos/AlterarStatus', { id: idpedido, status: status },
+        console.log("status: ", status);
+
+        $.post('/Pedidos/AlterarStatus', { id: id, status: status },
             function (returnedData) {
                 alert("GRAVADO COM SUCESSO");
                 window.location.href = "/Pedidos/Index";
@@ -109,7 +110,7 @@
                             @Html.DisplayFor(modelItem => item.TotalPedido)
                         </td>
                         <td>
-                            <select id="SelectStatus" asp-for="@item.Status" class="form-control">
+                            <select id="SelectStatus_@item.IdPedido" asp-for="@item.Status" class="form-control">
                                 <option value="Cancelado">Cancelado</option>
                                 <option value="Em preparo">Em preparo</option>
                                 <option value="Pronto">Pronto</option>
@@ -120,7 +121,7 @@
                         <td>
                             <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdPedido"><span class="material-icons">edit</span></a>
 
-                            <a data-toggle="modal" data-target="#myModal" class="btn btn-success btn-sm pull-right">
+                            <a data-toggle="modal" data-target="#myModal_@item.IdPedido" class="btn btn-success btn-sm pull-right">
                                 <span class="material-icons">save</span>
                             </a>
 
@@ -129,7 +130,7 @@
                     </tr>
                     //@Html.DisplayFor(modelItem => item)
                     <!-- Modal -->
-                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal fade" id="myModal_@item.IdPedido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -139,9 +140,8 @@
                                     <p>Deseja mesmo salvar esse Pedido?</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <input id="idpedido" class="form-control hidden" asp-for="@item.IdPedido" type="text" readonly />
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
-                                    <a onclick="AlterarStatus()" class="btn btn-success">Alterar</a>
+                                    <a onclick="AlterarStatus('@item.IdPedido')" class="btn btn-success">Alterar</a>
                                 </div>
                             </div>
                         </div>

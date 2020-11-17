@@ -36,6 +36,12 @@ namespace SistemaWebPizzaria.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Remote("Validade", "Produtos", AdditionalFields = nameof(Validade), ErrorMessage = "{0} fora do prazo!")]
         public DateTime? Validade { get; set; }
+
+        [Required(ErrorMessage = "{0} não informado!")]
+        [DisplayFormat(DataFormatString = "{0:F2}")]
+        [Range(0.00, 999999.99, ErrorMessage = "{0} R$ de {1} até {2}")]
+        public double? ValorTotal { get; set; }
+
         public string Marca { get; set; }
         public string NomeFornecedor { get; set; }
         public string Descricao { get; set; }
