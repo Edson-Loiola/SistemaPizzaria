@@ -115,7 +115,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("</a>\r\n        </div>\r\n    </div>\r\n    <hr />\r\n    <div class=\"row\">\r\n\r\n        ");
             EndContext();
             BeginContext(644, 392, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e6d8b98062d94878b61f2dc858442c8b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "707255b0908d491a8b9de66e068715cf", async() => {
                 BeginContext(684, 345, true);
                 WriteLiteral(@"
             <div class=""col-md-10 input-group-lg"">
@@ -148,7 +148,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("\r\n    </div>\r\n    <hr />\r\n    <div class=\"row col-md-12 col-sm-3\">\r\n        <div class=\"row col-md-4\">\r\n            <p>               \r\n                ");
             EndContext();
             BeginContext(1188, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2dddbaaa9a8949a786bb75a06d940601", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "862b0156b00e4eaf9d6feb6b0e448911", async() => {
                 BeginContext(1241, 12, true);
                 WriteLiteral("Novo Cliente");
                 EndContext();
@@ -171,7 +171,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("\r\n                ");
             EndContext();
             BeginContext(1275, 75, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e24a1ea651674e55aba2a7a8caa6d601", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "509cd87ac64b43ca92912736c003252f", async() => {
                 BeginContext(1342, 4, true);
                 WriteLiteral("Home");
                 EndContext();
@@ -318,7 +318,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("                                    ");
             EndContext();
             BeginContext(3909, 141, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e414f3902cb34335b0f654da5d052c13", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bc38af4f3ba541409287b6e9ca7f90f6", async() => {
                 BeginContext(4006, 40, true);
                 WriteLiteral("<span class=\"material-icons\">edit</span>");
                 EndContext();
@@ -386,7 +386,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("                                    ");
             EndContext();
             BeginContext(4481, 179, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "16fc1c0dadad49d1bd2d57a662abc38c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "831945b71a1b486fa33d332f5b133614", async() => {
                 BeginContext(4616, 40, true);
                 WriteLiteral("<span class=\"material-icons\">loop</span>");
                 EndContext();
@@ -464,7 +464,7 @@ WriteAttributeValue("", 5069, item.ClienteIdCliente, 5069, 22, false);
                                     ");
             EndContext();
             BeginContext(5931, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c5e21ff8db8f4eaeaca4d274feee7e4b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8522d721d4fa491288f7eaef325da5d7", async() => {
                 BeginContext(6023, 8, true);
                 WriteLiteral("Inativar");
                 EndContext();
@@ -535,7 +535,7 @@ WriteAttributeValue("", 6296, item.ClienteIdCliente, 6296, 22, false);
                                     ");
             EndContext();
             BeginContext(7159, 103, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa1ce7672d374cef8defc493f1f90036", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "32ba8aa757c34efc904afcfa528f5bee", async() => {
                 BeginContext(7250, 8, true);
                 WriteLiteral("Reativar");
                 EndContext();

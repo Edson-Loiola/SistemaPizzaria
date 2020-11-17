@@ -91,7 +91,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("</h2>\r\n    <hr />\r\n    <div class=\"row \">\r\n\r\n        <div class=\"col-md-3\">\r\n            <p>\r\n                ");
             EndContext();
             BeginContext(278, 77, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e958511a20224adc99acef4cac3203ed", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f48b9088af5c424d9a87de0df06bfc1f", async() => {
                 BeginContext(339, 12, true);
                 WriteLiteral("Nova Despesa");
                 EndContext();
@@ -114,7 +114,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("\r\n                ");
             EndContext();
             BeginContext(373, 75, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "00ab4c25f4744108aea7e73ef94a8e6c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5a3d61163c414b3997773896461d73d4", async() => {
                 BeginContext(440, 4, true);
                 WriteLiteral("Home");
                 EndContext();
@@ -137,7 +137,7 @@ using SistemaWebPizzaria.Models.ViewModels;
             WriteLiteral("\r\n            </p>\r\n        </div>\r\n\r\n        ");
             EndContext();
             BeginContext(494, 705, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f1178a7bd8b5430daa32e319714c67e7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b73dd5ca63084904b5852ae87f17ae17", async() => {
                 BeginContext(543, 66, true);
                 WriteLiteral("\r\n            <fieldset>\r\n                <div class=\"col-md-4\">\r\n");
                 EndContext();
@@ -262,7 +262,7 @@ WriteAttributeValue("", 962, ViewData["maxDate"], 962, 20, false);
             WriteLiteral("\r\n                    </td>\r\n                    <td class=\"text-center\">\r\n                        ");
             EndContext();
             BeginContext(2605, 127, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "169fe4c7cf964e4d8b62a3727fad128d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5e33ab0f3d0d43348705f5d59c57ddc9", async() => {
                 BeginContext(2688, 40, true);
                 WriteLiteral("<span class=\"material-icons\">edit</span>");
                 EndContext();
@@ -336,7 +336,7 @@ WriteAttributeValue("", 3084, item.IdDespesa, 3084, 15, false);
                                 ");
             EndContext();
             BeginContext(3828, 95, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7c64c6b652904808b99d57826cd3b10b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "caf5a6aed9c74f3fba30902fe7db77f8", async() => {
                 BeginContext(3912, 7, true);
                 WriteLiteral("Deletar");
                 EndContext();

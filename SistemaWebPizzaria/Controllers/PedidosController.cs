@@ -222,7 +222,7 @@ namespace SistemaWebPizzaria.Controllers
                     if (itemRemove.Produto.Equals("S"))
                     {
                         var produto = await _produtoestoqueService.FindByIdAsync(itemRemove.ProdutoEstoqueId);
-                        produto.Quantidade = produto.Quantidade - itemRemove.Quantidade;
+                        produto.Quantidade = produto.Quantidade + itemRemove.Quantidade;
                         await _produtoestoqueService.UpdateAsync(produto);
                     }
                 }
@@ -262,7 +262,7 @@ namespace SistemaWebPizzaria.Controllers
                         if (itemRemove.Produto.Equals("S"))
                         {
                             var produto = await _produtoestoqueService.FindByIdAsync(itemRemove.ProdutoEstoqueId);
-                            produto.Quantidade = produto.Quantidade - itemRemove.Quantidade;
+                            produto.Quantidade = produto.Quantidade + itemRemove.Quantidade;
                             await _produtoestoqueService.UpdateAsync(produto);
                         }
                     }
