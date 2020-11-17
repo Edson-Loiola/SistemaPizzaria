@@ -3,6 +3,22 @@
 
 @{ViewData["Title"] = "Confirmar Email";}
 
+
+
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    if (HttpContextAccessor.HttpContext.Session.GetString("Usuario") == null)
+    {
+        <script>
+            window.location.href = "/Home/Index";
+        </script>
+
+    }
+}
+
 <!--<h2 style="text-align : center">//ViewData["Title"]</h2>-->
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
@@ -22,7 +38,7 @@
 
                     <span asp-validation-for="Email" id="msgEmail" class="text-danger"></span>
                     <span class="text-danger">@TempData["ErroEmail"]</span><br />
-               
+
 
                     <button class="btn btn-lg btn-block" type="submit" style="margin:20px auto; background-color:#FF1E19; color:white;">Confirmar Email</button>
 

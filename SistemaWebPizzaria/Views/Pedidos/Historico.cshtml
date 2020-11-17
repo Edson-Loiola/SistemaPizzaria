@@ -2,6 +2,24 @@
 
 @{ViewData["Title"] = "Histórico de Pedidos";}
 
+
+
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    if (HttpContextAccessor.HttpContext.Session.GetString("Usuario") == null)
+    {
+        <script>
+            window.location.href = "/Home/Index";
+        </script>
+
+    }
+}
+
+
+
 <h2>@ViewData["Title"]</h2>
 <hr />
 <div class="row">
@@ -52,7 +70,7 @@
                     </th>
                     <th>
                         <label class="control-label">Status</label>
-                    </th>                   
+                    </th>
                 </tr>
             </thead>
             <tbody>

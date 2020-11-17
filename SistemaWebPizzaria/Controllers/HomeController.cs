@@ -21,8 +21,8 @@ namespace SistemaWebPizzaria.Controllers
 
         public IActionResult Index()
         {
-            if (HttpContext.Session.Keys.Equals("Usuario"))
-            {
+            if (HttpContext.Session.GetString("Usuario") != null)
+            { 
                 HttpContext.Session.Remove("Usuario");
                 HttpContext.Session.Remove("IdUsu");
                 HttpContext.Session.Remove("Perfil");

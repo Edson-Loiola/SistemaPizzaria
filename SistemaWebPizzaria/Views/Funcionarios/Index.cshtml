@@ -4,6 +4,21 @@
 
 @{ViewData["Title"] = "Funcionários Cadastrados";}
 
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    if (HttpContextAccessor.HttpContext.Session.GetString("Usuario") == null)
+    {
+        <script>
+            window.location.href = "/Home/Index";
+        </script>
+
+    }
+}
+
+
 <h2>@ViewData["Title"]</h2>
 <hr />
 
@@ -75,15 +90,15 @@
                         </td>
                         <td>
                             @{
-                                    if (item.IdLoginNavigation != null)
+                                if (item.IdLoginNavigation != null)
+                                {
+                                    if (item.IdLoginNavigation.SenhaPadrao == "S")
                                     {
-                                        if (item.IdLoginNavigation.SenhaPadrao == "S")
-                                        {
-                                            @Html.DisplayFor(modelItem => item.IdLoginNavigation.Senha)
-                                        }
+                                        @Html.DisplayFor(modelItem => item.IdLoginNavigation.Senha)
                                     }
-
                                 }
+
+                            }
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DataInativacao)
@@ -93,7 +108,7 @@
 
                             @{ if (item.Ativo == "S")
                                 {
-                                                                       
+
 
                                     <a asp-action="Edit" class="btn btn-default btn-sm" asp-route-id="@item.IdFuncionario"><span class="material-icons">edit</span></a> @*chama tela de ditar com os campos preenchidos*@
                                     <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdFuncionario"><span class="material-icons">delete</span></a>

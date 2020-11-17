@@ -4,131 +4,143 @@
 
 
 
-<style>
-
-    .btn-menu {
-        padding: 20px;
-        background-color: transparent;
-        color: #ac2925;
-    }
-
-        .btn-menu:hover {
-            background-color: #ac2925;
-            color: white;
-        }
-
-    .icone-menu {
-        font-size: 50px;
-        text-align: center;
-        vertical-align: middle;
-    }
-
-        .icone-menu:hover {
-            /*font-size: 70px;*/
-        }
-
-    .font-menu {
-        font-size: 20px;
-        font-weight: bold;
-    }
-
-   
-</style>
 
 
-
-
-
-
-<div class="container col-md-12">
-    <br /><br /><br /><br /><br />
-
-    <div class="row col-md-offset-2">
-        <div class="col-lg-3 text-center">
-            <div class="row">
-                <a class="btn btn-danger btn-menu" href="../Clientes/Lista" role="button">
-                    <i class="material-icons icone-menu">person_add</i>
-                </a>
-            </div>
-            <span class="font-menu">Clientes</span>
-        </div>
-
-        <div class="col-lg-3 text-center">
-            <div class="row">
-                <a class="btn btn-danger btn-menu" href="../Cardapios/Index" role="button">
-                    <i class="material-icons icone-menu">local_pizza</i>
-                </a>
-            </div>
-            <span class="font-menu">Cardápio</span>
-        </div>
-
-        <div class="col-lg-3 text-center">
-            <div class="row">
-                <a class="btn btn-danger btn-menu" href="../Pedidos/Index" role="button">
-                    <i class="material-icons icone-menu">list_alt</i>
-                </a>
-            </div>
-            <span class="font-menu">Pedidos</span>
-        </div>
-
-    </div><br /><br />
-    @{
-        if (HttpContextAccessor.HttpContext.Session.GetString("Perfil") == "A")
-        {
-            <div class="row col-md-offset-2">
-                <div class="col-lg-3 text-center">
-                    <div class="row">
-                        <a class="btn btn-danger btn-menu" href="../Funcionarios/Index" role="button">
-                            <i class="material-icons icone-menu">add_business</i>
-                        </a>
-                    </div>
-                    <span class="font-menu">Funcionários</span>
-                </div>
-
-
-                <div class="col-lg-3 text-center">
-                    <div class="row">
-                        <a class="btn btn-danger btn-menu" href="../Produtos/Index" role="button">
-                            <i class="material-icons icone-menu">content_paste</i>
-                        </a>
-                    </div>
-                    <span class="font-menu">Produtos</span>
-                </div>
-
-                <div class="col-lg-3 text-center">
-                    <div class="row">
-                        <a class="btn btn-danger btn-menu" href="../Despesas/Index" role="button">
-                            <i class="material-icons icone-menu">monetization_on</i>
-                        </a>
-                    </div>
-                    <span class="font-menu">Despesas</span>
-                </div>
-            </div>
-            <div class="row col-md-offset-2">
-                <br /><br />
-                <div class="col-lg-3 text-center">
-
-                    <div class="row">
-                        <a class="btn btn-danger btn-menu" href="../Relatorios/Ganho" role="button">
-                            <i class="material-icons icone-menu">assessment</i>
-                        </a>
-                    </div>
-                    <span class="font-menu">Relatórios</span>
-                </div>
-
-
-                <div class="col-lg-3 text-center">
-                    <div class="row">
-                        <a class="btn btn-danger btn-menu" href="../Pedidos/Historico" role="button">
-                            <i class="material-icons icone-menu">grading</i>
-                        </a>
-                    </div>
-                    <span class="font-menu">Histórico</span>
-                </div>
-
-            </div>
+@{
+    if (HttpContextAccessor.HttpContext.Session.GetString("Usuario") == null)
+    {
+        <script>
+            window.location.href = "/Home/Index";
+        </script>
 
         }
     }
-    <br /><br /><br /><br /><br /><br /><br /><br />
-</div>
+}
+
+
+    <style>
+
+        .btn-menu {
+            padding: 20px;
+            background-color: transparent;
+            color: #ac2925;
+        }
+
+            .btn-menu:hover {
+                background-color: #ac2925;
+                color: white;
+            }
+
+        .icone-menu {
+            font-size: 50px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+            .icone-menu:hover {
+                /*font-size: 70px;*/
+            }
+
+        .font-menu {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+
+
+
+
+
+
+    <div class="container col-md-12">
+        <br /><br /><br /><br /><br />
+
+        <div class="row col-md-offset-2">
+            <div class="col-lg-3 text-center">
+                <div class="row">
+                    <a class="btn btn-danger btn-menu" href="../Clientes/Lista" role="button">
+                        <i class="material-icons icone-menu">person_add</i>
+                    </a>
+                </div>
+                <span class="font-menu">Clientes</span>
+            </div>
+
+            <div class="col-lg-3 text-center">
+                <div class="row">
+                    <a class="btn btn-danger btn-menu" href="../Cardapios/Index" role="button">
+                        <i class="material-icons icone-menu">local_pizza</i>
+                    </a>
+                </div>
+                <span class="font-menu">Cardápio</span>
+            </div>
+
+            <div class="col-lg-3 text-center">
+                <div class="row">
+                    <a class="btn btn-danger btn-menu" href="../Pedidos/Index" role="button">
+                        <i class="material-icons icone-menu">list_alt</i>
+                    </a>
+                </div>
+                <span class="font-menu">Pedidos</span>
+            </div>
+
+        </div><br /><br />
+        @{
+            if (HttpContextAccessor.HttpContext.Session.GetString("Perfil") == "A")
+            {
+                <div class="row col-md-offset-2">
+                    <div class="col-lg-3 text-center">
+                        <div class="row">
+                            <a class="btn btn-danger btn-menu" href="../Funcionarios/Index" role="button">
+                                <i class="material-icons icone-menu">add_business</i>
+                            </a>
+                        </div>
+                        <span class="font-menu">Funcionários</span>
+                    </div>
+
+
+                    <div class="col-lg-3 text-center">
+                        <div class="row">
+                            <a class="btn btn-danger btn-menu" href="../Produtos/Index" role="button">
+                                <i class="material-icons icone-menu">content_paste</i>
+                            </a>
+                        </div>
+                        <span class="font-menu">Produtos</span>
+                    </div>
+
+                    <div class="col-lg-3 text-center">
+                        <div class="row">
+                            <a class="btn btn-danger btn-menu" href="../Despesas/Index" role="button">
+                                <i class="material-icons icone-menu">monetization_on</i>
+                            </a>
+                        </div>
+                        <span class="font-menu">Despesas</span>
+                    </div>
+                </div>
+                <div class="row col-md-offset-2">
+                    <br /><br />
+                    <div class="col-lg-3 text-center">
+
+                        <div class="row">
+                            <a class="btn btn-danger btn-menu" href="../Relatorios/Ganho" role="button">
+                                <i class="material-icons icone-menu">assessment</i>
+                            </a>
+                        </div>
+                        <span class="font-menu">Relatórios</span>
+                    </div>
+
+
+                    <div class="col-lg-3 text-center">
+                        <div class="row">
+                            <a class="btn btn-danger btn-menu" href="../Pedidos/Historico" role="button">
+                                <i class="material-icons icone-menu">grading</i>
+                            </a>
+                        </div>
+                        <span class="font-menu">Histórico</span>
+                    </div>
+
+                </div>
+
+            }
+        }
+        <br /><br /><br /><br /><br /><br /><br /><br />
+    </div>

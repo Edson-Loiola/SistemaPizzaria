@@ -7,6 +7,22 @@
     ViewData["Title"] = "Editar Funcionario";
 }
 
+
+
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    if (HttpContextAccessor.HttpContext.Session.GetString("Usuario") == null)
+    {
+        <script>
+            window.location.href = "/Home/Index";
+        </script>
+
+    }
+}
+
 <h2>@ViewData["Title"]</h2>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
@@ -15,7 +31,7 @@
     $(document).ready(function ($) {
         $('#Cpf').mask('999.999.999-99', { reverse: false });
         $('#Celular').mask('(99)99999-9999', { reverse: false });
-});
+    });
 </script>
 <hr />
 <div class="container">

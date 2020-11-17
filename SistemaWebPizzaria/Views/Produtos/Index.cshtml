@@ -3,6 +3,22 @@
 
 @{ViewData["Title"] = "Produtos";}
 
+
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    if (HttpContextAccessor.HttpContext.Session.GetString("Usuario") == null)
+    {
+        <script>
+            window.location.href = "/Home/Index";
+        </script>
+
+    }
+}
+
+
 <div class="container">
     <h2>@ViewData["Title"]</h2>
     <hr />
@@ -84,39 +100,39 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td readonly>
-                    @Html.DisplayFor(modelItem => item.IdProduto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PrecoCompra)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PrecoVenda)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantidade) @Html.DisplayFor(modelItem => item.UnidadeMedida)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ValorTotal)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Marca)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descricao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Validade)
-                </td>
-                <td class="text-center">
-                    <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdProduto"><span class="material-icons">edit</span></a>
-                    <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdProduto"><span class="material-icons">delete</span></a>
-                </td>
-            </tr>
+                <tr>
+                    <td readonly>
+                        @Html.DisplayFor(modelItem => item.IdProduto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrecoCompra)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrecoVenda)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantidade) @Html.DisplayFor(modelItem => item.UnidadeMedida)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorTotal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Marca)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Validade)
+                    </td>
+                    <td class="text-center">
+                        <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdProduto"><span class="material-icons">edit</span></a>
+                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdProduto"><span class="material-icons">delete</span></a>
+                    </td>
+                </tr>
 
                 <div class="modal fade" id="myModal-@item.IdProduto" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">

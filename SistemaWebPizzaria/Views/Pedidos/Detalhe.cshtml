@@ -2,6 +2,24 @@
 
 @{ViewData["Title"] = "Detalhes do pedido";}
 
+
+
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    if (HttpContextAccessor.HttpContext.Session.GetString("Usuario") == null)
+    {
+        <script>
+            window.location.href = "/Home/Index";
+        </script>
+
+    }
+}
+
+
+
 <style>
     .cancelado {
         background-color: #FF6347 !important;

@@ -2,37 +2,43 @@
 
 @model SistemaWebPizzaria.Models.ViewModels.LoginModel;
 
-<script>
-    $(document).ready(function ($) {
-        $('#menu').hide();
-    });
-</script>
-<div class="col-md-12">
-    <div class="row">
-        <img class="center-block" src="~/images/img02.jpeg" style="max-width:300px; margin:50px auto 20px auto; border-radius:50%;" />
-    </div>
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <form class="form-signin" asp-action="Login">
-                <div class="col-md-4 col-md-offset-4">
-                    <input asp-for="Email" class="form-control" placeholder="Email" style="margin:2px auto" />
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <span asp-validation-for="Email" class="text-danger"></span>
 
-                    <input asp-for="Senha" type="password" class="form-control" placeholder="Senha" />
-                    <span asp-validation-for="Senha" class="text-danger"></span>
-                    <a asp-action="../Home/EsqueceuSenha" class="text-primary">Esqueceu sua senha?</a>
-                    <button class="btn btn-lg btn-block" type="submit" style="margin:20px auto; background-color:#FF1E19; color:white;">Entrar</button>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 
-                    <span class="text-danger">@TempData["ErroLogin"]</span><br /><br />
-                       
-                </div>
-            </form>
+
+
+    <script>
+        $(document).ready(function ($) {
+            $('#menu').hide();
+        });
+    </script>
+    <div class="col-md-12">
+        <div class="row">
+            <img class="center-block" src="~/images/img02.jpeg" style="max-width:300px; margin:50px auto 20px auto; border-radius:50%;" />
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <form class="form-signin" asp-action="Login">
+                    <div class="col-md-4 col-md-offset-4">
+                        <input asp-for="Email" class="form-control" placeholder="Email" style="margin:2px auto" />
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <span asp-validation-for="Email" class="text-danger"></span>
+
+                        <input asp-for="Senha" type="password" class="form-control" placeholder="Senha" />
+                        <span asp-validation-for="Senha" class="text-danger"></span>
+                        <a asp-action="../Home/EsqueceuSenha" class="text-primary">Esqueceu sua senha?</a>
+                        <button class="btn btn-lg btn-block" type="submit" style="margin:20px auto; background-color:#FF1E19; color:white;">Entrar</button>
+
+                        <span class="text-danger">@TempData["ErroLogin"]</span><br /><br />
+
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-@*para halidtar validação por meio do JavaScript*@
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @*para halidtar validação por meio do JavaScript*@
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

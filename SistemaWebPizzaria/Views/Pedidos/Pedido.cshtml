@@ -4,9 +4,26 @@
 
 <h2>@ViewData["Title"]</h2>
 
+
+
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    if (HttpContextAccessor.HttpContext.Session.GetString("Usuario") == null)
+    {
+        <script>
+            window.location.href = "/Home/Index";
+        </script>
+
+    }
+}
+
+
 <style>
-    .width100{
-        width:100%;
+    .width100 {
+        width: 100%;
     }
 </style>
 
@@ -32,7 +49,7 @@
             success: function (response) {
 
                 $.each(response, function (index, value) {
-                    $("#selectFuncionarios").append("<option value=" + value.idFuncionario + ">"+value.nome+"</option>");
+                    $("#selectFuncionarios").append("<option value=" + value.idFuncionario + ">" + value.nome + "</option>");
                 });
                 //console.log(response);
             }
@@ -47,7 +64,7 @@
             success: function (response) {
 
                 $.each(response, function (index, value) {
-                    $("#selectClientes").append("<option value=" + value.idCliente + ">"+value.nome+"</option>");
+                    $("#selectClientes").append("<option value=" + value.idCliente + ">" + value.nome + "</option>");
                 });
                 //console.log(response);
             }
@@ -95,12 +112,12 @@
         var qtd = $("#quantidadeCardapio").val();
         var itemCardapioId = $("#selectCardapio").val();
 
-        $.post('AdicionarItemCardapioAoPedido', { qtd: qtd, cardapioid: itemCardapioId},
+        $.post('AdicionarItemCardapioAoPedido', { qtd: qtd, cardapioid: itemCardapioId },
             function (returnedData) {
                 console.log(returnedData);
 
                 listItempedido.push(returnedData);
-                
+
                 $("#tabelaProdutos").append("<tr id='tb_" + (listItempedido.length - 1) + "'><td>" + returnedData.nomeProduto + "</td><td>" + returnedData.precoUnidade + "</td><td>" + returnedData.quantidade + "</td><td>" + returnedData.total + "</td><td><a onClick='removeItem(" + (listItempedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
 
                 calculaTotal();
@@ -132,7 +149,7 @@
                 } else {
                     alert("Quantidade de produto em estoque é de " + value.quantidade + " ");
                 }
-            } 
+            }
         });
     }
 

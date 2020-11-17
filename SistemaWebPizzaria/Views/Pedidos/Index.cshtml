@@ -13,9 +13,20 @@
     }
 </style>
 
+@{
+    if (HttpContextAccessor.HttpContext.Session.GetString("Usuario") == null)
+    {
+        <script>
+            window.location.href = "/Home/Index";
+        </script>
+
+    }
+}
+
+
 <script>
     function AlterarStatus(id) {
-        var status = $("#SelectStatus_"+id+" option:selected").val();
+        var status = $("#SelectStatus_" + id + " option:selected").val();
 
         console.log("status: ", status);
 

@@ -4,6 +4,20 @@
 
 <h2>@ViewData["Title"]</h2>
 
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    if (HttpContextAccessor.HttpContext.Session.GetString("Usuario") == null)
+    {
+        <script>
+            window.location.href = "/Home/Index";
+        </script>
+
+    }
+}
+
 <div class="row">
     <hr />
     <div class="col-md-12">
