@@ -94,9 +94,9 @@ namespace SistemaWebPizzaria.Services {
             return await _context.Produtoestoque.FindAsync(id);
         }
 
-        public async Task InsertItemPedido(Itempedido itempedido)
+        public async Task InsertItemPedido(ItemPedido ItemPedido)
         {
-            _context.Add(itempedido);
+            _context.Add(ItemPedido);
             await _context.SaveChangesAsync();
         }
 
@@ -120,7 +120,7 @@ namespace SistemaWebPizzaria.Services {
         {
             var pedido = await _context.Pedido.Include(f => f.IdFuncioarioNavigation).Include(c => c.IdClienteNavigation).FirstOrDefaultAsync(obj => obj.IdPedido == id);
 
-            var listaItemPedido = await _context.Itempedido.ToListAsync();
+            var listaItemPedido = await _context.ItemPedido.ToListAsync();
 
             return pedido;
         }

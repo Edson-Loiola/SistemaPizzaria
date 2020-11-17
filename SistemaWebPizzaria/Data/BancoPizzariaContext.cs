@@ -20,7 +20,7 @@ namespace SistemaWebPizzaria.Models
         public virtual DbSet<Despesa> Despesa { get; set; }
         public virtual DbSet<Endereco> Endereco { get; set; }
         public virtual DbSet<Funcionario> Funcionario { get; set; }
-        public virtual DbSet<Itempedido> Itempedido { get; set; }
+        public virtual DbSet<ItemPedido> ItemPedido { get; set; }
         public virtual DbSet<Login> Login { get; set; }
         public virtual DbSet<Pedido> Pedido { get; set; }
         public virtual DbSet<Produtoestoque> Produtoestoque { get; set; }
@@ -177,9 +177,9 @@ namespace SistemaWebPizzaria.Models
                     .HasConstraintName("fk_Funcionario_Login1");
             });
 
-            modelBuilder.Entity<Itempedido>(entity =>
+            modelBuilder.Entity<ItemPedido>(entity =>
             {
-                entity.ToTable("Itempedido");
+                entity.ToTable("ItemPedido");
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")

@@ -23,17 +23,17 @@ namespace SistemaWebPizzaria.Controllers
         }
 
         [HttpPost]
-        public async void Create(Itempedido itemPedido)
+        public async void Create(ItemPedido ItemPedido)
         {
-            await _ItempedidoService.InsertAsync(Itempedido);
+            await _ItempedidoService.InsertAsync(ItemPedido);
         }
 
         public async Task<IActionResult> DeleteItempedido(int id)
         {
             try
             {
-                var Itempedido = await _ItempedidoService.FindByIdAsync(id);
-                await _ItempedidoService.RemoveAsync(Itempedido); //chamando o metodo remove 
+                var ItemPedido = await _ItempedidoService.FindByIdAsync(id);
+                await _ItempedidoService.RemoveAsync(ItemPedido); //chamando o metodo remove 
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception)
@@ -44,11 +44,11 @@ namespace SistemaWebPizzaria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(Itempedido itempedido)
+        public async Task<IActionResult> Update(ItemPedido ItemPedido)
         {
             try
             {
-                await _ItempedidoService.UpdateAsync(Itempedido);
+                await _ItempedidoService.UpdateAsync(ItemPedido);
                 return RedirectToAction(nameof(Index));
             }
             catch (KeyNotFoundException)

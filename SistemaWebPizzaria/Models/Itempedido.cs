@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SistemaWebPizzaria.Models
 {
-    public partial class Itempedido
+    public partial class ItemPedido
     {
         public int Id { get; set; }
         public int Quantidade { get; set; }
@@ -11,8 +11,8 @@ namespace SistemaWebPizzaria.Models
         public decimal Total { get; set; }
         public string Produto { get; set; }
         public int PedidoId { get; set; }
-        public string NomeProduto { get; set; }
         public int? ProdutoEstoqueId { get; set; }
         public int? CardapioPizzaId { get; set; }
+        public string NomeProduto { get; set; }
     }
 }
