@@ -118,7 +118,7 @@ Write(ViewData["Title"]);
             WriteLiteral("</h2>\r\n<hr />\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(449, 74, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dfb0ae43d6fd426f94f0f20f907f5ad4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1ca48c15d2d0407b84dac5e7a349cdf1", async() => {
                 BeginContext(503, 16, true);
                 WriteLiteral("Novo Funcionário");
                 EndContext();
@@ -141,7 +141,7 @@ Write(ViewData["Title"]);
             WriteLiteral("\r\n    ");
             EndContext();
             BeginContext(529, 75, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7712c858df3d4d5bb2f1cd9f6e1c7ca9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4d6c16d304b0452f880dc7c8db2d1b1c", async() => {
                 BeginContext(596, 4, true);
                 WriteLiteral("Home");
                 EndContext();
@@ -334,7 +334,7 @@ Write(ViewData["Title"]);
             WriteLiteral("                                    ");
             EndContext();
             BeginContext(3783, 131, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1cd6035f68cd4d83a58b854c10527c0e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e144c36af61f4abbb3ad16b1246e6770", async() => {
                 BeginContext(3870, 40, true);
                 WriteLiteral("<span class=\"material-icons\">edit</span>");
                 EndContext();
@@ -403,7 +403,7 @@ Write(ViewData["Title"]);
             WriteLiteral("                                    ");
             EndContext();
             BeginContext(4344, 180, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "97335b8d050b4c778a4246bd07a74932", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1f10092a1af745ed92c76bab40233dfc", async() => {
                 BeginContext(4480, 40, true);
                 WriteLiteral("<span class=\"material-icons\">loop</span>");
                 EndContext();
@@ -478,7 +478,7 @@ WriteAttributeValue("", 4896, item.IdFuncionario, 4896, 19, false);
                                     ");
             EndContext();
             BeginContext(5728, 94, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "23b24777116d43cba6dbe8bb7f22018f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9fa1ea177add46e2b7a4a9310bf58c7a", async() => {
                 BeginContext(5810, 8, true);
                 WriteLiteral("Inativar");
                 EndContext();
@@ -546,7 +546,7 @@ WriteAttributeValue("", 6081, item.IdFuncionario, 6081, 19, false);
                                     ");
             EndContext();
             BeginContext(6918, 105, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c847f8a024814c69bce067c2f391c480", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "31f6ca3fbc9c4bce9cdf02d93893241e", async() => {
                 BeginContext(7011, 8, true);
                 WriteLiteral("Reativar");
                 EndContext();
