@@ -13,6 +13,7 @@ namespace SistemaWebPizzaria.Models
         public int IdCliente { get; set; }
         public decimal? TotalPedido { get; set; }
         public string Status { get; set; }
+        public string Descricao { get; set; }
 
         public Cliente IdClienteNavigation { get; set; }
         public Funcionario IdFuncioarioNavigation { get; set; }

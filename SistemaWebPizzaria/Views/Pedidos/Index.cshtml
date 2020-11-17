@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<SistemaWebPizzaria.Models.Pedido>
 
 @{ViewData["Title"] = "Pedidos";}
+@{ TempData.Remove("currentPedido"); }
 
 <style>
     tr.cancelado {
@@ -9,20 +10,33 @@
     }
 </style>
 
+<script>
+    $(".spinner-border").modal("show");
+
+    function AlterarStatus() {
+        var idpedido = $("#idpedido").val();
+        var status = $("#SelectStatus option:selected").val();
+
+        $.post('/Pedidos/AlterarStatus', { id: idpedido, status: status },
+            function (returnedData) {
+                alert("GRAVADO COM SUCESSO");
+                window.location.href = "/Pedidos/Index";
+            }
+        );
+    }
+
+</script>
+
+
 <h2>@ViewData["Title"]</h2>
 <hr />
-<!-- busca -->
-@*<div class="row">
-        <form asp-action="Buscar">
-            <div class="col-md-10 input-group-lg">
-                <input class="form-control" type="search" id="searchString" placeholder="Buscar produto">
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-info btn-block btn-lg" type="submit">Buscar</button>
-            </div>
-        </form>
+
+<div class="d-flex justify-content-center ">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
     </div>
-    <hr />*@
+</div>
+
 <div class="row">
     <div class="col-md-12">
         <a asp-action="Pedido" class="btn btn-primary btn-lg">Novo Pedido</a>
@@ -65,9 +79,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.OrderByDescending(x => x.IdPedido))
+                @foreach (var item in Model.Where(x => x.Status != "Finalizado" && x.Status != "Cancelado").OrderByDescending(x => x.IdPedido))
                 {
-                    <tr class="@Html.DisplayFor(modelItem => item.Status)">
+                    <tr id="id_@item.IdPedido" class="@Html.DisplayFor(modelItem => item.Status)">
                         <td>
                             @Html.DisplayFor(modelItem => item.IdPedido)
                         </td>
@@ -90,17 +104,22 @@
                             @Html.DisplayFor(modelItem => item.TotalPedido)
                         </td>
                         <td>
-                            <select id="FormaPagamento" asp-for="@item.Status" class="form-control">
-                                <option value="cancelado">Cancelado</option>
-                                <option value="em preparo">Em preparo</option>
-                                <option value="pronto">Pronto</option>
-                                <option value="finalizado">Finalizado</option>
-                                <option value="fila">Fila</option>
+                            <select id="SelectStatus" asp-for="@item.Status" class="form-control">
+                                <option value="Cancelado">Cancelado</option>
+                                <option value="Em preparo">Em preparo</option>
+                                <option value="Pronto">Pronto</option>
+                                <option value="Finalizado">Finalizado</option>
+                                <option value="Fila">Fila</option>
                             </select>
                         </td>
                         <td>
                             <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdPedido"><span class="material-icons">edit</span></a>
-                            <a class="btn btn-danger btn-sm pull-right" data-toggle="modal" data-target="#myModal"><span class="material-icons">cancel</span></a>
+
+                            <a data-toggle="modal" data-target="#myModal" class="btn btn-success btn-sm pull-right">
+                                <span class="material-icons">save</span>
+                            </a>
+
+                            @*<a class="btn btn-danger btn-sm pull-right" data-toggle="modal" data-target="#myModal"><span class="material-icons">cancel</span></a>*@
                         </td>
                     </tr>
                     //@Html.DisplayFor(modelItem => item)
@@ -112,16 +131,17 @@
                                     <h3 class="modal-title" id="myModalLabel">Atenção</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Deseja mesmo Cancelar esse Pedido?</p>
+                                    <p>Deseja mesmo salvar esse Pedido?</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-success" data-dismiss="modal">Não</button>
-                                    <a asp-action="InativaPedido" asp-route-id="@item.IdPedido" class="btn btn-danger">Cancelar</a>
+                                    <input id="idpedido" class="form-control hidden" asp-for="@item.IdPedido" type="text" readonly />
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+                                    <a onclick="AlterarStatus()" class="btn btn-success">Alterar</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-            }
+                }
             </tbody>
         </table>
     </div>

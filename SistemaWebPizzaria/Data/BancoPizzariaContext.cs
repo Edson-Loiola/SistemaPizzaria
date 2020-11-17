@@ -20,12 +20,19 @@ namespace SistemaWebPizzaria.Models
         public virtual DbSet<Despesa> Despesa { get; set; }
         public virtual DbSet<Endereco> Endereco { get; set; }
         public virtual DbSet<Funcionario> Funcionario { get; set; }
-        public virtual DbSet<ItemPedido> Itempedido { get; set; }
+        public virtual DbSet<Itempedido> Itempedido { get; set; }
         public virtual DbSet<Login> Login { get; set; }
         public virtual DbSet<Pedido> Pedido { get; set; }
         public virtual DbSet<Produtoestoque> Produtoestoque { get; set; }
 
-       
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=den1.mysql5.gear.host;userid=bancopizzaria;password=Ls465_9!69Y9;database=bancopizzaria");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -170,7 +177,7 @@ namespace SistemaWebPizzaria.Models
                     .HasConstraintName("fk_Funcionario_Login1");
             });
 
-            modelBuilder.Entity<ItemPedido>(entity =>
+            modelBuilder.Entity<Itempedido>(entity =>
             {
                 entity.ToTable("itempedido");
 
@@ -243,6 +250,10 @@ namespace SistemaWebPizzaria.Models
                 entity.Property(e => e.IdPedido).HasColumnType("int(11)");
 
                 entity.Property(e => e.DataHora).HasColumnType("datetime");
+
+                entity.Property(e => e.Descricao)
+                    .HasColumnName("descricao")
+                    .HasColumnType("varchar(100)");
 
                 entity.Property(e => e.FormaPagamento)
                     .IsRequired()

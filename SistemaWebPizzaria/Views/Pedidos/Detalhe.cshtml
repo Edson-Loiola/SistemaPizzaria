@@ -9,27 +9,111 @@
     }
 </style>
 
+@{ TempData["currentPedido"] = Model.IdPedido; }
+
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
 
+    var pedido = '@Model';
+    var idPedido = '@Model.IdPedido';
+
+
+
     var listItemPedido = [];
+    var listaFuncionario = [];
+    var listaCliente = [];
     GetItemPedido();
+    ListaFuncionarios();
+    calculaTotal();
 
     function GetItemPedido() {
         //console.log(idPedido);
-        $.post('@Url.Action("ListaItemPedido", "Pedidos")', { id: '@Model.IdPedido'},
+        $.post('@Url.Action("ListaItemPedido", "Pedidos")', { id: idPedido},
             function (response) {
-                console.log(response);
+                console.log("Pegar lista: ", response);
                 listItemPedido = response;
 
                 $.each(response, function (index, value) {
 
-                    $("#tableItemPedido").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + value.nomeProduto + "</td><td>" + value.precoUnidade + "</td><td>" + value.quantidade + "</td><td>" + value.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
+                    $("#tableItemPedido").append("<tr id='tb_" + (index) + "'><td>" + value.nomeProduto + "</td><td>" + value.precoUnidade + "</td><td>" + value.quantidade + "</td><td>" + value.total + "</td><td><a onClick='removeItem(" + (index) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
 
                 });
             }
         );
     };
+
+    function ListaFuncionarios() {
+        $.ajax({
+            type: "GET",
+            url: "/pedidos/ListaFuncionarios",
+            dataType: 'json',
+            success: function (response) {
+
+                listaFuncionario = response;
+                $.each(response, function (index, value) {
+                    $("#selectFuncionarios").append("<option value=" + value.idFuncionario + ">" + value.nome + "</option>");
+                });
+                //console.log(response);
+            }
+        });
+    };
+
+    function removeItem(idItem) {
+        console.log("Deletar", idItem);
+        console.log("tamanho da lista", listItemPedido.length);
+
+        if (listItemPedido.length == 1) {
+            alert("Não pode deletar todos os item. Sendo assim é melhor cancelar o pedido. ");
+        } else {
+            if (idItem > -1) {
+                listItemPedido.splice(idItem, 1);
+                $("#tb_" + idItem).remove();
+            } else {
+                alert("Item não encontrado");
+            }
+        }
+
+        calculaTotal();
+    }
+
+    function calculaTotal() {
+        console.log("Calcular", listItemPedido);
+
+        var total = 0;
+
+        $.each(listItemPedido, function (index, item) {
+            console.log(item);
+            total += item.total;
+        });
+
+        $("#TotalPedido").val(total);
+    }
+
+    function updatePedido() {
+
+        alert("fazendo update");
+
+        var pedido = {
+            "idpedido": $("#idpedido").val(),
+            "TipoEntrega": $("#TipoEntrega option:selected").val(),
+            "FormaPagamento": $("#FormaPagamento option:selected").val(),
+            "IdFuncioario": $("#selectFuncionarios option:selected").val(),
+            "IdCliente": $("#selectClientes").val(),
+            "Status": $("#SelectStatus option:selected").val(),
+            "Descricao": $("#descricao").val(),
+            "TotalPedido": $("#TotalPedido").val(),
+        }
+
+        console.log("cheguei");
+        console.log(pedido);
+
+        $.post('/Pedidos/UpdateDetalhePedido', { pedido: pedido, listItemPedido: listItemPedido },
+            function (returnedData) {
+                alert("GRAVADO 22 COM SUCESSO");
+                window.location.href = "/Pedidos/Index";
+            }
+        );
+    }
 
 </script>
 
@@ -38,7 +122,7 @@
 <div class="row">
     <hr />
     <div class="col-md-12">
-        <form method="post" asp-action="Create">
+        <form method="post" asp-action="Update">
             <div class="row" style="margin-bottom:15px;">
 
                 <div class="col-md-1">
@@ -48,22 +132,46 @@
 
                 <div class="col-md-2">
                     <label for="">Entrega</label>
-                    <input class="form-control" asp-for="TipoEntrega" type="text" readonly />
+                    <select id="TipoEntrega" asp-for="TipoEntrega" class="form-control">
+                        <option value="Retirada">Retirada na loja</option>
+                        <option value="Motoboy">Entrega via motoboy</option>
+                    </select>
                 </div>
 
                 <div class="col-md-2">
                     <label for="">Forma de pagamento</label>
-                    <input class="form-control" asp-for="FormaPagamento" type="text" readonly />
+                    <select id="FormaPagamento" asp-for="FormaPagamento" class="form-control">
+                        <option value="debito">Cartão debito</option>
+                        <option value="cretido">cartão de credito</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
                 </div>
 
                 <div class="col-md-2">
                     <label for="">Lista de Funcionário</label>
-                    <input class="form-control" asp-for="IdFuncioarioNavigation.Nome" type="text" readonly />
+                    <input class="form-control hidden" asp-for="IdFuncioario" />
+                    <input class="form-control hidden" asp-for="IdFuncioarioNavigation.Cpf" />
+                    <input class="form-control hidden" asp-for="IdFuncioarioNavigation.IdFuncionario" />
+                    <select id="selectFuncionarios" class="form-control" asp-for="IdFuncioarioNavigation.Nome" />
+                    </select>
                 </div>
 
                 <div class="col-md-2">
                     <label for="">Cliente</label>
+                    <input id="selectClientes" class="form-control hidden" asp-for="IdCliente" />
+                    <input class="form-control hidden" asp-for="IdClienteNavigation.IdCliente" />
                     <input class="form-control" asp-for="IdClienteNavigation.Nome" type="text" readonly />
+                </div>
+
+                <div class="col-md-2">
+                    <label for="">Status</label>
+                    <select id="SelectStatus" asp-for="Status" class="form-control">
+                        <option value="Cancelado">Cancelado</option>
+                        <option value="Em preparo">Em preparo</option>
+                        <option value="Pronto">Pronto</option>
+                        <option value="Finalizado">Finalizado</option>
+                        <option value="Fila">Fila</option>
+                    </select>
                 </div>
             </div>
             <hr />
@@ -74,10 +182,17 @@
                     <th>Valor</th>
                     <th>Qtd</th>
                     <th>Total</th>
+                    <th>Ações</th>
                     </thead>
                     <tbody id="tableItemPedido">
                     </tbody>
                 </table>
+            </div>
+            <div class="row">
+                <div class="col-md-12 pull-right">
+                    <label for="">Descricao</label>
+                    <textarea id="descricao" class="form-control" asp-for="Descricao" rows="2" cols="50"></textarea>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-4 pull-right">
@@ -85,10 +200,12 @@
                     <input id="TotalPedido" asp-for="TotalPedido" class="form-control">
                 </div>
             </div>
-            <div class="row" style="margin-top:20px;">
+            <br />
+            <div class="row">
                 <div class="col-md-12 text-right">
-                    <input class="btn btn-success btn-lg" onclick="createPedido()" value="Cadastrar novo produto" />
-                    <a href="/Pedidos/Index" class="btn btn-danger btn-lg">Voltar</a>
+                    @*<input class="btn btn-success btn-lg" type="submit" value="Salvar pedido" />*@
+                    <input class="btn btn-success btn-lg" onclick="updatePedido()" value="Salvar pedido" />
+                    <a asp-action="Index" class="btn btn-danger btn-lg">Voltar</a>
                 </div>
             </div>
         </form>

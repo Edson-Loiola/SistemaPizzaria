@@ -12,12 +12,14 @@ namespace SistemaWebPizzaria.Controllers
         public readonly PedidoService _pedidoService;
         public readonly ItempedidoService _itempedidoService;
         public readonly ProdutoService _produtoestoqueService;
+        public readonly FuncionarioService _funcionarioService;
 
-        public PedidosController(PedidoService pedidoService, ItempedidoService itempedidoService, ProdutoService produtoestoqueService)
+        public PedidosController(PedidoService pedidoService, ItempedidoService itempedidoService, ProdutoService produtoestoqueService, FuncionarioService funcionarioService)
         {
             _pedidoService = pedidoService;
             _itempedidoService = itempedidoService;
             _produtoestoqueService = produtoestoqueService;
+            _funcionarioService = funcionarioService;
         }
 
         public async Task<IActionResult> Index()
@@ -60,17 +62,17 @@ namespace SistemaWebPizzaria.Controllers
             return await _pedidoService.FindByIdProduto(id);
         }
 
-        public async Task<List<ItemPedido>> ListaItemPedido(int id)
+        public async Task<List<Itempedido>> ListaItemPedido(int id)
         {
             return await _itempedidoService.FindAllAsyncByIdPedido(id);
         }
 
         [HttpPost]
-        public async Task<ItemPedido> AdicionarItemCardapioAoPedido(int qtd, int cardapioid)
+        public async Task<Itempedido> AdicionarItemCardapioAoPedido(int qtd, int cardapioid)
         {
             var cardap = await _pedidoService.FindByIdCardapio(cardapioid);
 
-            var item = new ItemPedido();
+            var item = new Itempedido();
 
             item.Produto = "N";
             item.CardapioPizzaId = cardapioid;
@@ -84,13 +86,13 @@ namespace SistemaWebPizzaria.Controllers
         }
 
         [HttpPost]
-        public async Task<ItemPedido> AdicionarItemProdutoAoPedido(int qtd, int produtoid)
+        public async Task<Itempedido> AdicionarItemProdutoAoPedido(int qtd, int produtoid)
         {
             try
             {
                 var produto = await _pedidoService.FindByIdProduto(produtoid);
 
-                var item = new ItemPedido();
+                var item = new Itempedido();
 
                 item.Produto = "S";
                 item.CardapioPizzaId = null;
@@ -111,16 +113,20 @@ namespace SistemaWebPizzaria.Controllers
 
         public async Task<IActionResult> Detalhe(int id)
         {
+            if (TempData["currentPedido"] != null)
+            {
+                id = (int)TempData["currentPedido"];
+            }
             var result = await _pedidoService.FindByIdAsync(id);
             return View(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Pedido pedido, List<ItemPedido> listItemPedido)
+        public async Task<IActionResult> Create(Pedido pedido, List<Itempedido> listItemPedido)
         {
             await _pedidoService.InsertAsync(pedido);
 
-            foreach (ItemPedido item in listItemPedido)
+            foreach (Itempedido item in listItemPedido)
             {
                 item.PedidoId = pedido.IdPedido;
                 await _itempedidoService.InsertAsync(item);
@@ -168,12 +174,23 @@ namespace SistemaWebPizzaria.Controllers
             }
         }
 
+
+        public async Task<IActionResult> AlterarStatus(int id, string status)
+        {
+            var pedido = await _pedidoService.FindByIdAsync(id);
+            pedido.Status = status;
+            await _pedidoService.UpdateAsync(pedido);
+            return RedirectToAction(nameof(Index));
+        }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(Pedido pedido)
         {
+
             try
             {
+                pedido.IdFuncioarioNavigation = null;
+                pedido.IdClienteNavigation = null;
                 await _pedidoService.UpdateAsync(pedido);
                 return RedirectToAction(nameof(Index));
             }
@@ -182,6 +199,44 @@ namespace SistemaWebPizzaria.Controllers
                 return RedirectToAction(nameof(Index));
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateDetalhePedido(Pedido pedido, List<Itempedido> listItemPedido)
+        {
+            try
+            {
+                pedido.IdFuncioarioNavigation = null;
+                pedido.IdClienteNavigation = null;
+                await _pedidoService.UpdateAsync(pedido);
+
+                var removeList = await ListaItemPedido(pedido.IdPedido);
+                foreach (Itempedido itemRemove in removeList)
+                {
+                    await _itempedidoService.RemoveAsync(itemRemove);
+                }
+
+                foreach (Itempedido item in listItemPedido)
+                {
+                    item.PedidoId = pedido.IdPedido;
+                    await _itempedidoService.InsertAsync(item);
+
+                    //remover
+                    if (item.Produto == "S")
+                    {
+                        var produto = await _produtoestoqueService.FindByIdAsync(item.ProdutoEstoqueId);
+                        produto.Quantidade = produto.Quantidade - item.Quantidade;
+                        await _produtoestoqueService.UpdateAsync(produto);
+                    }
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (KeyNotFoundException)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
     }
 
 

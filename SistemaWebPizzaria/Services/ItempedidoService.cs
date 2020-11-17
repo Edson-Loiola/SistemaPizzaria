@@ -19,7 +19,7 @@ namespace SistemaWebPizzaria.Services {
         }
 
         //função de inserir no banco
-        public async Task InsertAsync(ItemPedido obj)
+        public async Task InsertAsync(Itempedido obj)
         {
             try
             {
@@ -33,12 +33,12 @@ namespace SistemaWebPizzaria.Services {
 
         }
 
-        public async Task<List<ItemPedido>> FindAllAsyncByIdPedido(int idPedido)
+        public async Task<List<Itempedido>> FindAllAsyncByIdPedido(int idPedido)
         {
-            var listaItemPedido = new List<ItemPedido>();
+            var listaItemPedido = new List<Itempedido>();
             var list = await _context.Itempedido.ToListAsync();
 
-            foreach (ItemPedido itempedido in list)
+            foreach (Itempedido itempedido in list)
             {
                 if (itempedido.PedidoId == idPedido)
                 {
@@ -51,13 +51,13 @@ namespace SistemaWebPizzaria.Services {
 
 
         //função de fazer listagem dos pedidos
-        public async Task<List<ItemPedido>> FindAllAsync()
+        public async Task<List<Itempedido>> FindAllAsync()
         {
             return await _context.Itempedido.ToListAsync();
         }
 
         //função remover  do banco pelo id
-        public async Task RemoveAsync(ItemPedido itempedido)
+        public async Task RemoveAsync(Itempedido itempedido)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace SistemaWebPizzaria.Services {
         }
 
 
-        public async Task<ItemPedido> FindByIdAsync(int id)
+        public async Task<Itempedido> FindByIdAsync(int id)
         {
             var itempedido = await _context.Itempedido.FirstOrDefaultAsync(obj => obj.Id == id);
 
@@ -79,7 +79,7 @@ namespace SistemaWebPizzaria.Services {
         }
 
         //função de atualizar uma 
-        public async Task UpdateAsync(ItemPedido obj)
+        public async Task UpdateAsync(Itempedido obj)
         {
             //pra atualizar um objeto o id desse objeto já precisa existir no banco
             bool hasAny = await _context.Itempedido.AnyAsync(x => x.Id == obj.Id);

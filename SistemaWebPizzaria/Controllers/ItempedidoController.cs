@@ -23,7 +23,7 @@ namespace SistemaWebPizzaria.Controllers
         }
 
         [HttpPost]
-        public async void Create(ItemPedido itemPedido)
+        public async void Create(Itempedido itemPedido)
         {
             await _itempedidoService.InsertAsync(itemPedido);
         }
@@ -44,7 +44,7 @@ namespace SistemaWebPizzaria.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(ItemPedido itempedido)
+        public async Task<IActionResult> Update(Itempedido itempedido)
         {
             try
             {

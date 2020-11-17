@@ -68,9 +68,9 @@ namespace SistemaWebPizzaria.Services {
             return await _context.Produtoestoque.FindAsync(id);
         }
 
-        public async Task InsertItemPedido(ItemPedido itemPedido)
+        public async Task InsertItemPedido(Itempedido itempedido)
         {
-            _context.Add(itemPedido);
+            _context.Add(itempedido);
             await _context.SaveChangesAsync();
         }
 
@@ -96,23 +96,12 @@ namespace SistemaWebPizzaria.Services {
 
             var listaItemPedido = await _context.Itempedido.ToListAsync();
 
-            foreach (ItemPedido item in listaItemPedido)
-            {
-                //if (item.PedidoIdPedido == pedido.IdPedido)
-                //{
-                //    pedido.Itempedido.Add(item);
-                //}
-            }
-
             return pedido;
-
-            //eager loading (inlcude): inner join para carregar outros objetos associados ao obj principal (no caso o departamento)
         }
 
         //função de atualizar uma 
         public async Task UpdateAsync(Pedido obj)
         {
-            //pra atualizar um objeto o id desse objeto já precisa existir no banco
             bool hasAny = await _context.Pedido.AnyAsync(x => x.IdPedido == obj.IdPedido);
 
             if (!hasAny)  // verifica se expressão passada não existe no banco
@@ -129,9 +118,6 @@ namespace SistemaWebPizzaria.Services {
             {
                 throw new NotFoundException(e.Message);
             }
-
         }
-
-
     }
 }
