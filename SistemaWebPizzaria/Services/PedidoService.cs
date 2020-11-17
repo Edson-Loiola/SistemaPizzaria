@@ -22,11 +22,19 @@ namespace SistemaWebPizzaria.Services {
         //função de inserir no banco
         public async Task InsertAsync(Pedido obj)
         {
-            obj.DataHora = DateTime.Now;
-            obj.IdClienteNavigation = _context.Cliente.Find(obj.IdCliente);
-            obj.IdFuncioarioNavigation = _context.Funcionario.Find(obj.IdFuncioario);
-            _context.Add(obj);
-            await _context.SaveChangesAsync();
+            try
+            {
+                obj.DataHora = DateTime.Now;
+                obj.IdClienteNavigation = _context.Cliente.Find(obj.IdCliente);
+                obj.IdFuncioarioNavigation = _context.Funcionario.Find(obj.IdFuncioario);
+                _context.Add(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new System.Exception(e.Message);
+            }
+
         }
 
 

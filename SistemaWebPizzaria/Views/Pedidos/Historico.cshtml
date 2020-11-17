@@ -2,13 +2,6 @@
 
 @{ViewData["Title"] = "Histórico de Pedidos";}
 
-@*<style>
-    tr.cancelado {
-        background-color: #FF6347 !important;
-        color: white !important;
-    }
-</style>*@
-
 <h2>@ViewData["Title"]</h2>
 <hr />
 <div class="row">
@@ -19,11 +12,9 @@
     <form class="col-md-offset-6 right" asp-action="Historico">
         <fieldset>
             <div class="col-md-4">
-                @*<label>Data Início</label>*@
                 <input type="date" name="minDate" class="form-control" value=@ViewData["minDate"] />
             </div>
             <div class=" col-md-4">
-                @*<label>Data Fim</label>*@
                 <input type="date" name="maxDate" class="form-control" value=@ViewData["maxDate"] />
             </div>
             <div class="col-md-4">
@@ -92,9 +83,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Status)
                         </td>
-                        
                     </tr>
-
                 }
             </tbody>
         </table>

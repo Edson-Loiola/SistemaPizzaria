@@ -17,8 +17,6 @@
     var pedido = '@Model';
     var idPedido = '@Model.IdPedido';
 
-
-
     var listItemPedido = [];
     var listaFuncionario = [];
     var listaCliente = [];
@@ -35,7 +33,7 @@
 
                 $.each(response, function (index, value) {
                     $("#tableItemPedido").append("<tr id='tb_" + (index) + "'><td>" + value.nomeProduto + "</td><td>" + value.precoUnidade + "</td><td>" + value.quantidade + "</td><td>" + value.total + "</td><td><a onClick='removeItem(" + (index) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
-                });
+                    });
             }
         );
     };
@@ -205,7 +203,8 @@
                         {
                             <a href="/Pedidos/Historico" class="btn btn-danger btn-lg">Voltar</a>
                         }
-                        else{
+                        else
+                        {
                             <input class="btn btn-success btn-lg" onclick="updatePedido()" value="Salvar pedido" />
                             <a asp-action="Index" class="btn btn-danger btn-lg">Voltar</a>
                         }
