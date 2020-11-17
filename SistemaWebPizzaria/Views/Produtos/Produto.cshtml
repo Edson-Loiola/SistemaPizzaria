@@ -58,21 +58,29 @@
                 </div>
 
             </div>
+
+
+
             <div class="row" style="margin-bottom:15px;">
 
+                <div class="col-md-2">
+                    <label>Valor Total (R$)</label>
+                    <input asp-for="ValorTotal" type="text" class="form-control" placeholder="R$">
+                    <span asp-validation-for="ValorTotal" class="text-danger"></span>
+                </div>
                 <div class="col-md-3">
                     <label>Marca</label>
                     <input asp-for="Marca" type="text" class="form-control">
-                    <span asp-validation-for="Marca" class="text-danger"></span>                   
-                </div>
-
-                <div class="col-md-4">
-                    <label>Nome do Fornecedor</label>
-                    <input asp-for="NomeFornecedor" class="form-control">
-                    <span asp-validation-for="NomeFornecedor" class="text-danger"></span>                 
+                    <span asp-validation-for="Marca" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-3">
+                    <label>Nome do Fornecedor</label>
+                    <input asp-for="NomeFornecedor" class="form-control">
+                    <span asp-validation-for="NomeFornecedor" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-2">
                     <label>Categoria</label>
                     <select asp-for="Categoria" class="custom-select form-control">
                         <option value="bebida">Bebida</option>
@@ -81,7 +89,7 @@
                     </select>
                 </div>
 
-                 <div class="col-md-2">
+                <div class="col-md-2">
                     @*<input id="produtoVenda" asp-for="Vende" type="checkbox" value="" style="margin-top:30px; margin-right:5px;">*@
                     <label>Produto para venda?</label>
                     <select asp-for="Vende" class="custom-select form-control">

@@ -64,24 +64,29 @@
             </div>
             <div class="row" style="margin-bottom:15px;">
 
+                <div class="col-md-2">
+                    <label>Valor Total (R$)</label>
+                    <input asp-for="ValorTotal" type="text" class="form-control" placeholder="R$">
+                    <span asp-validation-for="ValorTotal" class="text-danger"></span>
+                </div>
                 <div class="col-md-3">
-                    <label for="">Marca</label>
+                    <label>Marca</label>
                     <input asp-for="Marca" type="text" class="form-control">
                     <span asp-validation-for="Marca" class="text-danger"></span>
                 </div>
 
-                <div class="col-md-4">
-                    <label for="firstName">Nome do Fornecedor</label>
+                <div class="col-md-3">
+                    <label>Nome do Fornecedor</label>
                     <input asp-for="NomeFornecedor" class="form-control">
                     <span asp-validation-for="NomeFornecedor" class="text-danger"></span>
                 </div>
 
-                <div class="col-md-3">
-                    <label for="firstName">Categoria</label>
+                <div class="col-md-2">
+                    <label>Categoria</label>
                     <select asp-for="Categoria" class="custom-select form-control">
                         <option value="bebida">Bebida</option>
-                        @*<option value="limpeza">Limpeza</option>*@
                         <option value="Produto Pizza">Ingrediente Pizza</option>
+                        <option value="limpeza">Outro</option>
                     </select>
                 </div>
 

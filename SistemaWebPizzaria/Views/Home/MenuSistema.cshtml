@@ -41,7 +41,8 @@
 
 
 <div class="container col-md-12">
-    <hr />
+    <br /><br /><br /><br /><br />
+
     <div class="row col-md-offset-2">
         <div class="col-lg-3 text-center">
             <div class="row">
@@ -70,7 +71,7 @@
             <span class="font-menu">Pedidos</span>
         </div>
 
-    </div>
+    </div><br /><br />
     @{
         if (HttpContextAccessor.HttpContext.Session.GetString("Perfil") == "A")
         {
@@ -104,7 +105,9 @@
                 </div>
             </div>
             <div class="row col-md-offset-2">
+                <br /><br />
                 <div class="col-lg-3 text-center">
+
                     <div class="row">
                         <a class="btn btn-danger btn-menu" href="../Relatorios/Ganho" role="button">
                             <i class="material-icons icone-menu">assessment</i>
@@ -113,11 +116,11 @@
                     <span class="font-menu">Relatórios</span>
                 </div>
 
-      
+
                 <div class="col-lg-3 text-center">
                     <div class="row">
                         <a class="btn btn-danger btn-menu" href="../Pedidos/Historico" role="button">
-                            <i class="material-icons icone-menu">list_alt</i>
+                            <i class="material-icons icone-menu">grading</i>
                         </a>
                     </div>
                     <span class="font-menu">Histórico</span>
@@ -127,4 +130,5 @@
 
         }
     }
+    <br /><br /><br /><br /><br /><br /><br /><br />
 </div>

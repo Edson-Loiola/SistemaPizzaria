@@ -39,7 +39,7 @@
             </div>
             <div class="col-md-3">
                 <form method="post" asp-action="EstoqueBaixo">
-                    <button class="btn btn-default " style="color:#ffffff; background-color:#b4b4b4; font-family:Verdana; font-size:large"> Prod com Estoque Baixo: (@(Model.Where(x => x.Quantidade < 10 ).Count()))</button>
+                    <button class="btn btn-default " style="color:#ffffff; background-color:#b4b4b4; font-family:Verdana; font-size:large"> Produto Estoque Baixo: (@(Model.Where(x => x.Quantidade < 10 ).Count()))</button>
                 </form>
             </div>
 
@@ -65,6 +65,9 @@
                     <label class="control-label">Quantidade</label>
                 </th>
                 <th>
+                    <label class="control-label">Valor Total</label>
+                </th>
+                <th>
                     <label class="control-label">Marca</label>
                 </th>
                 <th>
@@ -81,36 +84,39 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td readonly>
-                        @Html.DisplayFor(modelItem => item.IdProduto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PrecoCompra)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PrecoVenda)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Quantidade) @Html.DisplayFor(modelItem => item.UnidadeMedida)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Marca)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Descricao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Validade)
-                    </td>
-                    <td class="text-center">
-                        <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdProduto"><span class="material-icons">edit</span></a>
-                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdProduto"><span class="material-icons">delete</span></a>
-                    </td>
-                </tr>
+            <tr>
+                <td readonly>
+                    @Html.DisplayFor(modelItem => item.IdProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecoCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecoVenda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantidade) @Html.DisplayFor(modelItem => item.UnidadeMedida)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ValorTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Marca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Validade)
+                </td>
+                <td class="text-center">
+                    <a asp-action="Detalhe" class="btn btn-default btn-sm" asp-route-id="@item.IdProduto"><span class="material-icons">edit</span></a>
+                    <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal-@item.IdProduto"><span class="material-icons">delete</span></a>
+                </td>
+            </tr>
 
                 <div class="modal fade" id="myModal-@item.IdProduto" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">

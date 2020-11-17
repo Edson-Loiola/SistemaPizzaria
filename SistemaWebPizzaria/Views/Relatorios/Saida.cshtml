@@ -39,7 +39,7 @@
                 <div class="img-rounded col-md-8 text-center col-md-offset-2" style="box-shadow: #505050 0px 1px 5px; background-color: #ff6666">
                     <br />
                     <span style="color:#424242; font-family:Verdana; font-size:medium">Valor de saída com despesas</span>
-                    <h1 style="color:#424242; font-family:Impact">R$ @((Model.Despesas.Sum(d => d.Valor) + Model.Produtoestoque.Sum(x => x.PrecoCompra)).ToString("F2"))</h1>
+                    <h1 style="color:#424242; font-family:Impact">R$ @((Model.Despesas.Sum(d => d.Valor) + Model.Produtoestoque.Sum(x => (double) x.ValorTotal)).ToString("F2"))</h1>
                     <br />
                 </div>
 
@@ -91,7 +91,7 @@
                                 @Html.DisplayFor(modelItem => item.Nome)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.PrecoCompra)
+                                @Html.DisplayFor(modelItem => item.ValorTotal)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Descricao)
