@@ -3,6 +3,9 @@
 @{ViewData["Title"] = "Pedidos";}
 @{ TempData.Remove("currentPedido"); }
 
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
 <style>
     tr.cancelado {
         background-color: #FF6347 !important;
@@ -11,8 +14,6 @@
 </style>
 
 <script>
-    $(".spinner-border").modal("show");
-
     function AlterarStatus() {
         var idpedido = $("#idpedido").val();
         var status = $("#SelectStatus option:selected").val();
@@ -27,7 +28,7 @@
 
 </script>
 
-
+@{TempData.Remove("Historico");}
 <h2>@ViewData["Title"]</h2>
 <hr />
 
@@ -40,6 +41,10 @@
 <div class="row">
     <div class="col-md-12">
         <a asp-action="Pedido" class="btn btn-primary btn-lg">Novo Pedido</a>
+        @if (HttpContextAccessor.HttpContext.Session.GetString("Perfil") == "A")
+        {
+            <a asp-action="Historico" class="btn btn-primary btn-lg">Histórico</a>
+        }
         <a href="../Home/MenuSistema" class="btn btn-danger btn-lg pull-right">Voltar</a>
     </div>
 </div>

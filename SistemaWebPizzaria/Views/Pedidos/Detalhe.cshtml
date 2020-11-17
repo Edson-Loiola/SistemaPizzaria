@@ -34,9 +34,7 @@
                 listItemPedido = response;
 
                 $.each(response, function (index, value) {
-
                     $("#tableItemPedido").append("<tr id='tb_" + (index) + "'><td>" + value.nomeProduto + "</td><td>" + value.precoUnidade + "</td><td>" + value.quantidade + "</td><td>" + value.total + "</td><td><a onClick='removeItem(" + (index) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
-
                 });
             }
         );
@@ -203,9 +201,15 @@
             <br />
             <div class="row">
                 <div class="col-md-12 text-right">
-                    @*<input class="btn btn-success btn-lg" type="submit" value="Salvar pedido" />*@
-                    <input class="btn btn-success btn-lg" onclick="updatePedido()" value="Salvar pedido" />
-                    <a asp-action="Index" class="btn btn-danger btn-lg">Voltar</a>
+                    @{ if (TempData.Any(x => x.Key == "Historico"))
+                        {
+                            <a href="/Pedidos/Historico" class="btn btn-danger btn-lg">Voltar</a>
+                        }
+                        else{
+                            <input class="btn btn-success btn-lg" onclick="updatePedido()" value="Salvar pedido" />
+                            <a asp-action="Index" class="btn btn-danger btn-lg">Voltar</a>
+                        }
+                    }
                 </div>
             </div>
         </form>

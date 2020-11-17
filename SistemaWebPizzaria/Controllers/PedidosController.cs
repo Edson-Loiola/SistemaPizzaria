@@ -28,6 +28,44 @@ namespace SistemaWebPizzaria.Controllers
             return View(list);
         }
 
+        public async Task<IActionResult> Historico(DateTime? minDate, DateTime? maxDate)
+        {
+            
+
+          
+
+            if (!minDate.HasValue)
+            {
+                minDate = DateTime.Now.AddDays(-1);
+               
+            }
+            if (!maxDate.HasValue)
+            {
+                maxDate = DateTime.Now;
+            }
+
+            ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
+            ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
+
+            
+
+
+
+            //var relsaidas = await _relatoioService.SaidaDespesas(minDate, maxDate);
+            var list = await _pedidoService.FindAllAsync(minDate, maxDate);
+
+            var obj = list.FindAll(x => x.Status == "finalizado" || x.Status == "cancelado");
+
+            return View(obj);
+
+            //int paginaTamanho = 10;
+            //int paginaNumero = (pagina ?? 1);
+
+            //return View(obj.ToPagedList(paginaNumero, paginaTamanho));
+
+            return View(obj);
+        }
+
         public IActionResult Pedido()
         {
             return View();
