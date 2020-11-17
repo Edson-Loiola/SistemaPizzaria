@@ -23,7 +23,7 @@
                 listItemPedido = response;
 
                 $.each(response, function (index, value) {
-
+                     
                     $("#tableItemPedido").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + value.nomeProduto + "</td><td>" + value.precoUnidade + "</td><td>" + value.quantidade + "</td><td>" + value.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
 
                 });
@@ -87,8 +87,16 @@
             </div>
             <div class="row" style="margin-top:20px;">
                 <div class="col-md-12 text-right">
-                    <input class="btn btn-success btn-lg" onclick="createPedido()" value="Cadastrar novo produto" />
-                    <a href="/Pedidos/Index" class="btn btn-danger btn-lg">Voltar</a>
+                    @{ if (TempData.Any(x => x.Key == "Historico"))
+                        {
+                                    <a href="/Pedidos/Historico" class="btn btn-danger btn-lg">Voltar</a>
+                                }
+                                else
+                                {
+                                    <input class="btn btn-success btn-lg" onclick="createPedido()" value="Editar Pedido" />
+                                    <a href="/Pedidos/Index" class="btn btn-danger btn-lg">Voltar</a>
+                                }
+                            }
                 </div>
             </div>
         </form>

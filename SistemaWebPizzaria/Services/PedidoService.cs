@@ -36,6 +36,32 @@ namespace SistemaWebPizzaria.Services {
             return await _context.Pedido.Include(f => f.IdFuncioarioNavigation).Include(c => c.IdClienteNavigation).ToListAsync();
         }
 
+        public async Task<List<Pedido>> FindAllAsync(DateTime? minDate, DateTime? maxDate)
+        {
+
+           
+            var list = await  _context.Pedido.Include(f => f.IdFuncioarioNavigation).Include(c => c.IdClienteNavigation).ToListAsync();
+
+
+
+
+            if (minDate.HasValue)
+            {
+                list = list.FindAll(d => d.DataHora >= minDate.Value);
+                
+
+            }
+            if (maxDate.HasValue)
+            {
+                list = list.FindAll(d => d.DataHora <= maxDate.Value);
+                
+
+            }
+
+
+           return list;
+        }
+
         //função de fazer listagem dos funcionarios
         public async Task<List<Funcionario>> ListaFuncionarios()
         {

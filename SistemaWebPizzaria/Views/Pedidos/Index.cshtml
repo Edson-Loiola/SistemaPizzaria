@@ -2,6 +2,9 @@
 
 @{ViewData["Title"] = "Pedidos";}
 
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
 <style>
     tr.cancelado {
         background-color: #FF6347 !important;
@@ -9,6 +12,7 @@
     }
 </style>
 
+@{TempData.Remove("Historico");}
 <h2>@ViewData["Title"]</h2>
 <hr />
 <!-- busca -->
@@ -23,9 +27,14 @@
         </form>
     </div>
     <hr />*@
+
 <div class="row">
     <div class="col-md-12">
         <a asp-action="Pedido" class="btn btn-primary btn-lg">Novo Pedido</a>
+        @if (HttpContextAccessor.HttpContext.Session.GetString("Perfil") == "A")
+        {
+            <a asp-action="Historico" class="btn btn-primary btn-lg">Histórico</a>
+        }
         <a href="../Home/MenuSistema" class="btn btn-danger btn-lg pull-right">Voltar</a>
     </div>
 </div>
@@ -65,7 +74,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.OrderByDescending(x => x.IdPedido))
+                @foreach (var item in Model.Where(x => x.Status != "Finalizado" && x.Status != "Cancelado").OrderByDescending(x => x.IdPedido))
                 {
                     <tr class="@Html.DisplayFor(modelItem => item.Status)">
                         <td>
@@ -121,7 +130,7 @@
                             </div>
                         </div>
                     </div>
-            }
+                }
             </tbody>
         </table>
     </div>
