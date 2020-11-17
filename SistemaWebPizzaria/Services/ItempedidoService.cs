@@ -18,7 +18,7 @@ namespace SistemaWebPizzaria.Services {
             _context = context;
         }
 
-        //função de inserir no banco
+        //funï¿½ï¿½o de inserir no banco
         public async Task InsertAsync(Itempedido obj)
         {
             try
@@ -40,28 +40,28 @@ namespace SistemaWebPizzaria.Services {
 
             foreach (Itempedido itempedido in list)
             {
-                if (itempedido.PedidoId == idPedido)
+                if (Itempedido.PedidoId == idPedido)
                 {
-                    listaItemPedido.Add(itempedido);
+                    listaItempedido.Add(Itempedido);
                 }
             }
 
-            return listaItemPedido;
+            return listaItempedido;
         }
 
 
-        //função de fazer listagem dos pedidos
+        //funï¿½ï¿½o de fazer listagem dos pedidos
         public async Task<List<Itempedido>> FindAllAsync()
         {
             return await _context.Itempedido.ToListAsync();
         }
 
-        //função remover  do banco pelo id
+        //funï¿½ï¿½o remover  do banco pelo id
         public async Task RemoveAsync(Itempedido itempedido)
         {
             try
             {
-                _context.Itempedido.Remove(itempedido);
+                _context.Itempedido.Remove(Itempedido);
                 await _context.SaveChangesAsync();
             }
             catch (NotFoundException e)
@@ -73,26 +73,26 @@ namespace SistemaWebPizzaria.Services {
 
         public async Task<Itempedido> FindByIdAsync(int id)
         {
-            var itempedido = await _context.Itempedido.FirstOrDefaultAsync(obj => obj.Id == id);
+            var Itempedido = await _context.Itempedido.FirstOrDefaultAsync(obj => obj.Id == id);
 
-            return itempedido;
+            return Itempedido;
         }
 
-        //função de atualizar uma 
+        //funï¿½ï¿½o de atualizar uma 
         public async Task UpdateAsync(Itempedido obj)
         {
-            //pra atualizar um objeto o id desse objeto já precisa existir no banco
+            //pra atualizar um objeto o id desse objeto jï¿½ precisa existir no banco
             bool hasAny = await _context.Itempedido.AnyAsync(x => x.Id == obj.Id);
 
-            if (!hasAny)  // verifica se expressão passada não existe no banco
+            if (!hasAny)  // verifica se expressï¿½o passada nï¿½o existe no banco
             {
-                throw new NotFiniteNumberException("itempedido não existe!");
+                throw new NotFiniteNumberException("Itempedido nï¿½o existe!");
             }
 
             try
             {
                 _context.Update(obj); //atualiza o objeto
-                await _context.SaveChangesAsync(); //confirmar alteração
+                await _context.SaveChangesAsync(); //confirmar alteraï¿½ï¿½o
             }
             catch (DllNotFoundException e)
             {

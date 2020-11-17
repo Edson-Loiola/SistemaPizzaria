@@ -18,14 +18,13 @@ namespace SistemaWebPizzaria.Controllers
             _produtoService = produtoService;
         }
 
-        public async Task<IActionResult> Index(int? pagina)
+        public async Task<IActionResult> Index()
         {
             var list = await _produtoService.FindAllAsync();
 
-            int paginaTamanho = 10;
-            int paginaNumero = (pagina ?? 1);
+           
 
-            return View(list.ToPagedList(paginaNumero, paginaTamanho));
+            return View(list);
         }
 
 
@@ -87,7 +86,7 @@ namespace SistemaWebPizzaria.Controllers
 
         //metodo de pesquisar produto pelo nome 
         [HttpPost]
-        public async Task<IActionResult> BuscarProdPeloNome(string nomeprod, int? pagina)
+        public async Task<IActionResult> BuscarProdPeloNome(string nomeprod)
         {
 
             var obj = await _produtoService.FindAllAsync();
@@ -101,20 +100,50 @@ namespace SistemaWebPizzaria.Controllers
 
             var listprod = obj.Where(x => x.Nome.ToUpper().Contains(nomeprod.ToUpper()));
 
-            int paginaTamanho = 10;
-            int paginaNumero = (pagina ?? 1);
 
-            return View(nameof(Index), listprod.ToPagedList(paginaNumero, paginaTamanho)); // se existir retornar a lista
+
+
+            return View(nameof(Index), listprod);  // se existir retornar a lista
+        }
+
+
+        //listagem dos produtos vencidos
+        [HttpPost]
+        public async Task<IActionResult> ProdutosVencidos()
+        {
+
+            var obj = await _produtoService.FindAllAsync();
+
+            var prodVencidos = obj.Where(x => x.Validade < DateTime.Now).ToList();
+          
+          
+
+            return View(nameof(Index), prodVencidos); // se existir retornar a lista
+        }
+
+
+        //listagem dos produtos com estoque abaixo de 10
+        [HttpPost]
+        public async Task<IActionResult> EstoqueBaixo()
+        {
+
+            var obj = await _produtoService.FindAllAsync();
+
+            var prodBaixo = obj.Where(x => x.Quantidade < 10).ToList();
+
+            
+
+            return View(nameof(Index), prodBaixo); // se existir retornar a lista
         }
 
 
 
 
-        public async Task<bool> Validade(string DataCompra, string Validade) //obs os parametros tem que ter o mesmo nome dos atributos da classe
+        public async Task<bool> Validade(string Validade) //obs os parametros tem que ter o mesmo nome dos atributos da classe
         {
 
 
-            if (Convert.ToDateTime(Validade) <= Convert.ToDateTime(DataCompra))
+            if (Convert.ToDateTime(Validade) < Convert.ToDateTime(DateTime.Now))
             {
                 return false;
             }

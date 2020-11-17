@@ -15,7 +15,7 @@
 
     $("#quantidadeCardapio").val();
     $("#quantidadeProduto").val();
-    var listItemPedido = [];
+    var listItempedido = [];
 
     ListaFuncionarios();
     ListaClientes();
@@ -99,9 +99,9 @@
             function (returnedData) {
                 console.log(returnedData);
 
-                listItemPedido.push(returnedData);
+                listItempedido.push(returnedData);
                 
-                $("#tabelaProdutos").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + returnedData.nomeProduto + "</td><td>" + returnedData.precoUnidade + "</td><td>" + returnedData.quantidade + "</td><td>" + returnedData.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
+                $("#tabelaProdutos").append("<tr id='tb_" + (listItempedido.length - 1) + "'><td>" + returnedData.nomeProduto + "</td><td>" + returnedData.precoUnidade + "</td><td>" + returnedData.quantidade + "</td><td>" + returnedData.total + "</td><td><a onClick='removeItem(" + (listItempedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
 
                 calculaTotal();
 
@@ -122,9 +122,9 @@
                         function (returnedData) {
                             console.log(returnedData);
 
-                            listItemPedido.push(returnedData);
+                            listItempedido.push(returnedData);
 
-                            $("#tabelaProdutos").append("<tr id='tb_" + (listItemPedido.length - 1) + "'><td>" + returnedData.nomeProduto + "</td><td>" + returnedData.precoUnidade + "</td><td>" + returnedData.quantidade + "</td><td>" + returnedData.total + "</td><td><a onClick='removeItem(" + (listItemPedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
+                            $("#tabelaProdutos").append("<tr id='tb_" + (listItempedido.length - 1) + "'><td>" + returnedData.nomeProduto + "</td><td>" + returnedData.precoUnidade + "</td><td>" + returnedData.quantidade + "</td><td>" + returnedData.total + "</td><td><a onClick='removeItem(" + (listItempedido.length - 1) + ")' class='pull-right btn btn-danger'>Deletar</a></td></tr>");
 
                             calculaTotal();
                         }
@@ -139,7 +139,7 @@
     function calculaTotal() {
         var total = 0;
 
-        $.each(listItemPedido, function (index, item) {
+        $.each(listItempedido, function (index, item) {
             total += item.total;
         });
 
@@ -151,7 +151,7 @@
         console.log(idItem);
 
         if (idItem > -1) {
-            listItemPedido.splice(idItem);
+            listItempedido.splice(idItem);
             $("#tb_" + idItem).remove();
         } else {
             alert("Item não encontrado");
@@ -173,7 +173,7 @@
         console.log("cheguei");
         console.log(pedido);
 
-        $.post('Create', { pedido: pedido, listItemPedido: listItemPedido },
+        $.post('Create', { pedido: pedido, listItempedido: listItempedido },
             function (returnedData) {
                 alert("GRAVADO COM SUCESSO");
                 window.location.href = "/Pedidos/Index";

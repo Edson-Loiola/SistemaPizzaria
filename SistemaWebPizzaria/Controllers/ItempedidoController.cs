@@ -9,31 +9,31 @@ namespace SistemaWebPizzaria.Controllers
 {
     public class ItempedidoController : Controller
     {
-        public readonly ItempedidoService _itempedidoService;
+        public readonly ItempedidoService _ItempedidoService;
 
-        public ItempedidoController(ItempedidoService itempedidoService)
+        public ItempedidoController(ItempedidoService ItempedidoService)
         {
-            _itempedidoService = itempedidoService;
+            _ItempedidoService = ItempedidoService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var list = await _itempedidoService.FindAllAsync();
+            var list = await _ItempedidoService.FindAllAsync();
             return View(list);
         }
 
         [HttpPost]
         public async void Create(Itempedido itemPedido)
         {
-            await _itempedidoService.InsertAsync(itemPedido);
+            await _ItempedidoService.InsertAsync(Itempedido);
         }
 
-        public async Task<IActionResult> DeleteItemPedido(int id)
+        public async Task<IActionResult> DeleteItempedido(int id)
         {
             try
             {
-                var itempedido = await _itempedidoService.FindByIdAsync(id);
-                await _itempedidoService.RemoveAsync(itempedido); //chamando o metodo remove 
+                var Itempedido = await _ItempedidoService.FindByIdAsync(id);
+                await _ItempedidoService.RemoveAsync(Itempedido); //chamando o metodo remove 
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception)
@@ -48,7 +48,7 @@ namespace SistemaWebPizzaria.Controllers
         {
             try
             {
-                await _itempedidoService.UpdateAsync(itempedido);
+                await _ItempedidoService.UpdateAsync(Itempedido);
                 return RedirectToAction(nameof(Index));
             }
             catch (KeyNotFoundException)

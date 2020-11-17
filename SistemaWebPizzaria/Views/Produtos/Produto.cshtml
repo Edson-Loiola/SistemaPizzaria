@@ -18,13 +18,13 @@
             <div class="row" style="margin-bottom:15px;">
                 <div class="col-md-2">
                     <label for="">Valor Compra</label>
-                    <input asp-for="PrecoCompra" class="form-control" placeholder="R$">
+                    <input asp-for="PrecoCompra" class="form-control" placeholder="R$ - unidade">
                     <span asp-validation-for="PrecoCompra" class="text-danger"></span>
                 </div>
 
                 <div class="col-md-2">
                     <label for="">Valor Venda</label>
-                    <input asp-for="PrecoVenda" class="form-control" placeholder="R$">
+                    <input asp-for="PrecoVenda" class="form-control" placeholder="R$ - unidade">
                     <span asp-validation-for="PrecoVenda" class="text-danger"></span>
                 </div>
 
@@ -76,8 +76,8 @@
                     <label>Categoria</label>
                     <select asp-for="Categoria" class="custom-select form-control">
                         <option value="bebida">Bebida</option>
-                        @*<option value="limpeza">Limpeza</option>*@
                         <option value="Produto Pizza">Ingrediente Pizza</option>
+                        <option value="limpeza">Outro</option>
                     </select>
                 </div>
 

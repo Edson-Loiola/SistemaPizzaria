@@ -179,7 +179,7 @@ namespace SistemaWebPizzaria.Models
 
             modelBuilder.Entity<Itempedido>(entity =>
             {
-                entity.ToTable("itempedido");
+                entity.ToTable("Itempedido");
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
