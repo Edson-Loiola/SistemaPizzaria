@@ -33,7 +33,7 @@ namespace SistemaWebPizzaria.Controllers
             
             if (!minDate.HasValue)
             {
-                minDate = DateTime.Now.AddDays(-1);
+                minDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             }
             if (!maxDate.HasValue)
             {
@@ -59,7 +59,7 @@ namespace SistemaWebPizzaria.Controllers
 
             //return View(obj.ToPagedList(paginaNumero, paginaTamanho));
 
-            return View(obj);
+           // return View(obj);
         }
 
         public IActionResult Pedido()

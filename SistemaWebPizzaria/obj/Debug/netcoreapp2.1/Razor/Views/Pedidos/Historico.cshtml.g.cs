@@ -109,7 +109,7 @@ Write(ViewData["Title"]);
             WriteLiteral("</h2>\r\n<hr />\r\n<div class=\"row\">\r\n    <div class=\"col-md-6\">\r\n        ");
             EndContext();
             BeginContext(486, 63, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57d20d80fddc48258f43bf7b6776b8da", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c48c943612484b39b736821487adbb3d", async() => {
                 BeginContext(539, 6, true);
                 WriteLiteral("Pedido");
                 EndContext();
@@ -132,7 +132,7 @@ Write(ViewData["Title"]);
             WriteLiteral("\r\n        <a href=\"../Home/MenuSistema\" class=\"btn btn-primary btn-lg\">Home</a>\r\n    </div>\r\n    ");
             EndContext();
             BeginContext(646, 566, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a97982088fe844a89a4ddfdc964cb68e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f70b258560df4943a65864d0a4df59a1", async() => {
                 BeginContext(705, 128, true);
                 WriteLiteral("\r\n        <fieldset>\r\n            <div class=\"col-md-4\">\r\n                <input type=\"date\" name=\"minDate\" class=\"form-control\"");
                 EndContext();
